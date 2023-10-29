@@ -14,5 +14,6 @@ public class FindIterations1 {
         for(int i = 1; i <= N; i++){
             if(i * i == N) return i;
         }
+        return 0;
     }
 }
