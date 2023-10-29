@@ -5,7 +5,8 @@
 
 ## Update document title
 
-## <code style="color : red">Document is Under constructions</code>
+## $${\color{red}Document is Under constructions}$$
+
 
 ## Scope / Agenda
   
