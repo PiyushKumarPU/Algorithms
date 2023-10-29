@@ -17,7 +17,7 @@
 2. [Additional Problems](../../problems/src/main/java/com/learning/scaler/intermediate/problem/solving/additional/)
 3. [Self Practise Problems](../../problems/src/main/java/com/learning/scaler/intermediate/problem/solving/extra/)
 
-## Notes and Videos
+## Class Notes and Videos
 
 1. [Class Notes](../class_Notes/DSA%20Intermediate%20Notes/1%20Intro%20to%20Problem%20Solving(23-08-23).pdf)
 2. [Youtube Video Part1](https://www.youtube.com/watch?v=LPbdI5PHM4M)
