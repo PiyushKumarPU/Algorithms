@@ -19,7 +19,7 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 7. [Arrays : 2D Matrices](/Notes/self/Int_DSA/Arrays-2D%20Matrices.md "Not Yet Started")
 8. [Sorting Basics](/Notes/self/Int_DSA/Sorting%20Basics.md "Not Yet Started")
 9. [Strings](/Notes/self/Int_DSA/Strings.md "Not Yet Started")
-10. [Hashing Basics](/Notes/self/Int_DSA/Hashing%20Basics.md)
+10. [Hashing Basics](/Notes/self/Int_DSA/Hashing%20Basics.md "Hashing Basics")
 11. [Bit Manipulations Basics](/Notes/self/Int_DSA/Bit%20Manipulations%20Basics.md "Not Yet Started")
 12. [Interview Problems](/Notes/self/Int_DSA/Interview%20Problems.md "Not Yet Started")
 13. [Contest](/Notes/self/Int_DSA/Intermediate%20DSA%20%20Contest.md "Not Yet Started")
