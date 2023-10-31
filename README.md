@@ -6,6 +6,10 @@ DSA and system design notes and problems
 
 Trying to make an easy and readable DSA notes for quick understanding of related topics.
 
+## Class/Lecture Playlist
+   - [Intermediate DSA](https://www.youtube.com/watch?v=6PaQPJamGGI&list=PLWV5FkQMcDU5xx5M4_T0Skms_lLzTtQpO)
+   - [Advance DSA](https://www.youtube.com/watch?v=DrcCB_a29mo&list=PLWV5FkQMcDU7gC6Lh87kP5ECv2HlsYF_7)
+   
 ## Table of Contents
 
 ### Intermediate DSA
