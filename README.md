@@ -11,7 +11,7 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 ### Intermediate DSA
    
 1. [Introduction to Problem Solving](/Notes/self/Int_DSA/Intro_to_problem_solving.md "Introduction to Problem Solving")
-2. [Time Complexity](/Notes/self/Int_DSA/Time%20Complexity.md "Not Yet Started")
+2. [Time Complexity](/Notes/self/Int_DSA/Time%20Complexity.md)
 3. [Introduction to Arrays](/Notes/self/Int_DSA/Introduction%20to%20Arrays.md "Not Yet Started")
 4. [Arrays : Prefix Sum](/Notes/self/Int_DSA/Arrays-Prefix%20Sum.md "Not Yet Started")
 5. [Arrays : Carry Forward & Subarrays](/Notes/self/Int_DSA/Arrays-Carry%20Forward%20&%20Subarrays.md "Not Yet Started")

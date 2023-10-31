@@ -1,11 +1,14 @@
 
-
-
-## Update document title
+## Arrays : Sliding Window and Contribution Technique
 
 ## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 
 ## Scope / Agenda
+- [TLE and Constraints](#tle-and-constraints)
+- [Carry Forward Questions](#carry-forward-questions)
+- [Introduction to SubArrays](#intro-to-subarrays)
+- [Iterating SubArrays](#iterating-subarrays)
+- [Questions](#questions)
   
 
 ## Problems and solutions
@@ -16,6 +19,13 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes]()
-2. [Youtube Video Part1]()
-3. [Youtube Video Part2]()
+1. [Class Notes](../../class_Notes/DSA%20Intermediate%20Notes/6%20Sliding%20Window%20and%20Contribution%20technique(4-09-23).pdf)
+2. [Class/Lecture Video]()
+
+
+
+## TLE and Constraints
+## Carry Forward Questions
+## Intro to SubArrays
+## Iterating SubArrays
+## Questions

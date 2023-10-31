@@ -17,8 +17,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](/Notes/class_Notes/DSA%20Intermediate%20Notes/10%20Hashing%20Basics(13-09-23).pdf)
-2. [Youtube Video Part1](https://www.youtube.com/watch?v=x3bzmKITLQo)
-3. [Youtube Video Part2](https://www.youtube.com/watch?v=6KH39IDW5l8)
+2. [Class/Lecture Video](https://www.youtube.com/watch?v=iMkMZ9u6Xro)
 
 
 ### HashMap Intro

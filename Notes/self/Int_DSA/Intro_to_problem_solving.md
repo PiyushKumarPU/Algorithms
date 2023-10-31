@@ -20,8 +20,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../class_Notes/DSA%20Intermediate%20Notes/1%20Intro%20to%20Problem%20Solving(23-08-23).pdf)
-2. [Youtube Video Part1](https://www.youtube.com/watch?v=LPbdI5PHM4M)
-3. [Youtube Video Part2](https://www.youtube.com/watch?v=2Ri_oc-vRXc)
+2. [Class/Lecture Video](https://www.youtube.com/watch?v=6PaQPJamGGI)
 
 
 

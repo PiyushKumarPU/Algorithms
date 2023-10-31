@@ -18,5 +18,4 @@
 ## Class Notes and Videos
 
 1. [Class Notes]()
-2. [Youtube Video Part1]()
-3. [Youtube Video Part2]()n
+2. [Class/Lecture Video]()
