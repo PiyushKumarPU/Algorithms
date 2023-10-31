@@ -1,4 +1,4 @@
-### Hashing Basics
+### Day 10 Hashing Basics
 
 ## Scope / Agenda
 

@@ -1,5 +1,5 @@
 
-## Introduction to problem solving
+## Day 1 Introduction to problem solving
 
 ## Scope / Agenda
   - [Factors or count the factor](#factors-or-count-the-factor)

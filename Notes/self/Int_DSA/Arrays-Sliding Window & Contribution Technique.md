@@ -1,5 +1,5 @@
 
-## Arrays : Sliding Window and Contribution Technique
+## Day 6 Arrays : Sliding Window and Contribution Technique
 
 ## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 
@@ -20,8 +20,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../class_Notes/DSA%20Intermediate%20Notes/6%20Sliding%20Window%20and%20Contribution%20technique(4-09-23).pdf)
-2. [Class/Lecture Video]()
-
+2. [Class/Lecture Video](https://www.youtube.com/watch?v=kGAzVlMW4xs)
 
 
 ## TLE and Constraints

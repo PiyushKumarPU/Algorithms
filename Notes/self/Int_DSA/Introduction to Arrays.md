@@ -1,4 +1,4 @@
-## Introduction to Arrays
+## Day 3 Introduction to Arrays
 
 ## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 

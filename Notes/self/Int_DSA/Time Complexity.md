@@ -1,5 +1,5 @@
 
-## Time Complexity
+## Day 2 Time Complexity
 
 ## Scope / Agenda
 - [Log Basics](#log-basics)
