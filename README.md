@@ -42,7 +42,7 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 7. [Recursion 2](/Notes/self/Adv_DSA/mod1/Recursion%202.md "Not Yet Started")
 8. [Recursion 3](/Notes/self/Adv_DSA/mod1/Recursion%203.md "Not Yet Started")
 9. [Advanced DSA: Contest 1](/Notes/self/Adv_DSA/mod1/Advanced%20DSA%20Contest%201.md "Advanced DSA: Contest 1")
-10. [Maths 1: Modular Arithmetic & GCD](/Notes/self/Adv_DSA/mod1/Maths%201%20Modular%20Arithmetic%20&%20GCD.md "Not Yet Started")
+10. [Maths 1: Modular Arithmetic & GCD](/Notes/self/Adv_DSA/mod1/Maths%201%20Modular%20Arithmetic%20&%20GCD.md "Maths 1: Modular Arithmetic & GCD")
 11. [Maths 2: Combinatorics Basic](/Notes/self/Adv_DSA/mod1/Maths%202%20Combinatorics%20Basic.md "Not Yet Started")
 12. [Maths 3: Prime Numbers](/Notes/self/Adv_DSA/mod1/Maths%203%20Prime%20Numbers.md "Not Yet Started")
 

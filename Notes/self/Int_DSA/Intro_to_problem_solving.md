@@ -13,9 +13,8 @@
 
 ## Problems and solutions
 
-1. [Assignments](../../problems/src/main/java/com/learning/scaler/intermediate/problem/solving/assignment/)
-2. [Additional Problems](../../problems/src/main/java/com/learning/scaler/intermediate/problem/solving/additional/)
-3. [Self Practise Problems](../../problems/src/main/java/com/learning/scaler/intermediate/problem/solving/extra/)
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/intermediate/problem/solving/assignment)
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/intermediate/problem/solving/additional)
 
 ## Class Notes and Videos
 
