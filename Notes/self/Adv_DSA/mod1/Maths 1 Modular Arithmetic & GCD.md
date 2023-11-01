@@ -11,14 +11,14 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module1/mod/arith_gcd/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module1/mod/arith_gcd/additional/)
 
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/10.%20Adv%20DSA%20Moduler%20Arithmetic%20&%20GCD(18-10-23).pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=p0kvWglXvag)
+3. [Research Paper](../../../class_Notes/Advance%20DSA%20Notes/10.%20Research%20Paper.pdf)
 
 
 ## Moduler Arithmetic Intro

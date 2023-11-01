@@ -1,4 +1,4 @@
-## ## Advance DSA Day 2 Arrays : 2 Dimensional
+## Advance DSA Day 2 Arrays : 2 Dimensional
 
 ## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 
@@ -11,7 +11,7 @@
 
 ## Problems and solutions
 
-1. [Assignments]()~~~~
+1. [Assignments]()
 2. [Additional Problems]()
 3. [Self Practise Problems]()
 

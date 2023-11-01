@@ -15,7 +15,7 @@
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/8.%20Adv%20DSA%20Contest%201%20Discussion.pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=juM5ocpNmgQ)
 
->Note: Solution approch is not added to think about it before looking at solution and its approach.
+>Note: ***Solution approch is not added to think about it before looking at solution and its approach.***
 
 
 ## Search in Rowwise and columnwise sorted matrix
