@@ -15,6 +15,8 @@
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/8.%20Adv%20DSA%20Contest%201%20Discussion.pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=juM5ocpNmgQ)
 
+**Note: I did not add problem solution approach to make you think once before looking into actual approch.** 
+
 
 ## Search in Rowwise and columnwise sorted matrix
     Problem Statement:
