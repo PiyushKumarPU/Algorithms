@@ -11,8 +11,8 @@
 
 ## Problems and solutions
 
-1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module1/mod/arith_gcd/assignment/)
-2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module1/mod/arith_gcd/additional/)
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module1/mod/arith_gcd/assignment)
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module1/mod/arith_gcd/additional)
 
 ## Class Notes and Videos
 

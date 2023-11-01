@@ -8,7 +8,7 @@
 
 ## Problems and solutions
 
-1. [Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module1/contest1/)
+1. [Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module1/contest1)
 
 ## Class Notes and Videos
 
