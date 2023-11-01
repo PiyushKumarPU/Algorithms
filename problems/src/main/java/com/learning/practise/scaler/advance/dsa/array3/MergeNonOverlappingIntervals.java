@@ -9,12 +9,11 @@ public class MergeNonOverlappingIntervals {
 
     public static ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
         boolean isAdded = false;
-        for (int i = 0; i < intervals.size(); i++) {
+        for (int i = 0; i < intervals.size() && !isAdded; i++) {
             Interval currentInterval = intervals.get(i);
             if (newInterval.start <= currentInterval.start) {
                 intervals.add(i, newInterval);
                 isAdded = true;
-                break;
             }
         }
         if (!isAdded) {
@@ -32,7 +31,6 @@ public class MergeNonOverlappingIntervals {
             }
         }
         return new ArrayList<>(intervals.subList(0, currentIndex + 1));
-
     }
 
 

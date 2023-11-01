@@ -15,7 +15,7 @@
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/8.%20Adv%20DSA%20Contest%201%20Discussion.pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=juM5ocpNmgQ)
 
-**Note: I did not add problem solution approach to make you think once before looking into actual approch.** 
+>Note: Solution approch is not added to think about it before looking at solution and its approach.
 
 
 ## Search in Rowwise and columnwise sorted matrix
@@ -142,7 +142,7 @@ Approach 1:
     }
 ```
 
-Approach 2: Optimiation in prev approach
+Approach 2: Optimization in prev approach
 ```java
     public List<Integer> approach2(List<Integer> A, List<Integer> B) {
         List<Integer> result = new ArrayList<>();
