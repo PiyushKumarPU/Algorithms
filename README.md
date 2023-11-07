@@ -54,7 +54,7 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 3. [Sorting : Quick Sort & Radix Sort](/Notes/self/Adv_DSA/mod2/Sorting%20%20Quick%20Sort%20&%20Radix%20Sort.md "Not Yet Started")
 4. [Sorting : Comparator & Problems](/Notes/self/Adv_DSA/mod2/Sorting%20%20Comparator%20&%20Problems.md "Not Yet Started")
 5. [Advanced DSA: Contest 2](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%202.md "Not Yet Started")
-6. [Searching : Binary Search on Array](/Notes/self/Adv_DSA/mod2/Searching%20%20Binary%20Search%20on%20Array.md "Not Yet Started")
+6. [Searching : Binary Search on Array](/Notes/self/Adv_DSA/mod2/Searching%20%20Binary%20Search%20on%20Array.md)
 7. [Searching : Binary Search Problems](/Notes/self/Adv_DSA/mod2/Searching%20%20Binary%20Search%20Problems.md "Not Yet Started")
 8. [Searching : Binary Search on Answer](/Notes/self/Adv_DSA/mod2/Searching%20%20Binary%20Search%20on%20Answer.md "Not Yet Started")
 9. [Advanced DSA: Contest 3](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%203.md "Not Yet Started")
