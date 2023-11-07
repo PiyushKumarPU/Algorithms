@@ -49,7 +49,7 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 
 #### Module 2
 
-1. [Hashing Problems](/Notes/self/Adv_DSA/mod2/Hashing%20%20Problems.md "Not Yet Started")
+1. [Hashing Problems](/Notes/self/Adv_DSA/mod2/Hashing%20Problems.md "Not Yet Started")
 2. [Sorting : Merge Sort](/Notes/self/Adv_DSA/mod2/Sorting%20%20Merge%20Sort.md "Not Yet Started")
 3. [Sorting : Quick Sort & Radix Sort](/Notes/self/Adv_DSA/mod2/Sorting%20%20Quick%20Sort%20&%20Radix%20Sort.md "Not Yet Started")
 4. [Sorting : Comparator & Problems](/Notes/self/Adv_DSA/mod2/Sorting%20%20Comparator%20&%20Problems.md "Not Yet Started")
