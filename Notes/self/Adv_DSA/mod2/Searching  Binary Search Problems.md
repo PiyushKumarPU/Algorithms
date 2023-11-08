@@ -1,9 +1,8 @@
 ## Advance DSA Day 16 Searching : Binary Search Problems
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 
 ## Scope / Agenda
-- [Searching in rotated sorted Array](#searching-in-rotated-sorted-array)
+- [Searching in Rotated sorted Array](#searching-in-rotated-sorted-array)
 - [Find Square root of a number](#find-square-root-of-a-number)
 - [Median of two sorted Array](#median-of-two-sorted-array)
 

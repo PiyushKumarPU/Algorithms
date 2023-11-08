@@ -61,13 +61,49 @@ Explanation 2:
 * */
 public class SearchForARange {
 
+    public static void main(String[] args) {
+        //System.out.println(searchRange(List.of(5, 8, 8, 8, 8, 8, 8, 10, 11, 15), 8));
+        System.out.println(searchRange(List.of(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+                3));
+       // System.out.println(searchRange(List.of(5, 17, 100, 111), 3));
 
-    public ArrayList<Integer> searchRange(final List<Integer> A, int B) {
-        // find first and last index of the element
-        int start = 0, end = A.size() - 1;
+    }
+
+
+    public static ArrayList<Integer> searchRange(final List<Integer> A, int B) {
+        ArrayList<Integer> result = new ArrayList<>(2);
+        if (A.size() == 1) {
+            if(A.get(0) == B){
+                result.add(0);
+                result.add(0);
+                return result;
+            }
+            return result;
+        }
+        int start = 0, end = A.size() - 1, leftMostIndex = Integer.MAX_VALUE, rightMostIndex = Integer.MIN_VALUE;
         while (start <= end) {
             int mid = (start + end) / 2;
+            if (A.get(mid) == B) leftMostIndex = Math.min(leftMostIndex, mid);
+            if ((A.get(mid) == B && (mid > 0 && A.get(mid - 1) == B)) || A.get(mid) > B) {
+                end = mid - 1;
+            } else start = mid + 1;
         }
-        return -1;
+        if(leftMostIndex != Integer.MAX_VALUE){
+            start = leftMostIndex;
+            end = A.size() - 1;
+            while (start <= end) {
+                int mid = (start + end) / 2;
+                if (A.get(mid) == B) rightMostIndex = Math.max(rightMostIndex, mid);
+                if ((A.get(mid) == B && (mid < (A.size() - 1) && A.get(mid + 1) == B)) || A.get(mid) < B) {
+                    // move right
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            }
+        }
+        result.add(leftMostIndex != Integer.MAX_VALUE ? leftMostIndex : -1);
+        result.add(rightMostIndex != Integer.MIN_VALUE ? rightMostIndex : -1);
+        return result;
     }
 }
