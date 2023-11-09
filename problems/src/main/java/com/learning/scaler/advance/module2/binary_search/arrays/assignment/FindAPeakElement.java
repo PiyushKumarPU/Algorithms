@@ -59,8 +59,9 @@ Explanation 2:
 public class FindAPeakElement {
 
     public static void main(String[] args) {
-        System.out.println(solve(List.of(1, 2, 3, 4, 5)));
-        System.out.println(solve(List.of(5, 17, 100, 11)));
+        System.out.println(solve(List.of(1000000000, 1, 1)));
+        System.out.println(solve(List.of(17, 100, 11)));
+        //System.out.println(solve(List.of(5, 17, 100, 1100)));
     }
 
     public static int solve(List<Integer> A) {
@@ -68,14 +69,12 @@ public class FindAPeakElement {
         if (size == 1) return A.get(0);
         int start = 0, end = size - 1;
         while (start <= end) {
-            int mid = (start + end) / 2;
-            int ele = A.get(mid);
-            boolean returnCond = (mid > 0 && ele > A.get(mid - 1)) && (
-                    mid < (size - 1) && ele > A.get(mid + 1));
-            if (returnCond) return A.get(mid);
-            else if (mid < size - 1 && ele <= A.get(mid + 1)) {
+            int mid = start + (end - start) / 2;
+            if ((mid == 0 || A.get(mid) >= A.get(mid - 1)) && (
+                    mid == (size - 1) || A.get(mid) > A.get(mid + 1))) return A.get(mid);
+            else if (mid == 0 || A.get(mid - 1) < A.get(mid)) {
                 start = mid + 1;
-            } else if (mid < size - 1 && ele >= A.get(mid + 1)) {
+            } else {
                 end = mid - 1;
             }
         }
