@@ -136,7 +136,8 @@ public int findFirstOccurrence(List<Integer> A, Integer target) {
 
 ## Problem 3
     Problem Statement:
-        Given a sorted array where every element appears twice except one element that appears only once, find that unique element.
+        Given a sorted array where every element appears twice except one element that appears only once,
+         find that unique element.
     
     Given Array:
         arr1 = {2,2,5,7,7,10,10}
@@ -156,7 +157,9 @@ public int findFirstOccurrence(List<Integer> A, Integer target) {
         index   0  1  2  3  4  5  6   7   8   9   10
         arr2 = {1, 1, 5, 5, 7, 7, 10, 13, 13, 18, 18}
     Observation:
-        If we observe the index of array carefully, all the twin element present left to the unique element is in even-odd pair and all the twin element present right to unique element is in odd-even pair.
+        If we observe the index of array carefully, all the twin element present left 
+        to the unique element is in even-odd pair and all the twin element present right
+        to unique element is in odd-even pair.
 
         Cant we use this observation to discard search space??
 
