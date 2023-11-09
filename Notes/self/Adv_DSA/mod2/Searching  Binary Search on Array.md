@@ -26,13 +26,16 @@
             b. Search Space :- Where are we looking for target.
 
     Definition:
-        Binary Search is a searching algorithm used in a sorted array by repeatedly dividing the search interval in half. The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(log N).
+        Binary Search is a searching algorithm used in a sorted array by repeatedly 
+        dividing the search interval in half. 
+        The idea of binary search is to use the information that the array is sorted 
+        and reduce the time complexity to O(log N).
     
     
     Condition to apply binary search:
         a. If you are able to divide search space into two parts by rejecting one of the half
 
-    Take a look at proble 1 to understand how does it work.
+    Take a look at problem 1 to understand how does it work.
 
 
 ## Steps to follow while applying binary search
@@ -40,8 +43,10 @@
     2. Find mid element by (start + end)/2
     3. Repeat step 4 to 6 until start <= end
     4. Check of target element present at mid index, if present return the required value.
-    5. if target is greater than the value present at mid then discard the left half of the search space by setting start = mid + 1
-    6. if target is less then the value present at mid then discard the right half of search space by setting end = mid -1 
+    5. if target is greater than the value present at mid then discard the left half of the 
+    search space by setting start = mid + 1
+    6. if target is less then the value present at mid then discard the right half of search 
+    space by setting end = mid -1 
 
 ## Problem 1
     Problem Statement:
@@ -234,13 +239,15 @@ public int solve(List<Integer> A) {
     Given a sorted array with duplicates, count total occurrences of a given num.
         Approach:
             a. We can create frequency map of given array and find the frequency of target element. 
-            b. can we find first index of target and last index of target using binary search and calculate no of occurences?
+            b. can we find first index of target and last index of target using binary search and 
+            calculate no of occurences?
         Steps to find first index of target :-
             a. Define start = 0 and end = n-1 as search space is [0,n-1]
             b. calculate mid index = start + (end-start)/2
             c. Repeat step d to e untill start <= end
             d. if arr[mid] = target then update first index = mid
-            e. if arr[mid] > target or arr[mid - 1] == target, then move left by setting end = mid - 1 otherwise move right by setting start = mid + 1
+            e. if arr[mid] > target or arr[mid - 1] == target, then move left by setting end = mid - 1
+             otherwise move right by setting start = mid + 1
 
         ## Use the same strategy to find last index of same target
             To find last index we need to move right untill we find last target
