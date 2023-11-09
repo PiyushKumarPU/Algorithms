@@ -189,6 +189,105 @@ public int findUniqueElement(List<Integer> A) {
         Given array:
             arr1 = {1, 3, 8, 10, 7, 4}    Ans --> 10
             arr2 = {1, 5, 9, 11, 7, 6, 2} And --> 11
+        Approach 1:
+            Find max element in the array and return it
+            TC : O(N)
+            SC : O(1)
+        Approach 2:
+        
+        Note: Please take a look at Diagram for array 1 and Diagram for array 2 to understand how can we apply binary search here.
+
+        If we look at visul representation carefully, 
+        we can see that array is sorted till pick element 
+        in ascending order and sorted in descending order from 
+        peak element till last element of array.
+    Steps to find unique element:-
+        a. Define start = 0 and end = n-1 as search space is [0,n-1]
+        b. calculate mid index = start + (end-start)/2
+        c. Repeat step d to f untill start <= end
+        d. if arr[mid] > arr[mid - 1] and arr[mid] > arr[mid + 1] return arr[mid]
+        e. if arr[mid] > arr[mid - 1], it means mid is in ascending order part of array then move right by setting start = mid +1
+        f. if arr[mid] > arr[mid + 1], it means mid is in descending order part of array then move left by setting start = mid - 1
+
+### Solution
+```java
+public int solve(List<Integer> A) {
+    int size = A.size();
+    if (size == 1) return A.get(0);
+    int start = 0, end = size - 1;
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        if ((mid == 0 || A.get(mid) >= A.get(mid - 1)) && (
+                mid == (size - 1) || A.get(mid) > A.get(mid + 1))) return A.get(mid);
+        else if (mid == 0 || A.get(mid - 1) < A.get(mid)) {
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+    return 0;
+}
+```
+
 ## Problem 5
     Problem Statement:
     Given a sorted array with duplicates, count total occurrences of a given num.
+        Approach:
+            a. We can create frequency map of given array and find the frequency of target element. 
+            b. can we find first index of target and last index of target using binary search and calculate no of occurences?
+        Steps to find first index of target :-
+            a. Define start = 0 and end = n-1 as search space is [0,n-1]
+            b. calculate mid index = start + (end-start)/2
+            c. Repeat step d to e untill start <= end
+            d. if arr[mid] = target then update first index = mid
+            e. if arr[mid] > target or arr[mid - 1] == target, then move left by setting end = mid - 1 otherwise move right by setting start = mid + 1
+
+        ## Use the same strategy to find last index of same target
+            To find last index we need to move right untill we find last target
+
+### Solution
+```java
+public ArrayList<Integer> searchRange(final List<Integer> A, int B) {
+    ArrayList<Integer> result = new ArrayList<>(2);
+    if (A.size() == 1) {
+        if(A.get(0) == B){
+            result.add(0);
+            result.add(0);
+            return result;
+        }
+        return result;
+    }
+    int start = 0, end = A.size() - 1, leftMostIndex = Integer.MAX_VALUE, rightMostIndex = Integer.MIN_VALUE;
+    while (start <= end) {
+        int mid = (start + end) / 2;
+        if (A.get(mid) == B) leftMostIndex = Math.min(leftMostIndex, mid);
+        if ((A.get(mid) == B && (mid > 0 && A.get(mid - 1) == B)) || A.get(mid) > B) {
+            end = mid - 1;
+        } else start = mid + 1;
+    }
+    if(leftMostIndex != Integer.MAX_VALUE){
+        start = leftMostIndex;
+        end = A.size() - 1;
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            if (A.get(mid) == B) rightMostIndex = Math.max(rightMostIndex, mid);
+            if ((A.get(mid) == B && (mid < (A.size() - 1) && A.get(mid + 1) == B)) || A.get(mid) < B) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+    }
+    result.add(leftMostIndex != Integer.MAX_VALUE ? leftMostIndex : -1);
+    result.add(rightMostIndex != Integer.MIN_VALUE ? rightMostIndex : -1);
+    return result;
+}
+```
+
+## Diagrams
+
+ ### Diagram for array 1
+  ![Viasual Representation of Array](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/e2416ecaa43a3d5789d1c4e6b31c494cbc62bbd8/Notes/images/Peak_dgm_1.png?raw=true)
+
+### Diagram for array 2
+![Visual Representation of Array](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/e2416ecaa43a3d5789d1c4e6b31c494cbc62bbd8/Notes/images/Peak_dgm_2.png?raw=true)
