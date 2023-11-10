@@ -37,6 +37,9 @@
 
     Take a look at problem 1 to understand how does it work.
 
+### Visual representation of bianry search working
+![BS Working](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/6658c0c944601e64038ae6c13e2aee961b2a1977/Notes/images/binary-search-sequence-search.gif?raw=true)
+
 
 ## Steps to follow while applying binary search
     1. Find min(start) and max(end) value of search space
