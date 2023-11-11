@@ -72,7 +72,15 @@
             k = 33
             ans = true
 ## Container with most water
+    Problem Statement:
+        Retuen max water that can be stored between any two walls.
+        Please take a look at be below diagram and images to understand the question.
+        Example:
+            arr1 = {4,2,10,6,8,2,6,2}
+            ans = 24 between wall height 10 and 6
+![Problem diagram](https://github.com/rajpiyush220/Algorithms/blob/269653cd11e672c9da582590d529b7411a89c475/Notes/images/two_pointer_problems_container.png?raw=true)
+
+
+
 ![Question visual Representaion](https://github.com/rajpiyush220/Algorithms/blob/c5683e0c5e69df9839c9b57532ea124864b76778/Notes/images/container_with_most_water.gif?raw=true)
 
-    Problem Statement:
-        
