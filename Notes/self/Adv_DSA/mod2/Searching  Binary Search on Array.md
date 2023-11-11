@@ -37,8 +37,8 @@
 
     Take a look at problem 1 to understand how does it work.
 
-### Visual representation of bianry search working
-![BS Working](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/6658c0c944601e64038ae6c13e2aee961b2a1977/Notes/images/binary-search-sequence-search.gif?raw=true)
+### Visual representation of binary search working
+![BS Working](https://github.com/rajpiyush220/Algorithms/blob/77c0f58902ceba7397b0ee7fdc20d369ba9a533b/Notes/images/binary-search-sequence-search.gif?raw=true)
 
 
 ## Steps to follow while applying binary search
@@ -300,7 +300,7 @@ public ArrayList<Integer> searchRange(final List<Integer> A, int B) {
 ## Diagrams
 
  ### Diagram for array 1
-  ![Viasual Representation of Array](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/e2416ecaa43a3d5789d1c4e6b31c494cbc62bbd8/Notes/images/Peak_dgm_1.png?raw=true)
+  ![Viasual Representation of Array](https://github.com/rajpiyush220/Algorithms/blob/77c0f58902ceba7397b0ee7fdc20d369ba9a533b/Notes/images/Peak_dgm_1.png?raw=true)
 
 ### Diagram for array 2
-![Visual Representation of Array](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/e2416ecaa43a3d5789d1c4e6b31c494cbc62bbd8/Notes/images/Peak_dgm_2.png?raw=true)
+![Visual Representation of Array](https://github.com/rajpiyush220/Algorithms/blob/77c0f58902ceba7397b0ee7fdc20d369ba9a533b/Notes/images/Peak_dgm_2.png?raw=true)

@@ -1,10 +1,13 @@
 # Algorithms
 DSA and system design notes and problems
 
+## The more you sweat in peace the less you bleed in war.
+
 
 ### DSA Notes
 
 Trying to make an easy and readable DSA notes for quick understanding of related topics.
+
 
 ## Class/Lecture Playlist
    - [Intermediate DSA](https://www.youtube.com/watch?v=6PaQPJamGGI&list=PLWV5FkQMcDU5xx5M4_T0Skms_lLzTtQpO)
@@ -63,7 +66,7 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 9. [Advanced DSA: Contest 3](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%203.md "Not Yet Started")
 10. [Hashing : Introduction](/Notes/self/Adv_DSA/mod2/Hashing%20%20Introduction.md "Not Yet Started")
 11. [Hashing : Problems2](/Notes/self/Adv_DSA/mod2/Hashing%20%20Problems2.md "Not Yet Started")
-12. [Two Pointers](/Notes/self/Adv_DSA/mod2/Two%20Pointers.md)
+12. [Two Pointers](/Notes/self/Adv_DSA/mod2/Two%20Pointers.md "Two Pointers")
 13. [Strings Pattern Matching: Rabin Karp](/Notes/self/Adv_DSA/mod2/Strings%20Pattern%20Matching%20Rabin%20Karp.md "Not Yet Started")
 14. [Interview Problems 1](/Notes/self/Adv_DSA/mod2/Interview%20Problems%201.md "Not Yet Started")
 15. [Advanced DSA: Contest 4](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%204.md "Not Yet Started")
