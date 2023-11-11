@@ -22,7 +22,7 @@
 
 
 ## Visual Representation of two pointer technique to find targe sum
-- ![Target sum](https://github.com/rajpiyush220/Algorithms/blob/cb46605507b919f06669f84ec49b7b6736c4d14a/Notes/images/Two_pointers_for_sum1.png?raw=true)
+- ![Target sum](https://github.com/rajpiyush220/Algorithms/blob/cb46605507b919f06669f84ec49b7b6736c4d14a/Notes/images/Two_pointers_for_sum1.png?raw=true    )
 - ![Target Sum](https://github.com/rajpiyush220/Algorithms/blob/431789a04e2a0a97cc4c4dffffa5158cc77af302/Notes/images/Two_pointers_for_sum.png?raw=true)
 
 
@@ -42,8 +42,26 @@
         Note : TC should be O(N) and with constant space.
         Example:
             arr1 = {1,2,3,4,5,6,8}
-            k = 11
-            ans = (2,4)
+            k = 10
+            ans = 2
+## Pair with given sum 3
+    Problem Statement:
+        Given a sorted array of integer A with duplicates and an integer k, 
+        find all the pair such that A[i] + A[j] = k and (i != j).
+        Note : TC should be O(N) and with constant space.
+        Example:
+            arr1 = {1, 3, 3, 10,10,10,15}
+            k = 13
+            ans = 6
+### Pair with given difference
+    Problem Statement:
+        Given a sorted array of integer A with duplicates and an integer k, 
+        find all the pair such that A[j] - A[i] = k and (i != j).
+        Note : TC should be O(N) and with constant space.
+        Example:
+            arr1 = {1, 3, 3, 10,10,10,15}
+            k = 13
+            ans = 6
 ## Subarray with given sum
     Problem Statement:
 ## Container with most water
