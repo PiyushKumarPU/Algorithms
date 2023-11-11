@@ -56,13 +56,23 @@
 ### Pair with given difference
     Problem Statement:
         Given a sorted array of integer A with duplicates and an integer k, 
-        find all the pair such that A[j] - A[i] = k and (i != j).
+        find any pair such that A[j] - A[i] = k and (i != j).
         Note : TC should be O(N) and with constant space.
         Example:
-            arr1 = {1, 3, 3, 10,10,10,15}
-            k = 13
-            ans = 6
+            arr1 = {-5,-2,1,8,10,12,15}
+            k = 11
+            ans = (2,5)
 ## Subarray with given sum
     Problem Statement:
+        Given an integer array with +ve elements and an integer k,
+        check if there exists a subarray with given sum = k.
+        Note : TC should be O(N) and with constant space.
+        Example:
+            arr1 = {1,3,15,10,20,3,23}
+            k = 33
+            ans = true
 ## Container with most water
+![Question visual Representaion](https://github.com/rajpiyush220/Algorithms/blob/c5683e0c5e69df9839c9b57532ea124864b76778/Notes/images/container_with_most_water.gif?raw=true)
+
     Problem Statement:
+        
