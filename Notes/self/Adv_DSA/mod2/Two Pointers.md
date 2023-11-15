@@ -371,3 +371,44 @@
 
 ![Question visual Representaion](https://github.com/rajpiyush220/Algorithms/blob/c5683e0c5e69df9839c9b57532ea124864b76778/Notes/images/container_with_most_water.gif?raw=true)
 
+
+### A =[4 2 10 6 8 2 6 2]
+start= 0 , end = ArrayLength - 1
+### Condition for index increase decrease
+A[start] < A[end] -> start++
+
+A[start] > A[end] -> end--
+
+water = min (A[start],A[end]) * (end-start)
+
+start   end   water  Max   
+0        7    14     14   j--
+0        6    24     24   i++
+1        6    10     24   i++
+2        6    24     24   j--
+2        5    6      24   j--
+2        4    16     24   j--
+2        3    6      24   condition break  (start < end)
+
+### Note: - Always move smaller wall to right or left
+
+```java
+public int maxArea(int[] A) {
+        int N = A.length;
+        int start=0,end = N-1,ans=0;
+
+        while(start <= end) {
+            int area = Math.min(A[start],A[end])*(end-start);
+            ans = Math.max(area,ans);
+            if(A[start]< A[end]) {
+                start++;
+            }else {
+                end--;
+            }
+        }
+        return ans;
+    }
+
+```
+### TC : O(N)
+### SC : O(1)
