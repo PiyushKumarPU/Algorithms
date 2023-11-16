@@ -381,6 +381,8 @@
             d. In order to increase height we need to think of shifting wall with lower height
             e. if A[start] <= A[end] then shift start by 1 i.e. start++
             f. Else decrease end by 1 i.e. end--
+            TC : O(N)
+            SC : O(1)
         
 
 ### Dry run for above approach
