@@ -335,7 +335,7 @@
                 keep incresing/decreasing its size and comapre it with target value.
             TC : O(N)
             SC : O(1)
-###Solution for approach 3
+### Solution for approach 3
 ```java
     public boolean subArraySumWithGivenSum(List<Integer> arr, int target) {
         int start = 0, end = 0, currentSum = arr.get(0);
@@ -365,7 +365,68 @@
         Example:
             arr1 = {4,2,10,6,8,2,6,2}
             ans = 24 between wall height 10 and 6
+
+        Approach 1
+            Go to each wall pair and calculate area and return the max available area.
+            TC : O(N^2)
+            SC : O(1)
+        Approach 2:
+            Think about a way so that we can eliminate some wall and find two walls with maximum
+            area.
+
+        Lets think of below steps:
+            a. Set start at 0 and end at n-1 and calculate area by using min(A[start],A[end]) * (end - start)
+            b. In order to maximise area either we need to increase width or increase height
+            c. We can increase width as we are already on first and last index so we need to think about increasing height
+            d. In order to increase height we need to think of shifting wall with lower height
+            e. if A[start] <= A[end] then shift start by 1 i.e. start++
+            f. Else decrease end by 1 i.e. end--
+        
+
+### Dry run for above approach
+
+    Given wall heights
+        arr1 = {4,2,10,6,8,2,6,2}
+
+    | start  | end   | water area | max area | Operation|
+    |--------|-------|------------|----------|----------|
+    |   0	 |   7   |   14       |   14     |   end--  |
+    |   0	 |   6   |   24       |   24     |  start++ |
+    |   1	 |   6   |   10       |   24     |  start++ |
+    |   2	 |   6   |   24       |   24     |  end--   |
+    |   2	 |   5   |   6        |   24     |  end--   |
+    |   2	 |   4   |   16       |   24     |  end--   |
+    |   2	 |   3   |   6        |   24     |  end--   |
+    |   2	 |   2   |   0        |   24     |  break   |
+    |   	 |       |            |          |          |
+### Psuedo code for above approach
+```java
+    start = 0, end = n-1, ans = 0;
+    while(start < end){
+        area = min(A[start],A[end]) * (end - start)
+        ans = max(area,ans)
+        if(A[start] <= A[end]) start++
+        else end --
+    }
+```
+
+### Solution for above approach
+```java
+    public int maxArea(ArrayList<Integer> A) {
+        if (A.size() < 2) return 0;
+        int ans = 0, start = 0, end = A.size() - 1;
+        while (start < end) {
+            int area = Math.min(A.get(start), A.get(end)) * (end - start);
+            ans = Math.max(ans, area);
+            if (A.get(start) <= A.get(end)) start++;
+            else end--;
+        }
+        return ans;
+    }
+```
+
 ![Problem diagram](https://github.com/rajpiyush220/Algorithms/blob/269653cd11e672c9da582590d529b7411a89c475/Notes/images/two_pointer_problems_container.png?raw=true)
+
 
 
 
