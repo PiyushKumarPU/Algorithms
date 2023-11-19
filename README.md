@@ -69,7 +69,10 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 10. [Hashing : Introduction](/Notes/self/Adv_DSA/mod2/Hashing%20%20Introduction.md "Not Yet Started")
 11. [Hashing : Problems2](/Notes/self/Adv_DSA/mod2/Hashing%20%20Problems2.md "Not Yet Started")
 12. [Two Pointers](/Notes/self/Adv_DSA/mod2/Two%20Pointers.md "Two Pointers")
-13. [Strings Pattern Matching: Rabin Karp](/Notes/self/Adv_DSA/mod2/Strings%20Pattern%20Matching%20Rabin%20Karp.md "Not Yet Started")
-14. [Interview Problems 1](/Notes/self/Adv_DSA/mod2/Interview%20Problems%201.md "Not Yet Started")
-15. [Advanced DSA: Contest 4](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%204.md "Not Yet Started")
+13. [OOPS 1: Introduction & Constructors](/Notes/self/Adv_DSA/mod2/Introduction%20&%20Constructors.md)
+14. [OOPS 2: Inheritance & Polymorphism](/Notes/self/Adv_DSA/mod2/Inheritance%20&%20Polymorphism.md)
+15. [Language Advanced Concept: Collections](/Notes/self/Adv_DSA/mod2/Language%20Advanced%20Concept%20Collections.md)
+16. [Strings Pattern Matching: Rabin Karp](/Notes/self/Adv_DSA/mod2/Strings%20Pattern%20Matching%20Rabin%20Karp.md "Not Yet Started")
+17. [Interview Problems 1](/Notes/self/Adv_DSA/mod2/Interview%20Problems%201.md "Not Yet Started")
+18. [Advanced DSA: Contest 4](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%204.md "Not Yet Started")
 

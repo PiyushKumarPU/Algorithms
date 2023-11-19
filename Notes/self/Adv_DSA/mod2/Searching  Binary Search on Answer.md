@@ -1,6 +1,5 @@
 ## Advance DSA Day 17 Searching : Binary Search on Answers
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 
 ## Scope / Agenda
 - [Painters Partition](#painters-partiton)
@@ -15,7 +14,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/17.%20Searching%20Binary%20Search%20on%20Answers.pdf)
-2. [Youtube Video ](https://youtu.be/rYaKUzp_DuA)
+2. [Class/Lecture Video](https://youtu.be/rYaKUzp_DuA)
 
 ## Painters Partition
     Problem Statement:

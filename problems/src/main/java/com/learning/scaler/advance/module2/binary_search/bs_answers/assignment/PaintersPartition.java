@@ -77,13 +77,29 @@ public class PaintersPartition {
     public static void main(String[] args) {
         int A = 2, B = 5;
         List<Integer> C = List.of(1, 10);
-       // System.out.println(paint(A, B, C));
+        //System.out.println(paint(A, B, new ArrayList<>(C)));
         A = 3;
         B = 10;
         C = List.of(185, 186, 938, 558, 655, 461, 441, 234, 902, 681);
-        System.out.println(paint(A, B, C));
+        System.out.println(paint(A, B, new ArrayList<>(C)));
     }
 
+    public static int paint(int A, int B, ArrayList<Integer> C) {
+        int modulo = 10000003, ans = 0, start = 0, end = 0;
+        for (Integer ele : C) {
+            start = Math.max(start, ele);
+            end += ele;
+        }
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (isValidTime(mid, A, C)) {
+                ans = (mid * B) % modulo;
+                end = mid - 1;
+            } else
+                start = mid + 1;
+        }
+        return ans;
+    }
 
     public int paint(int A, int B, int[] C) {
         int modulo = 10000003, ans = 0, start = 0, end = 0;
@@ -96,59 +112,43 @@ public class PaintersPartition {
             if (isValidTime(mid, A, C)) {
                 ans = (mid * B) % modulo;
                 end = mid - 1;
-            } else {
+            } else
                 start = mid + 1;
-            }
         }
         return ans;
     }
 
-    public static int paint(int A, int B, List<Integer> C) {
-        int modulo = 10000003, ans = 0, start = 0, end = 0;
-        for (Integer ele : C) {
-            start = Math.max(start, ele);
-            end += ele;
-        }
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-            if (isValidTime(mid, A, C)) {
-                ans = (mid * B) ;//% modulo;
-                end = mid - 1;
+    private static boolean isValidTime(int time, int painters, int[] boards) {
+        int currentCount = 0, workDone = 0;
+        for (Integer integer : boards) {
+            if (currentCount == painters) return false;
+            int board = integer;
+            if (workDone + board <= time) {
+                workDone += board;
             } else {
-                start = mid + 1;
+                currentCount++;
+                workDone = board;
             }
+            if (currentCount > painters) return false;
         }
-        return ans;
+        return currentCount <= painters;
     }
 
-    private static boolean isValidTime(int mid, int pCount, List<Integer> boards) {
-        int currentPCount = 0, work = 0, workDone = 0;
-        for (Integer boardLength : boards) {
-            workDone++;
-            if ((work + boardLength) <= mid) {
-                work += boardLength;
+    private static boolean isValidTime(int time, int painters, ArrayList<Integer> boards) {
+        int currentCount = 0, workDone = 0, paintedBoardCount = 0;
+        for (int i = 0; i < boards.size(); i++) {
+            int board = boards.get(0);
+            if (workDone + board <= time) {
+                workDone += board;
             } else {
-                currentPCount++;
-                work = boardLength;
-                if (currentPCount > pCount) return false;
+                currentCount++;
+                workDone = board;
             }
+            if ((currentCount == painters && paintedBoardCount < boards.size()) || currentCount > painters)
+                return false;
+            paintedBoardCount++;
         }
-        return currentPCount <= pCount && workDone == boards.size();
-    }
-
-    private static boolean isValidTime(int mid, int pCount, int[] boards) {
-        int currentPCount = 0, work = 0, workDone = 0;
-        for (Integer boardLength : boards) {
-            workDone++;
-            if ((work + boardLength) <= mid) {
-                work += boardLength;
-            } else {
-                currentPCount++;
-                work = boardLength;
-                if (currentPCount > pCount) return false;
-            }
-        }
-        return (currentPCount <= pCount) && workDone == boards.length;
+        return currentCount <= painters;
     }
 
 

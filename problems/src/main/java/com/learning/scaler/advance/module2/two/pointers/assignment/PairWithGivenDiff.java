@@ -3,6 +3,8 @@ package com.learning.scaler.advance.module2.two.pointers.assignment;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /*
 Problem Description
@@ -76,20 +78,55 @@ public class PairWithGivenDiff {
 
     public static void main(String[] args) {
 
-        System.out.println(solve(new ArrayList<>(List.of(1, 5, 3, 4, 2)), 3));
-        System.out.println(solve(new ArrayList<>(List.of(8, 12, 16, 4, 0, 20)), 4));
+        /*System.out.println(solve(new ArrayList<>(List.of(1, 5, 3, 4, 2)), 3));
+        System.out.println(solve(new ArrayList<>(List.of(8, 12, 16, 4, 0, 20)), 4));*/
         System.out.println(solve(new ArrayList<>(List.of(1, 1, 1, 2, 2)), 0));
-        System.out.println(solve(new ArrayList<>(List.of(1, 1, 1, 1, 1)), 2));
+        /*System.out.println(solve(new ArrayList<>(List.of(1, 1, 1, 1, 1)), 2));
+        System.out.println(solve(new ArrayList<>(List.of(1, 1, 1, 1, 1)), 0));*/
     }
 
-    public static int solve(ArrayList<Integer> A, int B) {
-        int start = 0, end = 1, count = 0;
+    /*public static int solve(ArrayList<Integer> A, int B) {
+        int count = 0, start = 0, end = A.size() - 1;
+        A.sort(Comparator.naturalOrder());
+        if (A.get(end) - A.get(start) == B) return 1;
+        else if (A.get(end) - A.get(start) < B) return 0;
+        end = start + 1;
         while (end < A.size()) {
             int diff = A.get(end) - A.get(start);
             if (diff == B) {
                 count++;
-                start++;
-                end++;
+                int temp = A.get(start);
+                start += start < A.size() - 1 ? 1 : 0;
+                while (Objects.equals(temp, A.get(start))) {
+                    start++;
+                }
+                temp = A.get(end);
+                end += end < A.size() - 1 ? 1 : 0;
+                while (temp == A.get(end) && end < A.size() - 1) {
+                    end++;
+                }
+            } else if (diff < B) end++;
+            else start++;
+        }
+        return count;
+    }*/
+
+    public static int solve(ArrayList<Integer> A, int B) {
+        int count = 0, start = 0, end = A.size() - 1;
+        A.sort(Comparator.naturalOrder());
+        if (A.get(end) - A.get(start) == B) return 1;
+        else if (A.get(end) - A.get(start) < B) return 0;
+        end = start + 1;
+        while (end < A.size()) {
+            int diff = A.get(end) - A.get(start);
+            if (diff == B) {
+                count++;
+                int temp = A.get(end);
+                end += (end < (A.size() - 1) ? 1 : 0);
+                while (A.get(end) == temp) {
+                    end++;
+                }
+                start = end - 1;
             } else if (diff < B) end++;
             else start++;
         }

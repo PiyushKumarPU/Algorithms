@@ -4,6 +4,7 @@
 - [Intro to Two Pointers](#intro-to-two-pointers-technique)
 - [Pair With given sum 1](#pair-with-given-sum-1)
 - [Pair With given sum 2](#pair-with-given-sum-2)
+- [pair With given Difference](#pair-with-given-difference)
 - [Subarray with given sum](#subarray-with-given-sum)
 - [Container with most water](#container-with-most-water)
   
@@ -383,6 +384,7 @@
             f. Else decrease end by 1 i.e. end--
             TC : O(N)
             SC : O(1)
+            
         
 
 ### Dry run for above approach
