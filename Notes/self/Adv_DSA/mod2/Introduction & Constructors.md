@@ -1,5 +1,4 @@
-## Advance DSA Dady 9 OOPS 1 : Introduction and Constructor
-
+## OOPS 1 : Introduction and Constructor
 
 ## Scope / Agenda
 - [Programming Paradigm](#programming-paradigm)
@@ -9,13 +8,6 @@
 
 
 ## Please refer class notes and videos for more information
-
-
-## Problems and solutions
-
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
 
 ## Class Notes and Videos
 

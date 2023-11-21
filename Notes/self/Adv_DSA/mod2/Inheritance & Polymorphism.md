@@ -1,4 +1,4 @@
-## Advance DSA Day 20 OOPS Inheritance and Polymorphism
+## OOPS Inheritance and Polymorphism
 
 ## Scope / Agenda
 - [Constructors](#constructors)
@@ -12,13 +12,6 @@
 
 ## Please refer class notes and videos for more information
   
-
-## Problems and solutions
-
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
-
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/OOPS%20Inheritance%20and%20Polymorphism.pdf)
