@@ -64,37 +64,31 @@ public class AggressiveCows {
 
     public static void main(String[] args) {
         ArrayList<Integer> input = new ArrayList<>(List.of(1, 2, 3, 4, 5));
-        System.out.println(solve(input, 3));
+        System.out.println(placeCows(input, 3));
         // System.out.println(solve(List.of(1, 2), 2));
     }
 
-    public static int solve(ArrayList<Integer> A, int B) {
-        int ans = 0, start = Integer.MAX_VALUE, end = 0;
+    public static int placeCows(ArrayList<Integer> A, int B) {
         A.sort(Comparator.naturalOrder());
-        for (int i = 0; i < A.size(); i++) {
-            if (i < A.size() - 1) {
-                start = Math.min(start, A.get(i + 1) - A.get(i));
-            }
-        }
-        end = A.get(A.size() - 1) - A.get(0);
+        int start = Integer.MAX_VALUE, end = A.get(A.size() - 1) - A.get(0), ans = 0;
+        for (int i = 1; i < A.size(); i++) start = Math.min(start, (A.get(i) - A.get(i - 1)));
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            if (isValidDistance(mid, B, A)) {
+            if (isValidDistance(mid, A, B)) {
                 ans = mid;
                 start = mid + 1;
             } else end = mid - 1;
         }
-
         return ans;
     }
 
-    private static boolean isValidDistance(int mid, int cowCount, List<Integer> stalls) {
-        int count = 0, position = stalls.get(0);
-        for (int i = 1; i < stalls.size(); i++) {
-            if (stalls.get(i) - position <= mid) {
-                count++;
-                position = stalls.get(i);
-                if (count == cowCount) return true;
+    private static boolean isValidDistance(int mid, ArrayList<Integer> distance, int cowCount) {
+        int currentCount = 1, position = distance.get(0);
+        for (int i = 1; i < distance.size(); i++) {
+            if(distance.get(i) - position >= mid){
+                currentCount++;
+                position = distance.get(i);
+                if(cowCount == currentCount) return true;
             }
         }
         return false;

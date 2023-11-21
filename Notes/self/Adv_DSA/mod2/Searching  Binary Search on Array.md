@@ -17,7 +17,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/15.%20Searching%20%20Binary%20Search%20on%20Array.pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=VQjPmB8lGgM)
+2. [Class/Lecture Video](https://youtu.be/Yr4Cs1yld3I)
 
 ## Intro to Binary search
     Intro:

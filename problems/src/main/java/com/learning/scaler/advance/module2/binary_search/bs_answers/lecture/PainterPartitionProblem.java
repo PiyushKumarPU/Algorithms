@@ -21,6 +21,7 @@ public class PainterPartitionProblem {
 
     public static void main(String[] args) {
         System.out.println(minTime(List.of(3, 5, 1, 7, 8, 2, 5, 3, 10, 1, 4, 7, 5, 4, 6), 3));
+        System.out.println(minTime(List.of(185, 186, 938, 558, 655, 461, 441, 234, 902, 681), 3));
     }
 
 
@@ -50,10 +51,8 @@ public class PainterPartitionProblem {
     }
 
     public static boolean isValidTime(int time, int painters, List<Integer> boards) {
-        int currentCount = 0, workDone = 0;
-        for (Integer integer : boards) {
-            if (currentCount == painters) return false;
-            int board = integer;
+        int currentCount = 1, workDone = 0;
+        for (Integer board : boards) {
             if (workDone + board <= time) {
                 workDone += board;
             } else {

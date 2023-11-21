@@ -80,8 +80,16 @@ public class PaintersPartition {
         //System.out.println(paint(A, B, new ArrayList<>(C)));
         A = 3;
         B = 10;
+        // 18670  i.e. 1867
         C = List.of(185, 186, 938, 558, 655, 461, 441, 234, 902, 681);
-        System.out.println(paint(A, B, new ArrayList<>(C)));
+        //System.out.println(paint(A, B, new ArrayList<>(C)));
+
+        A = 4;
+        B = 10;
+        C = List.of(8, 8, 8, 8, 8, 8, 8);
+        //System.out.println(paint(A, B, new ArrayList<>(C)));
+
+        System.out.println(paint(1,1000000,new ArrayList<>(List.of(1000000,1000000))));
     }
 
     public static int paint(int A, int B, ArrayList<Integer> C) {
@@ -92,8 +100,9 @@ public class PaintersPartition {
         }
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            if (isValidTime(mid, A, C)) {
-                ans = (mid * B) % modulo;
+            boolean isValidTime =  isValidTime(mid, A, C);
+            if (isValidTime) {
+                ans = (int)(((long) mid * B) % modulo);
                 end = mid - 1;
             } else
                 start = mid + 1;
@@ -101,28 +110,9 @@ public class PaintersPartition {
         return ans;
     }
 
-    public int paint(int A, int B, int[] C) {
-        int modulo = 10000003, ans = 0, start = 0, end = 0;
-        for (Integer ele : C) {
-            start = Math.max(start, ele);
-            end += ele;
-        }
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-            if (isValidTime(mid, A, C)) {
-                ans = (mid * B) % modulo;
-                end = mid - 1;
-            } else
-                start = mid + 1;
-        }
-        return ans;
-    }
-
-    private static boolean isValidTime(int time, int painters, int[] boards) {
-        int currentCount = 0, workDone = 0;
-        for (Integer integer : boards) {
-            if (currentCount == painters) return false;
-            int board = integer;
+    public static boolean isValidTime(int time, int painters, ArrayList<Integer> boards) {
+        int currentCount = 1, workDone = 0;
+        for (Integer board : boards) {
             if (workDone + board <= time) {
                 workDone += board;
             } else {
@@ -130,23 +120,6 @@ public class PaintersPartition {
                 workDone = board;
             }
             if (currentCount > painters) return false;
-        }
-        return currentCount <= painters;
-    }
-
-    private static boolean isValidTime(int time, int painters, ArrayList<Integer> boards) {
-        int currentCount = 0, workDone = 0, paintedBoardCount = 0;
-        for (int i = 0; i < boards.size(); i++) {
-            int board = boards.get(0);
-            if (workDone + board <= time) {
-                workDone += board;
-            } else {
-                currentCount++;
-                workDone = board;
-            }
-            if ((currentCount == painters && paintedBoardCount < boards.size()) || currentCount > painters)
-                return false;
-            paintedBoardCount++;
         }
         return currentCount <= painters;
     }
