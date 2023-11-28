@@ -44,7 +44,6 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 
 
 ### Advance DSA
-
 1. [Arrays : One Dimensional](/Notes/self/Adv_DSA/mod1/Arrays%20%20One%20Dimensional.md "Not Yet Started")
 2. [Arrays : Two Dimensional](/Notes/self/Adv_DSA/mod1/Arrays%20%20Two%20Dimensional.md "Not Yet Started")
 3. [Arrays : Interview Problems](/Notes/self/Adv_DSA/mod1/Arrays%20%20Interview%20Problems.md "Arrays : Interview Problems")
@@ -57,20 +56,19 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 10. [Maths 1: Modular Arithmetic & GCD](/Notes/self/Adv_DSA/mod1/Maths%201%20Modular%20Arithmetic%20&%20GCD.md "Maths 1: Modular Arithmetic & GCD")
 11. [Maths 2: Combinatorics Basic](/Notes/self/Adv_DSA/mod1/Maths%202%20Combinatorics%20Basic.md "Not Yet Started")
 12. [Maths 3: Prime Numbers](/Notes/self/Adv_DSA/mod1/Maths%203%20Prime%20Numbers.md "Not Yet Started")
-13. [Sorting : Merge Sort](/Notes/self/Adv_DSA/mod2/Sorting%20%20Merge%20Sort.md)
 
 
 #### Module 2
 
 1. [Hashing Problems](/Notes/self/Adv_DSA/mod2/Hashing%20Problems.md "Not Yet Started")
-2. 
+2. [Sorting : Merge Sort](/Notes/self/Adv_DSA/mod2/Sorting%20%20Merge%20Sort.md)
 3. [Sorting : Quick Sort & Radix Sort](/Notes/self/Adv_DSA/mod2/Sorting%20%20Quick%20Sort%20&%20Radix%20Sort.md "Not Yet Started")
 4. [Sorting : Comparator & Problems](/Notes/self/Adv_DSA/mod2/Sorting%20%20Comparator%20&%20Problems.md "Not Yet Started")
 5. [Advanced DSA: Contest 2](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%202.md "Not Yet Started")
 6. [Searching : Binary Search on Array](/Notes/self/Adv_DSA/mod2/Searching%20%20Binary%20Search%20on%20Array.md "Searching : Binary Search on Array")
 7. [Searching : Binary Search Problems](/Notes/self/Adv_DSA/mod2/Searching%20%20Binary%20Search%20Problems.md "Not Yet Started")
 8. [Searching : Binary Search on Answer](/Notes/self/Adv_DSA/mod2/Searching%20%20Binary%20Search%20on%20Answer.md "Not Yet Started")
-9. [Advanced DSA: Contest 3](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%203.md "Not Yet Started")
+9. [Advanced DSA: Contest 3](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%203.md)
 10. [Hashing : Introduction](/Notes/self/Adv_DSA/mod2/Hashing%20%20Introduction.md "Not Yet Started")
 11. [Hashing : Problems2](/Notes/self/Adv_DSA/mod2/Hashing%20%20Problems2.md "Not Yet Started")
 12. [Two Pointers](/Notes/self/Adv_DSA/mod2/Two%20Pointers.md "Two Pointers")
