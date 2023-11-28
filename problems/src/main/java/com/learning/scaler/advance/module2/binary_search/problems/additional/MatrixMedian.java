@@ -40,13 +40,7 @@ public class MatrixMedian {
             int i = mid / M, j = mid % M;
             int current = A.get(i).get(j);
             int count = count(A, current);
-            if (count >= k) {
-                return current;
-            }
 
-            if (count < k) {
-                start = mid + 1;
-            } else end = mid - 1;
         }
         return 0;
     }
@@ -63,43 +57,6 @@ public class MatrixMedian {
             }
         }
         return count;
-    }
-
-    static int count(List<Integer> nums, int mid)
-    {
-        int cnt = 0;
-        for (Integer ele : nums)
-            if (ele <= mid)
-                cnt++;
-        return cnt;
-    }
-
-    static int kthSmallest(List<Integer> nums, int k)
-    {
-        int low = Integer.MAX_VALUE;
-        int high = Integer.MIN_VALUE;
-        // calculate minimum and maximum the array.
-        for (Integer ele : nums) {
-            low = Math.min(low, ele);
-            high = Math.max(high, ele);
-        }
-        // Our answer range lies between minimum and maximum
-        // element of the array on which Binary Search is
-        // Applied
-        while (low < high) {
-            int mid = low + (high - low) / 2;
-            /*if the count of number of elements in the
-              array less than equal to mid is less than k
-              then increase the number. Otherwise decrement
-              the number and try to find a better answer.
-            */
-            if (count(nums, mid) < k)
-                low = mid + 1;
-            else
-                high = mid;
-        }
-
-        return low;
     }
 
 }

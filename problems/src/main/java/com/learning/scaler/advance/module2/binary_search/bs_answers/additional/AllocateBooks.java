@@ -77,16 +77,17 @@ public class AllocateBooks {
 
     public static void main(String[] args) {
         System.out.println(books(new ArrayList<>(List.of(12, 34, 67, 90)), 2));
-        /*System.out.println(books(new ArrayList<>(List.of(12, 15, 78)), 4));
+        System.out.println(books(new ArrayList<>(List.of(12, 12, 14, 14)), 2));
+        System.out.println(books(new ArrayList<>(List.of(12, 15, 78)), 4));
         System.out.println(books(new ArrayList<>(List.of(Integer.MAX_VALUE, Integer.MAX_VALUE,
-                Integer.MAX_VALUE, Integer.MAX_VALUE)), 2));*/
+                Integer.MAX_VALUE, Integer.MAX_VALUE)), 2));
     }
 
 
     public static int books(ArrayList<Integer> A, int B) {
         if (B > A.size()) return -1;
         int ans = -1;
-        long start = A.stream().min(Comparator.naturalOrder()).orElse(0),
+        long start = A.stream().max(Comparator.naturalOrder()).orElse(0),
                 end = A.stream().reduce(0, Integer::sum);
         while (start <= end) {
             long mid = start + (end - start) / 2;
@@ -99,15 +100,16 @@ public class AllocateBooks {
     }
 
     private static boolean isValidBookCount(long pageCount, ArrayList<Integer> books, int studentCount) {
-        int currentCount = 0;
+        int currentCount = 1;
         long currentAllocation = 0;
         for (Integer pageSize : books) {
-            if (currentAllocation + pageSize < pageCount) currentAllocation += pageSize;
+            if ((currentAllocation + pageSize) <= pageCount) currentAllocation += pageSize;
             else {
                 currentCount++;
-                currentAllocation = 0;
+                currentAllocation = pageSize;
             }
+            if(currentCount > studentCount) return false;
         }
-        return currentCount >= studentCount;
+        return currentCount <= studentCount;
     }
 }

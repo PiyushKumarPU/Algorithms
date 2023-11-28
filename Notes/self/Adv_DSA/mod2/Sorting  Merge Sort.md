@@ -1,12 +1,13 @@
 ## Advance DSA Day 13 Sorting : Merge Sort
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
-
 ## Scope / Agenda
 - [Count Sort](#count-sort)
 - [Stable and Inplace sorting](#stable-and-inplace-sorting)
 - [Merge 2 Sorted Arrays](#merge-2-sorted-arrays)
+- [Merge Sort](#merge-sort)
 - [Inversion Count](#inversion-count)
+- [No of Pairs](#no-of-pairs)
+- [No of Open Doors](#no-of-open-doors)
 
 ## Problems and solutions
 
@@ -23,5 +24,8 @@
 
 ## Count Sort
 ## Stable and Inplace sorting
-## Merge 2 Sorted Arrays	
+## Merge 2 Sorted Arrays
+## Merge Sort	
 ## Inversion Count
+## No of Pairs
+## No of Open Doors
