@@ -5,7 +5,7 @@
   
 
 ## Problems and solutions
-1. [Problems]()
+1. [Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module2/contest3)
 
 ## Class Notes and Videos
 
