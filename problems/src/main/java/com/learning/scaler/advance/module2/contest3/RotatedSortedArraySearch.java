@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module2.contest3;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 Problem Description
@@ -39,9 +40,39 @@ Example Explanation
 * */
 public class RotatedSortedArraySearch {
 
-    public static int solve(final ArrayList<Integer> integers){
+    public static void main(String[] args) {
+        System.out.println(solve(new ArrayList<>(List.of(4, 5, 6, 7, 0, 1, 2, 3)), 4));
+        System.out.println(solve(new ArrayList<>(List.of(9, 10, 3, 5, 6, 8)), 5));
+        System.out.println(solve(new ArrayList<>(List.of(9, 10, 3, 5, 6, 8)), 20));
 
+    }
 
+    public static int solve(final ArrayList<Integer> A, Integer target) {
+        int start = 0, end = A.size() - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (A.get(mid).equals(target)) return mid;
+            // check if target is in part 1
+            if (target >= A.get(0)) {
+                // if mid is in part 1
+                if (A.get(mid) >= A.get(0)) {
+                    // apply bs here
+                    if (A.get(mid) > target) end = mid - 1;
+                    else start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            } else {
+                // target is in part2
+                // if mid is in part 1
+                if (A.get(mid) >= A.get(0)) {
+                    start = mid + 1;
+                } else {
+                    if (A.get(mid) > target) end = mid - 1;
+                    else start = mid + 1;
+                }
+            }
+        }
         return -1;
     }
 }
