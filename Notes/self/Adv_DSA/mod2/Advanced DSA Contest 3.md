@@ -161,5 +161,12 @@ public int solve(final ArrayList<Integer> A, Integer target) {
         Explanation 1:Minimum Product of three number is 2*1*(-1) = -2
         Explanation 2:Minimum Product of three number is 3*2*(-5) = -30
 
+### Solution
+    Approach 1: 
+        Find sum of each triplet and get the minimum value out of it.
+        TC : O(N^3)
+        SC : O(1)
+        Unacceptable solution
+
 
 

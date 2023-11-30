@@ -68,57 +68,32 @@ public class RotatedSortedArraySearch {
     }
 
     public static int search(final List<Integer> A, int B) {
-        int checkElement = A.get(0), start = 0, end = A.size() - 1;
+        int start = 0, end = A.size() - 1;
         while (start <= end) {
-            int mid = (start + end) / 2;
-            if (A.get(mid) == B) return mid;
-            if (B >= checkElement) { // target is in part1
-                // mid is in part 1 and target is in part1 then move right else move left
-                if (A.get(mid) >= checkElement) {
-                    if (B < A.get(mid)) start = mid + 1;
-                    else end = mid - 1;
+            int mid = start + (end - start) / 2;
+            if (A.get(mid).equals(B)) return mid;
+            // check if target is in part 1
+            if (B >= A.get(0)) {
+                // if mid is in part 1
+                if (A.get(mid) >= A.get(0)) {
+                    // apply bs here
+                    if (A.get(mid) > B) end = mid - 1;
+                    else start = mid + 1;
                 } else {
                     end = mid - 1;
                 }
-            } else {  // target is in part 2
-                if (A.get(mid) < checkElement) {
-                    if (B < A.get(mid)) start = mid + 1;
-                    else end = mid - 1;
-                } else end = mid - 1;
+            } else {
+                // target is in part2
+                // if mid is in part 1
+                if (A.get(mid) >= A.get(0)) {
+                    start = mid + 1;
+                } else {
+                    if (A.get(mid) > B) end = mid - 1;
+                    else start = mid + 1;
+                }
             }
         }
         return -1;
     }
 
-    public int search(final int[] A, int B) {
-        int s = 0, e = A.length - 1;
-        while (s <= e) {
-            int mid = (s + e) / 2;
-            if (A[mid] == B) {
-                return mid;
-            }
-            if (B >= A[0]) { //part1
-                if (A[mid] >= A[0]) {
-                    if (B < A[mid]) {
-                        e = mid - 1;
-                    } else {
-                        s = mid + 1;
-                    }
-                } else {
-                    e = mid - 1;
-                }
-            } else { //part2
-                if (A[mid] <= A[0]) {
-                    if (B < A[mid]) {
-                        e = mid - 1;
-                    } else {
-                        s = mid + 1;
-                    }
-                } else {
-                    s = mid + 1;
-                }
-            }
-        }
-        return -1;
-    }
 }

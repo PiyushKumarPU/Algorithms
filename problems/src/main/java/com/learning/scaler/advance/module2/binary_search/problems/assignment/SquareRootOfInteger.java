@@ -50,8 +50,8 @@ When A = 9 which is a perfect square of 3, so we return 3.
 public class SquareRootOfInteger {
 
     public static void main(String[] args) {
-        //System.out.println(sqrt(11));
-        //System.out.println(sqrt(9));
+        System.out.println(sqrt(11));
+        System.out.println(sqrt(9));
         System.out.println(sqrt(Integer.MAX_VALUE));
         System.out.println(Math.sqrt(Integer.MAX_VALUE));
     }
