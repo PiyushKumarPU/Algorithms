@@ -82,7 +82,7 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 
 #### Module 3
 
-1. [Linked List 1: Introduction]()
+1. [Linked List 1: Introduction](/Notes/self/Adv_DSA/mod3/Linked%20List%201%20Introduction.md)
 2. [Linked List 2: Sorting and Detecting Loop]()
 3. [Linked List 3: Problems & Doubly Linked List]()
 4. [Stacks 1: Implementation & Basic Problems]()
