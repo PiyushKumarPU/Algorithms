@@ -17,6 +17,10 @@
 2. [Class/Lecture Video](https://youtu.be/4hk7fzYXEpU)
 
 ## Linked List Introduction
+* Please refer [here](https://www.geeksforgeeks.org/what-is-linked-list/) to know more about linked list
+   
+   ![Linked List](https://github.com/rajpiyush220/Algorithms/blob/ead466f681453acc5e1718aecbbf0c174dacbe0b/Notes/images/insertion-operation-of-linked-list.gif?raw=true)
+
 ## Operations on LinkedList
 ### Insert operation
 ### Search operation

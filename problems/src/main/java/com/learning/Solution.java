@@ -36,22 +36,6 @@ public class Solution {
 
     }
 
-    public String largestNumber(ArrayList<Integer> A) {
-        List<Integer> list = A.stream().sorted((o1, o2) -> {
-            String ab = o1 + String.valueOf(o2);
-            String ba = String.valueOf(o2) + o1;
-            return ab.compareTo(ba);
-        }).collect(java.util.stream.Collectors.toList());
-        StringBuilder res = new StringBuilder();
-        for (Integer val : list) {
-            res.append(val);
-        }
-        if (res.charAt(0) == '0') {
-            return "0";
-        }
-        return res.toString();
-    }
-
     private static Integer factor(Integer N) {
         int cnt = 0;
         for (int i = 1; i * i <= N; i++) {
