@@ -13,9 +13,8 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes]()
-2. [Youtube Video Part1]()
-3. [Youtube Video Part2]()
+1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/24.%20Linked%20List%20Introduction.pdf)
+2. [Class/Lecture Video](https://youtu.be/4hk7fzYXEpU)
 
 ## Linked List Introduction
 ## Operations on LinkedList
