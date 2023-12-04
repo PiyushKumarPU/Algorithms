@@ -44,6 +44,9 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 
 
 ### Advance DSA
+
+### Module 1
+
 1. [Arrays : One Dimensional](/Notes/self/Adv_DSA/mod1/Arrays%20%20One%20Dimensional.md "Not Yet Started")
 2. [Arrays : Two Dimensional](/Notes/self/Adv_DSA/mod1/Arrays%20%20Two%20Dimensional.md "Not Yet Started")
 3. [Arrays : Interview Problems](/Notes/self/Adv_DSA/mod1/Arrays%20%20Interview%20Problems.md "Arrays : Interview Problems")
@@ -75,4 +78,21 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 13. [Strings Pattern Matching: Rabin Karp](/Notes/self/Adv_DSA/mod2/Strings%20Pattern%20Matching%20Rabin%20Karp.md "Not Yet Started")
 14. [Interview Problems 1](/Notes/self/Adv_DSA/mod2/Interview%20Problems%201.md "Not Yet Started")
 15. [Advanced DSA: Contest 4](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%204.md "Not Yet Started")
+
+
+#### Module 3
+
+1. [Linked List 1: Introduction]()
+2. [Linked List 2: Sorting and Detecting Loop]()
+3. [Linked List 3: Problems & Doubly Linked List]()
+4. [Stacks 1: Implementation & Basic Problems]()
+5. [Stacks 2: Nearest Smaller/Greater Element]()
+6. [Queues: Implementation & Problems]()
+7. [Trees 1: Structure & Traversal]()
+8. [Trees 2: Views & Types]()
+9. [ Trees 3: BST]()
+10. [DSA: Contest 4: Linked List, Stacks & Queue]()
+12. [Trees 4: LCA + Morris Inorder Traversal]()
+12. [Trees 5: Problems on Trees]()
+13. [Hashing 3: Internal Implementation & Problems]()
 

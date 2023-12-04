@@ -168,5 +168,19 @@ public int solve(final ArrayList<Integer> A, Integer target) {
         SC : O(1)
         Unacceptable solution
 
+    Approach 2 With sorting:
+        We need to find the min prod of triplet so we need to find 3 different element with min value?
+        Note : Use any predefined algo to sort the given array
+        As array can have negative element too so we need to think about below condition too
+            a. If all postive then return product of first 3 element
+            b. If array contains -ve number then either we have to pick first three element or
+                we need to pick first 2 and last 2 element
+
+            basically 
+                a. if all positive 
+                    result is A[0] * A[1] * A[2]
+                b. if array has negative number too
+                    min of prod of 3 smallest number or prod of 1 smallest and two largest number
+
 
 

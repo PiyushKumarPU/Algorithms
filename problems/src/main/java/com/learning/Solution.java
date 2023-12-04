@@ -2,49 +2,64 @@ package com.learning;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Solution {
-    public int solve(ArrayList<Integer> A, int B) {
-        A.sort(Comparator.naturalOrder());
-        long totalSum = 0;
-        int n = A.size();
-        for (Integer i : A) {
-            totalSum += i;
-        }
-        if (totalSum <= B) return n;
-        long[] prefix = new long[n];
-        prefix[0] = A.get(0);
-        for (int i = 1; i < n; ++i) {
-            prefix[i] = prefix[i - 1] + A.get(i);
-        }
-        int lo = 1;
-        int hi = n;
-        int ans = 0;
-        while (lo <= hi) {
-            int mid = (hi - lo) / 2 + lo;
-            if (check(mid, prefix, B) == 1) {
-                hi = mid - 1;
-            } else {
-                ans = mid;
-                lo = mid + 1;
-            }
-        }
-        return ans;
+
+    public static void main(String[] args) {
+        System.out.println(solve(List.of(36, 13, 13, 26, 37, 28, 27, 43, 7)));
     }
 
+    public static ArrayList<Integer> solve(List<Integer> A) {
+        System.out.println(String.valueOf(A.stream().sorted(Comparator.comparing(Solution::factor))
+                .collect(Collectors.toCollection(ArrayList::new))));
 
 
-    // Checks if there is a subarray of size s whose sum is greater than sm in linear time
-    int check(int s, long[] arr, long sm) {
-        for (int i = s - 1; i < arr.length; ++i) {
-            if (i == s - 1) {
-                if (arr[i] > sm) {
-                    return 1;
-                }
-            } else if (arr[i] - arr[i - s] > sm) {
+    /*return A.stream().collect(Collectors.toMap(x -> x, Solution::factor))
+                .entrySet().stream().sorted(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey).collect(Collectors.toCollection(ArrayList::new));*/
+      List<Integer> factors =  A.stream().map(Solution::factor)
+              .collect(Collectors.toList());
+      System.out.println(factors);
+
+        return A.stream().sorted((o1, o2) -> {
+            if (factor(o1) < factor(o2)) {
+                return -1;
+            } else if (factor(o1) > factor(o2)) {
                 return 1;
+            } else {
+                return o1 - o2;
+            }
+        }).collect(Collectors.toCollection(ArrayList::new));
+
+    }
+
+    public String largestNumber(ArrayList<Integer> A) {
+        List<Integer> list = A.stream().sorted((o1, o2) -> {
+            String ab = o1 + String.valueOf(o2);
+            String ba = String.valueOf(o2) + o1;
+            return ab.compareTo(ba);
+        }).collect(java.util.stream.Collectors.toList());
+        StringBuilder res = new StringBuilder();
+        for (Integer val : list) {
+            res.append(val);
+        }
+        if (res.charAt(0) == '0') {
+            return "0";
+        }
+        return res.toString();
+    }
+
+    private static Integer factor(Integer N) {
+        int cnt = 0;
+        for (int i = 1; i * i <= N; i++) {
+            if (N % i == 0) {
+                cnt += (i == N / i) ? 1 : 2;
             }
         }
-        return 0;
+        return cnt;
     }
 }
+ 
