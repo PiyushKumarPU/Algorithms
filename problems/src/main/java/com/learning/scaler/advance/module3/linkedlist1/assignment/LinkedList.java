@@ -1,5 +1,7 @@
 package com.learning.scaler.advance.module3.linkedlist1.assignment;
 
+import com.learning.scaler.advance.module3.ListNode;
+
 /*
 Problem Description
     Design and implement a Linked List data structure.
@@ -28,5 +30,24 @@ Output Format
 * */
 public class LinkedList {
 
-    
+    public static void main(String[] args) {
+        ListNode head = new ListNode(10);
+        ListNode next = new ListNode(20);
+        head.next = next;
+
+
+    }
+
+    public static void insert_node(int position, int value) {
+        // @params position, integer
+        // @params value, integer
+    }
+
+    public static void delete_node(int position) {
+        // @params position, integer
+    }
+
+    public static void print_ll() {
+        // Output each element followed by a space
+    }
 }

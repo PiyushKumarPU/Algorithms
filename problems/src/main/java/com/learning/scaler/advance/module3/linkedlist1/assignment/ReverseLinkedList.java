@@ -1,6 +1,6 @@
 package com.learning.scaler.advance.module3.linkedlist1.assignment;
 
-import com.learning.scaler.advance.module3.linkedlist1.ListNode;
+import com.learning.scaler.advance.module3.ListNode;
 
 /*
 Problem Description
@@ -39,11 +39,43 @@ Example Explanation
 * */
 public class ReverseLinkedList {
 
+    public static void main(String[] args) {
+        reverseList(buildInput1()).printAll();
+        reverseList(buildInput2()).printAll();
+        System.out.println();
+        System.out.println();
+    }
 
-    public ListNode reverseList(ListNode A) {
-        if(A == null || A.next == null) return A;
+
+    public static ListNode reverseList(ListNode A) {
+        if (A == null || A.next == null) return A;
+        ListNode current = A;
+        ListNode next, prev = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
+
+    private static ListNode buildInput1() {
+        ListNode head = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode fourth = new ListNode(4);
+        ListNode fifth = new ListNode(5);
+        head.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        return head;
 
 
-        return null;
+    }
+
+    private static ListNode buildInput2() {
+        return new ListNode(3);
     }
 }
