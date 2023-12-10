@@ -5,7 +5,7 @@
 - [Searching in Rotated sorted Array](#searching-in-rotated-sorted-array)
 - [Find Square root of a number](#find-square-root-of-a-number)
 - [Median of two sorted Array](#median-of-two-sorted-array)
-
+- [Ath magical number](#ath-magical-number)
 ## Problems and solutions
 
 1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module2/binary_search/problems/assignment)
@@ -146,4 +146,96 @@ public int sqrt(int A) {
         Will divide both the array in partition and then calculate median.
             TC : log(min(M,N))
             SC : O(1)
+
+## Ath magical number
+    Problem Statement
+        You are given three positive integers, A, B, and C.
+        Any positive integer is magical if divisible by either B or C.
+        Return the Ath smallest magical number. Since the answer may be very large, return modulo 109 + 7.
+        Note: Ensure to prevent integer overflow while calculating.
+    Problem Constraints
+        1 <= A <= 10^9
+        2 <= B, C <= 40000
+
+    Example
+        A = 1
+        B = 2
+        C = 3
+        Output: 2
+    Example:
+        A = 4
+        B = 2
+        C = 3
+        Output: 6
+    
+    Approach 1: Bruteforce approach
+        start from 1 till min(B,C) * A and check if number is divisible by B and C, if yes then increase count by 1
+        for(int i = 1; i <= min(B,C) * A){
+            if(i % B == 0 || i % C == 0) {
+                count++;
+                if(count == A) return i;
+            }
+        }
+
+        TC : O(min(B,C) * A)
+
+    Approach 2: Using binary search
+    Consider a target value x and if we try to find the number of magical number till x it would be 
+    X/A + X/B - X/LCM(A,B)
+    Exaplanation:
+        Lets take A = 3 and B = 2 and find multiple of A and B and observe carefully
+        A -> 3 6 9 12 15 18 ....
+        B -> 2 4 6 8 10 12 14 16 18 ....
+    If we observe it carefully, some of the numbers are duplicate in both the series and we have to count it only once to get the proper result. Those numbers are multiple of LCM(A,B). 
+
+    By following above observation we can derive a range and perform binary search between range to find the required magical number
+
+    Steps to find Ath magical number using binary search
+        1. start = 1 and end = min(B,C) * A
+        2. find mid and count magical number till mid
+        3. if count is greater or equal to the desired count then assign it to answer and try to shrink the range to find any lesser mid which will have same count as desired one
+        4. or else increase the range
+    
+### Psuedo code:
+```java
+    start = 1, end = min(B,C) * A
+    while(start <= end){
+        int mid = start + (end - start)/2;
+        count magical number till mid
+        if( count >= A){
+            ans = mid;
+            end = mid +1
+        }else start = mid +1;
+    }
+    return ans;
+```
+
+### Complete Solution:
+```java
+    public int solve(int A, int B, int C) {
+        long ans = 0, lcm = findLCM(B, C);
+        long start = 1, end = (long) A * Math.min(B, C);
+        while (start <= end) {
+            long mid = start + (end - start) / 2;
+            long count = (mid / B) + (mid / C) - (mid / lcm);
+            if (count >= A) {
+                ans = (mid % 1000000007);
+                end = mid - 1;
+            } else if (count < mid) {
+                start = mid + 1;
+            }
+        }
+        return (int) ans;
+    }
+
+    private int findLCM(int a, int b) {
+        int greater = Math.max(a, b);
+        int smallest = Math.min(a, b);
+        for (int i = greater; ; i += greater) {
+            if (i % smallest == 0)
+                return i;
+        }
+    }
+```
+
         
