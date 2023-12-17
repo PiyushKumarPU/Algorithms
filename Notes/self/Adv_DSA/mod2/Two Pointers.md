@@ -87,8 +87,9 @@
 
 
 ## Visual Representation of two pointer technique to find targe sum
-- ![Target sum](https://github.com/rajpiyush220/Algorithms/blob/cb46605507b919f06669f84ec49b7b6736c4d14a/Notes/images/Two_pointers_for_sum1.png?raw=true    )
-- ![Target Sum](https://github.com/rajpiyush220/Algorithms/blob/431789a04e2a0a97cc4c4dffffa5158cc77af302/Notes/images/Two_pointers_for_sum.png?raw=true)
+
+- ![Target sum](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/47fde838d376eab262a223c329c106d2899353c6/Notes/images/Two_pointers_for_sum1.png?raw=true)
+- ![Target Sum](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/47fde838d376eab262a223c329c106d2899353c6/Notes/images/Two_pointers_for_sum.png?raw=true)
 
 
 ## Pair With given sum 1
