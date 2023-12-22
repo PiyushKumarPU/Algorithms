@@ -19,7 +19,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/26.%20LinkedList%20Problems%20and%20Doubly%20LinkedList.pdf)
-2. [Class/Lecture Video]()
+2. [Class/Lecture Video](https://www.youtube.com/watch?v=DIYWgYzS9AI&list=PLWV5FkQMcDU7gC6Lh87kP5ECv2HlsYF_7&index=30&ab_channel=GrowTogether)
 
 ## Check for cycle in Linked List
 ## Find starting point of loop

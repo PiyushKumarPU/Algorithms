@@ -20,7 +20,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/27%20Stack%20Implementation%20and%20Basic%20Problems.pdf)
-2. [Class/Lecture Video]()
+2. [Class/Lecture Video](https://www.youtube.com/watch?v=xEqdRlKbZyI&list=PLWV5FkQMcDU7gC6Lh87kP5ECv2HlsYF_7&index=29&ab_channel=GrowTogether)
 
 
 ## Stack Introduction

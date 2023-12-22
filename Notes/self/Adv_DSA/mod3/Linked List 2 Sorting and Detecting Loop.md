@@ -20,7 +20,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/25.%20Adv%20Linked%20List%20Sorting%20and%20Detecting%20Loop.pdf)
-2. [Class/Lecture Video]()
+2. [Class/Lecture Video](https://www.youtube.com/watch?v=Vroikqg_oFA&list=PLWV5FkQMcDU7gC6Lh87kP5ECv2HlsYF_7&index=31&ab_channel=GrowTogether)
 
 
 ## Reverse a Linked List
