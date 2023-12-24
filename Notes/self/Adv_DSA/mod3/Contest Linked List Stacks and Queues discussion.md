@@ -1,5 +1,5 @@
 
-## Adavce DSA Day 33 Contest Linked List, Stacks & Queues discussion
+## Advance DSA Day 33 Contest Linked List, Stacks & Queues discussion
 
 ## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 
@@ -76,11 +76,32 @@
 
 ### Solution
 ```java
-    
-
+    public ListNode solve(ListNode A, ListNode B, int C, int D) {
+        ListNode t1 = A;
+        int jump = 0;
+        // Jump C -1 to find the prev node before first node to remove
+        while (jump < (C - 1)) {
+            t1 = t1.next;
+            jump++;
+        }
+        // jump D times to find last removed node
+        ListNode t2 = A;
+        jump = 0;
+        while (jump < D) {
+            jump++;
+            t2 = t2.next;
+        }
+        // linking second LL to first
+        t1.next = B;
+        // go till end of LL and assign remaining node
+        while (t1.next != null) {
+            t1 = t1.next;
+        }
+        t1.next = t2.next;
+        return A;
+    }
 
 ```
-
 
 
 ## Next Greater element
@@ -139,7 +160,7 @@
             ]
             B = 2
         Input 2:
-            B = [
+            A = [
                 [1, 5]
                 [2, 1]
                 [-1, -1]
@@ -164,3 +185,16 @@
         Explanation 2:
             The farthest 3 points from origin are [[1, 5], [2, 1], [3, 1]].
 
+### Solution approach:
+* If we observe it carefully, we need to sort point in descending order of distance from (0,0) and then pick first B element from the list.
+* After picking the required element from list, we need to sort element by x value and then y value
+### Solution
+```java
+    public List<List<Integer>> solve(final List<List<Integer>> A, final int B) {
+        Comparator<List<Integer>> first = Comparator.comparing(integers -> integers.get(0));
+        Comparator<List<Integer>> second = Comparator.comparing(integers -> integers.get(1));
+        return A.stream().sorted((o1, o2) ->
+                        Integer.compare(o2.get(0) * o2.get(0) + o2.get(1) * o2.get(1), o1.get(0) * o1.get(0) + o1.get(1) * o1.get(1)))
+                .toList().subList(0, B).stream().sorted(first.thenComparing(second)).toList();
+    }
+```

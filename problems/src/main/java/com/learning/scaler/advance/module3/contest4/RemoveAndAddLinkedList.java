@@ -45,10 +45,64 @@ import com.learning.scaler.advance.module3.ListNode;
 * */
 public class RemoveAndAddLinkedList {
 
-    public ListNode solve(ListNode A, ListNode B, int C, int D) {
+    public static void main(String[] args) {
 
-        return null;
+        ListNode A = new ListNode(0);
+        ListNode A1 = new ListNode(1);
+        ListNode A2 = new ListNode(2);
+        ListNode A3 = new ListNode(3);
+        ListNode A4 = new ListNode(4);
+        ListNode A5 = new ListNode(5);
+
+        A.next = A1;
+        A1.next = A2;
+        A2.next = A3;
+        A3.next = A4;
+        A4.next = A5;
+
+        ListNode B = new ListNode(0);
+        ListNode B1 = new ListNode(1);
+        ListNode B2 = new ListNode(2);
+
+        B.next = B1;
+        B1.next = B2;
+
+        ListNode listNode = solve(A,B,3,4);
+        printNode(listNode);
+
     }
 
+    private static void printNode(ListNode listNode){
+        System.out.print(listNode.val);
+        listNode = listNode.next;
+        while (listNode != null){
+            System.out.print("--> "+listNode);
+            listNode = listNode.next;
+        }
+    }
 
+    public static ListNode solve(ListNode A, ListNode B, int C, int D) {
+        ListNode t1 = A;
+        int jump = 0;
+        // Jump C -1 to find the prev node before first node to remove
+        while (jump < (C - 1)) {
+            t1 = t1.next;
+            jump++;
+        }
+        // jump D times to find last removed node
+        ListNode t2 = A;
+        jump = 0;
+        while (jump < D) {
+            jump++;
+            t2 = t2.next;
+        }
+        // linking second LL to first
+        t1.next = B;
+        // go till end of LL and assign remaining node
+        while (t1.next != null) {
+            t1 = t1.next;
+        }
+        t1.next = t2.next;
+        return A;
+    }
 }

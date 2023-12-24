@@ -1,7 +1,9 @@
 package com.learning.scaler.advance.module3.contest4;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
     Problem Description:
@@ -51,8 +53,27 @@ import java.util.List;
 * */
 public class AlexAndTreasures {
 
-    public ArrayList<ArrayList<Integer>> solve(final List<ArrayList<Integer>> A, final int B) {
 
-        return null;
+    public static void main(String[] args) {
+
+        List<List<Integer>> A = List.of(List.of(1, 2),
+                List.of(1, 4),
+                List.of(-1, 0));
+
+        List<List<Integer>> B = List.of(List.of(1, 5),
+                List.of(2, 1),
+                List.of(-1, -1),
+                List.of(3, 1));
+
+        System.out.println(solve(A, 2));
+        System.out.println(solve(B, 3));
+    }
+
+    public static List<List<Integer>> solve(final List<List<Integer>> A, final int B) {
+        Comparator<List<Integer>> first = Comparator.comparing(integers -> integers.get(0));
+        Comparator<List<Integer>> second = Comparator.comparing(integers -> integers.get(1));
+        return A.stream().sorted((o1, o2) ->
+                        Integer.compare(o2.get(0) * o2.get(0) + o2.get(1) * o2.get(1), o1.get(0) * o1.get(0) + o1.get(1) * o1.get(1)))
+                .toList().subList(0, B).stream().sorted(first.thenComparing(second)).toList();
     }
 }
