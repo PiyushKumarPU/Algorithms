@@ -1,7 +1,4 @@
-
 ## Advance DSA Day 33 Contest Linked List, Stacks & Queues discussion
-
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 
 ## Scope / Agenda
 - [Remove and Add Linked List](#remove-and-add-linked-list)
@@ -11,7 +8,7 @@
 
 ## Problems and solutions
 
-1. [Problems]()
+1. [Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module3/contest4)
 
 ## Class Notes and Videos
 
