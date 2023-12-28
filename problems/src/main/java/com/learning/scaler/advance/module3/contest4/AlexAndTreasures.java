@@ -1,9 +1,7 @@
 package com.learning.scaler.advance.module3.contest4;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /*
     Problem Description:
