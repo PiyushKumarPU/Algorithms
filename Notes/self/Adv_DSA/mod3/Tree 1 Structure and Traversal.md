@@ -26,9 +26,13 @@
 
     e.g. Family tree
 
-    A tree data structure is a hierarchical structure that is used to represent and organize data in a way that is easy to navigate and search. It is a collection of nodes that are connected by edges and has a hierarchical relationship between the nodes. 
+    A tree data structure is a hierarchical structure that is used to represent and organize data in a way that is easy to navigate and search. It is a collection 
+    of nodes that are connected by edges and has a hierarchical relationship 
+    between the nodes. 
 
-    The topmost node of the tree is called the root, and the nodes below it are called the child nodes. Each node can have multiple child nodes, and these child nodes can also have their own child nodes, forming a recursive structure.
+    The topmost node of the tree is called the root, and the nodes below it are 
+    called the child nodes. Each node can have multiple child nodes, and these 
+    child nodes can also have their own child nodes, forming a recursive structure.
 
 
 
@@ -86,9 +90,9 @@ Structure class of Binary tree
 ## Traversal
 * Please refer **[here](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/)** to get more details on traversal technique.
 
-## Inorder traversal(Iterative)
+## [Inorder traversal(Recursive)](https://www.geeksforgeeks.org/inorder-traversal-of-binary-tree/)
 
-### Steps to follow while performin In-order traversal
+### Steps to follow while performing In-order traversal
     In-order traversal
     Left Node Right i.e. L N R
     
@@ -102,13 +106,16 @@ Structure class of Binary tree
 ![In-order traversal examples/steps](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/d29c95bd94eab9965e37e011e460781d926bd26a/Notes/images/in_order_traversla_steps.gif?raw=true)
 
 ### Lets take an exmple to understand In-order traversal
-#### Input
+#### **Input**
+---
 ![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example1.png?raw=true)
 
-#### Expected Output after performing In-Order traversal
+#### **Expected Output after performing In-Order traversal**
+---
 ![Output](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example2.png?raw=true)
 
 #### Psuedo code for above example
+---
 ```java
    void inorder(TreeNode root){
     // base condition
@@ -121,5 +128,18 @@ Structure class of Binary tree
     inorder(root.right);
    }
 ```
+#### TC and SC for above code
+    TC : O(N)  --> N represent no of node in tree
+    SC : O(H)  --> H represent height of the tree
+
+## [Pre-Order traversal](https://www.geeksforgeeks.org/preorder-traversal-of-binary-tree/)
+### Steps to follow while performing Pre-order traversal
+    Pre-order traversal
+    Node Left Right i.e. N L R
+    
+* **Traverse root node of respective subtree**
+* **Traverse through Left sub-tree**
+* **Traverse through right sub-tree**
+
 
 ## Construct Tree Question
