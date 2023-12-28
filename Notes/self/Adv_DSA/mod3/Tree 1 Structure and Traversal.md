@@ -89,13 +89,37 @@ Structure class of Binary tree
 ## Inorder traversal(Iterative)
 
 ### Steps to follow while performin In-order traversal
-* First traverse left subtree
-* Then Node 
-* Then Right subtree
+    In-order traversal
+    Left Node Right i.e. L N R
+    
+* **Traverse through Left sub-tree**
+* **Traverse root node of respective subtree**
+* **Traverse through right sub-tree**
 
 
 ![In-Order Traversal Technique](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/aa69cd7213a7db59b3a24571db7d035930d68375/Notes/images/in_order_traversal.gif?raw=true)
 
 ![In-order traversal examples/steps](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/d29c95bd94eab9965e37e011e460781d926bd26a/Notes/images/in_order_traversla_steps.gif?raw=true)
+
+### Lets take an exmple to understand In-order traversal
+#### Input
+![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example1.png?raw=true)
+
+#### Expected Output after performing In-Order traversal
+![Output](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example2.png?raw=true)
+
+#### Psuedo code for above example
+```java
+   void inorder(TreeNode root){
+    // base condition
+    if(root == null) return;
+    // traversing through left subtree
+    inorder(root.left);
+    // printing root node
+    print(root);
+    // traversing through right subtree
+    inorder(root.right);
+   }
+```
 
 ## Construct Tree Question
