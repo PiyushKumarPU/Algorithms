@@ -4,6 +4,10 @@
 - [What is Tree?](#what-is-tree)
 - [Tree Terminology](#tree-terminology)
 - [Traversal](#traversal)
+- [Inorder traversal(Recursive)](#inorder-traversalrecursive)
+- [Pre Order Traversal](#pre-order-traversal)
+- [Post Order Traversal](#post-order-traversal)
+- [Summary](#summary)
 - [Inorder traversal(Iterative)](#inorder-traversaliterative)
 - [Construct Tree Question](#construct-tree-question)
 
@@ -132,6 +136,18 @@ Structure class of Binary tree
     TC : O(N)  --> N represent no of node in tree
     SC : O(H)  --> H represent height of the tree
 
+## Inorder traversal(Iterative)
+### Lets take an exmple to understand In-order(iterative) traversal technique
+
+#### **Input**
+---
+![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ae97da59a96b1cf64ba71e508f1f2da0e35951b3/Notes/images/in_order_iterative_input.png?raw=true)
+
+#### **Expected Output after performing In-Order traversal**
+---
+![Output](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/3316d677eba851bbd2f2a51967e7703c50d67936/Notes/images/in_order_iterative.png.png?raw=true)
+
+
 ## [Pre-Order traversal](https://www.geeksforgeeks.org/preorder-traversal-of-binary-tree/)
 ### Steps to follow while performing Pre-order traversal
     Pre-order traversal
@@ -140,6 +156,82 @@ Structure class of Binary tree
 * **Traverse root node of respective subtree**
 * **Traverse through Left sub-tree**
 * **Traverse through right sub-tree**
+
+![pre-order1](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/f6f914dd7c8fa620c76ce6c5be6a9a30e6a3c41f/Notes/images/pre-order_1.gif?raw=true)
+
+![Pre-order2](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/f6f914dd7c8fa620c76ce6c5be6a9a30e6a3c41f/Notes/images/pre-order_2.gif?raw=true)
+
+### Lets take an exmple to understand pre-order traversal
+#### **Input**
+---
+![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example1.png?raw=true)
+
+#### **Expected Output after performing In-Order traversal**
+---
+
+![Output](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ef656e80c7c316b919f55c741c47cf2cca377445/Notes/images/pre_order_output.png?raw=true)
+
+#### Psuedo code for above example
+---
+```java
+   void pre_order(TreeNode root){
+    // base condition
+    if(root == null) return;
+    // printing root node
+    print(root);
+    // traversing through left subtree
+    pre_order(root.left);
+    // traversing through right subtree
+    pre_order(root.right);
+   }
+```
+#### TC and SC for above code
+    TC : O(N)  --> N represent no of node in tree
+    SC : O(H)  --> H represent height of the tree
+
+## [Post-Order traversal](https://www.geeksforgeeks.org/postorder-traversal-of-binary-tree/)
+### Steps to follow while performing Pre-order traversal
+    Pre-order traversal
+    Node Left Right i.e. N L R
+
+* **Traverse through Left sub-tree**
+* **Traverse through right sub-tree**
+* **Traverse root node of respective subtree**
+
+![post order 1](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/fbbcad630a2bf93652e5c728f5573a6bf4ed8a4b/Notes/images/post_order_1.gif?raw=true)
+
+### Lets take an exmple to understand post-order traversal
+
+#### **Input**
+---
+![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example1.png?raw=true)
+
+![Output](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/fbbcad630a2bf93652e5c728f5573a6bf4ed8a4b/Notes/images/post_order_2.gif.png?raw=true)
+
+#### Psuedo code for above example
+---
+```java
+   void post_order(TreeNode root){
+    // base condition
+    if(root == null) return;
+    // traversing through left subtree
+    post_order(root.left);
+    // traversing through right subtree
+    post_order(root.right);
+    // printing root node
+    print(root);
+   }
+```
+#### TC and SC for above code
+    TC : O(N)  --> N represent no of node in tree
+    SC : O(H)  --> H represent height of the tree
+
+## Summary
+    L N R --> In-order traversal
+    N L R --> Pre order traversal
+    L R N --> Post order traversal
+    TC and SC is same for all the traversal
+
 
 
 ## Construct Tree Question
