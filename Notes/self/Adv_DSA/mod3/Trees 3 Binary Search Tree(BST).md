@@ -1,7 +1,5 @@
 ## Advanced DSA Day 32 Trees 3 Binary Search Tree(BST)
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
-
 ## Scope / Agenda
 - [what is BST](#what-is-bst)
 - [Min Max in BST](#min-max-in-bst)
