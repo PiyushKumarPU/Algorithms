@@ -2,7 +2,6 @@ package com.learning.scaler.advance.module3.tree5.lecture;
 
 import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
-import com.sun.source.tree.Tree;
 
 /*
 Create a mirror image of given binary tree
@@ -28,15 +27,19 @@ public class InvertABinaryTree {
         node20.setLeft(node16);
         node20.setRight(node27);
 
-        System.out.println(PrintTreeNode.traversePreOrder(invert(root)));
+        System.out.println(PrintTreeNode.traversePreOrder(root));
+        invert(root);
+        System.out.println(PrintTreeNode.traversePreOrder(root));
     }
 
-    public static TreeNode invert(TreeNode root){
+    public static void invert(TreeNode node) {
         // swap left --> right child and vice versa of each node
-        
-
-
-        return root;
+        if (node == null) return;
+        TreeNode temp = node.getLeft();
+        node.setLeft(node.getRight());
+        node.setRight(temp);
+        invert(node.getLeft());
+        invert(node.getRight());
     }
 
 }
