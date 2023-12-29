@@ -26,6 +26,13 @@
 
 ## Invert Binary Tree
 
+### Problem Description
+    Create mirror image of given binary tree. i.e. invert given binary tree.
+![Problem image](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/dc9d38ffd135c7ff01100ce11e87fa30c54b600c/Notes/images/invert_binary_tree_problems.png?raw=true)
+
+### Solution approach
+    We will swap left child with right child and right child with left child for all the none leaf node and that will be inverted binary tree.
+
 ### Psuedo Code
 ```java
    void invert(TreeNode node){
