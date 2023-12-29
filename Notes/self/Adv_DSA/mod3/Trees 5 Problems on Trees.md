@@ -25,6 +25,34 @@
 
 
 ## Invert Binary Tree
+
+### Psuedo Code
+```java
+   void invert(TreeNode node){
+    if (node == null) return;
+    // swap left child with right child and vice versa
+    TreeNode temp = node.left;
+    node.left = node.right;
+    node.right = temp;
+    // invert left and right child
+    invert(node.left);
+    invert(node.right);
+   }
+```
+
+### Solution
+```java
+    public void invert(TreeNode node) {
+        // swap left --> right child and vice versa of each node
+        if (node == null) return;
+        TreeNode temp = node.getLeft();
+        node.setLeft(node.getRight());
+        node.setRight(temp);
+        invert(node.getLeft());
+        invert(node.getRight());
+    }
+```
+
 ## Equal Tree Partition
 ## Populate Next Pointer in Binary Tree
 ## Populate Next Pointer in Perfect Binary Tree
