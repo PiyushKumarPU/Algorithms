@@ -2,6 +2,9 @@ package com.learning.scaler.advance.module3.tree3.assignment;
 
 import com.learning.scaler.advance.module3.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 Problem Description
     You are given a binary tree represented by root A. You need to check if it is a Binary Search Tree or not.
@@ -12,7 +15,7 @@ Assume a BST is defined as follows:
 
 Problem Constraints
     1 <= Number of nodes in binary tree <= 10^5
-    0 <= node values <= 232-1
+    0 <= node values <= 2^32-1
 
 Input Format
     First and only argument is head of the binary tree A.
@@ -46,7 +49,12 @@ Example Explanation
 * */
 public class ValidBinarySearchTree {
 
+    static List<Integer> inOrderVal = new ArrayList<>();
+
     public int isValidBST(TreeNode A) {
+
         return 0;
     }
+
+
 }
