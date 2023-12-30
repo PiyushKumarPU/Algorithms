@@ -20,7 +20,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes//35.%20Problems%20on%20Trees.pdf)
-2. [Class/Lecture Video]()
+2. [Class/Lecture Video](https://youtu.be/YnmGLLiFT_Q)
 3. [Notability Link](https://notability.com/n/2dGLLHz5G3GeJOUxYUQKVp)
 
 
