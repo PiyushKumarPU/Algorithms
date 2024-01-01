@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module2.sort.quick.additional;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 /*
 Problem Description
@@ -44,8 +46,35 @@ Example Explanation
 * */
 public class SortByColor {
 
-    public ArrayList<Integer> sortColors(ArrayList<Integer> A) {
+    public static void main(String[] args) {
+        System.out.println(sortColors(new ArrayList<>(List.of(0, 1, 2, 0, 1, 2))));
+        System.out.println(sortColors(new ArrayList<>(List.of(0))));
+    }
 
-        return null;
+    public static ArrayList<Integer> sortColorsSelf(ArrayList<Integer> A) {
+        A.sort(Integer::compareTo);
+        return A;
+    }
+
+    /* Scaler solution*/
+    public static ArrayList<Integer> sortColors(ArrayList<Integer> A) {
+        int zero = 0, two = A.size() - 1;
+        for (int i = 0; i <= two; ) {
+            if (A.get(i) == 0) {
+                int temp = A.get(zero);
+                A.set(zero, 0);
+                A.set(i, temp);
+                zero++;
+                i++;
+            } else if (A.get(i) == 2) {
+                int temp = A.get(two);
+                A.set(two, 2);
+                A.set(i, temp);
+                two--;
+            } else {
+                i++;
+            }
+        }
+        return A;
     }
 }

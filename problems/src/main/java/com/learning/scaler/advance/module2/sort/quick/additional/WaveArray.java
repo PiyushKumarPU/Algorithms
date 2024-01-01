@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module2.sort.quick.additional;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /*
 Problem Description
@@ -41,7 +43,39 @@ Example Explanation
 * */
 public class WaveArray {
 
-    public ArrayList<Integer> wave(ArrayList<Integer> A) {
-        return new ArrayList<>();
+    public static void main(String[] args) {
+        System.out.println(wave(new ArrayList<>(List.of(1, 2, 3, 4))));
+        System.out.println(wave(new ArrayList<>(List.of(1, 2))));
+    }
+
+    public static ArrayList<Integer> waveSelf(ArrayList<Integer> A) {
+        ArrayList<Integer> result = new ArrayList<>(A.size());
+        A.sort(Integer::compareTo);
+        // start with first index and swap two consecutive element
+        for (int index = 0; index < A.size(); ) {
+            if (index + 1 < A.size())
+                result.add(A.get(index + 1));
+            result.add(A.get(index));
+            index += 2;
+        }
+        return result;
+    }
+
+    /*Scaler solution*/
+    public static ArrayList<Integer> wave(ArrayList<Integer> A) {
+        // sort the array
+        Collections.sort(A);
+        int n = A.size();
+        // swap adjacent elements in pairs
+        for (int i = 2; i <= n; i += 2) {
+            exchange(A, i - 2, i - 1);
+        }
+        return A;
+    }
+
+    private static void exchange(ArrayList<Integer> A, int i, int j) {
+        int temp = A.get(i);
+        A.set(i, A.get(j));
+        A.set(j, temp);
     }
 }

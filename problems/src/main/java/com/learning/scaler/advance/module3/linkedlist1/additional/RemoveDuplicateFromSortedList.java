@@ -41,38 +41,36 @@ public class RemoveDuplicateFromSortedList {
         ListNode f4 = new ListNode(1);
         ListNode f5 = new ListNode(2);
         ListNode f6 = new ListNode(2);
+        ListNode f7 = new ListNode(3);
 
         f1.next = f2;
         f2.next = f3;
         f3.next = f4;
         f4.next = f5;
         f5.next = f6;
-        printAll(f1);
-        printAll(deleteDuplicates(f1));
+        f6.next = f7;
+        f1.printAll();
+        deleteDuplicates(f1).printAll();
 
     }
 
     public static ListNode deleteDuplicates(ListNode A) {
         if (A != null && A.next != null) {
-            ListNode to_free;
-            if (A.val == A.next.val) {
-                to_free = A.next;
-                A.next = A.next.next;
-                deleteDuplicates(A);
+            ListNode first = A;
+            ListNode second = first.next;
+            while (second != null) {
+                while (second != null && first.val == second.val) {
+                    second = second.next;
+                }
+                if (second != null) {
+                    first.next = second;
+                    first = second;
+                    second = first.next;
+                }else first.next = null;
             }
-            else {
-                deleteDuplicates(A.next);
-            }
-            return A;
         }
         return A;
     }
 
 
-    private static void printAll(ListNode head) {
-        while (head != null) {
-            System.out.print(head.val + " ");
-            head = head.next;
-        }
-    }
 }

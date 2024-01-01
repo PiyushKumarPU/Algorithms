@@ -2,6 +2,8 @@ package com.learning.scaler.advance.module3.linkedlist1.additional;
 
 import com.learning.scaler.advance.module3.ListNode;
 
+import java.util.List;
+
 /*
 Problem Description
 Given a linked list A, remove the B-th node from the end of the list and return its head. For example, Given linked list: 1->2->3->4->5, and B = 2. After removing the second node from the end, the linked list becomes 1->2->3->5. NOTE: If B is greater than the size of the list, remove the first node of the list. NOTE: Try doing it using constant additional space.
@@ -51,44 +53,38 @@ public class RemoveBthNodeFromLast {
         ListNode second = new ListNode(2);
 
         ListNode head = new ListNode(1);
-        head.next = second;
+        /*head.next = second;
         second.next = third;
         third.next = fourth;
-        fourth.next = fifth;
-        printList(head);
-        head = removeNthFromEnd(head,1);
-        printList(head);
+        fourth.next = fifth;*/
+        head.printAll();
+        head = removeNthFromEnd(head, 1);
+        head.printAll();
 
     }
 
     public static ListNode removeNthFromEnd(ListNode A, int B) {
-        if (A == null) return A;
-        int size = 1;
-        ListNode next = A.next;
-        while (next != null) {
-            size++;
-            next = next.next;
-        }
-        if (B >= size) return A.next;
-        int position = size - B;
-        next = A;
-        while (position > 0) {
-            assert next != null;
-            next = next.next;
-            position--;
-        }
-        assert next != null;
-        ListNode nodeToRemove = next.next;
-        next.next = nodeToRemove != null ? nodeToRemove.next : null;
-        return A;
-    }
-
-    public static void printList(ListNode A) {
+        if (A == null || B == 0) return A;
+        // find size of the list;
         ListNode temp = A;
+        int size = 0;
         while (temp != null) {
-            System.out.print(" " + temp);
+            size++;
             temp = temp.next;
         }
-        System.out.println();
+        int removalPosition = size - B;
+        if (B > size || removalPosition == 0) {
+            return A.next;
+        } else {
+            ListNode prev = A;
+            ListNode removalNode = A;
+            while (removalPosition > 0){
+                removalPosition--;
+                prev = removalNode;
+                removalNode = removalNode.next;
+            }
+            prev.next = removalNode.next;
+        }
+        return A;
     }
 }

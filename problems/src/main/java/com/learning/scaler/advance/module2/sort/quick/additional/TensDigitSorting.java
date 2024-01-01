@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module2.sort.quick.additional;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /*
 Problem Description
@@ -43,8 +45,42 @@ Example Explanation
 * */
 public class TensDigitSorting {
 
-    public ArrayList<Integer> solve(ArrayList<Integer> A) {
+    public static void main(String[] args) {
 
-        return null;
+    }
+
+
+    public static ArrayList<Integer> self(ArrayList<Integer> A) {
+        A.sort((o1, o2) -> {
+            Integer first = o1, second = o2, firstDigit = 0, secondDigit = 0;
+            if(first > 9){
+                for(int i = 0; i < 2; i++){
+                    firstDigit = first % 10;
+                    first /= 10;
+                }
+            }
+            if(second > 9){
+                for(int i = 0; i < 2; i++){
+                    secondDigit = second % 10;
+                    second /= 10;
+                }
+            }
+            return firstDigit.equals(secondDigit) ? o2.compareTo(o1) : firstDigit.compareTo(secondDigit);
+        });
+        return A;
+    }
+
+    /*
+    * Scaler solution
+    * */
+    public ArrayList<Integer> solve(ArrayList<Integer> A) {
+        A.sort((val1, val2) -> {
+            int tens_digit1 = (val1 / 10) % 10, tens_digit2 = (val2 / 10) % 10;
+            if (tens_digit1 == tens_digit2) {
+                return val2 - val1;
+            }
+            return tens_digit1 - tens_digit2;
+        });
+        return A;
     }
 }

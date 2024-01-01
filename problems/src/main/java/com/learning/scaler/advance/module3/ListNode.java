@@ -17,7 +17,7 @@ public class ListNode {
     public void printAll() {
         ListNode head = this;
         while (head != null) {
-            System.out.print(head.val + "->");
+            System.out.print(head.val + (head.next != null ? "->" : ""));
             head = head.next;
         }
         System.out.println();
