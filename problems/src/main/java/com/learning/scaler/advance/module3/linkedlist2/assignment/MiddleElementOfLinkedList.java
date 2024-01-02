@@ -41,7 +41,29 @@ Explanation 2:
 public class MiddleElementOfLinkedList {
 
     public int solve(ListNode A) {
+        int size = 0, start = 1;
+        ListNode temp = A;
+        while (temp != null) {
+            size++;
+            temp = temp.next;
+        }
+        temp = A;
+        while (start <= (size / 2)) {
+            start++;
+            temp = temp.next;
+        }
+        return temp.val;
+    }
 
-        return 0;
+    public int solveScaler(ListNode A) {
+        if (A.next == null)
+            return A.val;
+        // slow and fast pointer
+        ListNode slow = A, fast = A;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.val;
     }
 }

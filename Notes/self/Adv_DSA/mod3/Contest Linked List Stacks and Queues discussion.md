@@ -100,7 +100,6 @@
 
 ```
 
-
 ## Next Greater element
     Problem Description:
         Given an array A, find the next greater element G[i] for every element A[i] in the array. The next greater element for an element A[i] is the first greater element on the right side of A[i] in the array, A.
@@ -195,3 +194,10 @@
                 .toList().subList(0, B).stream().sorted(first.thenComparing(second)).toList();
     }
 ```
+
+### Clockwise Rotation
+    Problem Description:
+        Given a Linkedlist, rotate the list to the right by k places, where k is non-negative.
+
+        Note: Problem description was bit bigger and I put it here in sort form but meaning of actual problem and above description is same.
+    

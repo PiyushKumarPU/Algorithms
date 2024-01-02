@@ -1,8 +1,10 @@
 package com.learning.scaler.advance.module3.tree1.assignment;
 
+import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 Problem Description
@@ -48,8 +50,35 @@ Example Explanation
 * */
 public class BinaryTreeFromInorderAndPostOrder {
 
-    public TreeNode buildTree(ArrayList<Integer> A, ArrayList<Integer> B) {
-
-        return null;
+    public static void main(String[] args) {
+        buildTree(new ArrayList<>(List.of(6, 1, 3, 2)), new ArrayList<>(List.of(6, 3, 2, 1)));
     }
+
+    public static TreeNode buildTree(ArrayList<Integer> A, ArrayList<Integer> B) {
+        TreeNode root = constructTree(A, B);
+        PrintTreeNode.traversePreOrder(root);
+        return root;
+    }
+
+    private static TreeNode constructTree(ArrayList<Integer> A, ArrayList<Integer> B) {
+        if(A.isEmpty() || B.isEmpty()) return new TreeNode(0);
+        int poSize = B.size(), inSize = A.size();
+        TreeNode root = new TreeNode(B.get(poSize - 1));
+
+        int rootIndex = A.indexOf(root.getVal());
+
+        // left subtree
+        ArrayList<Integer> inOrderLST = new ArrayList<>(A.subList(0, rootIndex));
+        ArrayList<Integer> postOrderLST = new ArrayList<>(A.subList(0, rootIndex));
+
+        // right subtree
+        ArrayList<Integer> inOrderRST = new ArrayList<>(B.subList(rootIndex + 1, B.size()));
+        ArrayList<Integer> postOrderRST = new ArrayList<>(A.subList(rootIndex, rootIndex + inOrderRST.size() - 1));
+
+        root.setLeft(constructTree(inOrderLST, postOrderLST));
+        root.setRight(constructTree(inOrderRST, postOrderRST));
+        return root;
+    }
+
+
 }
