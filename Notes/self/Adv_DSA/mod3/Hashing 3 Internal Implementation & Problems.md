@@ -1,10 +1,7 @@
-
-## Update document title
-
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
+## Advance DSA Day 36 Hashing 3 Internal Implementation & Problems
 
 ## Scope / Agenda
-  
+- [HashMap Implementation]()
 
 ## Problems and solutions
 
@@ -14,5 +11,8 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes]()
-2. [Class/Lecture Video]()
+1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/36.%20Hashing_Implementation.pdf)
+2. [Class/Lecture Video](https://youtu.be/0KGjj-xWaCA)
+
+
+## HashMap Implementation
