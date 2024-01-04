@@ -1,5 +1,6 @@
 package com.learning.scaler.advance.module3.hashing3.assignment;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 /*
@@ -40,7 +41,15 @@ Example Explanation
 public class LongestSubArrayZeroSum {
 
     public int solve(ArrayList<Integer> A) {
-        return 0;
+        int length = 0;
+        BigInteger currentSum = BigInteger.ZERO;
+        for(int i = 0; i < A.size(); i++){
+            currentSum = currentSum.add(BigInteger.valueOf(A.get(i)));
+            if(currentSum.equals(BigInteger.ZERO)){
+                length = Math.max((i + 1), length);
+            }
+        }
+        return length;
     }
 
 }

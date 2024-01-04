@@ -1,12 +1,16 @@
 package com.learning.scaler.advance.module3;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class TreeNode {
-    @NonNull
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+
+    public TreeNode(int val){
+        this.val = val;
+    }
 }
