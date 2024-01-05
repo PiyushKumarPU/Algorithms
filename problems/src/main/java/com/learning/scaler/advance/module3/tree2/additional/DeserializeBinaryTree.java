@@ -3,7 +3,9 @@ package com.learning.scaler.advance.module3.tree2.additional;
 import com.learning.scaler.advance.module3.TreeNode;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /*
 Problem Description
@@ -66,24 +68,61 @@ public class DeserializeBinaryTree {
     }
 
     public static TreeNode solve(ArrayList<Integer> A) {
-        if (A == null || A.get(0) < 0) return null;
+        if (A == null || A.isEmpty() || A.get(0) == -1) {
+            return null;
+        }
+
         TreeNode root = new TreeNode(A.get(0));
-        A.remove(A.get(0));
-        int nodeCount = 1;
-        System.out.println(root.val);
-        while (!A.isEmpty()) {
-            int index = 2 * nodeCount;
-            List<Integer> integers = A;
-            if (index < A.size()) {
-                integers = A.subList(0, 2 * nodeCount);
-                nodeCount = (int) integers.stream().filter(x -> x > -1).count();
-                System.out.println(integers);
-                A.removeAll(integers);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        for (int i = 1; i < A.size(); i += 2) {
+            TreeNode current = queue.poll();
+
+            if (A.get(i) != null && A.get(i) > -1) {
+                assert current != null;
+                current.left = new TreeNode(A.get(i));
+                queue.offer(current.left);
             }
 
+            if (i + 1 < A.size() && A.get(i + 1) != null && A.get(i + 1) > -1) {
+                assert current != null;
+                current.right = new TreeNode(A.get(i + 1));
+                queue.offer(current.right);
+            }
         }
         return root;
+    }
 
+    public TreeNode solveScaler(ArrayList<Integer> A) {
+        TreeNode root = new TreeNode(A.get(0));
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        int i = 1;
+        while (!q.isEmpty()) {
+            TreeNode cur = q.peek();
+            q.remove();
+            if (cur == null) {
+                continue;
+            }
+            int val_left = A.get(i);
+            int val_right = A.get(i + 1);
+            i += 2;
+
+            if (val_left == -1) {
+                cur.left = null;
+            } else {
+                cur.left = new TreeNode(val_left);
+            }
+            if (val_right == -1) {
+                cur.right = null;
+            } else {
+                cur.right = new TreeNode(val_right);
+            }
+            q.add(cur.left);
+            q.add(cur.right);
+        }
+        return root;
     }
 
 }

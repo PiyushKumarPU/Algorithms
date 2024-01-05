@@ -1,6 +1,11 @@
 package com.learning.scaler.advance.module3.tree3.additional;
 
+import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
+import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
+import com.sun.source.tree.Tree;
+
+import java.util.List;
 
 /*
 Problem Description
@@ -58,7 +63,27 @@ Example Explanation
 * */
 public class BSTNodesInARange {
 
+    public static void main(String[] args) {
+
+        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(
+                1,2,3,4,5,-1,-1,-1,-1,-1,6,-1,-1));
+
+        System.out.println(PrintTreeNode.traversePreOrder(root));
+       // System.out.println(new BSTNodesInARange().solve(root, 10, 51));
+    }
+
     public int solve(TreeNode A, int B, int C) {
-        return 0;
+        if (A == null || A.val == -1) return 0;
+        return ((A.val >= B && A.val <= C) ? 1 : 0) +
+                (A.left != null ? solve(A.left, B, C) : 0) +
+                (A.right != null ? solve(A.right, B, C) : 0);
+    }
+
+    public int solve(List<Integer> A, int B, int C) {
+        int currentSum = 0;
+        for (int i : A) {
+            if (i >= B && i <= C) currentSum += 1;
+        }
+        return currentSum;
     }
 }
