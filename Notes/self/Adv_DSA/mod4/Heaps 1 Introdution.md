@@ -1,15 +1,13 @@
 
-## Update document title
-
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
+## Advance DSA Day 37 Heaps 1: Introduction
 
 ## Scope / Agenda
-- [Connecting the Ropes]()
-- [Heap Introduction]()
-- [Insertion]()
-- [Heapify]()
-- [Extract Min]()
-- [Build Heap]()
+- [Connecting the Ropes](#connecting-the-ropes)
+- [Heap Introduction](#heap-introduction)
+- [Insertion](#insertion)
+- [Heapify](#heapify)
+- [Extract Min](#extract-min)
+- [Build Heap](#build-heap)
 
 
 ## Problems and solutions
@@ -20,8 +18,8 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes]()
-2. [Class/Lecture Video]()
+1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/37.%20Heaps%20Introduction.pdf)
+2. [Class/Lecture Video](https://youtu.be/-bqK0plm4xI)
 
 
 ## Connecting the Ropes
