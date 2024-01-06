@@ -1,5 +1,6 @@
 package com.learning.scaler.advance.module3.tree3.assignment;
 
+import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
 import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
 
@@ -53,25 +54,8 @@ public class ValidBinarySearchTree {
     private int isValidBst = 1;
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(10);
-        TreeNode root9 = new TreeNode(9);
-        TreeNode root4 = new TreeNode(14);
-        TreeNode root8 = new TreeNode(12);
-        TreeNode root3 = new TreeNode(13);
-        TreeNode root_1 = new TreeNode(-1);
 
-        root.setLeft(root9);
-        root.setRight(root4);
-        root4.setLeft(root8);
-        root8.setRight(root3);
-
-        // NULL node
-        root9.setLeft(root_1);
-        root9.setRight(root_1);
-        root4.setRight(root_1);
-        root8.setLeft(root_1);
-        root3.setLeft(root_1);
-        root3.setRight(root_1);
+        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(3, 2, 4, 1, 3, -1, -1, -1, -1, -1, -1));
 
         System.out.println(PrintTreeNode.traversePreOrder(root));
 
@@ -79,16 +63,15 @@ public class ValidBinarySearchTree {
     }
 
     public int isValidBST(TreeNode A) {
-        isValidBSTWorker(A);
-        return isValidBst;
+        return isValidBSTWorker(A) ? 1 : 0;
     }
 
-    private void isValidBSTWorker(TreeNode A) {
-        if (A == null || A.val == -1 || isValidBst == 0) return;
-        boolean isLeafNode = A.left.val == -1 && A.right.val == -1;
-        boolean isValidBSTNode = A.left.val < A.val && (A.right == null || A.right.val > A.val);
-        if (!isLeafNode && !isValidBSTNode) {
-            isValidBst = 0;
-        }
+    private boolean isValidBSTWorker(TreeNode A) {
+        if (A == null || A.val == -1 || isValidBst == 0) return true;
+        if ((A.left == null || A.left.val == -1) && (A.right == null || A.right.val == -1)) return true;
+
+        boolean isValidBST = ((A.left != null && A.left.val <= A.val) &&
+                (A.right != null && A.right.val >= A.val));
+        return isValidBST && isValidBSTWorker(A.left) && isValidBSTWorker(A.right);
     }
 }

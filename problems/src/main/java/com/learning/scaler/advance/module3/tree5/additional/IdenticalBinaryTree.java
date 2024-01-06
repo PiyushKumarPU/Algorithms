@@ -1,7 +1,11 @@
 package com.learning.scaler.advance.module3.tree5.additional;
 
+import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
+import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
 import com.sun.source.tree.Tree;
+
+import java.util.List;
 
 /*
 Problem Description
@@ -42,22 +46,19 @@ Example Explanation
 * */
 public class IdenticalBinaryTree {
 
-    private int isIdentical = 1;
+    private int isIdentical = 0;
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(6);
-        TreeNode root9 = new TreeNode(9);
-        TreeNode root4 = new TreeNode(4);
-        TreeNode root8 = new TreeNode(8);
-        TreeNode root3 = new TreeNode(3);
 
-        root.setLeft(root9);
-        root.setRight(root4);
-        root4.setLeft(root8);
-        root8.setRight(root3);
+        TreeNode root1 = LevelOrderTreeConstruction.constructTree(List.of(5, 10, -1, -1, -1));
+        TreeNode root2 = LevelOrderTreeConstruction.constructTree(List.of(5, -1, -1));
 
-        IdenticalBinaryTree identicalBinaryTree = new IdenticalBinaryTree();
-        System.out.println(identicalBinaryTree.isSameTree(root, root));
+        System.out.println(PrintTreeNode.traversePreOrder(root1));
+        System.out.println(PrintTreeNode.traversePreOrder(root2));
+
+
+        /*IdenticalBinaryTree identicalBinaryTree = new IdenticalBinaryTree();
+        System.out.println(identicalBinaryTree.isSameTree(root1, root2));*/
     }
 
     public int isSameTree(TreeNode A, TreeNode B) {
@@ -66,18 +67,16 @@ public class IdenticalBinaryTree {
     }
 
 
-    private Boolean isIdTree(TreeNode treeNode1, TreeNode treeNode2) {
-        if (treeNode1 == null || treeNode2 == null || isIdentical == 0 ||
-                treeNode1.getVal() != treeNode2.getVal()) return false;
-        boolean isValidTree =
-                ((treeNode1.getLeft() == null && treeNode2.getLeft() == null) ||
-                        isIdTree(treeNode1.getLeft(), treeNode2.getLeft())) &&
-                        ((treeNode1.getRight() == null && treeNode2.getRight() == null) ||
-                                isIdTree(treeNode1.getRight(), treeNode2.getRight()));
-        if (!isValidTree) {
-            isIdentical = 0;
-        }
-        return isValidTree;
+    private void isIdTree(TreeNode treeNode1, TreeNode treeNode2) {
+        if ((treeNode1 != null && treeNode1.val == -1
+                && treeNode2 != null && treeNode2.val == -1))
+            return;
+
+        boolean isSameVal = treeNode1 != null && treeNode2 != null && treeNode1.val == treeNode2.val;
+        isIdentical = isSameVal ? 1 : 0;
+        isIdTree(treeNode1.left,treeNode2.left);
+        isIdTree(treeNode1.right,treeNode2.right);
+
     }
 
 
