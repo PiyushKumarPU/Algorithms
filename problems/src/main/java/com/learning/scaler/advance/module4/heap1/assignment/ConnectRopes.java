@@ -1,6 +1,10 @@
 package com.learning.scaler.advance.module4.heap1.assignment;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /*
 Problem Description
@@ -51,7 +55,147 @@ Example Explanation
 * */
 public class ConnectRopes {
 
+    public static void main(String[] args) {
+        ConnectRopes connectRopes = new ConnectRopes();
+        //System.out.println(connectRopes.solve(new ArrayList<>(List.of(1, 2, 3, 4, 5))));
+        System.out.println(connectRopes.solve(new int[]{16, 7, 3, 5, 9, 8, 6, 15}));
+        System.out.println(connectRopes.solve1(new ArrayList<>(List.of(16, 7, 3, 5, 9, 8, 6, 15))));
+
+    }
+
     public int solve(ArrayList<Integer> A) {
-    return 0;
+        if (A.size() == 1) return A.get(0);
+        int totalCost = 0;
+        ArrayList<Integer> heap = constructHeap(A);
+        while (heap.size() > 1) {
+            int sum = heap.get(0) + heap.get(1);
+            totalCost += sum;
+            heap.add(sum);
+            heap = constructHeap(new ArrayList<>(heap.subList(2, heap.size())));
+        }
+        return totalCost;
+    }
+
+    private ArrayList<Integer> constructHeap(ArrayList<Integer> input) {
+        if (input == null || input.size() == 1) return input;
+        int start = (input.size() - 2) / 2;
+        for (int i = start; i >= 0; i--) {
+            heapify(input, i);
+        }
+        return input;
+    }
+
+    public void heapify(ArrayList<Integer> A, int i) {
+        int min = i, size = A.size();
+        int l_c = (2 * min) + 1;
+        int r_c = (2 * min) + 2;
+
+        if (l_c < size && A.get(l_c) < A.get(min))
+            min = l_c;
+
+        if (r_c < size && A.get(r_c) < A.get(min))
+            min = r_c;
+
+        if (min != i) {
+            int temp = A.get(min);
+            A.set(min, A.get(i));
+            A.set(i, temp);
+            heapify(A, min);
+        }
+
+    }
+
+    public int solve(int[] A) {
+        int ans = 0;
+        int size = A.length;
+        //building heap
+        for (int i = ((A.length) / 2) - 1; i >= 0; i--) {
+            heapify(i, size, A);
+        }
+
+
+        while (size > 1) {
+            int a = A[0];
+            A[0] = A[size - 1];
+            size--;
+            heapify(0, size, A);
+            int b = A[0];
+            int c = a + b;
+            A[0] = c;
+            ans += c;
+            heapify(0, size, A);
+        }
+        return ans;
+    }
+
+
+    public void heapify(int i, int size, int[] A) {
+        int min = i;
+        int l_c = (2 * min) + 1;
+        int r_c = (2 * min) + 2;
+
+        if (l_c < size && A[l_c] < A[min])
+            min = l_c;
+
+        if (r_c < size && A[r_c] < A[min])
+            min = r_c;
+
+        if (min != i) {
+            int temp = A[min];
+            A[min] = A[i];
+            A[i] = temp;
+            heapify(min, size, A);
+        }
+
+    }
+
+
+    private void heapify1(ArrayList<Integer> A, int index1) {
+        int i = index1, left = 2 * i + 1, right = 2 * i + 2;
+        while (left <= A.size()) {
+            int currentMin = Math.min(A.get(i), A.get(left));
+            if (right < A.size()) {
+                currentMin = Math.min(currentMin, A.get(right));
+            }
+            if (currentMin == A.get(i)) break;
+            else if (currentMin == A.get(left)) {
+                int temp = A.get(i);
+                A.set(i, A.get(left));
+                A.set(left, temp);
+                i = left;
+            } else if (currentMin == A.get(right)) {
+                int temp = A.get(i);
+                A.set(i, A.get(right));
+                A.set(right, temp);
+                i = right;
+            }
+            left = 2 * i + 1;
+            right = 2 * i + 2;
+        }
+    }
+
+    public int solve1(ArrayList<Integer> A) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        int cost = 0;
+
+        // insert all elements in the queue
+        for (int x : A) {
+            pq.offer(x);
+        }
+
+        // keep on removing elements from the queue untill there is one element in the queue
+        while (pq.size() != 1) {
+
+            // Take the two ropes with smallest length
+            int l1 = pq.poll();
+            int l2 = pq.poll();
+            // cost of combining these two ropes is l1 + l2.
+            cost += l1 + l2;
+
+            // add the newly formed rope of length l1 + l2 to the queue.
+            pq.offer(l1 + l2);
+        }
+
+        return cost;
     }
 }

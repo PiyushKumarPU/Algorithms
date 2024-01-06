@@ -7,27 +7,50 @@ public class Solution {
 
     public static void main(String[] args) {
 
-        TreeNode root = new TreeNode(6);
-        TreeNode root9 = new TreeNode(9);
-        TreeNode root4 = new TreeNode(4);
-        TreeNode root8 = new TreeNode(8);
-        TreeNode root3 = new TreeNode(3);
-        TreeNode root_1 = new TreeNode(-1);
+        System.out.println(new Solution().solve(new int[]{16, 7, 3, 5, 9, 8, 6, 15}));
+    }
 
-        root.setLeft(root9);
-        root.setRight(root4);
-        root4.setLeft(root8);
-        root8.setRight(root3);
+    public int solve(int[] A) {
+        int ans = 0;
+        int size = A.length;
+        //building heap
+        for (int i = ((A.length) / 2) - 1; i >= 0; i--) {
+            heapify(i, size, A);
+        }
 
-        // NULL node
-        root9.setLeft(root_1);
-        root9.setRight(root_1);
-        root4.setRight(root_1);
-        root8.setLeft(root_1);
-        root3.setLeft(root_1);
-        root3.setRight(root_1);
+        while (size > 1) {
+            int a = A[0];
+            A[0] = A[size - 1];
+            size--;
+            heapify(0, size, A);
+            int b = A[0];
+            int c = a + b;
+            A[0] = c;
+            ans += c;
+            heapify(0, size, A);
+        }
+        return ans;
+    }
 
-        System.out.println(PrintTreeNode.traversePreOrder(root));
+
+    public void heapify(int i, int size, int[] A) {
+        int min = i;
+        int l_c = (2 * min) + 1;
+        int r_c = (2 * min) + 2;
+
+        if (l_c < size && A[l_c] < A[min])
+            min = l_c;
+
+        if (r_c < size && A[r_c] < A[min])
+            min = r_c;
+
+        if (min != i) {
+            int temp = A[min];
+            A[min] = A[i];
+            A[i] = temp;
+            heapify(min, size, A);
+        }
+
     }
 }
  
