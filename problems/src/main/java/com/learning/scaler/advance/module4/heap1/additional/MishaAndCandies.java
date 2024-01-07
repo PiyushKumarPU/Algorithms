@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module4.heap1.additional;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /*
 Problem Description
@@ -50,7 +52,89 @@ Example Explanation
          So the number of candies Misha eat is 1.
 * */
 public class MishaAndCandies {
+
+    public static void main(String[] args) {
+        System.out.println(new MishaAndCandies().solveHeap(new ArrayList<>(List.of(9, 818, 174, 237, 892, 109, 522, 27, 59, 336, 605, 865, 714, 86, 708, 535, 138, 948, 836, 287, 179, 754, 466, 856, 153, 53, 958, 951, 262, 341, 769, 491, 772, 509, 336, 120, 98, 805, 169, 984, 520, 447, 256, 266, 348, 351, 60, 563, 45, 638, 29, 479, 400)), 852));
+        //System.out.println(new MishaAndCandies().solve(new ArrayList<>(List.of(1, 2, 1)), 2));
+
+    }
+
     public int solve(ArrayList<Integer> A, int B) {
-        return 0;
+        int totalCount = 0;
+        PriorityQueue<Integer> candies = new PriorityQueue<>();
+        for (Integer i : A) {
+            candies.offer(i);
+        }
+
+        while (!candies.isEmpty()) {
+            Integer current = candies.poll();
+            if (current != null && current <= B) {
+                int candiesCount = current / 2;
+                totalCount += candiesCount;
+                current = candies.poll();
+                if (current != null) {
+                    current += candiesCount;
+                    candies.offer(current);
+                }
+            }
+        }
+        return totalCount;
+    }
+
+    public int solveHeap(ArrayList<Integer> A, int B) {
+        int size = A.size();
+        int totalCount = 0;
+        while (size > 0) {
+            A = constructHeap(A);
+            Integer current = A.get(0);
+            A.set(0, A.get(size - 1));
+            size--;
+            heapify(A, 0, size);
+            if (current != null && current <= B) {
+                int candiesCount = current / 2;
+                totalCount += candiesCount;
+                current = A.get(0);
+                if (current != null) {
+                    current += candiesCount;
+                    A.set(0, current);
+                }
+            }
+        }
+        return totalCount;
+
+    }
+
+
+    private ArrayList<Integer> constructHeap(ArrayList<Integer> input) {
+        if (input == null || input.size() == 1) return input;
+        int start = (input.size() - 2) / 2;
+        for (int i = start; i >= 0; i--) {
+            heapify(input, i, input.size());
+        }
+        return input;
+    }
+
+    private void heapify(ArrayList<Integer> A, int index1, int size) {
+        int i = index1, left = 2 * i + 1, right = 2 * i + 2;
+        while (left <= A.size()) {
+            int currentMin = Math.min(A.get(i), A.get(left));
+            if (right < A.size()) {
+                currentMin = Math.min(currentMin, A.get(right));
+            }
+            if (currentMin == A.get(i)) break;
+            else if (currentMin == A.get(left)) {
+                int temp = A.get(i);
+                A.set(i, A.get(left));
+                A.set(left, temp);
+                i = left;
+            } else if (currentMin == A.get(right)) {
+                int temp = A.get(i);
+                A.set(i, A.get(right));
+                A.set(right, temp);
+                i = right;
+            }
+            left = 2 * i + 1;
+            right = 2 * i + 2;
+        }
     }
 }

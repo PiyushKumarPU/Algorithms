@@ -51,11 +51,9 @@ Example Explanation
 * */
 public class ValidBinarySearchTree {
 
-    private int isValidBst = 1;
-
     public static void main(String[] args) {
 
-        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(3, 2, 4, 1, 3, -1, -1, -1, -1, -1, -1));
+        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(2147483647, -1, -1));
 
         System.out.println(PrintTreeNode.traversePreOrder(root));
 
@@ -67,11 +65,11 @@ public class ValidBinarySearchTree {
     }
 
     private boolean isValidBSTWorker(TreeNode A) {
-        if (A == null || A.val == -1 || isValidBst == 0) return true;
-        if ((A.left == null || A.left.val == -1) && (A.right == null || A.right.val == -1)) return true;
-
-        boolean isValidBST = ((A.left != null && A.left.val <= A.val) &&
-                (A.right != null && A.right.val >= A.val));
-        return isValidBST && isValidBSTWorker(A.left) && isValidBSTWorker(A.right);
+        if (A == null || A.val == -1) return true;
+        if (A.left != null && A.right != null && A.left.val < 0 && A.right.val < 0) return true;
+        boolean isValidRoot = A.left != null && A.left.val <= A.val && A.right != null && A.val <= A.right.val;
+        boolean isValidLeftBst = isValidBSTWorker(A.left);
+        boolean isValidRightBst = isValidBSTWorker(A.right);
+        return isValidRoot && isValidLeftBst && isValidRightBst;
     }
 }
