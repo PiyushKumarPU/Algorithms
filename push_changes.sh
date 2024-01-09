@@ -3,7 +3,7 @@ cd ~/.ssh/
 eval "$(ssh-agent -s)"
 ssh-add id_rajpiyush
 echo "Moving back to working dir"
-cd /g/Scaler/repo/Algorithms/
+cd /e/Scaler/repo/Algorithms/
 echo "Check if any changes are there in remote repo"
 git pull
 echo "Adding all local changes to commit"
