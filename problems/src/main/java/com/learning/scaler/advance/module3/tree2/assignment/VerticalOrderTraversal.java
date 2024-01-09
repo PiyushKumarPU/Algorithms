@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module3.tree2.assignment;
 
 import com.learning.scaler.advance.module3.BTreePrinter;
+import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
 import com.learning.scaler.advance.module3.TreeNode;
 
 import java.util.*;
@@ -64,52 +65,52 @@ Example Explanation
 public class VerticalOrderTraversal {
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        TreeNode node2 = new TreeNode(2);
-        TreeNode node3 = new TreeNode(3);
-        TreeNode node4 = new TreeNode(4);
-        TreeNode node5 = new TreeNode(5);
-        TreeNode node6 = new TreeNode(6);
-        TreeNode node7 = new TreeNode(7);
-        TreeNode node8 = new TreeNode(8);
-
-        root.left = node2;
-        root.right = node3;
-
-        node2.left = node4;
-        node2.right = node5;
-        node3.left = node6;
-        node3.right = node7;
-        node4.left = node8;
-
-        BTreePrinter.printNode(root);
-
+        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(3709, 4465, 2668, -1, -1, -1, -1));
         System.out.println(new VerticalOrderTraversal().verticalOrderTraversal(root));
     }
 
     public ArrayList<ArrayList<Integer>> verticalOrderTraversal(TreeNode A) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        Map<Integer, Queue<Integer>> integerListMap = new HashMap<>();
-        populate(A, integerListMap, 0);
-        for (Integer key : integerListMap.keySet().stream().sorted().collect(java.util.stream.Collectors.toList())) {
-            ArrayList<Integer> local = new ArrayList<>();
-           Queue<Integer> integers =  integerListMap.get(key);
-           while (!integers.isEmpty()){
-               local.add(integers.poll());
-           }
-           result.add(local);
+        Map<Integer, ArrayList<Integer>> map = populate(A);
+        for (Integer key : map.keySet().stream().sorted().collect(Collectors.toList())) {
+            result.add(map.get(key));
         }
         return result;
     }
 
-    private void populate(TreeNode A, Map<Integer, Queue<Integer>> input, int start) {
-        if (A == null || A.val == -1) return;
-        Queue<Integer> currentVal = input.getOrDefault(start, new LinkedList<>());
-        currentVal.add(A.val);
-        input.put(start, currentVal);
-        if (A.left != null && A.left.val != -1)
-            populate(A.left, input, start - 1);
-        if (A.right != null && A.right.val != -1)
-            populate(A.right, input, start + 1);
+    private Map<Integer, ArrayList<Integer>> populate(TreeNode A) {
+        Map<Integer, ArrayList<Integer>> result = new HashMap<>();
+        if (A == null) return result;
+        Queue<Map<Integer, TreeNode>> mapQueue = new LinkedList<>();
+        Map<Integer, TreeNode> nodeMap = new HashMap<>();
+        nodeMap.put(0, A);
+        mapQueue.offer(nodeMap);
+        while (!mapQueue.isEmpty()) {
+            Map.Entry<Integer, TreeNode> current = mapQueue.poll().entrySet().stream().findFirst().orElse(null);
+            if (current != null) {
+                Integer key = current.getKey();
+                ArrayList<Integer> currentList = result.getOrDefault(key, new ArrayList<>());
+                TreeNode currentNode = current.getValue();
+                if (currentNode.val != -1) {
+                    if (currentNode.left != null && currentNode.left.val != -1) {
+                        nodeMap.clear();
+                        nodeMap.put(key - 1, currentNode.left);
+                        mapQueue.offer(nodeMap);
+                    }
+                    nodeMap.clear();
+                    nodeMap.put(key, currentNode.left);
+                    mapQueue.offer(nodeMap);
+                    if (currentNode.right != null && currentNode.right.val != -1) {
+                        nodeMap.clear();
+                        nodeMap.put(key + 1, currentNode.right);
+                        mapQueue.offer(nodeMap);
+                    }
+                }
+            }
+        }
+
+        return result;
     }
+
+
 }

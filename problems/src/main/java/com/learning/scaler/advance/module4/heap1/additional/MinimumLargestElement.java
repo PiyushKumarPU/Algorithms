@@ -1,6 +1,9 @@
 package com.learning.scaler.advance.module4.heap1.additional;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /*
 Problem Description
@@ -50,8 +53,36 @@ Example Explanation
 * */
 public class MinimumLargestElement {
 
-    public int solve(ArrayList<Integer> A, int B) {
+    public static void main(String[] args) {
+        System.out.println(solve(new ArrayList<>(List.of(5, 7, 8)), 9));
+        //System.out.println(solve(new ArrayList<>(List.of(5, 1, 4, 2)), 5));
+
+    }
+
+    public static int solve(ArrayList<Integer> A, int B) {
+        PriorityQueue<Integer> heap;
+        if (B == 0) {
+            heap = constructHeap(A, Comparator.reverseOrder());
+            return heap.isEmpty() ? 0 : heap.poll();
+        }
+        heap = constructHeap(A, Integer::compareTo);
+        if (!heap.isEmpty()) {
+            int start = 1;
+            while (!heap.isEmpty() && start <= B) {
+                heap.add(heap.poll() + 1);
+                start++;
+            }
+            heap = constructHeap(A, Comparator.reverseOrder());
+            return heap.isEmpty() ? 0 : heap.poll();
+        }
         return 0;
+    }
+
+
+    private static PriorityQueue<Integer> constructHeap(ArrayList<Integer> A, Comparator<Integer> comparator) {
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(comparator);
+        maxHeap.addAll(A);
+        return maxHeap;
     }
 
 }

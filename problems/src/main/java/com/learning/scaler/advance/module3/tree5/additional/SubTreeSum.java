@@ -88,17 +88,13 @@ public class SubTreeSum {
         TreeNode current = A;
 
         while (current != null || !stack.isEmpty()) {
-            // iterate till left most node
             while (current != null) {
                 stack.push(current);
                 current = current.getLeft();
             }
-            // pop leftmost node and add that to current sum
             current = stack.pop();
-            // add current value in node sum value
             currentSum += current.getVal();
 
-            // check if any right subtree present for the leftmost node
             current = current.getRight();
         }
         A.setVal(currentSum);
