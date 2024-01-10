@@ -30,4 +30,29 @@ public class LevelOrderTreeConstruction {
         }
         return root;
     }
+
+    public static TreeLinkNode constructTreeLink(List<Integer> A) {
+        if (A == null || A.isEmpty() ) {
+            return null;
+        }
+
+        TreeLinkNode root = new TreeLinkNode(A.get(0));
+        Queue<TreeLinkNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        for (int i = 1; i < A.size(); i += 2) {
+            TreeLinkNode current = queue.poll();
+
+            if (A.get(i) != null/* && A.get(i) > -1*/) {
+                current.left = new TreeLinkNode(A.get(i));
+                queue.offer(current.left);
+            }
+
+            if (i + 1 < A.size() && A.get(i + 1) != null /*&& A.get(i + 1) > -1*/) {
+                current.right = new TreeLinkNode(A.get(i + 1));
+                queue.offer(current.right);
+            }
+        }
+        return root;
+    }
 }

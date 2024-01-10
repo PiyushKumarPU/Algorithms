@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class TreeLinkNode {
-    int val;
-    TreeLinkNode left, right, next;
+    public int val;
+    public TreeLinkNode left, right, next;
+    public TreeLinkNode(int val){
+        this.val = val;
+    }
 }
