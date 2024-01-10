@@ -10,8 +10,8 @@
 ## Problems and solutions
 
 1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/greedy/assignment)
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/greedy/additional)
+3. [Lecture Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/greedy/lecture)
 
 ## Class Notes and Videos
 
