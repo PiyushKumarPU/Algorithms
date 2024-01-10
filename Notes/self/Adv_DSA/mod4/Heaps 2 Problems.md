@@ -40,6 +40,19 @@
         3. repeat same process untill remaining size is zero.
         TC : nlogn + logn  nlogn --> to construct min heap using library func and logn to extract min element from heap
         SC : O(1)  Space optimized
+
+### Psuedo code:
+#### Idea 1 : Using min heap
+```java
+    // construct Priority queue
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    minHeap.addAll(<array elements>)
+    arr[] ans;
+    while(!minHeap.isEmpty()){
+        ans[index] = minHeap.poll();
+    }
+    return 
+```
 ## kth Largest Element
 ## Sort Nearly Sorted Array
 ## Median of stream of Integers
