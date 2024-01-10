@@ -1,7 +1,5 @@
 ## Advance DSA Day 39 Greedy Algorithm
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
-
 ## Scope / Agenda
 - [What is Greedy](#what-is-greedy)
 - [Free cars](#free-cars)
@@ -11,7 +9,7 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/greedy/assignment)
 2. [Additional Problems]()
 3. [Self Practise Problems]()
 

@@ -1,7 +1,8 @@
-package com.learning.scaler.advance.module4.greedy.assignment;
+package com.learning.scaler.advance.module4.greedy.lecture;
+
+import com.learning.scaler.advance.module4.greedy.Pair;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /*

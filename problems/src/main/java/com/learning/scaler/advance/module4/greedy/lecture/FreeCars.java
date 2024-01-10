@@ -1,4 +1,6 @@
-package com.learning.scaler.advance.module4.greedy.assignment;
+package com.learning.scaler.advance.module4.greedy.lecture;
+
+import com.learning.scaler.advance.module4.greedy.Toy;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -92,4 +94,3 @@ public class FreeCars {
         return result;
     }
 }
-
