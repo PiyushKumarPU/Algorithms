@@ -3,7 +3,6 @@ package com.learning.scaler.advance.module3.tree5.additional;
 import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
 import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
-import com.sun.source.tree.Tree;
 
 import java.util.List;
 
@@ -46,7 +45,7 @@ Example Explanation
 * */
 public class IdenticalBinaryTree {
 
-    private int isIdentical = 0;
+    private final int isIdentical = 0;
 
     public static void main(String[] args) {
 
@@ -56,27 +55,28 @@ public class IdenticalBinaryTree {
         System.out.println(PrintTreeNode.traversePreOrder(root1));
         System.out.println(PrintTreeNode.traversePreOrder(root2));
 
-
-        /*IdenticalBinaryTree identicalBinaryTree = new IdenticalBinaryTree();
-        System.out.println(identicalBinaryTree.isSameTree(root1, root2));*/
+        IdenticalBinaryTree identicalBinaryTree = new IdenticalBinaryTree();
+        System.out.println(identicalBinaryTree.isSameTree(root1, root2));
     }
 
-    public int isSameTree(TreeNode A, TreeNode B) {
-        isIdTree(A, B);
-        return isIdentical;
+    private int isSameTree(TreeNode A, TreeNode B) {
+        if ((A == null && B == null)) return 1;
+        if (A == null || B == null) return 0;
+        int root = (A.val == B.val) ? 1 : 0;
+        return root * isSameTree(A.left, B.left) * isSameTree(A.right, B.right);
     }
 
+    public int sameTree(TreeNode A, TreeNode B) {
+        if (A == null && B == null)
+            return 1;
+        if (A == null || B == null)
+            return 0;
+        if (A.val != B.val)
+            return 0;
 
-    private void isIdTree(TreeNode treeNode1, TreeNode treeNode2) {
-        if ((treeNode1 != null && treeNode1.val == -1
-                && treeNode2 != null && treeNode2.val == -1))
-            return;
-
-        boolean isSameVal = treeNode1 != null && treeNode2 != null && treeNode1.val == treeNode2.val;
-        isIdentical = isSameVal ? 1 : 0;
-        isIdTree(treeNode1.left,treeNode2.left);
-        isIdTree(treeNode1.right,treeNode2.right);
-
+        int num = 1;
+        num = num & sameTree(A.left, B.left) & sameTree(A.right, B.right);
+        return num;
     }
 
 
