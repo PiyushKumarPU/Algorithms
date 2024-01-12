@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 /*
 Problem Description
@@ -54,35 +55,37 @@ Example Explanation
 public class MinimumLargestElement {
 
     public static void main(String[] args) {
-        System.out.println(solve(new ArrayList<>(List.of(5, 7, 8)), 9));
+        System.out.println(solve(new ArrayList<>(List.of(8, 6, 4, 2)), 8));
         //System.out.println(solve(new ArrayList<>(List.of(5, 1, 4, 2)), 5));
 
     }
 
     public static int solve(ArrayList<Integer> A, int B) {
-        PriorityQueue<Integer> heap;
-        if (B == 0) {
-            heap = constructHeap(A, Comparator.reverseOrder());
-            return heap.isEmpty() ? 0 : heap.poll();
+        PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparing(Pair::getImpact));
+        minHeap.addAll(A.stream().map(val -> new Pair(val, val)).collect(java.util.stream.Collectors.toList()));
+        int remainingOps = B;
+        while (!minHeap.isEmpty() && remainingOps > 0) {
+            Pair pair = minHeap.poll();
+            System.out.println(pair);
+            minHeap.add(new Pair(pair.currentValue + pair.actualValue, pair.actualValue));
+            remainingOps--;
         }
-        heap = constructHeap(A, Integer::compareTo);
-        if (!heap.isEmpty()) {
-            int start = 1;
-            while (!heap.isEmpty() && start <= B) {
-                heap.add(heap.poll() + 1);
-                start++;
-            }
-            heap = constructHeap(A, Comparator.reverseOrder());
-            return heap.isEmpty() ? 0 : heap.poll();
-        }
-        return 0;
+        return minHeap.stream().map(pair1 -> pair1.currentValue).max(Comparator.naturalOrder()).orElse(0);
+    }
+}
+
+class Pair {
+    Integer currentValue;
+    Integer actualValue;
+
+    private Integer impact;
+
+    public Pair(Integer currentValue, Integer actualValue) {
+        this.currentValue = currentValue;
+        this.actualValue = actualValue;
     }
 
-
-    private static PriorityQueue<Integer> constructHeap(ArrayList<Integer> A, Comparator<Integer> comparator) {
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(comparator);
-        maxHeap.addAll(A);
-        return maxHeap;
+    public Integer getImpact() {
+        return currentValue + actualValue;
     }
-
 }

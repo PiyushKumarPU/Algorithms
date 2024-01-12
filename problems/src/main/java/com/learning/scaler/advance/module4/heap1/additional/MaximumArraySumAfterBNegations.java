@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module4.heap1.additional;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /*
 Problem Description
@@ -47,7 +48,52 @@ Example Explanation
 * */
 public class MaximumArraySumAfterBNegations {
 
+    public static void main(String[] args) {
+        MaximumArraySumAfterBNegations negations = new MaximumArraySumAfterBNegations();
+
+        System.out.println(negations.solve(new ArrayList<>(List.of(24, -68, -29, -9, 84)), 4));
+        System.out.println(negations.solve(new ArrayList<>(List.of(57, 3, -14, -87, 42, 38, 31, -7, -28, -61)), 10));
+
+    }
+
+
     public int solve(ArrayList<Integer> A, int B) {
-        return 0;
+        if (A.isEmpty() || B < 1) return 0;
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        minHeap.addAll(A);
+        int remainingOperation = B;
+        if (A.size() > minHeap.size()) remainingOperation = remainingOperation % 2;
+        if (!minHeap.isEmpty()) {
+            while (!minHeap.isEmpty() && remainingOperation > 0) {
+                remainingOperation--;
+                int currentVal = minHeap.poll();
+                minHeap.add(currentVal * -1);
+            }
+        }
+        return minHeap.stream().reduce(0, Integer::sum);
+    }
+
+    public int solve1(ArrayList<Integer> A, int B) {
+
+        PriorityQueue<Integer> negativeHeap = new PriorityQueue<>();
+        PriorityQueue<Integer> positiveHeap = new PriorityQueue<>();
+
+        Map<Boolean, List<Integer>> map = A.stream().collect(Collectors.partitioningBy(x -> x >= 0));
+        negativeHeap.addAll(map.get(Boolean.FALSE));
+        positiveHeap.addAll(map.get(Boolean.TRUE));
+
+        int maxSum = A.stream().reduce(0, Integer::sum);
+        int remainingOperation = B - 1;
+        if (!negativeHeap.isEmpty()) {
+            while (!negativeHeap.isEmpty() && remainingOperation >= 0) {
+                remainingOperation--;
+                maxSum += (negativeHeap.poll() * -2);
+            }
+        }
+        remainingOperation = remainingOperation % 2;
+        if (remainingOperation > 0 && !positiveHeap.isEmpty()) {
+            maxSum += (positiveHeap.poll() * -2);
+        }
+        return maxSum;
     }
 }
