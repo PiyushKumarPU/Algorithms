@@ -1,9 +1,7 @@
 package com.learning.scaler.advance.module4.heap1.assignment;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.PriorityQueue;
 
 /*
@@ -57,7 +55,7 @@ public class ConnectRopes {
 
     public static void main(String[] args) {
         ConnectRopes connectRopes = new ConnectRopes();
-        //System.out.println(connectRopes.solve(new ArrayList<>(List.of(1, 2, 3, 4, 5))));
+        System.out.println(connectRopes.solve(new ArrayList<>(List.of(1, 2, 3, 4, 5))));
         System.out.println(connectRopes.solve(new int[]{16, 7, 3, 5, 9, 8, 6, 15}));
         System.out.println(connectRopes.solve1(new ArrayList<>(List.of(16, 7, 3, 5, 9, 8, 6, 15))));
 
@@ -150,30 +148,6 @@ public class ConnectRopes {
     }
 
 
-    private void heapify1(ArrayList<Integer> A, int index1) {
-        int i = index1, left = 2 * i + 1, right = 2 * i + 2;
-        while (left <= A.size()) {
-            int currentMin = Math.min(A.get(i), A.get(left));
-            if (right < A.size()) {
-                currentMin = Math.min(currentMin, A.get(right));
-            }
-            if (currentMin == A.get(i)) break;
-            else if (currentMin == A.get(left)) {
-                int temp = A.get(i);
-                A.set(i, A.get(left));
-                A.set(left, temp);
-                i = left;
-            } else if (currentMin == A.get(right)) {
-                int temp = A.get(i);
-                A.set(i, A.get(right));
-                A.set(right, temp);
-                i = right;
-            }
-            left = 2 * i + 1;
-            right = 2 * i + 2;
-        }
-    }
-
     public int solve1(ArrayList<Integer> A) {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         int cost = 0;
@@ -183,19 +157,13 @@ public class ConnectRopes {
             pq.offer(x);
         }
 
-        // keep on removing elements from the queue untill there is one element in the queue
-        while (pq.size() != 1) {
-
-            // Take the two ropes with smallest length
+        // keep on removing elements from the queue until there is one element in the queue
+        while (!pq.isEmpty()) {
             int l1 = pq.poll();
-            int l2 = pq.poll();
-            // cost of combining these two ropes is l1 + l2.
+            int l2 = !pq.isEmpty() ? pq.poll() : 0;
             cost += l1 + l2;
-
-            // add the newly formed rope of length l1 + l2 to the queue.
             pq.offer(l1 + l2);
         }
-
         return cost;
     }
 }

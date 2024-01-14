@@ -1,6 +1,5 @@
 package com.learning.scaler.advance.module3.tree2.lecture;
 
-import com.learning.Solution;
 import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
 import com.learning.scaler.advance.module3.TreeNode;
 

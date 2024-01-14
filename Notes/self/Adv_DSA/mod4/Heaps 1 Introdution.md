@@ -7,14 +7,13 @@
 - [Insertion](#insertion)
 - [Heapify](#heapify)
 - [Extract Min](#extract-min)
-- [Build Heap](#build-heap)
+- [Build Heap](#build-min-heap)
 
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/heap1/additional)
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/heap1/assignment)
 
 ## Class Notes and Videos
 
@@ -37,9 +36,110 @@
 - [Problems](https://www.interviewbit.com/courses/programming/heaps-and-maps/)
 
 ## Insertion
-## Heapify
+    Given a Binary Heap and a new element to be added to this Heap. The task is to insert the new element to the Heap maintaining the properties of Heap. 
+    Process of Insertion: Elements can be inserted to the heap following a similar approach as discussed above for deletion. The idea is to: 
+
+    * First increase the heap size by 1, so that it can store the new element.
+    * Insert the new element at the end of the Heap.
+    * This newly inserted element may distort the properties of Heap for its parents. So, in order to keep the properties of Heap, heapify this newly inserted element following a bottom-up approach.
+
+    TC : O(height of tree) i.e. logN
+    SC : O(1)
+
+![Insertion](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/3b24e546e76537b3541b04db8f12964d07d5e5c2/Notes/images/insertion_in_heap.gif?raw=true)   
+### Psuedo code
+```java
+    void insert(int element, int[] heap) {  // x represents dynamic array
+        // add element at last
+        heap.addElementAtLast(element)
+        i = heap.size() - 1
+        while(i > 0){
+            int parentIndex = (i-1)/2
+            if(heap[i] < heap[parentIndex]){
+                swap(heap[i], heap[parentIndex])
+                i = parentIndex;
+            }else{
+                break;
+            }
+        }
+    }
+```
+## [Heapify](https://www.geeksforgeeks.org/building-heap-from-array/)
+    Basically it is constructing heap from given array.
+
+    TC : O(lonN)
+    SC : O(1)
+
+### Psuedo Code
+```java
+    void heapify(int[] heap, int index){
+        int N = heap.size();
+        // heapify for all non leaf node
+        // last child node will 2 * index + 1 
+        while(2 * index + 1 < N){
+            // compare 
+            int currentMin = min(heap[index], heap[2 * index + 1])
+            // check if right child is in range
+            if(2 * index + 2 < N){
+                currnetMin = min(currentMin, heap[2 * index 2 1])
+            }
+            if(currentMin == min[index]){
+                // do nothing as it is on correct position
+                break;
+            }else if(currentMin == heap[2 * index + 1]){
+                swap(currentMin,heap[2 * index + 1])
+                index = (2 * index + 1)
+            }else{
+               swap(currentMin,heap[2 * index + 2])
+                index = (2 * index + 2) 
+            }
+        }
+    }
+```
+
 ## Extract Min
-## Build Heap
+    We can follow below steps to extract min element from heap
+    Steps :
+        * Construct min heap from given array
+        * Swap first element with last element so that we can ignore 
+        * reduce size by 1 so that last element will be out of heap
+        * Heapify with index 0 so that element creating issue in heap will get settled
+### Psuedo code
+```java
+   void removeMin(int[] heap){
+        // swap 0 index element with last index
+        int temp = heap[0]
+        heap[0] = heap[heap.size - 1]
+        heap[heap.size - 1] =  temp
+        heapify(heap,0)
+   }
+```
+## Build Min Heap
+    Construct heap from given array
+    arr = [5, 13, -2, 11, 27, 31, 0, 19]
+### Solution approach
+    Idea 1 : 
+        Sort the array in ascending order and we will get the min heap
+        TC : O(nlogn)
+    Idea 2 : 
+        Insert element one by one in heap
+        TC : O(nlogn)
+        SC : O(1)
+    Idea 3 :
+        heapify all non leaf node 
+        Child node for any parent index p
+            left child node  : 2 * parent index + 1
+            right child node : 2 * parent index + 2
+        Parent node to find any child node index c
+            parent node index = (c - 2)/2
+
+### Psuedo code
+```java
+    void createHeap(int[] arr)
+        for(i = (n-2)/2; i >= 0; i--){
+            heapify(arr,i);
+        }
+```
 ## Merge K Sorted Lists
 ### Problem Description
     Given a list containing head pointers of N sorted linked lists.
@@ -113,6 +213,30 @@
             current = temp;
         }
         return root;
+    }
+```
+
+## Connecting the Ropes
+### Problem Description
+    You are given an array A of integers that represent the lengths of ropes.
+    You need to connect these ropes into one rope. The cost of joining two ropes equals the sum of their lengths.
+    Find and return the minimum cost to connect these ropes into one rope.
+### Solution approach
+    Always choose two minimum rope and push back the sum to the heap for further processing
+
+### Solution
+```java
+    public int connectingRopes(List<Integer> A) {
+        if (A.size() == 1) return A.get(0);
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
+        int totalCost = 0;
+        while (minHeap.size() != 1) {
+            int firstMin = !minHeap.isEmpty() ? minHeap.poll() : 0;
+            int secondMin = minHeap.isEmpty() ? 0 : minHeap.poll();
+            totalCost += (firstMin + secondMin);
+            minHeap.add(firstMin + secondMin);
+        }
+        return totalCost;
     }
 ```
 
