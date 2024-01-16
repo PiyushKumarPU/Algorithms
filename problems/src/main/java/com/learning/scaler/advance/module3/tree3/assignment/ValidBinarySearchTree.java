@@ -3,6 +3,7 @@ package com.learning.scaler.advance.module3.tree3.assignment;
 import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
 import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
+import com.sun.source.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class ValidBinarySearchTree {
 
     public static void main(String[] args) {
 
-        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(2147483647, -1, -1));
+        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(3, 2, 4, 1, 3));
 
         System.out.println(PrintTreeNode.traversePreOrder(root));
 
@@ -61,15 +62,54 @@ public class ValidBinarySearchTree {
     }
 
     public int isValidBST(TreeNode A) {
-        return isValidBSTWorker(A) ? 1 : 0;
+        if (A == null) {
+            return 1;
+        }
+
+        /* false if the max of the left is > than us */
+        if (A.left != null
+                && maxValue(A.left) >= A.val) {
+            return 0;
+        }
+
+        /* false if the min of the right is <= than us */
+        if (A.right != null
+                && minValue(A.right) <= A.val) {
+            return 0;
+        }
+
+        /* false if, recursively, the left or right is not a
+         * BST*/
+        if (isValidBST(A.left) != 1
+                || isValidBST(A.right) != 1) {
+            return 0;
+        }
+
+        /* passing all that, it's a BST */
+        return 1;
     }
 
-    private boolean isValidBSTWorker(TreeNode A) {
-        if (A == null || A.val == -1) return true;
-        if (A.left != null && A.right != null && A.left.val < 0 && A.right.val < 0) return true;
-        boolean isValidRoot = A.left != null && A.left.val <= A.val && A.right != null && A.val <= A.right.val;
-        boolean isValidLeftBst = isValidBSTWorker(A.left);
-        boolean isValidRightBst = isValidBSTWorker(A.right);
-        return isValidRoot && isValidLeftBst && isValidRightBst;
+    static int maxValue(TreeNode A) {
+        if (A == null) {
+            return Integer.MIN_VALUE;
+        }
+        int value = A.val;
+        int leftMax = maxValue(A.left);
+        int rightMax = maxValue(A.right);
+
+        return Math.max(value, Math.max(leftMax, rightMax));
     }
+
+    static int minValue(TreeNode A) {
+        if (A == null) {
+            return Integer.MAX_VALUE;
+        }
+        int value = A.val;
+        int leftMax = minValue(A.left);
+        int rightMax = minValue(A.right);
+
+        return Math.min(value, Math.min(leftMax, rightMax));
+    }
+
+
 }

@@ -1,6 +1,9 @@
 package com.learning.scaler.advance.module3.linkedlist2.additional;
 
 import com.learning.scaler.advance.module3.ListNode;
+import com.learning.scaler.advance.module3.ListNodeConstructor;
+
+import java.util.List;
 
 /*
 Problem Description
@@ -36,8 +39,26 @@ Example Explanation
 * */
 public class SwapListNodeInPairs {
 
-    public ListNode swapPairs(ListNode A) {
+    public static void main(String[] args) {
+        SwapListNodeInPairs pairs = new SwapListNodeInPairs();
+        pairs.swapPairs(ListNodeConstructor.construct(List.of(1, 2, 3, 4, 5))).printAll();
+        /*pairs.swapPairs(ListNodeConstructor.construct(List.of(1, 2, 3, 4, 5, 6))).printAll();
+        pairs.swapPairs(ListNodeConstructor.construct(List.of(1))).printAll();
+        pairs.swapPairs(ListNodeConstructor.construct(List.of(1, 2))).printAll();*/
 
-        return null;
+    }
+
+    public ListNode swapPairs(ListNode A) {
+        if (A == null || A.next == null) return A;
+        ListNode root = A.next, temp = A, prev = null, next = null;
+        /*while (temp != null && temp.next != null) {
+            next = temp.next.next;
+
+            ListNode secondPair = temp.next;
+            temp.next = remaining;
+            secondPair.next = temp;
+            temp = remaining;
+        }*/
+        return root;
     }
 }
