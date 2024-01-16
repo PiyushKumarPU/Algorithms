@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module4.dp2.additional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 Problem Description
@@ -43,7 +45,49 @@ Example Explanation
 * */
 public class MinSumPathInTriangle {
 
+    int[][] pathMatrix;
+
+    public static void main(String[] args) {
+        MinSumPathInTriangle triangle = new MinSumPathInTriangle();
+        int result = triangle.minimumTotal(new ArrayList<>(List.of(
+                new ArrayList<>(List.of(9)),
+                new ArrayList<>(List.of(3, 8)),
+                new ArrayList<>(List.of(0, 2, 4)),
+                new ArrayList<>(List.of(8, 3, 9, 0)),
+                new ArrayList<>(List.of(5, 2, 2, 7, 3)),
+                new ArrayList<>(List.of(7, 9, 0, 2, 3, 9)),
+                new ArrayList<>(List.of(9, 7, 0, 3, 9, 8, 6)),
+                new ArrayList<>(List.of(5, 7, 6, 2, 7, 0, 3, 9))
+        )));
+        System.out.println(result);
+    }
+
     public int minimumTotal(ArrayList<ArrayList<Integer>> a) {
-        return 0;
+        int n = a.size();
+        if (pathMatrix == null) {
+            pathMatrix = new int[n][0];
+            for (int i = 0; i < n; i++) {
+                int[] row = new int[a.get(i).size()];
+                Arrays.fill(row, -1);
+                pathMatrix[i] = row;
+            }
+        }
+        return minimumTotalRecursion(a, 0, 0);
+    }
+
+    public int minimumTotalRecursion(ArrayList<ArrayList<Integer>> a, int start, int end) {
+        int n = a.size(), m = a.get(start).size();
+        if (start == n - 1 && end == m - 1) return a.get(start).get(end);
+
+        int down = Integer.MAX_VALUE, right = Integer.MAX_VALUE;
+        if (start < n - 1 && pathMatrix[start + 1][end] == -1) {
+            pathMatrix[start + 1][end] = minimumTotalRecursion(a, start + 1, end);
+            down = pathMatrix[start + 1][end];
+        }
+        if (start < n - 1 && end < a.get(start + 1).size() - 1 && pathMatrix[start + 1][end + 1] == -1) {
+            pathMatrix[start + 1][end + 1] = minimumTotalRecursion(a, start + 1, end + 1);
+            right = pathMatrix[start + 1][end + 1];
+        }
+        return a.get(start).get(end) + Math.min(right, down);
     }
 }

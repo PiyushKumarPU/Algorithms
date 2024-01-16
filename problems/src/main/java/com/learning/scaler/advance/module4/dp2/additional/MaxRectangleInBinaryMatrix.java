@@ -43,7 +43,10 @@ Example Explanation
 * */
 public class MaxRectangleInBinaryMatrix {
 
+
     public int maximalRectangle(ArrayList<ArrayList<Integer>> A) {
+
+
         return 0;
     }
 }

@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module4.dp2.assignment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 Problem Description
@@ -53,7 +55,39 @@ Example Explanation
 * */
 public class UniquePathsInAGrid {
 
+    int[][] pathMatrix;
+
+    public static void main(String[] args) {
+        UniquePathsInAGrid paths = new UniquePathsInAGrid();
+        int result = paths.uniquePathsWithObstacles(new ArrayList<>(List.of(
+                new ArrayList<>(List.of(0, 1))
+        )));
+        System.out.println(result);
+    }
+
     public int uniquePathsWithObstacles(ArrayList<ArrayList<Integer>> A) {
-        return 0;
+        pathMatrix = new int[A.size()][A.get(0).size()];
+        for (int i = 0; i < A.size(); i++) {
+            Arrays.fill(pathMatrix[i], -1);
+        }
+        return uniquePathsWithRec(A, 0, 0);
+    }
+
+
+    private int uniquePathsWithRec(ArrayList<ArrayList<Integer>> A, int start, int end) {
+        int n = A.size(), m = A.get(0).size();
+        if (start == n - 1 && end == m - 1 && A.get(start).get(end) < 1) return 1;
+        if (A.get(start).get(end) == 1) return 0;
+
+        if (start < n - 1 && pathMatrix[start + 1][end] == -1) {
+            pathMatrix[start + 1][end] = uniquePathsWithRec(A, start + 1, end);
+        }
+
+        if (end < m - 1 && pathMatrix[start][end + 1] == -1) {
+            pathMatrix[start][end + 1] = uniquePathsWithRec(A, start, end + 1);
+        }
+
+        return (start == n - 1 ? 0 : pathMatrix[start + 1][end]) +
+                (end == m - 1 ? 0 : pathMatrix[start][end + 1]);
     }
 }

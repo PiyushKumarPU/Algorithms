@@ -9,9 +9,9 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/dp2/assignment)
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/dp2/additional)
+3. [Lecture Problems]()
 
 ## Class Notes and Videos
 
