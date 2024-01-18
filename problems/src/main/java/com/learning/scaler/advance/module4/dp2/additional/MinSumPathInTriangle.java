@@ -64,15 +64,14 @@ public class MinSumPathInTriangle {
 
     public int minimumTotal(ArrayList<ArrayList<Integer>> a) {
         int n = a.size();
-        if (pathMatrix == null) {
-            pathMatrix = new int[n][0];
-            for (int i = 0; i < n; i++) {
-                int[] row = new int[a.get(i).size()];
-                Arrays.fill(row, -1);
-                pathMatrix[i] = row;
-            }
+        pathMatrix = new int[n][0];
+        for (int i = 0; i < n; i++) {
+            pathMatrix[i] = new int[a.get(i).size()];
         }
-        return minimumTotalRecursion(a, 0, 0);
+
+
+
+        return pathMatrix[0][0];
     }
 
     public int minimumTotalRecursion(ArrayList<ArrayList<Integer>> a, int start, int end) {

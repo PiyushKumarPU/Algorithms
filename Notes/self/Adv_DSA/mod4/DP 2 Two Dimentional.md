@@ -124,3 +124,56 @@
         
         Explanation 2:
             Take the path DOWN -> DOWN ->RIGHT -> RIGHT, the minimum health required will be 1.
+
+### Solution approach:
+    Idea 1:
+        Identify all possible way and calculate min health point to start with
+    Idea 2:
+        Start from right bottom cell and calculate min healpoint required to reach here so once we cross the cell, post execution health point should be at least 1
+    Use below formula to calculate min energy required
+        min_ene = 1 - current cell value
+        there is a chance min_ene value could be negative in that case we will take max of 1 and min_ene and that will be the min energy we need in order to successfully cross that cell.
+
+### Psuedo code
+```java
+    // define 2D array of same size as given grid
+    int[] healthPoints = new int[A.size()][A.get(0).size()];
+    for(int i = n-1;i>=0;i--){
+        for(int j = m -1; j>=0j--){
+            // if last cell then 
+            healthPoints[i][j] = Math.max(1, 1 - A.get(i).get(j));
+            /// if last row then 
+            healthPoints[i][j] = Math.max(1, healthPoints[i][j + 1] - A.get(i).get(j));
+            // if last column then
+            healthPoints[i][j] = Math.max(1, healthPoints[i + 1][j] - A.get(i).get(j));
+            // else
+            healthPoints[i][j] = Math.max(1, Math.min(healthPoints[i][j + 1], healthPoints[i + 1][j])
+                            - A.get(i).get(j));
+        }
+    }
+    return healthPoints[0][0]
+``` 
+
+### Solution
+```java
+    int[][] healthPoints;
+    public int calculateMinimumHP(ArrayList<ArrayList<Integer>> A) {
+        int n = A.size(), m = A.get(0).size();
+        healthPoints = new int[A.size()][A.get(0).size()];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                if (i == n - 1 && j == m - 1) {
+                    healthPoints[i][j] = Math.max(1, 1 - A.get(i).get(j));
+                } else if (i == n - 1) {
+                    healthPoints[i][j] = Math.max(1, healthPoints[i][j + 1] - A.get(i).get(j));
+                } else if (j == m - 1) {
+                    healthPoints[i][j] = Math.max(1, healthPoints[i + 1][j] - A.get(i).get(j));
+                } else {
+                    healthPoints[i][j] = Math.max(1, Math.min(healthPoints[i][j + 1], healthPoints[i + 1][j])
+                            - A.get(i).get(j));
+                }
+            }
+        }
+        return healthPoints[0][0];
+    }
+```

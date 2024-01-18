@@ -1,18 +1,23 @@
 package com.learning.scaler.advance.module4.dp2.assignment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
     Problem Description
-        The demons had captured the princess and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant knight was initially positioned in the top-left room and must fight his way through the dungeon to rescue the princess.
-
-        The knight has an initial health point represented by a positive integer. If at any point his health point drops to 0 or below, he dies immediately.
-
-        Some of the rooms are guarded by demons, so the knight loses health (negative integers) upon entering these rooms; other rooms are either empty (0's) or contain magic orbs that increase the knight's health (positive integers).
-
-        In order to reach the princess as quickly as possible, the knight decides to move only rightward or downward in each step.
-
-        Given a 2D array of integers A of size M x N. Find and return the knight's minimum initial health so that he is able to rescue the princess.
+        The demons had captured the princess and imprisoned her in the bottom-right corner of a dungeon.
+        The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant knight was initially positioned in the
+        top-left room and must fight his way through the dungeon to rescue the princess.
+        The knight has an initial health point represented by a positive integer.
+        If at any point his health point drops to 0 or below, he dies immediately.
+        Some of the rooms are guarded by demons, so the knight loses health (negative integers)
+        upon entering these rooms; other rooms are either empty (0's) or contain magic orbs that increase the
+        knight's health (positive integers).
+        In order to reach the princess as quickly as possible, the knight decides to move only rightward or
+        downward in each step.
+        Given a 2D array of integers A of size M x N. Find and return the knight's minimum initial health so that
+        he is able to rescue the princess.
 
     Problem Constraints
         1 <= M, N <= 500
@@ -60,7 +65,55 @@ import java.util.ArrayList;
 * */
 public class DungeonPrincess {
 
+    int[][] healthPoints;
+
+    public static void main(String[] args) {
+        DungeonPrincess princess = new DungeonPrincess();
+
+        int result = princess.calculateMinimumHP(new ArrayList<>(List.of(
+                new ArrayList<>(List.of(-2, -3, 3)),
+                new ArrayList<>(List.of(-5, -10, 1)),
+                new ArrayList<>(List.of(10, 30, -5))
+        )));
+
+        System.out.println(result);
+
+    }
+
     public int calculateMinimumHP(ArrayList<ArrayList<Integer>> A) {
-        return 0;
+        int n = A.size(), m = A.get(0).size();
+        healthPoints = new int[A.size()][A.get(0).size()];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                if (i == n - 1 && j == m - 1) {
+                    healthPoints[i][j] = Math.max(1, 1 - A.get(i).get(j));
+                } else if (i == n - 1) {
+                    healthPoints[i][j] = Math.max(1, healthPoints[i][j + 1] - A.get(i).get(j));
+                } else if (j == m - 1) {
+                    healthPoints[i][j] = Math.max(1, healthPoints[i + 1][j] - A.get(i).get(j));
+                } else {
+                    healthPoints[i][j] = Math.max(1, Math.min(healthPoints[i][j + 1], healthPoints[i + 1][j])
+                            - A.get(i).get(j));
+                }
+            }
+        }
+        return healthPoints[0][0];
+    }
+
+
+    public int calculateWithRec(ArrayList<ArrayList<Integer>> A, int start, int end) {
+        int n = A.size(), m = A.get(0).size();
+        if (start == n - 1 && end == m - 1) return 1 - (A.get(start).get(end));
+
+        if (start < n - 1 && healthPoints[start + 1][end] == -1) {
+            healthPoints[start + 1][end] = Math.max(1, calculateWithRec(A, start + 1, end));
+        }
+        if (end < m - 1 && healthPoints[start][end + 1] == -1) {
+            healthPoints[start][end + 1] = Math.max(1, calculateWithRec(A, start, end + 1));
+        }
+        int down = (start == n - 1 ? Integer.MAX_VALUE : healthPoints[start + 1][end]),
+                right = (end == m - 1 ? Integer.MAX_VALUE : healthPoints[start][end + 1]);
+
+        return Math.max(1, (A.get(start).get(end) - Math.min(down, right)));
     }
 }

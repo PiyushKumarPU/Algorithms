@@ -10,7 +10,7 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/dp1/assignment)
 2. [Additional Problems]()
 3. [Self Practise Problems]()
 
@@ -20,7 +20,11 @@
 2. [Class/Lecture Video](https://youtu.be/WwnnwP1fZyg)
 
 ## What is Dynamic Programming
-    Dynamic Programming is mainly an optimization over plain recursion. Wherever we see a recursive solution that has repeated calls for same inputs, we can optimize it using Dynamic Programming. The idea is to simply store the results of subproblems, so that we do not have to re-compute them when needed later. This simple optimization reduces time complexities from exponential to polynomial.
+    Dynamic Programming is mainly an optimization over plain recursion.
+    Wherever we see a recursive solution that has repeated calls for same inputs, 
+    we can optimize it using Dynamic Programming. The idea is to simply store the results of subproblems, 
+    so that we do not have to re-compute them when needed later. 
+    This simple optimization reduces time complexities from exponential to polynomial.
 ![Illustration](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/49992b3e1a637a28cccfda088e1a05e0732b605b/Notes/images/DP_1.png?raw=true)
 
 ### Please follow below link for more details
