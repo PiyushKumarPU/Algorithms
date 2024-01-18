@@ -24,7 +24,8 @@ Input Format
     Third argument is an integer C denoting the knapsack capacity.
 
 Output Format
-    Return a single integer denoting the maximum total value of A such that sum of the weights of this subset is smaller than or equal to C.
+    Return a single integer denoting the maximum total value of A such that sum of the weights of
+    this subset is smaller than or equal to C.
 
 Example Input
     Input 1:
