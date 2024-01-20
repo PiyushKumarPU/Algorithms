@@ -120,8 +120,9 @@
         Explanation 2:
             Distinct ways to reach top: [1 1 1], [1 2], [2 1].
 ### Solution approach
-    As per the problem description either we can take 1 step or 2, so based on that if we start thinking about breaking into subproblems, it would be like below
-    ways to climb n stair = ways to climb n-1 stair + ways to climb n-2 stair
+    As per the problem description either we can take 1 step or 2, so based on that if we start 
+    thinking about breaking into subproblems, it would be like below 
+        ways to climb n stair = ways to climb n-1 stair + ways to climb n-2 stair
 > Note : Ways to reach step 0 will always be 1
 
 ![Stair case](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/2bb2661de9c683150e729ef483090d548ef9fabf/Notes/images/Stair_Case_DP1.png?raw=true)
