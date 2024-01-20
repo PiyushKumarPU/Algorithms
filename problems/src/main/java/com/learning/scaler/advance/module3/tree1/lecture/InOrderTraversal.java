@@ -78,7 +78,7 @@ public class InOrderTraversal {
     }
 
     public static void inorderTraversalWorker(TreeNode treeNode) {
-        if (treeNode == null) return;
+        if (treeNode == null || treeNode.val == -1) return;
         inorderTraversalWorker(treeNode.getLeft());
         result.add(treeNode.getVal());
         inorderTraversalWorker(treeNode.getRight());

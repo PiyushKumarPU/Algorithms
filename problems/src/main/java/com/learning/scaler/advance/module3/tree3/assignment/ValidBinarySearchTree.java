@@ -54,7 +54,63 @@ public class ValidBinarySearchTree {
 
     public static void main(String[] args) {
 
-        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(3, 2, 4, 1, 3));
+
+
+        List<Integer> inputs = new ArrayList<>();
+       // inputs.add(49);
+        inputs.add(40);
+        inputs.add(35);
+        inputs.add(41);
+        inputs.add(34);
+        inputs.add(37);
+        inputs.add(-1);
+        inputs.add(46);
+        inputs.add(31);
+        inputs.add(-1);
+        inputs.add(36);
+        inputs.add(38);
+        inputs.add(45);
+        inputs.add(47);
+        inputs.add(29);
+        inputs.add(32);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(39);
+        inputs.add(43);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(28);
+        inputs.add(30);
+        inputs.add(-1);
+        inputs.add(33);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(42);
+        inputs.add(44);
+        inputs.add(25);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(24);
+        inputs.add(26);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(-1);
+        inputs.add(27);
+        inputs.add(-1);
+        inputs.add(-1);
+
+
+        System.out.println(inputs);
+        TreeNode root = LevelOrderTreeConstruction.constructTree(inputs);
 
         System.out.println(PrintTreeNode.traversePreOrder(root));
 

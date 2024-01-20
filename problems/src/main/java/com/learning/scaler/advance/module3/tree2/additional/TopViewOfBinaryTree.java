@@ -74,20 +74,47 @@ public class TopViewOfBinaryTree {
         System.out.println(new TopViewOfBinaryTree().solve(treeNode));*/
     }
 
-    public ArrayList<Integer> solve(TreeNode A) {
-        Map<Integer, Integer> map = new HashMap<>();
-        populate(A, map, 0);
-        return new ArrayList<>(map.values());
-    }
 
-    private void populate(TreeNode A, Map<Integer, Integer> input, int start) {
-        if (A == null || A.val == -1) return;
-        if (!input.containsKey(start)) {
-            input.put(start, A.val);
+    public ArrayList<Integer> solve(TreeNode A) {
+        if (A == null || A.val == -1) {
+            return new ArrayList<>();
         }
-        if (A.left != null && A.left.val != -1)
-            populate(A.left, input, start - 1);
-        if (A.right != null && A.right.val != -1)
-            populate(A.right, input, start + 1);
+
+        Queue<QueueNode> queue = new LinkedList<>();
+        TreeMap<Integer, Integer> topViewMap = new TreeMap<>();
+        queue.add(new QueueNode(A, 0));
+
+        while (!queue.isEmpty()) {
+            QueueNode currentNode = queue.poll();
+            int currentHd = currentNode.hd;
+            TreeNode currentNodeData = currentNode.node;
+
+            if (!topViewMap.containsKey(currentHd)) {
+                topViewMap.put(currentHd, currentNodeData.val);
+            }
+
+            // Enqueue the left and right children with updated horizontal distance
+            if (currentNodeData.left != null) {
+                queue.add(new QueueNode(currentNodeData.left, currentHd - 1));
+            }
+            if (currentNodeData.right != null) {
+                queue.add(new QueueNode(currentNodeData.right, currentHd + 1));
+            }
+        }
+        /*// Print the top view nodes
+        for (Map.Entry<Integer, Integer> entry : topViewMap.entrySet()) {
+            System.out.print(entry.getValue() + " ");
+        }*/
+        return new ArrayList<>(topViewMap.values());
+    }
+}
+
+class QueueNode {
+    TreeNode node;
+    int hd; // horizontal distance
+
+    public QueueNode(TreeNode node, int hd) {
+        this.node = node;
+        this.hd = hd;
     }
 }

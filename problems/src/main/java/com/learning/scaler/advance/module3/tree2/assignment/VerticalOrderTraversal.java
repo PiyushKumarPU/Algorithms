@@ -65,51 +65,47 @@ Example Explanation
 public class VerticalOrderTraversal {
 
     public static void main(String[] args) {
-        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(3709, 4465, 2668, -1, -1, -1, -1));
+        TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(8262, -1, 411, -1, -1));
         System.out.println(new VerticalOrderTraversal().verticalOrderTraversal(root));
     }
 
     public ArrayList<ArrayList<Integer>> verticalOrderTraversal(TreeNode A) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        Map<Integer, ArrayList<Integer>> map = populate(A);
-        for (Integer key : map.keySet().stream().sorted().collect(Collectors.toList())) {
-            result.add(map.get(key));
+        TreeMap<Long, Vector<Integer>> mp = new TreeMap<>();
+        preOrderTraversal(A, 0, 1, mp);
+
+        // print map
+        int prekey = Integer.MAX_VALUE;
+        for (Map.Entry<Long, Vector<Integer>> entry :
+                mp.entrySet()) {
+            if (prekey != Integer.MAX_VALUE
+                    && (entry.getKey() >> 30) != prekey) {
+            }
+            prekey = (int) (entry.getKey() >> 30);
+            result.add(new ArrayList<>(entry.getValue()));
         }
         return result;
     }
 
-    private Map<Integer, ArrayList<Integer>> populate(TreeNode A) {
-        Map<Integer, ArrayList<Integer>> result = new HashMap<>();
-        if (A == null) return result;
-        Queue<Map<Integer, TreeNode>> mapQueue = new LinkedList<>();
-        Map<Integer, TreeNode> nodeMap = new HashMap<>();
-        nodeMap.put(0, A);
-        mapQueue.offer(nodeMap);
-        while (!mapQueue.isEmpty()) {
-            Map.Entry<Integer, TreeNode> current = mapQueue.poll().entrySet().stream().findFirst().orElse(null);
-            if (current != null) {
-                Integer key = current.getKey();
-                ArrayList<Integer> currentList = result.getOrDefault(key, new ArrayList<>());
-                TreeNode currentNode = current.getValue();
-                if (currentNode.val != -1) {
-                    if (currentNode.left != null && currentNode.left.val != -1) {
-                        nodeMap.clear();
-                        nodeMap.put(key - 1, currentNode.left);
-                        mapQueue.offer(nodeMap);
-                    }
-                    nodeMap.clear();
-                    nodeMap.put(key, currentNode.left);
-                    mapQueue.offer(nodeMap);
-                    if (currentNode.right != null && currentNode.right.val != -1) {
-                        nodeMap.clear();
-                        nodeMap.put(key + 1, currentNode.right);
-                        mapQueue.offer(nodeMap);
-                    }
-                }
-            }
-        }
+    void preOrderTraversal(TreeNode root, long hd, long vd,
+                           TreeMap<Long, Vector<Integer>> m) {
+        if (root == null || root.val == -1)
+            return;
+        long val = hd << 30 | vd;
 
-        return result;
+        if (m.get(val) != null)
+            m.get(val).add(root.val);
+        else {
+            Vector<Integer> v = new Vector<>();
+            v.add(root.val);
+            m.put(val, v);
+        }
+        preOrderTraversal(root.left, hd - 1, vd + 1, m);
+        preOrderTraversal(root.right, hd + 1, vd + 1, m);
+    }
+
+    static void verticalOrder(TreeNode root) {
+
     }
 
 

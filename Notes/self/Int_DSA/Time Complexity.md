@@ -74,10 +74,6 @@ Example : <br> Lets take N = 324 <br>
 
 
 
-
-
-
-
 ## Iteration Problems
 
 ## Comapring Iterations using graphs
