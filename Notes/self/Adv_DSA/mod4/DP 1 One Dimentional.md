@@ -5,7 +5,7 @@
 - [What is Dynamic Programming](#what-is-dynamic-programming)
 - [Conditions to use DP](#conditions-to-use-dp)
 - [Why DP? Fibonacci series](#why-dp-fibonacci-series)
-- [Type of DP](#types-of-dp)
+- [Types of DP](#types-of-dp)
 - [No of stairs](#no-of-stairs)
 
 
@@ -36,8 +36,9 @@
 * Overlapping subproblems: If same subproblems is getting repeated or it is getting called multiple time for the same input.
 > Note : For the above scenario we can use DP to solve the problems
 ## Why DP? Fibonacci series
-    If we look at DP, it is avoiding the repeatative call for the same input basically it is storing the result of respective input on the very first call and same in being used in further call.
-    Suppose if same function is getting called n times, in that case and each execution take n time then
+    If we look at DP, it is avoiding the repeatative call for the same input basically it is storing the result of respective input 
+    on the very first call and same in being used in further call. Suppose if same function is getting 
+    called n times, in that case and each execution take n time then
         * without dp the total execution time would be n ^ 2
         * With dp same execution can be done in n times
     By looking at above comparision we can see DP is saving lot of time if problems has repeated calls.
@@ -50,7 +51,7 @@
     }
 ```
     TC : O(2^N)
-    SC : O(h) --> recursive call stack
+    SC : O(h) --> recursive call stack memory
 #### Recursive Approach with DP
 ```java
     int[] fibonacciTerms;
@@ -121,7 +122,8 @@
 ### Solution approach
     As per the problem description either we can take 1 step or 2, so based on that if we start thinking about breaking into subproblems, it would be like below
     ways to climb n stair = ways to climb n-1 stair + ways to climb n-2 stair
-> Note : Steps to reach step 0 will always be 1
+> Note : Ways to reach step 0 will always be 1
+
 ![Stair case](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/2bb2661de9c683150e729ef483090d548ef9fabf/Notes/images/Stair_Case_DP1.png?raw=true)
 
 ### Solution
