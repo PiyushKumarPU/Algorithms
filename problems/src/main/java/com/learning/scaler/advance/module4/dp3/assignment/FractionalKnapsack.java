@@ -81,14 +81,3 @@ public class FractionalKnapsack {
     }
 }
 
-class Sack {
-    public Integer profit;
-    public Integer weight;
-    public Double unitPrice;
-
-    public Sack(Integer profit, Integer weight) {
-        this.profit = profit;
-        this.weight = weight;
-        this.unitPrice = profit / (double) weight;
-    }
-}

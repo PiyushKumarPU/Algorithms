@@ -10,9 +10,9 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/dp4/assignment)
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/dp4/additional)
+3. [Class/Lecture Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/dp4/lecture)
 
 ## Class Notes and Videos
 
@@ -53,6 +53,17 @@
             Cut the rod of length 5 into 5 rods of length (1, 1, 1, 1, 1) and sell them for (3 + 3 + 3 + 3 + 3) = 15.
         Explanation 2:
             Cut the rod of length 5 into 3 rods of length (2, 2, 1) and sell them for (5 + 5 + 1) = 11.
+
+### Solution approach
+    Idea 1: 
+        We can start looking for all the possible combination of different length and find the maximum profit.
+        This solution would be kind of recursion problems and time complexity will be very high.
+        TC : O(2^N) Same as time complexity of recursion 
+        SC : O(h) --> height of recursion stack
+    Idea 2:
+        We will use greedy approach to maximise the profit.
+     * Start cutting rod in all possible options and find the max of each steps.
+
 ## Coin change I
     Problem Description
         You are given a set of coins A. In how many ways can you make sum B assuming you have infinite amount

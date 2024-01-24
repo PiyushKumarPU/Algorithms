@@ -49,7 +49,7 @@ public class UnboundedKnapsack {
 
     public static void main(String[] args) {
         UnboundedKnapsack knapsack = new UnboundedKnapsack();
-        /*System.out.println(knapsack.solve(10, new ArrayList<>(List.of(5)), new ArrayList<>(
+         /*System.out.println(knapsack.solve(10, new ArrayList<>(List.of(5)), new ArrayList<>(
                 List.of(10)
         )));*/
 

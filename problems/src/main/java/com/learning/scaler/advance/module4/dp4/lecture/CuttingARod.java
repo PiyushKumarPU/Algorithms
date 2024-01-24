@@ -1,5 +1,7 @@
 package com.learning.scaler.advance.module4.dp4.lecture;
 
+import java.util.Arrays;
+
 /*
 Problem Description
     Given a rod of length N units and an array A of size N denotes prices that contains prices of all
@@ -36,4 +38,21 @@ Example Explanation
          Cut the rod of length 5 into 3 rods of length (2, 2, 1) and sell them for (5 + 5 + 1) = 11.
 * */
 public class CuttingARod {
+
+    int[] profits;
+
+    public static void main(String[] args) {
+
+    }
+
+
+    public int solve(int[] A) {
+        int length = A.length;
+        if (profits == null) {
+            profits = new int[length + 1];
+        }
+
+
+        return profits[length];
+    }
 }
