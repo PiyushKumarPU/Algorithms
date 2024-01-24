@@ -64,6 +64,15 @@
         Explanation 2:
             Taking 10/19 the fourth item gives us the maximum value i.e. 21.0526. So we return 2105.
 ### Solution Approach
+    Idea 1:
+        Try all possible options and find max profit.
+    Idea 2: Greedy Approach
+        Start taking item with max profit and min weight and keep adding in sack.
+        Steps:
+            1. Sort given item in ascending order with max unit price i.e. item which add   more profit with less weight
+            2. Iterate throught sorted item array
+            3. if current item weight is greater than sack weight then add unit price * sack weight in max profit and break the loop.
+            4. If current item weight is less that sack weight then add complete profit of that item in max weight and reduce sack weight with item weight.
 
 ### Solution
 ```java

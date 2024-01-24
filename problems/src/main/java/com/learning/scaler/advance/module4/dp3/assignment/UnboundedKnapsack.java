@@ -1,6 +1,6 @@
 package com.learning.scaler.advance.module4.dp3.assignment;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /*
 Problem Description
@@ -47,19 +47,66 @@ Example Explanation
 * */
 public class UnboundedKnapsack {
 
+    public static void main(String[] args) {
+        UnboundedKnapsack knapsack = new UnboundedKnapsack();
+        /*System.out.println(knapsack.solve(10, new ArrayList<>(List.of(5)), new ArrayList<>(
+                List.of(10)
+        )));*/
+
+        System.out.println(knapsack.solve(10, new ArrayList<>(List.of(6, 7)), new ArrayList<>(
+                List.of(5, 5)
+        )));
+
+    }
+
     public int solve(int A, ArrayList<Integer> B, ArrayList<Integer> C) {
         int[] weightRange = new int[A + 1];
         weightRange[0] = 0;
-        for (int i = 1; i < A; i++) {
+        for (int i = 1; i <= A; i++) {
             int maxValue = 0;
             for (int j = 0; j < B.size(); j++) {
                 if (C.get(j) <= i) {
-                    maxValue = Math.max(maxValue, B.get(j) + weightRange[i - B.get(j)]);
+                    int index = i - B.get(j);
+                    maxValue = Math.max(maxValue, B.get(j) + (index > 0 ? weightRange[index] : 0));
                 }
             }
             weightRange[i] = maxValue;
         }
         return weightRange[A];
+    }
+
+    public ArrayList<Integer> solve(int A) {
+        List<Integer> result = new ArrayList<>();
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 1; i <= 3; i++) {
+            result.add(i);
+            queue.add(i);
+        }
+        if (A <= 3) {
+            List<Integer> temp = new ArrayList<>();
+            for (int i = 0; i < A; i++) {
+                temp.add(result.get(i));
+            }
+            return new ArrayList<>(temp);
+        }
+        while (!queue.isEmpty()) {
+            int t = queue.poll();
+            String str = Integer.toString(t);
+            result.add(Integer.parseInt(str + "1"));
+            if (result.size() == A)
+                break;
+            queue.add(Integer.parseInt(str + "1"));
+            result.add(Integer.parseInt(str + "2"));
+            if (result.size() == A)
+                break;
+            queue.add(Integer.parseInt(str + "2"));
+            result.add(Integer.parseInt(str + "3"));
+            if (result.size() == A)
+                break;
+            queue.add(Integer.parseInt(str + "3"));
+        }
+        result.sort(Comparator.naturalOrder());
+        return new ArrayList<>(result);
     }
 
 }

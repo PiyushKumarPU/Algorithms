@@ -59,11 +59,15 @@ public class MinimumNumberOfSquares {
         return squareCount[A];
     }
 
-    public int countMinSquaresWorker(int A, int[] squareCount) {
-        int result = Integer.MAX_VALUE;
-        for (int i = 1; i * i <= A; i++) {
 
+    public int countMinSquaresIterative(int A) {
+        if (A == 0) return 0;
+        if (squareCount[A] != -1) return squareCount[A];
+        int min = Integer.MAX_VALUE;
+        for (int i = 1; i * i <= A; i++) {
+            min = Math.min(min, countMinSquares(A - i * i));
         }
-        return result;
+        squareCount[A] = min + 1;
+        return squareCount[A];
     }
 }

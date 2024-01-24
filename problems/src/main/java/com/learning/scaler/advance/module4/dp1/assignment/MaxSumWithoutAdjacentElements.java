@@ -1,5 +1,7 @@
 package com.learning.scaler.advance.module4.dp1.assignment;
 
+import java.util.ArrayList;
+
 /*
 Problem Description
     Given a 2 x N grid of integers, A, your task is to choose numbers from the grid such that sum of these numbers is maximized.
@@ -39,4 +41,10 @@ Example Output
         8
 * */
 public class MaxSumWithoutAdjacentElements {
+
+    public int adjacent(ArrayList<ArrayList<Integer>> A) {
+
+        return 0;
+    }
+
 }
