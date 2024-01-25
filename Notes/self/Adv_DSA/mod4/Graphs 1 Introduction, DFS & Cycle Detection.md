@@ -15,7 +15,7 @@
 
 1. [Assignments]()
 2. [Additional Problems]()
-3. [Self Practise Problems]()
+3. [Class/Lecture Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/graph1/lecture)
 
 ## Class Notes and Videos
 
