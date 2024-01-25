@@ -264,6 +264,65 @@ Follwing is the adjacency list for above input.
     a node may be visited twice). To avoid processing a node more than once, 
     use a boolean visited array. A graph can have more than one DFS traversal.
 ![DFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/graph_dfs.gif?raw=true)
+
+### [DFS Implementation](https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1)
+    Problem Description
+        You are given a connected undirected graph. Perform a Depth First Traversal of the graph.
+        Note: Use the recursive approach to find the DFS traversal of the graph starting from the
+        0th vertex from left to right according to the graph.
+
+    Example 1:
+        Input:
+            V = 5 , adj = [[2,3,1] , [0], [0,4], [0], [2]]
+        Output:
+            0 2 4 3 1
+        Explanation:
+            0 is connected to 2, 3, 1.
+            1 is connected to 0.
+            2 is connected to 0 and 4.
+            3 is connected to 0.
+            4 is connected to 2.
+            so starting from 0, it will go to 2 then 4,
+            and then 3 and 1.
+            Thus dfs will be 0 2 4 3 1.
+    Example 2:
+        Input: V = 4, adj = [[1,3], [2,0], [1], [0]]
+        Output: 0 1 2 3
+        Explanation:
+            0 is connected to 1 , 3.
+            1 is connected to 0, 2.
+            2 is connected to 1.
+            3 is connected to 0.
+            so starting from 0, it will go to 1 then 2
+            then back to 0 then 0 to 3
+            thus dfs will be 0 1 2 3.
+
+### Solution
+```java
+    List<Integer> result;
+    boolean[] visited;
+    public void dfs(List<List<Integer>> adjList, int root) {
+        if (result == null) {
+            result = new ArrayList<>(adjList.size());
+            visited = new boolean[adjList.size()];
+        }
+        Queue<Integer> paths = new LinkedList<>();
+        paths.add(root);
+        visited[root] = true;
+        while (!paths.isEmpty()) {
+            int current = paths.poll();
+            result.add(current);
+            for (int nbr : adjList.get(current)) {
+                if (!visited[nbr]) dfs(adjList, nbr);
+            }
+        }
+    }
+```
+
+### Time and space complexity
+    TC : O(V + E)
+    SC : O(V)
+
 ## Find cycle in directed graph
     Given the root of a Directed graph, The task is to check whether the graph contains a cycle or not.
 
@@ -283,15 +342,35 @@ Follwing is the adjacency list for above input.
     Explanation: The diagram clearly shows no cycle
 
 ### Solution approach
-    
-    To find cycle in a directed graph we can use the Depth First Traversal (DFS) technique. 
-    It is based on the idea that there is a cycle in a graph only if there is a back edge 
-    [i.e., a node points to one of its ancestors] present in the graph.
+    We will use DFS to travese to each available path in graph and will see if any node is getting
+    traverse more than once in a path.
+    Steps to follow:
+        1. Start DFS from any arbitary node called root node.
+        2. Use hashmap or any key based datastructure to keep track of all the visited node
+        3. once we start processing the node, will add them in path hashmap and start processing 
+        its neighbour.
+        4. if any of the neighbour present in the hashmap return true because same node is 
+        already visited for the same path.
+        5. Once we done processing all the neighbour of respected node then remove it from hashmap
+        6. if none of the node is having cycle then return false at last.
+    TC : O(V+E)
+    SC : O(N) --> we are storing paths in hashmap so max space would be same as number of node in the graph.
 
-    To detect a back edge, we need to keep track of the nodes visited till now and 
-    the nodes that are in the current recursion stack [i.e., the current path that 
-    we are visiting]. If during recursion, we reach a node that is already in the 
-    recursion stack, there is a cycle present in the graph.
+## Solution
+```java
+    public boolean hasCycle(int node, List<List<Integer>> inputs, HashSet<Integer> currentPaths) {
+        currentPaths.add(node);
+        for (int current : inputs.get(node)) {
+            if (currentPaths.contains(current)) return true;
+            else if (hasCycle(current, inputs, currentPaths)) {
+                return true;
+            }
+        }
+        currentPaths.remove(node);
+        return false;
+    }
+```
+    
 
 
 
