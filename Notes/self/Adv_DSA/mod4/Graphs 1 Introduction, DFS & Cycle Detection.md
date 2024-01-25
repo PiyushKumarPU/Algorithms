@@ -5,6 +5,7 @@
 - [Components of Graph](#components-of-graph)
 - [Classification of Graphs](#classification-of-graphs)
 - [Graph Representation](#graph-representation)
+- [Dest node can be visited from source]()
 - [BFS](#bfs)
 - [DFS](#dfs)
 - [Find cycle in directed graph](#find-cycle-in-directed-graph)
@@ -22,7 +23,10 @@
 2. [Class/Lecture Video](https://youtu.be/YSYiZzdGEkA)
 
 ## What are Graphs
-    A Graph is a non-linear data structure consisting of vertices and edges. The vertices are sometimes also referred to as nodes and the edges are lines or arcs that connect any two nodes in the graph. More formally a Graph is composed of a set of vertices( V ) and a set of edges( E ). The graph is denoted by G(E, V).
+    A Graph is a non-linear data structure consisting of vertices and edges. The vertices are 
+    sometimes also referred to as nodes and the edges are lines or arcs that connect any two 
+    nodes in the graph. More formally a Graph is composed of a set of vertices( V ) and a 
+    set of edges( E ). The graph is denoted by G(E, V).
 
 ### Additional Link
 * [GFG](https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/)
@@ -58,7 +62,7 @@
 
 ---
 ## Indegree and outdegree of a graph
-* **Indegree** of a vertex is defined as the number of incoming edges incident on a vertex in a directed graph.
+#### **Indegree** of a vertex is defined as the number of incoming edges incident on a vertex in a directed graph.
     
 ### Significance Of Indegree:
 * Indegree of nodes in a tree is equal to 1 in most of the cases if it becomes more than one then the data structure changes to graph.
@@ -67,7 +71,7 @@
 ![Indegree](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/0579fbe551d05f6ba58e56ad4e4745a6da7b3d81/Notes/images/indegree_grapgh.png?raw=true)
 
 
-* **Outdegree** of a vertex is defined as the number of outgoing edges from a vertex in a directed graph.
+### **Outdegree** of a vertex is defined as the number of outgoing edges from a vertex in a directed graph.
 
 ### Significance of Outdegree:
 * The outdegree of a directed graph vertex, which reflects the total number of edges emanating from that node, is always positive and never negative.
@@ -179,6 +183,40 @@ Follwing is the adjacency list for above input.
 * It requires more memory than the adjacency matrix for dense graphs.
 
 
+## Dest node can be visited from source
+    Problem Description
+        Given and undirected graph, source node and destination node. Check if destination node 
+        can be visited from source node.
+
+### Solution approach :
+    1. We will start by putting source node in queue and we will maintain a visited array of 
+    type boolean which will store information of visited array.
+    2. We will iterate untill queue is empty
+    3. pop element from queue and before adding its neighbour to the queue, we will check whether
+    never is already visited or not. If not then only we will add neighbour into the queue.
+    4. At last we will check in visited array whether dest node is visited or not and return respective value.
+
+### Solution
+```java
+    public boolean solve(List<List<Integer>> graphs, int source, int dest) {
+        boolean[] visitedNodes = new boolean[graphs.size()];
+        Queue<Integer> paths = new LinkedList<>();
+        paths.add(source);
+        visitedNodes[source] = true;
+        while (!paths.isEmpty() && !visitedNodes[dest]) {
+            int current = paths.poll();
+            List<Integer> nbrs = graphs.get(current);
+            for (Integer nbr : nbrs) {
+                if (!visitedNodes[nbr]) {
+                    paths.add(nbr);
+                    visitedNodes[nbr] = true;
+                }
+            }
+        }
+        return visitedNodes[dest];
+    }
+```
+
 ## BFS
     The Breadth First Search (BFS) algorithm is used to search a graph data structure for a
     node that meets a set of criteria. It starts at the root of the graph and visits all 
@@ -191,6 +229,34 @@ Follwing is the adjacency list for above input.
 ![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_5.png?raw=true)
 ![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_6.png?raw=true)
 ![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_7.png?raw=true)
+
+### Solution approach
+    We will start visiting from root node and one level at a time
+    TC : O(V + E) --> No of vertices + max no of edges that can be 2* edged count
+    SC : O(V + V)     --> Space taken by visited node array + space take by queue
+ 
+### Solution
+```java
+    public List<Integer> bfsSearch(List<List<Integer>> graphs, int root) {
+        List<Integer> result = new ArrayList<>();
+        boolean[] visitedNodes = new boolean[graphs.size()];
+        Queue<Integer> paths = new LinkedList<>();
+        paths.add(root);
+        visitedNodes[root] = true;
+        while (!paths.isEmpty()) {
+            int current = paths.poll();
+            result.add(current);
+            List<Integer> nbrs = graphs.get(current);
+            for (Integer nbr : nbrs) {
+                if (!visitedNodes[nbr]) {
+                    paths.add(nbr);
+                    visitedNodes[nbr] = true;
+                }
+            }
+        }
+        return result;
+    }
+```
 
 ## DFS
     Depth First Traversal (or DFS) for a graph is similar to Depth First Traversal of 
