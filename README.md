@@ -116,9 +116,10 @@ Trying to make an easy and readable DSA notes for quick understanding of related
    7. [Contest 5: Trees, Heaps & Greedy](/Notes/self/Adv_DSA/mod4/Contest%205%20Trees,%20Heaps%20&%20Greedy.md)
    8. [DP 4: Applications of Knapsack](/Notes/self/Adv_DSA/mod4/DP%204%20Applications%20of%20Knapsack.md)
    9. [Graphs 1: Introduction, DFS & Cycle Detection](/Notes/self/Adv_DSA/mod4/Graphs%201%20Introduction,%20DFS%20&%20Cycle%20Detection.md)
-   10. [Graphs 2: BFS, Matrix Questions & Topological Sort](/Notes/self/Adv_DSA/mod4/Graphs%202%20BFS%20Matrix%20Questions%20&%20Topological%20Sort.md)
-   11. [Graphs 3: MST (Prims Algo.) & Dijkstra Algo](/Notes/self/Adv_DSA/mod4/Graphs%203%20MST%20(Prims%20Algo.)%20&%20Dijkstra%20Algo.md)
-   12. [Interview Problems](/Notes/self/Adv_DSA/mod4/Interview%20Problems.md )
-   13. [Contest 6: Full Syllabus](/Notes/self/Adv_DSA/mod4/Contest%206%20Full%20Syllabus.md )
+   10. [Problem Solving Session1](/Notes/self/Adv_DSA/mod4/Problem%20Solving%20Session1.md)
+   11. [Graphs 2: BFS, Matrix Questions & Topological Sort](/Notes/self/Adv_DSA/mod4/Graphs%202%20BFS%20Matrix%20Questions%20&%20Topological%20Sort.md)
+   12. [Graphs 3: MST (Prims Algo.) & Dijkstra Algo](/Notes/self/Adv_DSA/mod4/Graphs%203%20MST%20(Prims%20Algo.)%20&%20Dijkstra%20Algo.md)
+   13. [Interview Problems](/Notes/self/Adv_DSA/mod4/Interview%20Problems.md )
+   14. [Contest 6: Full Syllabus](/Notes/self/Adv_DSA/mod4/Contest%206%20Full%20Syllabus.md )
 
 
