@@ -27,7 +27,7 @@ public class CheckIfSinmpleDirectedGraphHasCycle {
         );
 
 
-        List<List<Integer>> adjList = ConstructGraphs.constructAdjList(inputs);
+        List<List<Integer>> adjList = ConstructGraphs.constructAdjList(inputs, false);
 
         System.out.println(new CheckIfSinmpleDirectedGraphHasCycle().hasCycle(5, adjList,
                 new HashSet<>()));

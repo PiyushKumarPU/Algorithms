@@ -36,13 +36,8 @@ public class BSTInsert {
         if (A == null) return newNode;
         TreeNode parent = null, temp = A;
         while (temp != null && temp.getVal() != newVal) {
-            if (newVal > temp.getVal()) {
-                parent = temp;
-                temp = temp.getRight();
-            } else {
-                parent = temp;
-                temp = temp.getLeft();
-            }
+            parent = temp;
+            temp = newVal > temp.getVal() ? temp.getRight() : temp.getLeft();
         }
         // here parent will be null only if respective element is already present in tree
         if (parent != null) {

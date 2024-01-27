@@ -1,6 +1,9 @@
 package com.learning.scaler.advance.module4.graph1.assignment;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /*
 Problem Description
@@ -47,8 +50,47 @@ Example Explanation
 * */
 public class FirstDepthFirstSearch {
 
+    public static void main(String[] args) {
+        FirstDepthFirstSearch search = new FirstDepthFirstSearch();
+
+        System.out.println(search.solve(new ArrayList<>(List.of(1, 1, 2)), 1, 2));
+        System.out.println(search.solve(new ArrayList<>(List.of(1, 1, 2)), 2, 1));
+    }
+
     // DO NOT MODIFY THE LIST. IT IS READ ONLY
     public int solve(ArrayList<Integer> A, final int B, final int C) {
-        return 0;
+        if (A.isEmpty() || A.size() < 2) return 0;
+        List<List<Integer>> adjList = constructAdjList(A);
+        boolean[] visited = new boolean[A.size() + 1];
+        Queue<Integer> paths = new LinkedList<>();
+        paths.add(C);
+        while (!paths.isEmpty()) {
+            int current = paths.poll();
+            visited[current] = true;
+            if (current < adjList.size()) {
+                for (int nbr : adjList.get(current)) {
+                    if (!visited[nbr]) paths.add(nbr);
+                }
+            }
+        }
+        return visited[B] ? 1 : 0;
     }
+
+
+    private List<List<Integer>> constructAdjList(ArrayList<Integer> A) {
+        if (A.isEmpty()) return new ArrayList<>();
+        int N = A.size();
+        List<List<Integer>> result = new ArrayList<>(N);
+        result.add(new ArrayList<>());
+        result.add(new ArrayList<>());
+        for (int i = 1; i < N; i++) {
+            if (result.size() < i + 1) {
+                result.add(new ArrayList<>());
+            }
+            result.get(A.get(i)).add(i + 1);
+        }
+        return result;
+    }
+
+
 }

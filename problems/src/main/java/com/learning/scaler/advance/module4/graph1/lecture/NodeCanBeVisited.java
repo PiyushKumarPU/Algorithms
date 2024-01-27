@@ -28,7 +28,7 @@ public class NodeCanBeVisited {
         );
 
 
-        List<List<Integer>> adjList = ConstructGraphs.constructAdjList(inputs);
+        List<List<Integer>> adjList = ConstructGraphs.constructAdjList(inputs, false);
 
         System.out.println(new NodeCanBeVisited().solve(adjList, 1, 0));
     }

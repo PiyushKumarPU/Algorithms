@@ -1,7 +1,7 @@
 ## Advanced DSA Day 32 Trees 3 Binary Search Tree(BST)
 
 ## Scope / Agenda
-- [what is BST](#what-is-bst)
+- [What is BST](#what-is-bst)
 - [Min Max in BST](#min-max-in-bst)
 - [Search Insert Delete in BST](#search-insert-delete-in-bst)
 - [Construct BST from sorted array](#construct-bst-from-sorted-array)
@@ -128,13 +128,79 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 ## Insert in BST
 ### Input
 ![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ccc7afbb0e5bfa0af57214f11a3dff7ce21d7f81/Notes/images/BST_Insert.png?raw=true)
+    Item to insert: \
+        22 \
+        10
 
 ### Solution approach
-
-### Psuedo code
+    First we will find place to insert given node, to do that we will follow below steps
+        1. Check if root is null, if yes then insert new node at root and return
+        2. We will use property of BST
+        3. Start comparing given node val with root node val
+        4. If given node is bigger then move right else move left
+        5. start repeating step 2 to 4 until we find the proper place
+        6. while searching we will keep maintaining parent node address too so that we can easily add a new node
 
 ### Solution
-
+```java
+    public static TreeNode insert(TreeNode A, int newVal) {
+        TreeNode newNode = new TreeNode(newVal);
+        if (A == null) return newNode;
+        TreeNode parent = null, temp = A;
+        while (temp != null && temp.getVal() != newVal) {
+            parent = temp;
+            temp = newVal > temp.getVal() ? temp.getRight() : temp.getLeft();
+        }
+        if (parent != null) {
+            if (parent.getVal() > newVal) parent.setLeft(newNode);
+            else parent.setRight(newNode);
+        }
+        return A;
+    }
+```
 ## Delete in BST
+### Input
+![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ccc7afbb0e5bfa0af57214f11a3dff7ce21d7f81/Notes/images/BST_Insert.png?raw=true)
+    Item to insert: \
+        22 \
+        10
+
+### Solution approach:
+* Case 1, if node to be deleted is leaf node
+    >We will diretly delete the leaf node and complete the operation
+* Case 2, node to be deleted has only one child
+    > We will replace the node to be deleted with its child, whether it is left child or right child that does not matter
+* Case 3, node to be deleted has both the child
+    > We will replace node to be deleted with either max of the left subtree or the min of the right subtree.
+* Case 3.1, If max of left subtree or min of right subtree is leaf node then nothing to worry about.
+* Case 3.1, If either of left or right subtree has child node, max of left subtree may have left child and min of right subtree will right child. In this case we will replace max/min of left/right subtree with the root node.
 ## Construct BST from sorted array
+    Idea 1 : Construct Right Skewed tree
+        Take element one by one and insert into BST
+        H = N i.e. height of the tree will be same as no of node
+        TC : O(N^2) --> TC of 1 insertion would be O(H)
+        Similarly, TC of N insertion O(H *N) --> given H ==N
+    Idea 1 : Construct Right Skewed tree but maitain right most node
+        Take element one by one and keep adding at the right most node and maintain address of right most node
+        TC : O(N)
+        SC : O(1)
+
+
+
 ## Check valid BST
+
+
+### Solution
+```java
+    public int isValidBST(TreeNode A) {
+        return isValidBST(A, Integer.MIN_VALUE, Integer.MAX_VALUE) ? 1 : 0;
+    }
+
+    private boolean isValidBST(TreeNode A, int start, int end) {
+        if (A == null) return true;
+        if (start <= A.val && A.val <= end) {
+            return isValidBST(A.left, start, A.val - 1) && isValidBST(A.right, A.val + 1, end);
+        }
+        return false;
+    }
+```

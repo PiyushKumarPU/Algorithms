@@ -1,7 +1,12 @@
 package com.learning.scaler.advance.module4.graph1.additional;
 
 
+import com.learning.scaler.advance.module4.ConstructGraphs;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /*
 Problem Description
@@ -59,7 +64,22 @@ Example Explanation
 * */
 public class PathInDirectedGraph {
 
+
     public int solve(int A, ArrayList<ArrayList<Integer>> B) {
-        return 0;
+        List<List<Integer>> adjList = ConstructGraphs.constructAdjList(B, A);
+        boolean[] visited = new boolean[A + 1];
+        Queue<Integer> paths = new LinkedList<>();
+        paths.add(1);
+        visited[0] = visited[1] = true;
+        while (!paths.isEmpty()) {
+            int current = paths.poll();
+            for (int nbr : adjList.get(current)) {
+                if (!visited[nbr]) {
+                    paths.add(nbr);
+                    visited[nbr] = true;
+                }
+            }
+        }
+        return visited[A] ? 1 : 0;
     }
 }

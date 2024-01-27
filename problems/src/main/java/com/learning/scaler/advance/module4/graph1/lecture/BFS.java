@@ -23,7 +23,7 @@ public class BFS {
         );
 
 
-        List<List<Integer>> adjList = ConstructGraphs.constructAdjList(inputs);
+        List<List<Integer>> adjList = ConstructGraphs.constructAdjList(inputs, false);
 
         System.out.println(new BFS().bfsSearch(adjList, 1));
     }

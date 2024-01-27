@@ -20,6 +20,15 @@ Trying to make an easy and readable DSA notes for quick understanding of related
 
 ## Table of Contents
 
+
+### Cheat Seats
+   1. [7 Steps for answering any DSA Questions](/Notes/Cheat%20Sheet/7%20Steps%20for%20answering%20any%20DSA%20Questions.pdf)
+   2. [Linux Cheat Sheet - Scaler Topics](/Notes/Cheat%20Sheet/Linux%20Cheat%20Sheet%20-%20Scaler%20Topics.pdf)
+   3. [Data Structures](/Notes/Cheat%20Sheet/Data%20Structures.pdf)
+   4. [5 Steps for Approaching HLD problems in Interviews](/Notes/Cheat%20Sheet/5%20Steps%20for%20Approaching%20HLD%20problems%20in%20Interviews.pdf)
+   5. [Design Patterns Cheat Sheet](/Notes/Cheat%20Sheet/Design%20Patterns%20Cheat%20Sheet.pdf)
+   
+
 ### Introduction to OOPS
 
    1. [OOPS 1: Introduction & Constructors](/Notes/self/Adv_DSA/mod2/Introduction%20&%20Constructors.md)

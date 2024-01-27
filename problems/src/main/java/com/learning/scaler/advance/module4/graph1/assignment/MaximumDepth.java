@@ -5,7 +5,8 @@ import java.util.ArrayList;
 /*
 Problem Description
     Given a Tree of A nodes having A-1 edges. Each node is numbered from 1 to A where 1 is the root of the tree.
-    You are given Q queries. In each query, you will be given two integers L and X. Find the value of such node which lies at level L mod (MaxDepth + 1) and has value greater than or equal to X.
+    You are given Q queries. In each query, you will be given two integers L and X. Find the value of such node which lies at level
+    L mod (MaxDepth + 1) and has value greater than or equal to X.
     Answer to the query is the smallest possible value or -1, if all the values at the required level are smaller than X.
 
     NOTE:
