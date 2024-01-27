@@ -15,7 +15,9 @@
 
 ## Flip Array
     Problem Description
-        Given an array A of positive elements, you have to flip the sign of some of its elements such that the resultant sum of the elements of array should be minimum non-negative(as close to zero as possible).
+        Given an array A of positive elements, you have to flip the sign of some of its elements such that the resultant sum 
+        of the elements of array should be minimum non-negative
+        (as close to zero as possible).
 
         Return the minimum number of elements whose sign needs to be flipped such that the resultant sum is minimum non-negative.
 
@@ -87,19 +89,25 @@
 
     Example Explanation
     Explanation 1:
-        If you choose i = 2, j = 2, and k = 3 then we will get A[2]*B + A[2]*C + A[3]*D = 5*2 + 5*1 + (-3)*(-1) = 10 + 5 + 3 = 18
+        If you choose i = 2, j = 2, and k = 3 then we will get 
+        A[2]*B + A[2]*C + A[3]*D = 5*2 + 5*1 + (-3)*(-1) 
+        = 10 + 5 + 3 = 18
     Explanation 2:
-        If you choose i = 1, j = 3, and k = 3 then we will get A[1]*B + A[3]*C + A[3]*D = (3*1) + (-10*1) + (3*1) = 3 - 10 + 3 = -4
+        If you choose i = 1, j = 3, and k = 3 then we will get 
+        A[1]*B + A[3]*C + A[3]*D = (3*1) + (-10*1) + (3*1) 
+        = 3 - 10 + 3 = -4
     
 ## Ways to form Max Heap
     Problem Description
-        Max Heap is a special kind of complete binary tree in which, for every node, the value present in that node is greater than the value present in its children nodes.
+        Max Heap is a special kind of complete binary tree in which, for every node, the value present in that node is 
+        greater than the value present in its children nodes.
 
         Find the number of distinct Max Heap that can be made from A distinct integers.
 
         In short, you have to ensure the following properties for the max heap :
 
-        Heap has to be a complete binary tree ( A complete binary tree is a binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.)
+        Heap has to be a complete binary tree ( A complete binary tree is a binary tree in which every level, 
+        except possibly the last, is completely filled, and all nodes are as far left as possible.)
         Every node is greater than all its children.
         NOTE: If you want to know more about Heaps, please visit this link. Return your answer modulo 109 + 7.
 
