@@ -23,7 +23,8 @@
 
 ## Connecting the Ropes
     Problem Description:
-        You can connect any two ropes together, there is a cost associated to connect them = sum of length of both ropes that we re connecting.
+        You can connect any two ropes together, there is a cost associated to connect them = sum of length of both ropes that 
+        we re-connecting.
         Find min cost to connect all the ropes together.
     Input
         Give an array of length of ropes
@@ -36,12 +37,17 @@
 - [Problems](https://www.interviewbit.com/courses/programming/heaps-and-maps/)
 
 ## Insertion
-    Given a Binary Heap and a new element to be added to this Heap. The task is to insert the new element to the Heap maintaining the properties of Heap. 
-    Process of Insertion: Elements can be inserted to the heap following a similar approach as discussed above for deletion. The idea is to: 
-
-    * First increase the heap size by 1, so that it can store the new element.
+    Given a Binary Heap and a new element to be added to this Heap. The task is to insert the new element to the Heap 
+    maintaining the properties of Heap. 
+    Process of Insertion: Elements can be inserted to the heap following a similar approach as discussed above for deletion. 
+    
+    The idea is to: 
+        * First increase the heap size by 1, so that it can store the 
+        new element.
     * Insert the new element at the end of the Heap.
-    * This newly inserted element may distort the properties of Heap for its parents. So, in order to keep the properties of Heap, heapify this newly inserted element following a bottom-up approach.
+    * This newly inserted element may distort the properties of Heap 
+        for its parents. So, in order to keep the properties of Heap, 
+        heapify this newly inserted element following a bottom-up approach.
 
     TC : O(height of tree) i.e. logN
     SC : O(1)
@@ -179,11 +185,13 @@
 ### Solution approach
     Idea 1: We can use two pointers technique like merge sort and create the sorted list
 
-    Problem with this idea: As input size grow it will be difficult to maintian that many pointer and assicated manipulation will be very very difficult.
+    Problem with this idea: As input size grow it will be difficult to maintian that many pointer and associated manipulation 
+    will be very very difficult.
 
     Idea 2: Using mean heap
         Steps to follow:
-            1. Create Min heap (with custom comparator that will work on node value) as same size as input size and we will maintain same heap size throughout the solution
+            1. Create Min heap (with custom comparator that will work on node value) as same size as 
+            input size and we will maintain same heap size throughout the solution
             2. Push root node of each input in min heap
             3. Pull the min node value from heap and push it into LinkedList
             4. Push back the next node of linked list to min heap to process next node.
