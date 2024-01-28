@@ -73,23 +73,22 @@ public class KthSmallestElementInASortedMatrix {
     }
 
     public int solve(int[][] A, int B) {
-        int n = A.length;
         int m = A[0].length;
 
         PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
-        for (int i = 0; i < n; i++) {
+        for (int[] ints : A) {
             for (int j = 0; j < m; j++) {
                 if (q.size() < B)
-                    q.offer(A[i][j]);
+                    q.offer(ints[j]);
                 else {
-                    if (A[i][j] < q.peek()) {
+                    if (!q.isEmpty() && ints[j] < q.peek()) {
                         q.poll();
-                        q.offer(A[i][j]);
+                        q.offer(ints[j]);
                     }
                 }
             }
         }
-        return q.peek();
+        return q.isEmpty() ? 0 : q.peek();
     }
 }
 

@@ -62,7 +62,7 @@ public class MinimumLargestElement {
 
     public static int solve(ArrayList<Integer> A, int B) {
         PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparing(Pair::getImpact));
-        minHeap.addAll(A.stream().map(val -> new Pair(val, val)).collect(java.util.stream.Collectors.toList()));
+        minHeap.addAll(A.stream().map(val -> new Pair(val, val)).toList());
         int remainingOps = B;
         while (!minHeap.isEmpty() && remainingOps > 0) {
             Pair pair = minHeap.poll();
@@ -77,8 +77,6 @@ public class MinimumLargestElement {
 class Pair {
     Integer currentValue;
     Integer actualValue;
-
-    private Integer impact;
 
     public Pair(Integer currentValue, Integer actualValue) {
         this.currentValue = currentValue;

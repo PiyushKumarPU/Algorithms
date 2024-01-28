@@ -73,7 +73,7 @@
 ## [Heapify](https://www.geeksforgeeks.org/building-heap-from-array/)
     Basically it is constructing heap from given array.
 
-    TC : O(lonN)
+    TC : O(logN)
     SC : O(1)
 
 ### Psuedo Code

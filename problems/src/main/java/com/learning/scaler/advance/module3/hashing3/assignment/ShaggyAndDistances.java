@@ -1,6 +1,10 @@
 package com.learning.scaler.advance.module3.hashing3.assignment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 /*
 Problem Description
@@ -30,8 +34,29 @@ Example Output
 * */
 public class ShaggyAndDistances {
 
-    public int solve(ArrayList<Integer> A) {
+    public static void main(String[] args) {
+        ShaggyAndDistances distances = new ShaggyAndDistances();
+        System.out.println(distances.solve(new ArrayList<>(List.of(7, 1, 3, 4, 7, 7))));
+    }
 
-        return 0;
+    public int solve(ArrayList<Integer> A) {
+        Map<Integer, List<Integer>> valIndexMap = new HashMap<>();
+        for (int i = 0; i < A.size(); i++) {
+            Integer current = A.get(i);
+            List<Integer> existingIndexes = valIndexMap.getOrDefault(current, new ArrayList<>());
+            existingIndexes.add(i);
+            valIndexMap.put(current, existingIndexes);
+        }
+        AtomicReference<Integer> minValue = new AtomicReference<>(Integer.MAX_VALUE);
+        valIndexMap.entrySet().stream().filter(entry -> entry.getValue().size() > 1).forEach(current -> {
+            List<Integer> indexes = current.getValue();
+            int i = 0, j = 1;
+            while (j < indexes.size()) {
+                minValue.set(Math.min(minValue.get(), Math.abs(indexes.get(i) - indexes.get(j))));
+                i++;
+                j++;
+            }
+        });
+        return minValue.get().equals(Integer.MAX_VALUE) ? -1 : minValue.get();
     }
 }

@@ -124,9 +124,3 @@ public class ProductOf3 {
     }
 }
 
-class CustomComp implements Comparator<Integer> {
-    @Override
-    public int compare(Integer a, Integer b) {
-        return b - a;
-    }
-}
