@@ -53,38 +53,59 @@ public class AthLargestElement {
 
     public static void main(String[] args) {
         AthLargestElement element = new AthLargestElement();
-        System.out.println(element.solve(4, new ArrayList<>(List.of(1, 2, 3, 4, 5, 6))));
-        //System.out.println(element.solve(2, new ArrayList<>(List.of(15, 20, 99, 1))));
+       /* System.out.println(element.solve(4, new ArrayList<>(List.of(1, 2, 3, 4, 5, 6))));
+        //System.out.println(element.solve(2, new ArrayList<>(List.of(15, 20, 99, 1))));*/
+
+        System.out.println(Arrays.toString(element.twoSum(new int[]{-1, -2, -3, -4, -5}, -8)));
     }
 
     public ArrayList<Integer> solve(int A, ArrayList<Integer> B) {
-        if (A > B.size()) return new ArrayList<>(Collections.nCopies(B.size(), -1));
-        ArrayList<Integer> result = new ArrayList<>(Collections.nCopies(A, -1));
-        List<Integer> input = new ArrayList<>();
-        for (int i = 0; i < A; i++) {
-            input.add(B.get(i));
-        }
-        int lastAth = athLargest(input, A);
-        result.add(lastAth);
-        for (Integer integer : B) {
-            input.add(integer);
-            result.add(athLargest(input, A));
-        }
-        for (int i = A; i < B.size(); i++) {
-            result.add(athLargest(input, A));
+        ArrayList<Integer> result = new ArrayList<>();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
+        result.add(-1);
+        minHeap.add(B.get(0));
+        for (int index = 1; index < B.size() && !minHeap.isEmpty(); index++) {
+            if (index < A - 1) {
+                result.add(-1);
+                minHeap.add(B.get(index));
+            } else {
+                int currentMin = minHeap.peek();
+                int currentVal = B.get(index);
+                if (currentVal > currentMin) {
+                    minHeap.poll();
+                    minHeap.add(currentVal);
+                    result.add(minHeap.peek());
+                }
+            }
         }
         return result;
     }
 
-    private int athLargest(List<Integer> list, int A) {
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
-        maxHeap.addAll(list);
-        while (!maxHeap.isEmpty() && A > 0) {
-            if (A == 1) return maxHeap.poll();
-            maxHeap.poll();
-            A--;
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, List<Integer>> frequencyMap = new HashMap<>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            int current = nums[i];
+            List<Integer> existing = frequencyMap.getOrDefault(current, new ArrayList<>());
+            existing.add(i);
+            frequencyMap.put(current, existing);
         }
-        return -1;
+        int[] result = new int[2];
+        for (Map.Entry<Integer, List<Integer>> entry : frequencyMap.entrySet()) {
+            int currentVal = entry.getKey();
+            int secondPart = target - currentVal;
+            if (secondPart == currentVal && entry.getValue().size() > 1) {
+                result[0] = entry.getValue().get(0);
+                result[1] = entry.getValue().get(1);
+                return result;
+            } else {
+                if (frequencyMap.containsKey(secondPart)) {
+                    result[0] = entry.getValue().get(0);
+                    result[1] = frequencyMap.get(secondPart).get(0);
+                    return result;
+                }
+            }
+        }
+        return result;
     }
 
 }
