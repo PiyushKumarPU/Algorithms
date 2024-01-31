@@ -1,6 +1,11 @@
 package com.learning.scaler.advance.module3.linkedlist2.assignment;
 
 import com.learning.scaler.advance.module3.ListNode;
+import com.learning.scaler.advance.module3.ListNodeConstructor;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /*
 Problem Description
@@ -39,12 +44,49 @@ Example Explanation
 * */
 public class MergeTwoSortedList {
 
-    public ListNode mergeTwoLists(ListNode A, ListNode B) {
-        if(A == null && B == null) return null;
-        else if(A == null) return B;
-        else if( B == null) return A;
-        ListNode head = null;
+    public static void main(String[] args) {
+        mergeTwoLists(ListNodeConstructor.construct(List.of(5, 8, 20)),
+                ListNodeConstructor.construct(List.of(4, 11, 15))).printAll();
 
-        return head;
+
+    }
+
+
+    // TODO : Implement using merge sort
+    public static ListNode mergeTwoLists(ListNode A, ListNode B) {
+        if (A == null && B == null) return null;
+        else if (A == null) return B;
+        else if (B == null) return A;
+        ListNode root = null;
+        ListNode current = null;
+        PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
+        minHeap.add(new Pair(A.val, A));
+        minHeap.add(new Pair(B.val, B));
+        while (!minHeap.isEmpty()) {
+            Pair currentPoll = minHeap.poll();
+            ListNode next = currentPoll.next.next;
+            if (next != null) {
+                minHeap.add(new Pair(next.val, next));
+            }
+
+            if (root == null) {
+                root = new ListNode(currentPoll.val);
+                current = root;
+            } else {
+                current.next = new ListNode(currentPoll.val);
+                current = current.next;
+            }
+        }
+        return root;
+    }
+}
+
+class Pair {
+    int val;
+    ListNode next;
+
+    public Pair(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }

@@ -53,30 +53,26 @@ public class AthLargestElement {
 
     public static void main(String[] args) {
         AthLargestElement element = new AthLargestElement();
-       /* System.out.println(element.solve(4, new ArrayList<>(List.of(1, 2, 3, 4, 5, 6))));
-        //System.out.println(element.solve(2, new ArrayList<>(List.of(15, 20, 99, 1))));*/
-
-        System.out.println(Arrays.toString(element.twoSum(new int[]{-1, -2, -3, -4, -5}, -8)));
+        ArrayList<Integer> B = new ArrayList<>(List.of(1, 2, 3, 4, 5));
+        System.out.println(element.solve(2, B));
     }
 
     public ArrayList<Integer> solve(int A, ArrayList<Integer> B) {
         ArrayList<Integer> result = new ArrayList<>();
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
-        result.add(-1);
-        minHeap.add(B.get(0));
-        for (int index = 1; index < B.size() && !minHeap.isEmpty(); index++) {
-            if (index < A - 1) {
-                result.add(-1);
-                minHeap.add(B.get(index));
-            } else {
-                int currentMin = minHeap.peek();
-                int currentVal = B.get(index);
-                if (currentVal > currentMin) {
-                    minHeap.poll();
-                    minHeap.add(currentVal);
-                    result.add(minHeap.peek());
-                }
+        for (int i = 0; i < A; i++) {
+            minHeap.add(B.get(i));
+            if (i < A - 1) result.add(-1);
+        }
+        result.add(minHeap.peek());
+        for (int index = A; index < B.size() && !minHeap.isEmpty(); index++) {
+            int currentMin = minHeap.peek();
+            int currentVal = B.get(index);
+            if (currentVal > currentMin) {
+                minHeap.poll();
+                minHeap.add(currentVal);
             }
+            result.add(minHeap.peek());
         }
         return result;
     }
@@ -108,4 +104,12 @@ public class AthLargestElement {
         return result;
     }
 
+
+    private ArrayList<Integer> buildHugeInput() {
+        ArrayList<Integer> result = new ArrayList<>(20000);
+        for (int i = 200; i < 20200; i++) {
+            result.add(i);
+        }
+        return result;
+    }
 }

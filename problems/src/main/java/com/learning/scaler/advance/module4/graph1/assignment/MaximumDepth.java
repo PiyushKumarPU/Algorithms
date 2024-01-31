@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module4.graph1.assignment;
 
-import java.util.ArrayList;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /*
 Problem Description
@@ -81,7 +82,90 @@ Example Explanation
 * */
 public class MaximumDepth {
 
-    public ArrayList<Integer> solve(int A, ArrayList<Integer> B, ArrayList<Integer> C, ArrayList<Integer> D, ArrayList<Integer> E, ArrayList<Integer> F) {
-    return null;
+    public static void main(String[] args) {
+        MaximumDepth maximumDepth = new MaximumDepth();
+
+        int A = 5;
+        ArrayList<Integer> B = new ArrayList<>(List.of(1, 4, 3, 1));
+        ArrayList<Integer> C = new ArrayList<>(List.of(5, 2, 4, 4));
+        ArrayList<Integer> D = new ArrayList<>(List.of(7, 38, 27, 37, 1));
+        ArrayList<Integer> E = new ArrayList<>(List.of(1, 1, 2));
+        ArrayList<Integer> F = new ArrayList<>(List.of(32, 18, 26));
+
+        System.out.println(maximumDepth.solve(A, B, C, D, E, F));
+    }
+
+    // A denotes number of nodes
+    //  B and C denoted start and end node of edges
+    // D denotes the node value of i + 1 node
+    // E denotes L value of query
+    // F denotes X value of query
+
+    // criteria to find min value node of level L mode (maxDepth of tree + 1) and value should be greater or
+    // equal and return -1 if all value is less
+
+
+    // trying brute force
+    /*
+     *  Step 1 : Construct directed and weighted graph adj list for given input
+     *
+     * */
+    public ArrayList<Integer> solve(int A, ArrayList<Integer> B, ArrayList<Integer> C, ArrayList<Integer> D,
+                                    ArrayList<Integer> E, ArrayList<Integer> F) {
+        Map<Integer, List<Integer>> nbrMap = new HashMap<>(A + 1);
+        for (int i = 0; i < B.size(); i++) {
+            int start = B.get(i);
+            int end = C.get(i);
+            List<Integer> existing = new ArrayList<>();
+            if (!nbrMap.containsKey(start) && nbrMap.containsKey(end)) {
+                existing = nbrMap.getOrDefault(end, existing);
+                existing.add(start);
+                nbrMap.put(end, existing);
+            } else {
+                existing = nbrMap.getOrDefault(start, existing);
+                existing.add(end);
+                nbrMap.put(start, existing);
+            }
+        }
+        Map<Integer, List<Integer>> levelValuesMap = new HashMap<>();
+        Queue<Pair> levelOrder = new LinkedList<>();
+        levelOrder.add(new Pair(0, 1));
+
+        while (!levelOrder.isEmpty()) {
+            Pair current = levelOrder.poll();
+            List<Integer> existing = levelValuesMap.getOrDefault(current.level, new ArrayList<>());
+            existing.add(D.get(current.value - 1));
+            levelValuesMap.put(current.level, existing);
+            if (nbrMap.containsKey(current.value)) {
+                for (Integer nbr : nbrMap.get(current.value)) {
+                    levelOrder.add(new Pair(current.level + 1, nbr));
+                }
+            }
+        }
+
+        int maxDepth = levelValuesMap.keySet().size();
+        ArrayList<Integer> result = new ArrayList<>(E.size());
+        for (int i = 0; i < E.size(); i++) {
+            int L = E.get(i);
+            int X = F.get(i);
+            int reqLevel = L % (maxDepth + 1);
+            List<Integer> nodeValueAtL = levelValuesMap.getOrDefault(reqLevel, new ArrayList<>());
+            if (nodeValueAtL.isEmpty()) {
+                result.add(-1);
+            } else {
+                result.add(nodeValueAtL.stream().filter(val -> val >= X).min(Comparator.naturalOrder()).orElse(-1));
+            }
+        }
+        return result;
+    }
+}
+
+class Pair {
+    public int level;
+    public int value;
+
+    public Pair(int level, int value) {
+        this.level = level;
+        this.value = value;
     }
 }

@@ -62,7 +62,18 @@ Example Explanation
 * */
 public class NumberOfIslands {
 
-    public int solve(ArrayList<ArrayList<Integer>> A) {
-        return 0;
+    public static void main(String[] args) {
+        int[][] input = {
+                {0, 1, 0},
+                {0, 0, 1},
+                {1, 0, 0}
+        };
+
+        NumberOfIslands number = new NumberOfIslands();
+        System.out.println(number.solve(input));
+    }
+
+    public int solve(int[][] A) {
+        return com.learning.scaler.advance.module4.graph1.additional.NumberOfIslands.solve(A);
     }
 }

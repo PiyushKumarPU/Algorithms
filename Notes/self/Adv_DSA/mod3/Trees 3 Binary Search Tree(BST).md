@@ -184,6 +184,9 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
         Take element one by one and keep adding at the right most node and maintain address of right most node
         TC : O(N)
         SC : O(1)
+    Idea 3 : Balance tree
+        Use the property of sorted array and start with middle element
+        
 
 
 

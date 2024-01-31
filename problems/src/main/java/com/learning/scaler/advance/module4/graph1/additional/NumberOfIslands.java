@@ -1,7 +1,5 @@
 package com.learning.scaler.advance.module4.graph1.additional;
 
-import java.util.ArrayList;
-
 /*
 Problem Description
     Given a matrix of integers A of size N x M consisting of 0 and 1. A group of connected 1's forms an island.
@@ -62,7 +60,39 @@ Example Explanation
 * */
 public class NumberOfIslands {
 
-    public int solve(ArrayList<ArrayList<Integer>> A) {
-        return 0;
+    public static void main(String[] args) {
+        int[][] input = {
+                {0, 1, 0},
+                {0, 0, 1},
+                {1, 0, 0}
+        };
+
+        System.out.println(solve(input));
+    }
+
+    public static int solve(int[][] A) {
+        int n = A.length, m = A[0].length, count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (A[i][j] == 1) {
+                    count++;
+                    DFS(A, i, j);
+                }
+            }
+        }
+        return count;
+    }
+
+    private static void DFS(int[][] A, int i, int j) {
+        if (i < 0 || i >= A.length || j < 0 || j >= A[0].length || A[i][j] != 1) return;
+        A[i][j] = 2;
+        DFS(A, i - 1, j);
+        DFS(A, i, j - 1);
+        DFS(A, i + 1, j);
+        DFS(A, i, j + 1);
+        DFS(A, i - 1, j - 1);
+        DFS(A, i + 1, j + 1);
+        DFS(A, i - 1, j + 1);
+        DFS(A, i + 1, j - 1);
     }
 }

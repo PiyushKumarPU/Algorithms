@@ -6,6 +6,7 @@
 - [No of Islands](#no-of-islands)
 - [Topological sort](#topological-sort)
 - [Union Find](#union-find)
+- [Knight On Chess Board](#knight-on-chess-board)
 
 
 ## Problems and solutions
@@ -77,18 +78,57 @@
         Other is formed by A[2][0].
         Explanation 2:
         There 5 island in total.
+### Solution approach
+    We will look for all the cell which has 1 as value and then we will keep finding all its neighbour with same value and we will change its value to something else so that same cell should not be counted again.
+    Will do DFS for all the neighbours until we find water cell or boundary cell.
+
+### Solution
+```java
+    public int solve(int[][] A) {
+        int n = A.length, m = A[0].length, count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (A[i][j] == 1) {
+                    count++;
+                    DFS(A, i, j);
+                }
+            }
+        }
+        return count;
+    }
+
+    private void DFS(int[][] A, int i, int j) {
+        if (i < 0 || i >= A.length || j < 0 || j >= A[0].length || A[i][j] != 1) return;
+        A[i][j] = 2;
+        DFS(A, i - 1, j);
+        DFS(A, i, j - 1);
+        DFS(A, i + 1, j);
+        DFS(A, i, j + 1);
+        DFS(A, i - 1, j - 1);
+        DFS(A, i + 1, j + 1);
+        DFS(A, i - 1, j + 1);
+        DFS(A, i + 1, j - 1);
+    }
+```
 ## Topological sort
     Problem Description
-        Given an directed acyclic graph having A nodes. A matrix B of size M x 2 is given which represents the M edges such that there is a edge directed from node B[i][0] to node B[i][1].
-        Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for every directed edge uv, vertex u comes before v in the ordering. Topological Sorting for a graph is not possible if the graph is not a DAG.
-        Return the topological ordering of the graph and if it doesn't exist then return an empty array.
-        If there is a solution return the correct ordering. If there are multiple solutions print the lexographically smallest one.
-        Ordering (a, b, c) is said to be lexographically smaller than ordering (e, f, g) if a < e or if(a==e) then b < f and so on.
+        Given an directed acyclic graph having A nodes. A matrix B of size M x 2 is given which represents the M edges such 
+        that there is a edge directed from node B[i][0] to node B[i][1]. Topological 
+        sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such 
+        that for every directed edge uv, vertex u comes before v in the ordering. 
+        Topological Sorting for a graph is not possible if the graph is not a DAG.
+        Return the topological ordering of the graph and if it doesn't exist 
+        then return an empty array.
+        If there is a solution return the correct ordering. If there are 
+        multiple solutions print the lexographically smallest one.
+        Ordering (a, b, c) is said to be lexographically smaller than 
+        ordering (e, f, g) if a < e or if(a==e) then b < f and so on.
         NOTE:
             There are no self-loops in the graph.
             The graph may or may not be connected.
             Nodes are numbered from 1 to A.
-            Your solution will run on multiple test cases. If you are using global variables make sure to clear them.
+            Your solution will run on multiple test cases. If you are 
+            using global variables make sure to clear them.
 
     Problem Constraints
         2 <= A <= 10^4
@@ -96,8 +136,11 @@
         1 <= B[i][0], B[i][1] <= A
 
     Input Format
-        The first argument given is an integer A representing the number of nodes in the graph.
-        The second argument given a matrix B of size M x 2 which represents the M edges such that there is a edge directed from node B[i][0] to node B[i][1].
+        The first argument given is an integer A representing the number of nodes 
+        in the graph.
+        The second argument given a matrix B of size M x 2 which represents 
+        the M edges such that there is a edge directed from node B[i][0] 
+        to node B[i][1].
 
     Output Format
         Return a one-dimensional array denoting the topological ordering of the graph and it it doesn't exist then return empty array.

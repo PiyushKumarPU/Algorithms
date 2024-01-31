@@ -71,9 +71,6 @@ Example : <br> Lets take N = 324 <br>
 ``` 324 --> 162 --> 81 --> 40 --> 20 --> 10 --> 5 --> 2 --> 1``` count = 8 <br>
 
 
-
-
-
 ## Iteration Problems
 
 ## Comapring Iterations using graphs

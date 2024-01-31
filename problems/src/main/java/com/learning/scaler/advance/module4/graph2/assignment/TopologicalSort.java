@@ -1,6 +1,6 @@
 package com.learning.scaler.advance.module4.graph2.assignment;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /*
 Problem Description
@@ -56,7 +56,47 @@ Example Explanation
 * */
 public class TopologicalSort {
 
+    public static void main(String[] args) {
+        ArrayList<ArrayList<Integer>> inputs = new ArrayList<>();
+        inputs.add(new ArrayList<>(List.of(1, 4)));
+        inputs.add(new ArrayList<>(List.of(1, 2)));
+        inputs.add(new ArrayList<>(List.of(4, 2)));
+        inputs.add(new ArrayList<>(List.of(4, 3)));
+        inputs.add(new ArrayList<>(List.of(3, 2)));
+        inputs.add(new ArrayList<>(List.of(5, 2)));
+        inputs.add(new ArrayList<>(List.of(3, 5)));
+        inputs.add(new ArrayList<>(List.of(8, 2)));
+        inputs.add(new ArrayList<>(List.of(8, 6)));
+
+        TopologicalSort topologicalSort = new TopologicalSort();
+        System.out.println(topologicalSort.solve(8,inputs));
+    }
+
     public ArrayList<Integer> solve(int A, ArrayList<ArrayList<Integer>> B) {
-        return null;
+        List<List<Integer>> adjList = new ArrayList<>();
+        for (int i = 0; i <= A; i++) {
+            adjList.add(new ArrayList<>());
+        }
+        int[] indegree = new int[A + 1];
+        for (ArrayList<Integer> row : B) {
+            int start = row.get(0);
+            int end = row.get(1);
+            indegree[end]++;
+            adjList.get(start).add(end);
+        }
+        Queue<Integer> orderQueue = new LinkedList<>();
+        for (int i = 1; i < indegree.length; i++) {
+            if (indegree[i] == 0) orderQueue.add(i);
+        }
+        ArrayList<Integer> result = new ArrayList<>();
+        while (!orderQueue.isEmpty()) {
+            int current = orderQueue.poll();
+            result.add(current);
+            for (int nbr : adjList.get(current)) {
+                indegree[nbr]--;
+                if (indegree[nbr] == 0) orderQueue.add(nbr);
+            }
+        }
+        return result;
     }
 }

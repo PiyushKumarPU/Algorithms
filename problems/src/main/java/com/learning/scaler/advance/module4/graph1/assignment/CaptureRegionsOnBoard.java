@@ -1,6 +1,9 @@
 package com.learning.scaler.advance.module4.graph1.assignment;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /*
 Problem Description
@@ -56,6 +59,55 @@ Example Explanation
 * */
 public class CaptureRegionsOnBoard {
 
+    public static void main(String[] args) {
+
+        ArrayList<ArrayList<Character>> input = new ArrayList<>();
+        input.add(new ArrayList<>(List.of('X', 'O', 'O', 'O', 'O', 'O', 'O', 'X')));
+        input.add(new ArrayList<>(List.of('X', 'X', 'O', 'O', 'X', 'O', 'O', 'X')));
+        input.add(new ArrayList<>(List.of('O', 'X', 'X', 'O', 'X', 'O', 'X', 'X')));
+        new CaptureRegionsOnBoard().solve(input);
+        System.out.println(input);
+    }
+
     public void solve(ArrayList<ArrayList<Character>> a) {
+        int n = a.size();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (a.get(i).get(j) == 'O') {
+                    isValidIndex(a, i, j, "");
+                }
+            }
+        }
+    }
+
+    private boolean isSurroundedRegion(ArrayList<ArrayList<Character>> A, int i, int j) {
+
+
+        return false;
+    }
+
+    private boolean isValidIndex(ArrayList<ArrayList<Character>> A, int i, int j, String caller) {
+        if (i < 0 || j < 0 || i >= A.size() || j > A.get(0).size() || A.get(i).get(j) == 'B'
+                || (i == 0 && j == 0 && A.get(i).get(j) != 'X')
+                || (i == A.size() - 1 && j == A.get(0).size() - 1 && A.get(i).get(j) != 'X')
+        ) return false;
+        if (A.get(i).get(j) == 'X') return true;
+        if (!Objects.equals(caller, ""))
+            System.out.println("Called by " + caller + " with i " + i + " and j " + j);
+
+
+
+
+        if (isValidIndex(A, i, j - 1, "Left") && isValidIndex(A, i, j + 1, "Right")
+                && isValidIndex(A, i - 1, j, "Up") && isValidIndex(A, i + 1, j, "Bottom")) {
+            A.get(i).set(j, 'X');
+            return true;
+        } else {
+            A.get(i).set(j, 'B');
+            return false;
+        }
     }
 }
+
+
+

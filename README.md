@@ -84,9 +84,8 @@ Trying to make an easy and readable DSA notes for quick understanding of related
    10. [Hashing : Introduction](/Notes/self/Adv_DSA/mod2/Hashing%20%20Introduction.md)
    11. [Hashing : Problems2](/Notes/self/Adv_DSA/mod2/Hashing%20%20Problems2.md)
    12. [Two Pointers](/Notes/self/Adv_DSA/mod2/Two%20Pointers.md "Two Pointers")
-   13. [Strings Pattern Matching: Rabin Karp](/Notes/self/Adv_DSA/mod2/Strings%20Pattern%20Matching%20Rabin%20Karp.md)
-   14. [Interview Problems 1](/Notes/self/Adv_DSA/mod2/Interview%20Problems%201.md)
-   15. [Advanced DSA: Contest 4](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%204.md)
+   13. [Interview Problems 1](/Notes/self/Adv_DSA/mod2/Interview%20Problems%201.md)
+   14. [Advanced DSA: Contest 4](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%204.md)
 
 
 #### Module 3

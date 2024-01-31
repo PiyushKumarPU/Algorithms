@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module4.graph1.assignment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 Problem Description
@@ -38,8 +39,41 @@ Example Explanation
 * */
 public class BlackShapes {
 
+    public static void main(String[] args) {
+        List<String> input = List.of("XXX","XXX","XXX");
+        BlackShapes blackShapes = new BlackShapes();
+        System.out.println(blackShapes.black(new ArrayList<>(input)));
+    }
+
     public int black(ArrayList<String> A) {
-        
-        return 0;
+        int count = 0;
+        char[][] inputs = new char[A.size()][A.get(0).length()];
+        for (int i = 0; i < A.size(); i++) {
+            String current = A.get(i);
+            for (int j = 0; j < A.get(0).length(); j++) {
+                inputs[i][j] = current.charAt(j);
+            }
+        }
+
+        for (int i = 0; i < A.size(); i++) {
+            for (int j = 0; j < A.get(0).length(); j++) {
+                if (inputs[i][j] == 'X') {
+                    count++;
+                    DFS(inputs, i, j);
+                }
+            }
+        }
+        return count;
+    }
+
+    private static void DFS(char[][] A, int i, int j) {
+        if (i < 0 || i >= A.length || j < 0 || j >= A[0].length || A[i][j] != 'X') return;
+        A[i][j] = 'Z';
+
+        DFS(A, i, j - 1);
+        DFS(A, i, j + 1);
+        DFS(A, i + 1, j);
+        DFS(A, i - 1, j);
+
     }
 }
