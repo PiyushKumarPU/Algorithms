@@ -21,7 +21,10 @@
 
 
 ## Recursion Introduction
-    Recursion is a process of solving bigger problem by breaking into similar smaller subproblems in such a way that merging all smaller problem together will give you solution of bigger problem.
+    Recursion is a process of solving bigger problem by breaking into 
+    similar smaller subproblems in such a way that merging all 
+    smaller problem together will give you solution of bigger 
+    problem.
 ## Write Recursive Code
 * Assumption: First decide what does our funnction do
 * Main Logic : Recursive relation to code/breaking big problem into smaller one
