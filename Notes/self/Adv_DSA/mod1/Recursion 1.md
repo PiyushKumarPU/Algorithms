@@ -166,3 +166,11 @@
     }
 ```
 ## TC and SC
+### TC
+
+
+### SC
+> Below is the image representation of space taken by a recursive call. Mostly it would be space taken by recursive call and it would be the height of recursive call.
+![Space taken by recursive call](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/952fc50e281c61476f883f9fd3a97114e61f6237/Notes/images/recursion_SC.png?raw=true)
+
+> Space taken by recursive call would be the same as height and max height would be logN where N is the given input
