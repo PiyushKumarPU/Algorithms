@@ -8,12 +8,11 @@
 - [TC and SC](#tc-and-sc)
 
   
-
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module1/recursion1/assignment)
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module1/recursion1/additional)
+3. [Class/Lecture Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module1/recursion1/lecture)
 
 ## Class Notes and Videos
 
@@ -167,10 +166,10 @@
 ```
 ## TC and SC
 ### TC
-
-
+> Below is the image representation of total number of recursive call done in above method
+![TC for recursive](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/9aaaa5252d9134dd5ad34c4b74fdcc6aaae35482/Notes/images/recursive_TC.png?raw=true)
+> As we can see total number of recursive call is N+1 and each iteration is getting done in O(1) constant time so total time taken to complete this execution would be O(n)
 ### SC
 > Below is the image representation of space taken by a recursive call. Mostly it would be space taken by recursive call and it would be the height of recursive call.
 ![Space taken by recursive call](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/952fc50e281c61476f883f9fd3a97114e61f6237/Notes/images/recursion_SC.png?raw=true)
-
 > Space taken by recursive call would be the same as height and max height would be logN where N is the given input
