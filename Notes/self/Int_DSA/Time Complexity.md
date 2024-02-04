@@ -4,22 +4,19 @@
 ## Scope / Agenda
 - [Log Basics](#log-basics)
 - [Iteration Problems](#iteration-problems)
-- [Comapring Iterations using graphs](#comapring-iterations-using-graphs)
 - [Time Complexity : Big O notation](#time-complexity--big-o-notation)
 - [Time Limit Exceed i.e. TLE](#time-limit-exceed-ie-tle)
 - [Importance of Constraint](#importance-of-constraint)
 
 
 ## Problems and solutions
-
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+ > There is no programming questions in this lecture, only objective questions are there to calculate time complexity.
+ * Please take a look [here](https://www.interviewbit.com/courses/programming/time-complexity/)
 
 ## Class Notes and Videos
 
 1. [Class Notes](../../class_Notes/DSA%20Intermediate%20Notes/2%20Time%20Complexity(%2025-08-23).pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=nz1IwfVC30E)
+2. [Class/Lecture Video](https://www.youtube.com/watch?v=aFbcRDbolG0&list=PLY7YPSlgGFgwd2idzGC67pQDAwiMfu7XE&index=2&ab_channel=Whatisinthebox%3F)
 
 
 ## Log Basics
@@ -62,20 +59,72 @@ Key points
     ```log3^3^5 = 5```
 
 
-Problem Description: <br>
+#### Problem Description: <br>
     How many times do we divide N by 2 so it reaches 1? <br>
 
-Example:<br> Lets take N = 100 <br>
+#### Example: Lets take N = 100
 ``` 100 --> 50 --> 25 --> 12 --> 6 --> 3 --> 1 ``` Count = 6 <br>
-Example : <br> Lets take N = 324 <br>
-``` 324 --> 162 --> 81 --> 40 --> 20 --> 10 --> 5 --> 2 --> 1``` count = 8 <br>
+#### Example : Lets take N = 324
+``` 324 --> 162 --> 81 --> 40 --> 20 --> 10 --> 5 --> 2 --> 1``` 
+>count = 8
+
+#### Explanation
+ ``` 100 --> 50 --> 25 --> 12 --> 6 --> 3 --> 1 ```
+> N/2^0   --> N/2^1 --> N/2^2 --> N/2^3 ..... N/2^k
+    N/2^k = 1
+    N = 2^k
+    take log both side
+    logn = long2^k
+    logn = k
+> so no of steps would be logn to perform k steps so that n reaches 1
 
 
 ## Iteration Problems
+### Problem 1
+```java
+    N > 0
+    i = N
+    while(i > 1){
+        i = i /2;
+    }
+```
+> No of iteration in above code piece would be logn because in each iteration we are dividing it by 2
 
-## Comapring Iterations using graphs
+### Problem 2
+```java
+    for(int i = 1; i <=N ; i *= 2){
+
+    }
+```
+> No of iteration in above code piece would be logn because in each iteration we are multipying it by 2
 
 ## Time Complexity : Big O notation
+     In Asymptotic Analysis, we evaluate the performance of an algorithm in terms of input size (we don’t measure the actual running time). We calculate, how the time (or space) taken by an algorithm increases with the input size. 
+### Advantage of Asymptotic analysis
+* Asymptotic analysis provides a high-level understanding of how an algorithm performs with respect to input size.
+* It is a useful tool for comparing the efficiency of different algorithms and selecting the best one for a specific problem.
+* It helps in predicting how an algorithm will perform on larger input sizes, which is essential for real-world applications.
+* Asymptotic analysis is relatively easy to perform and requires only basic mathematical skills.
+
+### Disadvantage of Asymptotic analysis
+* Asymptotic analysis does not provide an accurate running time or space usage of an algorithm.
+* It assumes that the input size is the only factor that affects an algorithm’s performance, which is not always the case in practice.
+* Asymptotic analysis can sometimes be misleading, as two algorithms with the same asymptotic complexity may have different actual running times or space usage.
+* It is not always straightforward to determine the best asymptotic complexity for an algorithm, as there may be trade-offs between time and space complexity.
+
+## Comparision order of Big O
+$log{_2}{n}$ < $\sqrt{n}$ < n < $nlog{_2}{n}$ < $n\sqrt{n}$ < $n^2$ < $n^3$ < $2^n$ < n! < $n^n$
+
+## Calculate Big-O notation 
+* Choose term with highest value
+* Ignore constant term if any
+
+### Example
+    Consider following is the number of iteration of any code block
+    n^2 + 10*2^n + nlogn
+    here 10*2^n is the biggest term so we will pick 10*2^n
+    10 is the constant term in 10*2^n so we will ignore it.
+    Finally Big O notation will be O(2^n)
 
 ## Time Limit Exceed i.e. TLE
 

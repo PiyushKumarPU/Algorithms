@@ -77,34 +77,6 @@ public class AthLargestElement {
         return result;
     }
 
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, List<Integer>> frequencyMap = new HashMap<>(nums.length);
-        for (int i = 0; i < nums.length; i++) {
-            int current = nums[i];
-            List<Integer> existing = frequencyMap.getOrDefault(current, new ArrayList<>());
-            existing.add(i);
-            frequencyMap.put(current, existing);
-        }
-        int[] result = new int[2];
-        for (Map.Entry<Integer, List<Integer>> entry : frequencyMap.entrySet()) {
-            int currentVal = entry.getKey();
-            int secondPart = target - currentVal;
-            if (secondPart == currentVal && entry.getValue().size() > 1) {
-                result[0] = entry.getValue().get(0);
-                result[1] = entry.getValue().get(1);
-                return result;
-            } else {
-                if (frequencyMap.containsKey(secondPart)) {
-                    result[0] = entry.getValue().get(0);
-                    result[1] = frequencyMap.get(secondPart).get(0);
-                    return result;
-                }
-            }
-        }
-        return result;
-    }
-
-
     private ArrayList<Integer> buildHugeInput() {
         ArrayList<Integer> result = new ArrayList<>(20000);
         for (int i = 200; i < 20200; i++) {
