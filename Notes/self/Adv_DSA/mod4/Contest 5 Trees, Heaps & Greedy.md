@@ -1,8 +1,6 @@
 
 ## Tree Heap and Greedy Contest Discussion
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
-
 ## Scope / Agenda
 - [Asteroid Destruction](#asteroid-destruction)
 - [ValidBinary Search Tree](#validbinary-search-tree)
