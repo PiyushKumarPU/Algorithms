@@ -42,6 +42,7 @@ public class Stairs {
     public static void main(String[] args) {
         Stairs stairs = new Stairs();
         System.out.println(stairs.climbStairsRecursive(4));
+        System.out.println(stairs.climbStairsIterative(4));
     }
 
     public int climbStairsRecursive(int A) {

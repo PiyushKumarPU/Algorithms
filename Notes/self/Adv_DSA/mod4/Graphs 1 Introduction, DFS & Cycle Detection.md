@@ -20,7 +20,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/45.%20Graphs%201%20Introduction,%20DFS%20&%20Cycle%20Detection.pdf)
-2. [Class/Lecture Video](https://youtu.be/YSYiZzdGEkA)
+2. [Class/Lecture Video](https://youtu.be/xYF6ZFMD2R0)
 
 ## What are Graphs
     A Graph is a non-linear data structure consisting of vertices and edges. The vertices are 

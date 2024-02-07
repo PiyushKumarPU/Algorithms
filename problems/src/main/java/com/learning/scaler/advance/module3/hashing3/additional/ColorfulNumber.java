@@ -1,5 +1,7 @@
 package com.learning.scaler.advance.module3.hashing3.additional;
 
+import java.util.*;
+
 /*
 Problem Description
     Given a number A, find if it is COLORFUL number or not.
@@ -49,7 +51,67 @@ Example Explanation
 * */
 public class ColorfulNumber {
 
-    public int colorful(int A) {
-        return 0;
+    public static void main(String[] args) {
+        int A = 123;
+        ArrayList<Integer> digits = new ArrayList<>();
+        int temp = A;
+        while (temp > 0) {
+            int digit = temp % 10;
+            digits.add(0, digit);
+            temp /= 10;
+        }
+        System.out.println(digits);
+    }
+
+    public static int colorful(int A) {
+        HashSet<Long> productSet = new HashSet<>();
+        ArrayList<Integer> digits = new ArrayList<>();
+        int temp = A;
+        while (temp > 0) {
+            int digit = temp % 10;
+            if (digits.contains(digit)) return 0;
+            digits.add(0, digit);
+            productSet.add((long) digit);
+            temp /= 10;
+        }
+        if (digits.contains(0)) return 0;
+        int size = digits.size();
+        for (int index = 0; index < size; index++) {
+            int start = 0, end = start + index + 1;
+            while (end < size) {
+                long currentProd = 1;
+                for (int ele = start; ele <= end; ele++)
+                    currentProd *= digits.get(ele);
+                if (productSet.contains(currentProd)) return 0;
+                productSet.add(currentProd);
+                start++;
+                end++;
+            }
+        }
+        return 1;
+    }
+
+    public int colorfulScaler(int A) {
+        HashSet<Integer> hashSet = new HashSet<>();
+        ArrayList<Integer> numbers = new ArrayList<>();
+        while (A != 0) {
+            int num = A % 10;
+            numbers.add(num);
+            A /= 10;
+        }
+        Collections.reverse(numbers);
+        int n = numbers.size();
+        for (int i = 0; i < n; i++) {
+            int prod = 1;
+            for (int j = i; j < n; j++) {
+                // prod stores the product of every digit in the range [i..j]
+                prod *= numbers.get(j);
+                // check if the product is unique
+                if (hashSet.contains(prod))
+                    return 0;
+                hashSet.add(prod);
+            }
+        }
+        return 1;
     }
 }

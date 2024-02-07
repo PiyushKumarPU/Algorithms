@@ -41,8 +41,28 @@ Example Explanation
 * */
 public class NDigitNumbers {
 
-    public int solve(int A, int B) {
+    public static void main(String[] args) {
+        System.out.println(solve(75,22));
+    }
 
-        return 0;
+
+    public static int solve(int A, int B) {
+        long[][] dp = new long[A + 1][B + 1];
+        for (int j = 1; j < Math.min(10, B + 1); j++) {
+            dp[1][j] = 1;
+        }
+
+        // Build up the solution
+        for (int i = 2; i <= A; i++) {
+            for (int j = 1; j <= B; j++) {
+                for (int k = 0; k < 10; k++) {
+                    if (j - k >= 0) {
+                        dp[i][j] =  dp[i][j] + (dp[i - 1][j - k] % 1000000007);
+                    }
+                }
+            }
+        }
+
+        return (int) (dp[A][B] % 1000000007);
     }
 }

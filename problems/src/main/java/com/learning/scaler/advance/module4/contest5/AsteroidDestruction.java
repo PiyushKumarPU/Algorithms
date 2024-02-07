@@ -5,11 +5,7 @@ import java.util.PriorityQueue;
 
 /*
 
-
-
-
 Problem Description
-
     In a faraway galaxy, there is a spaceship traveling through the asteroid field.
     The spaceship has a shield with a certain amount of energy.
     You are given an integer energy A, which represents the original energy of the shield.

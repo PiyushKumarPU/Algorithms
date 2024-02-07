@@ -18,7 +18,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/46.%20graph%202.pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=NkSqhVn2y7I)
+2. [Class/Lecture Video](https://youtu.be/yYlVP_1vkss)
 
 
 ## No of Islands

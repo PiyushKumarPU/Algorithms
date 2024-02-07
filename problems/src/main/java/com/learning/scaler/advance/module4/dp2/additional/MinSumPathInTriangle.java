@@ -45,48 +45,41 @@ Example Explanation
 * */
 public class MinSumPathInTriangle {
 
-    int[][] pathMatrix;
-
     public static void main(String[] args) {
         MinSumPathInTriangle triangle = new MinSumPathInTriangle();
         int result = triangle.minimumTotal(new ArrayList<>(List.of(
-                new ArrayList<>(List.of(9)),
-                new ArrayList<>(List.of(3, 8)),
-                new ArrayList<>(List.of(0, 2, 4)),
-                new ArrayList<>(List.of(8, 3, 9, 0)),
-                new ArrayList<>(List.of(5, 2, 2, 7, 3)),
-                new ArrayList<>(List.of(7, 9, 0, 2, 3, 9)),
-                new ArrayList<>(List.of(9, 7, 0, 3, 9, 8, 6)),
-                new ArrayList<>(List.of(5, 7, 6, 2, 7, 0, 3, 9))
-        )));
+                new ArrayList<>(List.of(2)),
+                new ArrayList<>(List.of(3, 4)),
+                new ArrayList<>(List.of(6, 5, 7)),
+                new ArrayList<>(List.of(4, 1, 8, 3)))
+        ));
         System.out.println(result);
     }
 
     public int minimumTotal(ArrayList<ArrayList<Integer>> a) {
         int n = a.size();
-        pathMatrix = new int[n][0];
+        int[][] pathMatrix = new int[n][n];
         for (int i = 0; i < n; i++) {
-            pathMatrix[i] = new int[a.get(i).size()];
+            Arrays.fill(pathMatrix[i], -1);
         }
-
-
-
-        return pathMatrix[0][0];
+        return minimumTotalRecursion(a, pathMatrix, 0, 0);
     }
 
-    public int minimumTotalRecursion(ArrayList<ArrayList<Integer>> a, int start, int end) {
-        int n = a.size(), m = a.get(start).size();
-        if (start == n - 1 && end == m - 1) return a.get(start).get(end);
-
-        int down = Integer.MAX_VALUE, right = Integer.MAX_VALUE;
-        if (start < n - 1 && pathMatrix[start + 1][end] == -1) {
-            pathMatrix[start + 1][end] = minimumTotalRecursion(a, start + 1, end);
+    public int minimumTotalRecursion(ArrayList<ArrayList<Integer>> a, int[][] pathMatrix, int start, int end) {
+        if (pathMatrix[start][end] != -1) return pathMatrix[0][0];
+        int down = 0, downNext = 0;
+        if (start + 1 < a.size()) {
+            if (pathMatrix[start + 1][end] == -1)
+                pathMatrix[start + 1][end] = minimumTotalRecursion(a, pathMatrix, start + 1, end);
             down = pathMatrix[start + 1][end];
         }
-        if (start < n - 1 && end < a.get(start + 1).size() - 1 && pathMatrix[start + 1][end + 1] == -1) {
-            pathMatrix[start + 1][end + 1] = minimumTotalRecursion(a, start + 1, end + 1);
-            right = pathMatrix[start + 1][end + 1];
+
+        if (start + 1 < a.size() && end + 1 < a.get(start + 1).size()) {
+            if (pathMatrix[start + 1][end + 1] == -1)
+                pathMatrix[start + 1][end + 1] = minimumTotalRecursion(a, pathMatrix, start + 1, end + 1);
+            downNext = pathMatrix[start + 1][end + 1];
         }
-        return a.get(start).get(end) + Math.min(right, down);
+        pathMatrix[start][end] = a.get(start).get(end) + Math.min(downNext, down);
+        return pathMatrix[start][end];
     }
 }

@@ -11,7 +11,7 @@
 
 ## Class Notes and Videos
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/Problem%20Solving%20Session%201.pdf)
-2. [Class/Lecture Video](https://youtu.be/nZIrxZtO0Ik)
+2. [Class/Lecture Video](https://youtu.be/t86c5ldDXic)
 
 ## Flip Array
     Problem Description

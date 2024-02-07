@@ -17,7 +17,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/42%20DP%203%20Knapsack.pdf)
-2. [Class/Lecture Video]()
+2. [Class/Lecture Video](https://youtu.be/msGIIQSJ5bw)
 
 ## Fractional Knapsack
     Problem Description
