@@ -1,5 +1,6 @@
 package com.learning.scaler.advance.module4.psp1.problems;
 
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -40,8 +41,53 @@ Example Explanation
 * */
 public class FlipArray {
 
-    public int solve(final List<Integer> A) {
+    public static void main(String[] args) {
+        List<Integer> input = List.of(4, 4, 3, 1);
+        System.out.println(solve(input));
 
+    }
+
+    public static int solve(final List<Integer> A) {
+        Integer totalSum = A.stream().reduce(0, Integer::sum);
+        int targetSum = totalSum / 2;
+        Pair[][] possibleCount = new Pair[A.size() + 1][targetSum + 1];
+        Arrays.fill(possibleCount[0], new Pair(0, false));
+        for (int i = 1; i <= A.size(); i++) {
+            int value = A.get(i - 1);
+            for (int currentTargetSum = 0; currentTargetSum <= targetSum; currentTargetSum++) {
+                Pair pair;
+                if (value > currentTargetSum) pair = new Pair(0, false);
+                else if (value == currentTargetSum) {
+                    pair = new Pair(1, true);
+                } else {
+                    Pair exclude = possibleCount[i - 1][currentTargetSum];
+                    Pair include = possibleCount[i - 1][currentTargetSum - value];
+                    if (exclude.isPossible && include.isPossible) {
+                        pair = new Pair(Math.min(exclude.count, include.count + 1), true);
+                    } else if (exclude.isPossible) {
+                        pair = new Pair(exclude.count, true);
+                    } else if (include.isPossible) {
+                        pair = new Pair(include.count + 1, true);
+                    } else pair = new Pair(0, false);
+                }
+                possibleCount[i][currentTargetSum] = pair;
+            }
+        }
+        for (int i = targetSum; i >= 0; i--) {
+            for (int j = A.size(); j >= 0; j--) {
+                if (possibleCount[j][i].isPossible) return possibleCount[j][i].count;
+            }
+        }
         return 0;
+    }
+}
+
+class Pair {
+    public int count;
+    public boolean isPossible;
+
+    public Pair(int count, Boolean isPossible) {
+        this.count = count;
+        this.isPossible = isPossible;
     }
 }
