@@ -257,3 +257,10 @@ Steps to follow while calculating no of iterations
 
 > Basically algorithms will be compared with respect to input size and it wont be dependent on machine it is running and other variable aspect like language, env etc.
 
+<div style="text-align: left;">
+    [Previous Page](previous_page.md)
+</div>
+
+<div style="text-align: left;">
+    [Next Page](next_page.md)
+</div>

@@ -56,6 +56,12 @@ Example Explanation
 public class KnightOnChessBoard {
 
     public int knight(int A, int B, int C, int D, int E, int F) {
+        int[][] chessBoard = new int[A][B];
+
         return 0;
+    }
+
+    public void knightMovement(int[][] chessBoard, int i, int j, int endI, int endJ) {
+
     }
 }
