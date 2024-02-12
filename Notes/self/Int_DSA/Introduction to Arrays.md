@@ -8,8 +8,8 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/intermediate/intro/arrays/assignment)
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/intermediate/intro/arrays/additional)
 3. [Self Practise Problems]()
 
 ## Class Notes and Videos
@@ -61,5 +61,31 @@
         so you only need O(1) space.
 
 ## Introduction to Arrays
+* [Refer this for more details](https://www.geeksforgeeks.org/arrays-in-java/)
 
 ## Arrays Problems
+* [Refer here for more problems](https://www.geeksforgeeks.org/arrays-in-java/#practice)
+### Find min/max of array
+```java
+    public int solve(ArrayList<Integer> A) {
+        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+        for (Integer element : A) {
+            min = Math.min(min, element);
+            max = Math.max(max, element);
+        }
+        return min + max;
+    }
+```
+### GoodPair
+    Given an array A and an integer B. A pair(i, j) in the array is a good pair if i != j and (A[i] + A[j] == B).
+    Check if any good pair exist or not.
+```java
+    public int solve(int[] A, int B) {
+        for (int i = 0; i < A.length; i++) {
+            for (int j = i + 1; j < A.length; j++) {
+                if(A[i] + A[j] == B) return 1;
+            }
+        }
+        return 0;
+    }
+```
