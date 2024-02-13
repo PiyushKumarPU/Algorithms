@@ -1,8 +1,6 @@
 
 ## Day 6 Arrays : Sliding Window and Contribution Technique
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
-
 ## Scope / Agenda
 - [TLE and Constraints](#tle-and-constraints)
 - [Carry Forward Questions](#carry-forward-questions)
