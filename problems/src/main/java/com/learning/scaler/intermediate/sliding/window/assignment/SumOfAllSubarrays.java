@@ -1,5 +1,7 @@
 package com.learning.scaler.intermediate.sliding.window.assignment;
 
+import java.util.ArrayList;
+
 /*
 Problem Description
     You are given an integer array A of length N.
@@ -40,4 +42,12 @@ Example Explanation
         Their sums are: 2 + 1 + 3 + 3 + 4 + 6 = 19
 * */
 public class SumOfAllSubarrays {
+
+    public Long subarraySum(ArrayList<Integer> A) {
+        long totalSum = 0L;
+        for (int i = 0; i < A.size(); i++) {
+            totalSum += ((long) A.get(i) * (i + 1) * (A.size() - i));
+        }
+        return totalSum;
+    }
 }

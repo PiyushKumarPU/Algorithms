@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 /*
 Problem Description
-    Given an array of integers A and an integer B, find and return the minimum number of swaps required to bring all the numbers less than or equal to B together.
+    Given an array of integers A and an integer B, find and return the minimum number of swaps required
+    to bring all the numbers less than or equal to B together.
     Note: It is possible to swap any two elements, not necessarily consecutive.
 
 Problem Constraints
@@ -45,7 +46,25 @@ Example Explanation
 * */
 public class MinimumSwaps {
 
-    public int solve(ArrayList<Integer> A, int B) {
-        return 0;
+    public int solve(int[] A, int B) {
+        int count = 0, n = A.length;
+        for (int value : A)
+            if (value <= B)
+                ++count;
+
+        int bad = 0;
+        for (int i = 0; i < count; ++i)
+            if (A[i] > B)
+                ++bad;
+
+        int ans = bad;
+        for (int i = 0, j = count; j < n; ++i, ++j) {
+            if (A[i] > B)
+                --bad;
+            if (A[j] > B)
+                ++bad;
+            ans = Math.min(ans, bad);
+        }
+        return ans;
     }
 }

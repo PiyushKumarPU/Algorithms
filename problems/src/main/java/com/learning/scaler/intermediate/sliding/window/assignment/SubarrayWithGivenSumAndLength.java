@@ -1,6 +1,7 @@
 package com.learning.scaler.intermediate.sliding.window.assignment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 Problem Description
@@ -44,8 +45,33 @@ Example Explanation
 * */
 public class SubarrayWithGivenSumAndLength {
 
-    public int solve(ArrayList<Integer> A, int B, int C) {
+    public static int solve(int[] A, int B, int C) {
+        int ans = 0;
+        for (int i = 0; i < B; i++) {
+            ans += A[i];
+        }
+        if (ans == C) return 1;
+        int startIndex = 1, endIndex = B;
+        while (endIndex < A.length) {
+            ans = ans - A[startIndex - 1] + A[endIndex];
+            if (ans == C) return 1;
+            startIndex++;
+            endIndex++;
+        }
+        return 0;
+    }
 
+    public int solveScaler(int[] A, int B, int C) {
+        int sum = 0;
+        for(int i = 0 ; i < A.length ; i++){
+            sum += A[i];
+            if(i >= B){
+                sum -= A[i - B];
+            }
+            if(sum == C && i >= B - 1){
+                return 1;
+            }
+        }
         return 0;
     }
 }

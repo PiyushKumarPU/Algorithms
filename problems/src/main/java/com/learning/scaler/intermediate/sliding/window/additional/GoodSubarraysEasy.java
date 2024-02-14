@@ -1,6 +1,8 @@
 package com.learning.scaler.intermediate.sliding.window.additional;
 
 
+import java.util.ArrayList;
+
 /*
 Problem Description
     Given an array of integers A, a subarray of an array is said to be good if it fulfills any one of the criteria:
@@ -42,4 +44,43 @@ Example Explanation
         There are 36 good subarrays
 * */
 public class GoodSubarraysEasy {
+
+    public int solve(ArrayList<Integer> A, int B) {
+        int count = 0;
+        for (int s = 0; s < A.size(); s++) {
+            int currentSum = 0;
+            for (int e = s; e < A.size(); e++) {
+                currentSum += A.get(e);
+                boolean isEven = (e - s + 1) % 2 == 0;
+                if ((isEven && currentSum < B) || (!isEven && currentSum > B)) count++;
+            }
+        }
+        return count;
+    }
+
+    public int solve(int[] A, int B) {
+        int n = A.length;
+        int[] pref = new int[n];
+        pref[0] = A[0];
+        int ans = 0;
+        for (int i = 1; i < n; i++) {
+            pref[i] = pref[i - 1] + A[i];
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                int sz = j - i + 1;
+                int sum;
+                if (i == 0) {
+                    sum = pref[j];
+                } else {
+                    sum = pref[j] - pref[i - 1];
+                }
+                if (sz % 2 == 0 && sum < B) ans++;
+                if (sz % 2 == 1 && sum > B) ans++;
+            }
+        }
+        return ans;
+    }
+
+
 }

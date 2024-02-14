@@ -2,6 +2,7 @@ package com.learning.scaler.intermediate.sliding.window.additional;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 Problem Description
@@ -43,7 +44,22 @@ Example Explanation
 * */
 public class SubarrayWithLeastAverage {
 
-    public int solve(ArrayList<Integer> A, int B) {
-        return 0;
+    public int solve(int[] A, int B) {
+        int resultIndex = 0, carrySum = 0;
+        for (int i = 0; i < B; i++) {
+            carrySum += A[i];
+        }
+        int startIndex = 1, endIndex = B, resultSum = carrySum;
+        while (endIndex < A.length) {
+            carrySum = carrySum - A[startIndex - 1] + A[endIndex];
+            if (carrySum < resultSum) {
+                resultSum = carrySum;
+                resultIndex = startIndex;
+            }
+            startIndex++;
+            endIndex++;
+        }
+
+        return resultIndex;
     }
 }

@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 /*
 Problem Description
-    You are given an integer array C of size A. Now you need to find a subarray (contiguous elements) so that the sum of contiguous elements is maximum.
+    You are given an integer array C of size A. Now you need to find a subarray (contiguous elements) so
+    that the sum of contiguous elements is maximum.
     But the sum must not exceed B.
 
 Problem Constraints
@@ -48,6 +49,14 @@ Example Explanation
 public class MaximumSubarrayEasy {
 
     public int maxSubarray(int A, int B, ArrayList<Integer> C) {
-        return 0;
+        int max = 0;
+        for (int s = 0; s < A; s++) {
+            int currentSum = 0;
+            for (int e = s; e < A; e++) {
+                currentSum += C.get(e);
+                if (currentSum <= B) max = Math.max(max, currentSum);
+            }
+        }
+        return max;
     }
 }
