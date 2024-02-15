@@ -1,7 +1,5 @@
 ## Day 8 Sorting Basics
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
-
 ## Scope / Agenda
 - [Sorting Introduction](#sorting-introduction)
 - [Minimum Cost to Delete Element](#minimum-cost-to-delete-element)
@@ -24,6 +22,11 @@
 
 
 ## Sorting Introduction
+> Sorting refers to rearrangement of a given array or list of elements according to a comparison operator on the elements. The comparison operator is used to decide the new order of elements in the respective data structure.
+* [More Details](https://www.geeksforgeeks.org/introduction-to-sorting-algorithm/)
+
+### Why do we need sorting?
+> Searching becomes easy if data is sorted.
 ## Minimum Cost to Delete Element
 ## Count of Noble Element
 ## Sorting Algorithm

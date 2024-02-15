@@ -1,7 +1,5 @@
 package com.learning.scaler.intermediate.sliding.window.additional;
 
-import java.util.ArrayList;
-
 /*
 Problem Description
     Given an array of integers A and an integer B, find and return the minimum number of swaps required
