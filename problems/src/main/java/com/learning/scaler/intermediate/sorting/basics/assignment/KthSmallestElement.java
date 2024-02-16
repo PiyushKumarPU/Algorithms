@@ -1,5 +1,6 @@
 package com.learning.scaler.intermediate.sorting.basics.assignment;
 
+import java.util.Comparator;
 import java.util.List;
 
 /*
@@ -42,6 +43,8 @@ Example Explanation
 public class KthSmallestElement {
 
     public int kthsmallest(final List<Integer> A, int B) {
-        return 0;
+        if (A.isEmpty() || A.size() < B) return -1;
+        A.sort(Comparator.reverseOrder());
+        return A.get(B - 1);
     }
 }

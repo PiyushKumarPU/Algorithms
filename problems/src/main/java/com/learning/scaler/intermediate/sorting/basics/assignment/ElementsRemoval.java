@@ -1,6 +1,9 @@
 package com.learning.scaler.intermediate.sorting.basics.assignment;
 
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /*
 Problem Description
     Given an integer array A of size N. You can remove any element from the array in one operation.
@@ -41,6 +44,7 @@ Example Explanation
 public class ElementsRemoval {
 
     public int solve(int[] A) {
+        Arrays.sort(A);
         return 0;
     }
 }

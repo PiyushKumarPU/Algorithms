@@ -18,7 +18,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../class_Notes/DSA%20Intermediate%20Notes/8%20Sorting%20Basics(8-09-23).pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=Aw4jSH8CeHA)
+2. [Class/Lecture Video](https://youtu.be/GhkIq52gtMI)
 
 
 ## Sorting Introduction
