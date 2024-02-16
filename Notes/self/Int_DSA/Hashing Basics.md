@@ -37,8 +37,7 @@
 - It can have duplicate value but each should be attached to unique key
 - **HashMap does not preserve insertion order i.e. key stored in hashmap will not be in order it was inserted.**
 
-### Query: Frequency of Elements
-
+## Query: Frequency of Elements
     Problem Description:
         Given and array of integers N and set of Queries Q, find the frequency of each query element in give array.
     Inputs:
@@ -62,6 +61,7 @@
             O(N+Q) Here no of iteration will be N + Q, N for calculating frequency and Q for searching frequncy in hashmap 
         SC : O(N)
 
+## Solution
 ```java
     // code block to implement idea2
     HashMap<Integer,Integer> freqMap = new HashMap<>();
@@ -79,7 +79,7 @@
 
 ```
 
-### First Non Repeating Element
+## First Non Repeating Element
     Problem Description:
     
     Given and array of integers N, find first non repeating element.
@@ -104,7 +104,7 @@
         Now iterate through array again and look for first element with frequency 1 and that will be the first non repeating element of the given array.
         TC : O(N)
         SC : O(N)
-
+### Solution
 ```java
     // code block to implement idea2
     HashMap<Integer,Integer> freqMap = new HashMap<>();
@@ -123,9 +123,7 @@
     }
 
 ```
-
-### No of distinct Element
-
+## No of distinct Element
     Problem Description:
         Given and array of integers N, count no of unique element in given array.
     Inputs:
@@ -148,8 +146,7 @@
 
     return hashSet.size();
 ```
-
-### Subarray with 0 sum
+## Subarray with 0 sum
     Problem Description:
         Given and array of integers N, check if there is a subarray with sum 0.
     
@@ -189,6 +186,21 @@
     
     TC : O(N)
     SC : O(1)
+### Solution
+```java
+    publics int solve(List<Integer> A) {
+        Map<Long, Integer> frequencyMap = new HashMap<>();
+        long currentSum = A.get(0);
+        frequencyMap.put(currentSum, 1);
+        for (int element : A) {
+            currentSum += element;
+            if (currentSum == 0) return 1;
+            if (frequencyMap.containsKey(currentSum)) return 1;
+            frequencyMap.put(currentSum, (frequencyMap.getOrDefault(currentSum, 0) + 1));
+        }
+        return 0;
+    }
+```
 
    
 

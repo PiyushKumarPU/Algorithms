@@ -20,7 +20,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../class_Notes/DSA%20Intermediate%20Notes/9%20Strings(11-09-23).pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=xHGDe13RQAA)
+2. [Class/Lecture Video](https://youtu.be/BI6NWvGnA4A)
 
 ## String Basics
 ## Toggle Each character

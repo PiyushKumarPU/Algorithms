@@ -18,9 +18,8 @@ The result can be in any order.
 
 
 Problem Constraints
-1 <= N, M <= 105
-
-1 <= A[i] <= 109
+    1 <= N, M <= 10^5
+    1 <= A[i] <= 10^9
 
 
 
@@ -72,7 +71,7 @@ public class CommonElement {
         System.out.println(solve(List.of(2, 1, 4, 10), List.of(3, 6, 2, 10, 10)));
     }
 
-    public static List<Integer> solve(List<Integer> A, List<Integer> B) {
+    public static List<Integer> solveOld(List<Integer> A, List<Integer> B) {
         List<Integer> result = new ArrayList<>();
         Map<Integer, Long> aMap = A.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
@@ -88,5 +87,13 @@ public class CommonElement {
             }
         }
         return result;
+    }
+
+    public static List<Integer> solve(List<Integer> A, List<Integer> B) {
+        List<Integer> result = new ArrayList<>();
+
+
+        return result;
+
     }
 }
