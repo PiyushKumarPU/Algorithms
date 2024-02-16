@@ -39,34 +39,28 @@
 
 ### Query: Frequency of Elements
 
- Problem Description:
-    
-    Given and array of integers N and set of Queries Q, find the frequency of each query element in give array.
-    
+    Problem Description:
+        Given and array of integers N and set of Queries Q, find the frequency of each query element in give array.
     Inputs:
         arr[11] =  {2,6,3,8,2,8,2,3,8,10,6}
         Q : 4
         value associated with Q
             2,8,3,5
-
     Explanation:
-        We have an array arr of size 11 and it may have duplicate value. We have another set of value and we need to find their frequency in given array.
+        We have an array arr of size 11 and it may have duplicate value. 
+        We have another set of value and we need to find their frequency in given array.
 
+ ### Solution Approach:
+    Idea 1 :
+        For each element in query, iterate over the array and find the frequency for each query element.
+        TC : O(N)
+        SC : O(1)
 
- Idea/approach to solve above problem:
-
-  Idea 1 :
-   
-    For each element in query, iterate over the array and find the frequency for each query element.
-    TC : O(N) and SC : O(1)
-
-    
-
- Idea 2:
-    
-    Iterate through array and store frequency of each element in HashMap<Integer,Integer>. Now for each query element find the frequency in hashmap and print/return it.
-    TC : O(N+Q) Here no of iteration will be N + Q, N for calculating frequency and Q for searching frequncy in hashmap 
-    and SC : O(N)
+    Idea 2:
+        Iterate through array and store frequency of each element in HashMap<Integer,Integer>. Now for each query element find the frequency in hashmap and print/return it.
+        TC : 
+            O(N+Q) Here no of iteration will be N + Q, N for calculating frequency and Q for searching frequncy in hashmap 
+        SC : O(N)
 
 ```java
     // code block to implement idea2
@@ -94,25 +88,22 @@
         arr[6] =  {1,2,3,1,2,5}
         ans : 3
 
-Idea/approach to solve above problem:
-
-  Idea 1 :
-   
-    Create Frequency map by iterating through array and find the first key with frequency 1 i.e. first non repeating element
-    TC : O(N) SC : O(N)
+### Solution approach:
+    Idea 1 :
+        Create Frequency map by iterating through array and find the first key with frequency 1 i.e. first non repeating element
+        TC : O(N) 
+        SC : O(N)
 
     There is one hack here, HashMap does not preserve insertion order so first key with frequncy 1 may not be the first non repeating element.
 
     We need to find some other idea to solve this issue.
 
-
- Idea 2:
+    Idea 2:
+        Iterate through array and store frequency of each element in HashMap<Integer,Integer>. 
     
-    Iterate through array and store frequency of each element in HashMap<Integer,Integer>. 
-    
-    Now iterate through array again and look for first element with frequency 1 and that will be the first non repeating element of the given array.
-    TC : O(N)
-    and SC : O(N)
+        Now iterate through array again and look for first element with frequency 1 and that will be the first non repeating element of the given array.
+        TC : O(N)
+        SC : O(N)
 
 ```java
     // code block to implement idea2
@@ -135,24 +126,20 @@ Idea/approach to solve above problem:
 
 ### No of distinct Element
 
-Problem Description:
-    
-    Given and array of integers N, count no of unique element in given array.
-    
+    Problem Description:
+        Given and array of integers N, count no of unique element in given array.
     Inputs:
         arr[6] =  {1,2,3,1,2,5}
         ans : 4
+### Solution approach
+    Idea 1 :
+        Iterate through array and store its element in HashSet and return the size of HashSet.
 
-Idea 1 :
-   
-    Iterate through array and store its element in HashSet and return the size of HashSet.
-
-    As Hashset key can not be duplicate, if we store same key again and again it wont override the existing one and hashset size remains as it is.
-    
-    TC : O(N)
-    SC : O(N)
-
-    ```java
+        As Hashset key can not be duplicate, if we store same key again and again it wont override the existing one and hashset size remains as it is.
+        TC : O(N)
+        SC : O(N)
+### Solution
+```java
     // code block to implement above idea
     HashSet<Integer> hashSet = new HashSet<>();
     for(int i = 0; i < N; i++){
@@ -163,10 +150,8 @@ Idea 1 :
 ```
 
 ### Subarray with 0 sum
-
     Problem Description:
-    
-    Given and array of integers N, check if there is a subarray with sum 0.
+        Given and array of integers N, check if there is a subarray with sum 0.
     
     Inputs:
         arr[10] =  [2,2,1,-3,4,3,1,-2,-3,2]
@@ -175,10 +160,9 @@ Idea 1 :
         arr[3] =  [1,2,3]
         ans : false
         
-
-Idea 1 :
-   
-    Check each and every subarray of given array and find its sum, if sum is zero then return true.
+### Solution Approach
+    Idea 1 :
+        Check each and every subarray of given array and find its sum, if sum is zero then return true.
 
      No of loops in above idea
         2 loop to fix start and end of subarray
@@ -187,9 +171,8 @@ Idea 1 :
     TC : O(N^3)
     SC : O(1)
 
-Idea 2 :
-   
-    Use prefix sum technique to calculate sum of given range and if sum is zero array has subarray with zero sum.
+    Idea 2 :
+        Use prefix sum technique to calculate sum of given range and if sum is zero array has subarray with zero sum.
 
      No of loops in above idea
         1 loop to calculate prefix sum
@@ -201,8 +184,7 @@ Idea 2 :
     TC : O(N^2)
     SC : O(N) --> Prefix sum array will take space here
 
-Idea 3 :
-   
+    Idea 3 :
     Use carry forward technique to calcuate subarray with zero sum.
     
     TC : O(N)
