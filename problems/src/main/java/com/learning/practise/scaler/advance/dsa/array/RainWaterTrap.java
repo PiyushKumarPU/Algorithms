@@ -1,6 +1,5 @@
 package com.learning.practise.scaler.advance.dsa.array;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class RainWaterTrap {
