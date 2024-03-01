@@ -10,8 +10,6 @@
 
 ## Problems and solutions
 
-../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/bs_answers
-
 1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/arrays/assignment)
 2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/arrays/additional)
 3. [Lecture Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/arrays/lecture)
@@ -19,7 +17,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/15.%20Searching%20%20Binary%20Search%20on%20Array.pdf)
-2. [Class/Lecture Video](https://youtu.be/Yr4Cs1yld3I)
+2. [Class/Lecture Video](https://youtu.be/HsINxs8wrm4)
 
 ## Intro to Binary search
     Intro:

@@ -16,7 +16,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/14.%20Hashing%20Problem%20(30-10-23).pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=9aBB02QHX3I)
+2. [Class/Lecture Video](https://youtu.be/20O96b20aZ8)
 
 
 ## Problem 1

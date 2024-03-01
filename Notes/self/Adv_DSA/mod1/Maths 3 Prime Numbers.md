@@ -13,9 +13,9 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module1/prime/number/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module1/prime/number/additional/)
+3. [Self Practise Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module1/prime/number/lecture/)
 
 ## Class Notes and Videos
 

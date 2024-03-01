@@ -1,7 +1,8 @@
 package com.learning.scaler.advance.module3.linkedlist1.additional;
 /*
 Problem Description
-    Given a singly linked list A and an integer B, reverse the nodes of the list B at a time and return the modified linked list.
+    Given a singly linked list A and an integer B, reverse the nodes of the list B at a time and
+    return the modified linked list.
 
 Problem Constraints
     1 <= |A| <= 10^3

@@ -6,9 +6,9 @@ import com.learning.scaler.advance.module3.ListNode;
 Problem Description
     Given a linked list A, remove the B-th node from the end of the list and return its head.
     For example, Given linked list: 1->2->3->4->5, and B = 2. After removing the second node from the end,
-     the linked list becomes 1->2->3->5. NOTE: If B is greater than the size of the list,
-     remove the first node of the list. NOTE: Try doing it using constant additional space.
-
+     the linked list becomes 1->2->3->5.
+     NOTE: If B is greater than the size of the list, remove the first node of the list.
+     NOTE: Try doing it using constant additional space.
 
 Problem Constraints
     1 <= |A| <= 10^6

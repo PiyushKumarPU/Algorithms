@@ -1,6 +1,9 @@
 package com.learning.scaler.advance.module3.linkedlist1.additional;
 
 import com.learning.scaler.advance.module3.ListNode;
+import com.learning.scaler.advance.module3.ListNodeConstructor;
+
+import java.util.List;
 
 /*
 Problem Description
@@ -35,23 +38,15 @@ public class RemoveDuplicateFromSortedList {
 
     public static void main(String[] args) {
 
-        ListNode f1 = new ListNode(1);
-        ListNode f2 = new ListNode(1);
-        ListNode f3 = new ListNode(1);
-        ListNode f4 = new ListNode(1);
-        ListNode f5 = new ListNode(2);
-        ListNode f6 = new ListNode(2);
-        ListNode f7 = new ListNode(3);
+        ListNode head = ListNodeConstructor.construct(List.of(1, 1, 1, 1, 2, 2, 3));
+        deleteDuplicates(head).printAll();
 
-        f1.next = f2;
-        f2.next = f3;
-        f3.next = f4;
-        f4.next = f5;
-        f5.next = f6;
-        f6.next = f7;
-        f1.printAll();
-        deleteDuplicates(f1).printAll();
+    }
 
+    public static ListNode deleteDuplicatesNew(ListNode A){
+
+
+        return A;
     }
 
     public static ListNode deleteDuplicates(ListNode A) {
@@ -66,7 +61,7 @@ public class RemoveDuplicateFromSortedList {
                     first.next = second;
                     first = second;
                     second = first.next;
-                }else first.next = null;
+                } else first.next = null;
             }
         }
         return A;

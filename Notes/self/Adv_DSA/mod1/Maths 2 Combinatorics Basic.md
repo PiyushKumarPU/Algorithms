@@ -12,14 +12,14 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module2/combinatorics/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/combinatorics/additional/)
+3. [Self Practise Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/combinatorics/lecture/)
 
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/11.%20Adv%20Combinatorics%20Basic(20-10-23).pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=pqKU93FiBdg)
+2. [Class/Lecture Video](https://youtu.be/oYTzvJN48V0)
 
 
 ## Addition and Multiplication Rules

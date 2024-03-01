@@ -19,8 +19,8 @@
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/13.%20Sorting%20Merge%20Sort.pdf)
 2. [Follow Up Notes](../../../class_Notes/Advance%20DSA%20Notes/13.%20Sorting%20Merge%20Sort%20Follow%20Up.pdf)
-3. [Class/Lecture Video](https://www.youtube.com/watch?v=bB_t3CFuAyo)
-4. [Follow Up Class/Lecture Video](https://www.youtube.com/watch?v=_dfQBEVMDmM)
+3. [Class/Lecture Video](https://youtu.be/vMzX_cpGeN0)
+4. [Follow Up Class/Lecture Video](https://youtu.be/YhIp0-mBorE)
 
 ## Count Sort
 ## Stable and Inplace sorting

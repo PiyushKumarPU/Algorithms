@@ -14,7 +14,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/16.%20Searching%20Binary%20Search%20Problems.pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=LkgoWVguq14)
+2. [Class/Lecture Video](https://youtu.be/Z1yhISxtoSg)
 
 ## Searching in rotated sorted Array
     Problem Statement:
