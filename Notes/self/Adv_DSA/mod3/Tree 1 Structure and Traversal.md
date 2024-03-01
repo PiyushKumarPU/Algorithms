@@ -46,7 +46,7 @@
 * [GFG](https://www.geeksforgeeks.org/introduction-to-tree-data-structure-and-algorithm-tutorials/)
 * [Interview bit](https://www.interviewbit.com/courses/programming/tree-data-structure/)
 ## Tree Terminology
-![Tree representation](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/9aec791bc43216e11ba3a2f775782a43350591f4/Notes/images/Treedatastructure.png?raw=true)
+![Tree representation](../../../images/Treedatastructure.png?raw=true)
 
 ---
 
@@ -105,18 +105,18 @@ Structure class of Binary tree
 * **Traverse through right sub-tree**
 
 
-![In-Order Traversal Technique](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/aa69cd7213a7db59b3a24571db7d035930d68375/Notes/images/in_order_traversal.gif?raw=true)
+![In-Order Traversal Technique](../../../images/in_order_traversal.gif?raw=true)
 
-![In-order traversal examples/steps](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/d29c95bd94eab9965e37e011e460781d926bd26a/Notes/images/in_order_traversla_steps.gif?raw=true)
+![In-order traversal examples/steps](../../../images/in_order_traversla_steps.gif?raw=true)
 
 ### Lets take an exmple to understand In-order traversal
 #### **Input**
 ---
-![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example1.png?raw=true)
+![Input](../../../images/Tree1_example1.png?raw=true)
 
 #### **Expected Output after performing In-Order traversal**
 ---
-![Output](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example2.png?raw=true)
+![Output](../../../images/Tree1_example2.png?raw=true)
 
 #### Psuedo code for above example
 ---
@@ -141,11 +141,11 @@ Structure class of Binary tree
 
 #### **Input**
 ---
-![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ae97da59a96b1cf64ba71e508f1f2da0e35951b3/Notes/images/in_order_iterative_input.png?raw=true)
+![Input](../../../images/in_order_iterative_input.png?raw=true)
 
 #### **Expected Output after performing In-Order traversal**
 ---
-![Output](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/3316d677eba851bbd2f2a51967e7703c50d67936/Notes/images/in_order_iterative.png.png?raw=true)
+![Output](../../../images/in_order_iterative.png.png?raw=true)
 
 
 ## [Pre-Order traversal](https://www.geeksforgeeks.org/preorder-traversal-of-binary-tree/)
@@ -157,19 +157,19 @@ Structure class of Binary tree
 * **Traverse through Left sub-tree**
 * **Traverse through right sub-tree**
 
-![pre-order1](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/f6f914dd7c8fa620c76ce6c5be6a9a30e6a3c41f/Notes/images/pre-order_1.gif?raw=true)
+![pre-order1](../../../images/pre-order_1.gif?raw=true)
 
-![Pre-order2](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/f6f914dd7c8fa620c76ce6c5be6a9a30e6a3c41f/Notes/images/pre-order_2.gif?raw=true)
+![Pre-order2](../../../images/pre-order_2.gif?raw=true)
 
 ### Lets take an exmple to understand pre-order traversal
 #### **Input**
 ---
-![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example1.png?raw=true)
+![Input](../../../images/Tree1_example1.png?raw=true)
 
 #### **Expected Output after performing In-Order traversal**
 ---
 
-![Output](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ef656e80c7c316b919f55c741c47cf2cca377445/Notes/images/pre_order_output.png?raw=true)
+![Output](../../../images/pre_order_output.png?raw=true)
 
 #### Psuedo code for above example
 ---
@@ -198,15 +198,15 @@ Structure class of Binary tree
 * **Traverse through right sub-tree**
 * **Traverse root node of respective subtree**
 
-![post order 1](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/fbbcad630a2bf93652e5c728f5573a6bf4ed8a4b/Notes/images/post_order_1.gif?raw=true)
+![post order 1](../../../images/post_order_1.gif?raw=true)
 
 ### Lets take an exmple to understand post-order traversal
 
 #### **Input**
 ---
-![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/58e6b9ca8f6a9d966d438d98d49e9ef9d7c66b53/Notes/images/Tree1_example1.png?raw=true)
+![Input](../../../images/Tree1_example1.png?raw=true)
 
-![Output](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/fbbcad630a2bf93652e5c728f5573a6bf4ed8a4b/Notes/images/post_order_2.gif.png?raw=true)
+![Output](../../../images/post_order_2.gif.png?raw=true)
 
 #### Psuedo code for above example
 ---

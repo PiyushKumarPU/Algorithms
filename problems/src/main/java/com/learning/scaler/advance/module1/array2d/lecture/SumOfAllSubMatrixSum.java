@@ -8,7 +8,11 @@ Problem Description:
 
 public class SumOfAllSubMatrixSum {
 
-    public int sumOfAllSubmatrix(int[][] A) {
+    public static void main(String[] args) {
+        System.out.println(sumOfAllSubMatrix(new int[][]{{1, 2}}));
+    }
+
+    public static int sumOfAllSubMatrix(int[][] A) {
         int result = 0, N = A.length, M = A[0].length;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {

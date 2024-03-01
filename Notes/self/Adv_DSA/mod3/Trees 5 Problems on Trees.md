@@ -26,7 +26,7 @@
 
 ### Problem Description
     Create mirror image of given binary tree. i.e. invert given binary tree.
-![Problem image](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/dc9d38ffd135c7ff01100ce11e87fa30c54b600c/Notes/images/invert_binary_tree_problems.png?raw=true)
+![Problem image](../../../images/invert_binary_tree_problems.png?raw=true)
 
 ### Solution approach
     We will swap left child with right child and right child with left child for all the none leaf node and that will be inverted binary tree.
@@ -62,7 +62,7 @@
 
 ### Problem Description:
     Check if it is possible to remove an edge from Binary Tree s.t. sum of resultant two trees is equal
-![Tree Equal Partition](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ac86dc01c9116edb32cc19736609c9d0ecb58c20/Notes/images/Tree_Equal_partition.png?raw=true)
+![Tree Equal Partition](../../../images/Tree_Equal_partition.png?raw=true)
 
 ### Solution approach:
     1. First calculate the sum of all node of tree
@@ -153,7 +153,7 @@ public class TreeLinkNode {
     }
 }
 ```
-![Structure](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/82aec6c592a08127512618e39ea53d19ea21cecb/Notes/images/Next_Pointer_Tree.png?raw=true)
+![Structure](../../../images/Next_Pointer_Tree.png?raw=true)
 
 ## Populate Next Pointer in Binary Tree
 #### Problem Description
@@ -206,7 +206,7 @@ public class TreeLinkNode {
 ## Root to Leaf Path Sum k
 #### Problem Description
     Check if given binary tree has any root to leaf path sum K
-![Problem Description](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/28e3840d8a3eead507202b78e16f952a4f868ba5/Notes/images/Path_sum_k.png?raw=true)
+![Problem Description](../../../images/Path_sum_k.png?raw=true)
 
 #### Solution approach:
     1. Start checking all leaf node sum from root node till that node and return true if present and false not present.

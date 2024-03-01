@@ -22,7 +22,7 @@
 
 ## Time Complexity(Using Recurrance relation)
     We will use recurrance relation/recursive call stack to calculate time complexity of factorial function
-![Factorial](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/883b0a8d9c59e4845cdae1f654ccf9095fed2fae/Notes/images/TC_using_recurrance_relation.png?raw=true)
+![Factorial](../../../images/TC_using_recurrance_relation.png?raw=true)
          
 ## Space Complexity
 ## Recursion Quiz

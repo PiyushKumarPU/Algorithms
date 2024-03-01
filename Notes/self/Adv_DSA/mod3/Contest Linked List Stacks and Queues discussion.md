@@ -63,7 +63,7 @@
         C = 2
         D = 5
 ### Ouput for Above input would be like below:
-![Solution](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/83b9a9937c5e7b1fdc2c4aa99542dd7984b6b0ca/Notes/images/Contest_remove_add_LL.png?raw=true)
+![Solution](../../../images/Contest_remove_add_LL.png?raw=true)
 
 ### Steps to follow in order to acheive the solution
 - Consider head of A as start element then we need to jump C times to find the starting nodes that need to be removed but we need to think about prev node of node that needs to be removed so we will do C -1 jump

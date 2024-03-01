@@ -1,10 +1,12 @@
 package com.learning.scaler.advance.module1.array2d.additional;
 
 
+import java.util.List;
+
 /*
 Problem Description
-    Given an array of integers A and an integer B, find and return the minimum number of swaps required to bring all the numbers
-    less than or equal to B together.
+    Given an array of integers A and an integer B, find and return the minimum number of swaps required to bring
+    all the numbers less than or equal to B together.
     Note: It is possible to swap any two elements, not necessarily consecutive.
 
 Problem Constraints
@@ -46,6 +48,51 @@ Example Explanation
 public class MinimumSwaps {
 
     public int solve(int[] A, int B) {
-        return 0;
+        int n = A.length;
+        int cnt = 0;
+        // count number of elements <= B
+        for (int x : A)
+            if (x <= B)
+                cnt++;
+        // If there is only one element, No need to swap
+        if (cnt <= 1)
+            return 0;
+        else {
+            int l = 0, r = 0, x = 0;
+            // Find the count of elements <= B in every window of length cnt using two
+            //pointer approach
+            while (r < cnt) {
+                if (A[r] > B)
+                    x++;
+                r++;
+            }
+            int ans = x;
+            while (r < n) {
+                if (A[r] > B)
+                    x++;
+                if (A[l] > B)
+                    x--;
+                ans = Math.min(ans, x);
+                r++;
+                l++;
+            }
+            return ans;
+        }
+    }
+
+    public static int solve(List<Integer> A, int B) {
+        int windowSize = 0, currentCount, tempCount = 0, size = A.size();
+        for (int ele : A) if (ele <= B) windowSize++;
+        for (int i = 0; i < windowSize; i++) if (A.get(i) > B) tempCount++;
+        currentCount = tempCount;
+
+        for (int i = 1; i <= (size - windowSize); i++) {
+            int current = A.get(i + windowSize - 1), prev = A.get(i - 1);
+            if (current > B) tempCount++;
+            if (prev > B) tempCount--;
+
+            currentCount = Math.min(currentCount, tempCount);
+        }
+        return currentCount;
     }
 }

@@ -1,18 +1,17 @@
 package com.learning.scaler.advance.module3.tree2.assignment;
 
-import com.learning.scaler.advance.module3.BTreePrinter;
 import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
 import com.learning.scaler.advance.module3.TreeNode;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /*
 Problem Description
     Given a binary tree, return a 2-D array with vertical order traversal of it. Go through the example and image for more details.
     NOTE: If 2 Tree Nodes shares the same vertical level then the one with lesser depth will come first.
 
-    Problem desc Images : https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/e45274b61ef503177fbe2dcedc56061e4a281553/Notes/images/vertical_order_images.jpeg
+    Problem desc Images : ../../../images/vertical_order_images.jpeg
+    
 
 Problem Constraints
     0 <= number of nodes <= 10^5

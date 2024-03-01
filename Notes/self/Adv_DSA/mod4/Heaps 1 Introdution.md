@@ -31,7 +31,7 @@
         2 5 2 6 3
 ## Heap Introduction
     A Heap is a special Tree-based data structure in which the tree is a complete binary tree.
-![Heap](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/497c3a6c0c39310266d80757ecd04f4c69fa8c07/Notes/images/MinHeapAndMaxHeap1.png?raw=true)
+![Heap](../../../images/MinHeapAndMaxHeap1.png?raw=true)
 ### Please follow below links to get more about heap data structure
 - [Heap](https://www.geeksforgeeks.org/introduction-to-heap-data-structure-and-algorithm-tutorials/)
 - [Problems](https://www.interviewbit.com/courses/programming/heaps-and-maps/)
@@ -52,7 +52,7 @@
     TC : O(height of tree) i.e. logN
     SC : O(1)
 
-![Insertion](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/3b24e546e76537b3541b04db8f12964d07d5e5c2/Notes/images/insertion_in_heap.gif?raw=true)   
+![Insertion](../../../images/insertion_in_heap.gif?raw=true)   
 ### Psuedo code
 ```java
     void insert(int element, int[] heap) {  // x represents dynamic array

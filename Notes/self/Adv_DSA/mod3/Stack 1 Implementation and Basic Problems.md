@@ -33,7 +33,7 @@
 [Stack Wikipedia](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
 
 ## Operations on Stack
-![Stack Operations](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/47fde838d376eab262a223c329c106d2899353c6/Notes/images/StackOperations.gif?raw=true)
+![Stack Operations](../../../images/StackOperations.gif?raw=true)
 
  * push --> Push data at the top of the stack.
  * pop --> Delete data from top of the stack.

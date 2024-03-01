@@ -229,6 +229,7 @@
         TC : O(NM) --> Traverse through each cell
         SC : O(1)
 ![Formula](../../../images/Sum_of_all_submatrix.png)
+
     If we look at above screenshot we will see a formula which derived number of times a cell will contribute to the total sum.
         1. No of times it will contribute as TL(top left) cell
             row -> 0 to i

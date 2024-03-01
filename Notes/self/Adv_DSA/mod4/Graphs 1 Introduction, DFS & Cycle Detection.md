@@ -37,7 +37,7 @@
 * **Vertices**: Vertices are the fundamental units of the graph. Sometimes, vertices are also known as vertex or nodes. Every node/vertex can be labeled or unlabelled.
 * **Edges**: Edges are drawn or used to connect two nodes of the graph. It can be ordered pair of nodes in a directed graph. Edges can connect any two nodes in any possible way. There are no rules. Sometimes, edges are also known as arcs. Every edge can be labeled/unlabelled.
 
-![Graph](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ee617487742018d81e9059e8fca5b75877596e65/Notes/images/graph_intro.jpg?raw=true)
+![Graph](../../../images/graph_intro.jpg?raw=true)
 
 ---
 
@@ -55,10 +55,10 @@
 * **Sparse Graphs:** A graph with relatively few edges compared to the number of vertices. Example: A chemical reaction graph where each vertex represents a chemical compound and each edge represents a reaction between two compounds.
 * **Dense Graphs:** A graph with many edges compared to the number of vertices. Example: A social network graph where each vertex represents a person and each edge represents a friendship.
 
-![Dir](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/75813624a95d141261cb993d032bb217fb89f86c/Notes/images/directed_undirected_graph.png?raw=true)
-![Wei](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/75813624a95d141261cb993d032bb217fb89f86c/Notes/images/weighted_unweighted_graph.png?raw=true)
-![exm2](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/75813624a95d141261cb993d032bb217fb89f86c/Notes/images/dir_cyclic_acyclic.png?raw=true)
-![Exm4](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/75813624a95d141261cb993d032bb217fb89f86c/Notes/images/und_cyclic_acyclic.png?raw=true)
+![Dir](../../../images/directed_undirected_graph.png?raw=true)
+![Wei](../../../images/weighted_unweighted_graph.png?raw=true)
+![exm2](../../../images/dir_cyclic_acyclic.png?raw=true)
+![Exm4](../../../images/und_cyclic_acyclic.png?raw=true)
 
 ---
 ## Indegree and outdegree of a graph
@@ -68,7 +68,7 @@
 * Indegree of nodes in a tree is equal to 1 in most of the cases if it becomes more than one then the data structure changes to graph.
 * If the Indegree of a node is equal to zero, then the node/vertex does not have any parent vertex and it is either the root of the graph or an isolated vertex.
 
-![Indegree](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/0579fbe551d05f6ba58e56ad4e4745a6da7b3d81/Notes/images/indegree_grapgh.png?raw=true)
+![Indegree](../../../images/indegree_grapgh.png?raw=true)
 
 
 ### **Outdegree** of a vertex is defined as the number of outgoing edges from a vertex in a directed graph.
@@ -80,7 +80,7 @@
 * Vertices with an outdegree of zero are known as sink vertices.
 
 
-![Outgedree](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/0579fbe551d05f6ba58e56ad4e4745a6da7b3d81/Notes/images/indegree_grapgh.png?raw=true)
+![Outgedree](../../../images/indegree_grapgh.png?raw=true)
 
 ### Consider the above directed graph. To determine a vertex’s outdegree in a directed graph, one must count the number of directed edges that leave from that vertex.
 
@@ -126,7 +126,7 @@
         2  0
 Follwing is the adjacency matrix for above input. 
 
-![Adj_matrix](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/c0ba14b9cc72270bbab98d23ac58e3711797bad4/Notes/images/adjacency_matrix.png?raw=true)
+![Adj_matrix](../../../images/adjacency_matrix.png?raw=true)
 
 ### Characteristics of the adjacency matrix are:
 * The size of the matrix is determined by the number of vertices in the graph.
@@ -160,7 +160,7 @@ Follwing is the adjacency matrix for above input.
             2  0
 Follwing is the adjacency list for above input. 
 
-![Adj_list](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/c0ba14b9cc72270bbab98d23ac58e3711797bad4/Notes/images/adjacency_list.png?raw=true)
+![Adj_list](../../../images/adjacency_list.png?raw=true)
 
 ### Characteristics of the Adjacency List:
 * The size of the matrix is determined by the number of nodes in the network.
@@ -222,13 +222,13 @@ Follwing is the adjacency list for above input.
     node that meets a set of criteria. It starts at the root of the graph and visits all 
     nodes at the current depth level before moving on to the nodes at the next depth level.
 
-![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_1.png?raw=true)
-![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_2.png?raw=true)
-![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_3.png?raw=true)
-![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_4.png?raw=true)
-![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_5.png?raw=true)
-![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_6.png?raw=true)
-![BFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/bfs_7.png?raw=true)
+![BFS](../../../images/bfs_1.png?raw=true)
+![BFS](../../../images/bfs_2.png?raw=true)
+![BFS](../../../images/bfs_3.png?raw=true)
+![BFS](../../../images/bfs_4.png?raw=true)
+![BFS](../../../images/bfs_5.png?raw=true)
+![BFS](../../../images/bfs_6.png?raw=true)
+![BFS](../../../images/bfs_7.png?raw=true)
 
 ### Solution approach
     We will start visiting from root node and one level at a time
@@ -263,7 +263,7 @@ Follwing is the adjacency list for above input.
     a tree. The only catch here is, that, unlike trees, graphs may contain cycles 
     a node may be visited twice). To avoid processing a node more than once, 
     use a boolean visited array. A graph can have more than one DFS traversal.
-![DFS](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/78027316fd67b58b7d3a911c98aa421bdb7e94f7/Notes/images/graph_dfs.gif?raw=true)
+![DFS](../../../images/graph_dfs.gif?raw=true)
 
 ### [DFS Implementation](https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1)
     Problem Description
@@ -329,14 +329,14 @@ Follwing is the adjacency list for above input.
 ### Examples
 #### Example 1
     Input: N = 4, E = 6
-![Exp1](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/86c6b9415b84aab8dc58b6242a9639f7ab36726c/Notes/images/detect_cycle_exm_1.png?raw=true)
+![Exp1](../../../images/detect_cycle_exm_1.png?raw=true)
 
     Output: Yes
     Explanation: The diagram clearly shows a cycle 0 -> 2 -> 0
 
 #### Example 2
     Input: N = 4, E = 4
-![Exp1](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/86c6b9415b84aab8dc58b6242a9639f7ab36726c/Notes/images/detect_cycle_exm_2.png?raw=true)
+![Exp1](../../../images/detect_cycle_exm_2.png?raw=true)
 
     Output: No
     Explanation: The diagram clearly shows no cycle

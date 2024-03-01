@@ -1,7 +1,6 @@
 package com.learning.scaler.advance.module1.arrays.interview.assignment;
 
 
-
 import com.learning.scaler.advance.module1.arrays.interview.Interval;
 
 import java.util.ArrayList;
@@ -45,6 +44,28 @@ Explanation 2:
 
 * */
 public class MergeNewIntervals {
+
+    public static void main(String[] args) {
+        System.out.println(insert(new ArrayList<>(List.of(new Interval(1, 1))), null));
+        System.out.println(insertShortCode(new ArrayList<>(List.of(new Interval(1, 1))), null));
+    }
+
+    public static ArrayList<Interval> insertShortCode(ArrayList<Interval> intervals, Interval newInterval) {
+        ArrayList<Interval> result = new ArrayList<>();
+        for (Interval interval : intervals) {
+            if (interval.end < newInterval.start) {
+                result.add(interval);
+            } else if (newInterval.end < interval.start) {
+                result.add(newInterval);
+                newInterval = interval;
+            } else {
+                newInterval.start = Math.min(newInterval.start, interval.start);
+                newInterval.end = Math.max(newInterval.end, interval.end);
+            }
+        }
+        result.add(newInterval);
+        return result;
+    }
 
 
     public static ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {

@@ -1,11 +1,8 @@
 package com.learning.scaler.advance.module2.two.pointers.assignment;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 /*
 Problem Description
@@ -69,30 +66,36 @@ Explanation 2:
 public class PairWithGivenSum2 {
 
     public static void main(String[] args) {
-        System.out.println(solve(new ArrayList<>(List.of(1, 1, 1)), 2));
-        System.out.println(solve(new ArrayList<>(List.of(1, 5, 7, 10)), 8));
+        System.out.println(solve(new ArrayList<>(List.of(2, 2, 3, 4, 4, 5, 6, 7, 10)), 8));
 
     }
 
     public static int solve(ArrayList<Integer> A, int B) {
-        if (A.size() == 1) return 0;
-        ArrayList<Integer> uniques = new ArrayList<>(new HashSet<>(A));
-        Map<Integer, Long> freqMap = A.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        if (uniques.size() == 1 && freqMap.get(uniques.get(0)) > 1) {
-            return (A.size() * (A.size() - 1)) / 2;
+        int start = 0, end = A.size() - 1, MOD = 1000000007;
+        long count = 0;
+        while (start < end) {
+            int currentSum = A.get(start) + A.get(end);
+            if (currentSum > B) end--;
+            else if (currentSum < B) start++;
+            else {
+                if (Objects.equals(A.get(start), A.get(end))) {
+                    int freq = end - start + 1;
+                    count += ((long) freq * (freq - 1) / 2) % MOD;
+                    count = count % MOD;
+                    break;
+                } else {
+                    int iCopy = start, jCopy = end, iCount, jCount;
+                    while (iCopy < end && Objects.equals(A.get(iCopy), A.get(start))) iCopy++;
+                    iCount = iCopy - start;
+                    while (jCopy >= iCopy && Objects.equals(A.get(jCopy), A.get(end))) jCopy--;
+                    jCount = end - jCopy;
+                    count += ((long) iCount * jCount) % MOD;
+                    count = count % MOD;
+                    start = iCopy;
+                    end = jCopy;
+                }
+            }
         }
-        int i = 0, j = uniques.size() - 1, count = 0;
-        while (i < j) {
-            int sum = uniques.get(i) + uniques.get(j);
-            if (sum == B) {
-                count += (int) (freqMap.get(uniques.get(i)) * freqMap.get(uniques.get(j)));
-                i++;
-                j--;
-            } else if (sum < B) {
-                i++;
-            } else j--;
-
-        }
-        return count;
+        return (int) (count % MOD);
     }
 }

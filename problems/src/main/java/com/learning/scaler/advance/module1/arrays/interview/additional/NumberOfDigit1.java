@@ -44,7 +44,8 @@ public class NumberOfDigit1 {
         int count = 0;
         for (int place = 0; place < String.valueOf(A).length(); place++) {
             long placeVal = (long) Math.pow(10, place);
-            count += (int) (((A / (10 * placeVal)) * placeVal) + Math.min(Math.max(A % (10 * placeVal) - (placeVal - 1), 0),
+            count += (int) (((A / (10 * placeVal)) * placeVal) +
+                    Math.min(Math.max(A % (10 * placeVal) - (placeVal - 1), 0),
                     placeVal));
         }
         return count;

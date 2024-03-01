@@ -26,13 +26,13 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 * The left and right subtree each must also be a binary search tree.
 
 ### BST Example
-![BST](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/88b55b7f2cdee22ed0b9c94902aadfcd87714c17/Notes/images/bst_1.png?raw=true)
+![BST](../../../images/bst_1.png?raw=true)
 
 ## Search in BST
     We need to find a value in BST, if present return true else false.
 
 ### Input
-![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/5d56e1d4ede749b8fe21185e1179e53b75ecd071/Notes/images/BST_search_input.png?raw=true)
+![Input](../../../images/BST_search_input.png?raw=true)
 
 ### Solution approach
     We will use BST property to find a value and based on the available node value we will decide whether given value will be present in left subtree or right subtree.
@@ -71,7 +71,7 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 
 ## Find min/smallest node in BST
 ### Input
-![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/5d56e1d4ede749b8fe21185e1179e53b75ecd071/Notes/images/BST_search_input.png?raw=true)
+![Input](../../../images/BST_search_input.png?raw=true)
 
 ### Solution approach
     We will use properties of BST, based on that we can observe that smallest node of any BST will be the leftmost node.
@@ -97,7 +97,7 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 
 ## Find max/largest node in BST
 ### Input
-![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/5d56e1d4ede749b8fe21185e1179e53b75ecd071/Notes/images/BST_search_input.png?raw=true)
+![Input](../../../images/BST_search_input.png?raw=true)
 
 ### Solution approach
     We will use properties of BST, based on that we can observe that smallest node of any BST will be the rightmost node.
@@ -127,7 +127,7 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 
 ## Insert in BST
 ### Input
-![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ccc7afbb0e5bfa0af57214f11a3dff7ce21d7f81/Notes/images/BST_Insert.png?raw=true)
+![Input](../../../images/BST_Insert.png?raw=true)
     Item to insert: \
         22 \
         10
@@ -160,7 +160,7 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 ```
 ## Delete in BST
 ### Input
-![Input](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/ccc7afbb0e5bfa0af57214f11a3dff7ce21d7f81/Notes/images/BST_Insert.png?raw=true)
+![Input](../../../images/BST_Insert.png?raw=true)
     Item to insert: \
         22 \
         10

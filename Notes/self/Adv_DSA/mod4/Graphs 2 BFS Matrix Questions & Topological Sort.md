@@ -175,7 +175,7 @@
 ## Knight On Chess Board
     Problem Description
         Given any source point, (C, D) and destination point, (E, F) on a chess board of size A x B, we need to find whether Knight can move to the destination or not.
-![Chess](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/06d2be18d6ef88e68888e0295fc27b9632ad9855/Notes/images/Chess_boards.jpeg?raw=true)
+![Chess](../../../images/Chess_boards.jpeg?raw=true)
 
         The above figure details the movements for a knight ( 8 possibilities ).
         If yes, then what would be the minimum number of steps for the knight to move to the said point. If knight can not move from the source point to the destination point, then return -1.

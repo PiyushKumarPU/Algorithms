@@ -47,7 +47,16 @@ Example Explanation
 public class RowWithMaximumNumberOfOnes {
 
     public int solve(int[][] A) {
-
-        return 0;
+        int count = 0, start = 0, end = A[0].length - 1;
+        while (start < A.length && end >= 0) {
+            int current = A[start][end];
+            if (current == 1) {
+                count++;
+                end--;
+            } else {
+                start++;
+            }
+        }
+        return count;
     }
 }

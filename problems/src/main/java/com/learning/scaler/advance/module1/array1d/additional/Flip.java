@@ -1,5 +1,7 @@
 package com.learning.scaler.advance.module1.array1d.additional;
 
+import java.util.ArrayList;
+
 /*
 Problem Description
     You are given a binary string A(i.e., with characters 0 and 1) consisting of characters A1, A2, ..., AN.
@@ -51,6 +53,54 @@ Example Explanation
 public class Flip {
 
     public int[] flip(String A) {
-        return new int[A.length()];
+        int l = 0, r = 0, currentSum = 0, maxSum = 0;
+        int[] result = new int[2];
+        for (int i = 0; i < A.length(); i++) {
+            int val = A.charAt(i) - '0';
+            currentSum += val > 0 ? -1 : 1;
+            if (currentSum > maxSum) {
+                maxSum = currentSum;
+                result[0] = l + 1;
+                result[1] = r + 1;
+            }
+            if (currentSum < 0) {
+                currentSum = 0;
+                l = i + 1;
+                r = i + 1;
+            } else {
+                r++;
+            }
+        }
+        if (maxSum == 0) return new int[]{};
+        else return result;
+    }
+
+    public ArrayList<Integer> flipScaler(String A) {
+        int cur = 0;
+        int maxx = 0, l = 0, r = 0;
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        ans.add(-1);
+        ans.add(-1);
+        //basic kadane's algorithm implementation
+        for (int i = 0; i < A.length(); i++) {
+            if (A.charAt(i) == '1')
+                cur--;
+            else
+                cur++;
+            if (cur > maxx) {
+                ans.set(0, l + 1);
+                ans.set(1, r + 1);
+                maxx = cur;
+            }
+            if (cur < 0) {
+                cur = 0;
+                l = i + 1;
+                r = i + 1;
+            } else
+                r++;
+        }
+        if (maxx == 0) {
+            return new ArrayList<Integer>();
+        } else return ans;
     }
 }

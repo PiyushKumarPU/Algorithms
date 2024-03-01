@@ -12,7 +12,7 @@ Problem Description:
     merge all overlapping intervals and return sorted list of intervals.
 
 Problem Constraints
-1 <= Total number of intervals <= 10^5.
+    1 <= Total number of intervals <= 10^5.
 
 Input Format
     First argument is a list of intervals.
@@ -43,7 +43,7 @@ public class MergeIntervals {
 
 
     public List<Interval> merge(List<Interval> intervals) {
-        intervals.sort(Comparator.comparingInt(i -> i.getStart()));
+        intervals.sort(Comparator.comparingInt(Interval::getStart));
         ArrayList<Interval> result = new ArrayList<>();
         Interval current = intervals.get(0);
         for (int i = 1; i < intervals.size(); i++) {

@@ -26,7 +26,7 @@
     we can optimize it using Dynamic Programming. The idea is to simply store the results of subproblems, 
     so that we do not have to re-compute them when needed later. 
     This simple optimization reduces time complexities from exponential to polynomial.
-![Illustration](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/49992b3e1a637a28cccfda088e1a05e0732b605b/Notes/images/DP_1.png?raw=true)
+![Illustration](../../../images/DP_1.png?raw=true)
 
 ### Please follow below link for more details
 * [GFG](https://www.geeksforgeeks.org/dynamic-programming/#basics)
@@ -125,7 +125,7 @@
         ways to climb n stair = ways to climb n-1 stair + ways to climb n-2 stair
 > Note : Ways to reach step 0 will always be 1
 
-![Stair case](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/2bb2661de9c683150e729ef483090d548ef9fabf/Notes/images/Stair_Case_DP1.png?raw=true)
+![Stair case](../../../images/Stair_Case_DP1.png?raw=true)
 
 ### Solution
 ```java
