@@ -10,9 +10,11 @@
 
 ## Problems and solutions
 
-1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module2/binary_search/arrays/assignment)
-2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module2/binary_search/arrays/additional)
-3. [Lecture Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module2/binary_search/arrays/lecture)
+../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/bs_answers
+
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/arrays/assignment)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/arrays/additional)
+3. [Lecture Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/arrays/lecture)
 
 ## Class Notes and Videos
 

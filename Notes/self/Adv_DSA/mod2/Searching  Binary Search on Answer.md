@@ -7,14 +7,14 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/bs_answers/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/bs_answers/additional/)
+3. [Self Practise Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/binary_search/bs_answers/lecture/)
 
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/17.%20Searching%20Binary%20Search%20on%20Answers.pdf)
-2. [Class/Lecture Video](https://youtu.be/rYaKUzp_DuA)
+2. [Class/Lecture Video](https://youtu.be/gw_jadeMFA8)
 
 ## Painters Partition
     Problem Statement:

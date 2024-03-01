@@ -11,14 +11,14 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Lecture Problems]()
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module2/two/pointers/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/two/pointers/additional/)
+3. [Lecture Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module2/two/pointers/lecture/)
 
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/18.%20Adv%20Two%20Pointers%20Technique.pdf)
-2. [Class/Lecture Video](https://youtu.be/Ni72YaTQOlU)
+2. [Class/Lecture Video](https://youtu.be/SarxrmXNqjc)
 
 ## Intro to Two Pointers Technique
     The "two pointers" technique is a common algorithmic approach used in computer science and programming. 

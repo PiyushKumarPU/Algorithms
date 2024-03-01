@@ -86,6 +86,7 @@ Trying to make an easy and readable DSA notes for quick understanding of related
    12. [Two Pointers](/Notes/self/Adv_DSA/mod2/Two%20Pointers.md "Two Pointers")
    13. [Interview Problems 1](/Notes/self/Adv_DSA/mod2/Interview%20Problems%201.md)
    14. [Advanced DSA: Contest 4](/Notes/self/Adv_DSA/mod2/Advanced%20DSA%20Contest%204.md)
+   15. [Quick Sort and Comparator Problems](/Notes/self/Adv_DSA/mod2/Quick%20Sort%20and%20Comparator%20Problems.md)
 
 
 #### Module 3
