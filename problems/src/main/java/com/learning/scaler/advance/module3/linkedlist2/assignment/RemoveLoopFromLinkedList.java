@@ -1,6 +1,10 @@
 package com.learning.scaler.advance.module3.linkedlist2.assignment;
 
 import com.learning.scaler.advance.module3.ListNode;
+import com.learning.scaler.advance.module3.ListNodeConstructor;
+
+import java.util.HashSet;
+import java.util.List;
 
 /*
 Problem Description
@@ -42,9 +46,71 @@ Example Explanation
 * */
 public class RemoveLoopFromLinkedList {
 
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+        ListNode node4 = new ListNode(4);
+        ListNode node5 = new ListNode(5);
+        ListNode node6 = new ListNode(6);
+
+        head.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = node6;
+        node6.next = node3;
+
+        solveHelp(head).printAll();
+
+    }
 
     public ListNode solve(ListNode A) {
+        if (A == null || A.next == null) return A;
+        HashSet<ListNode> visitedSet = new HashSet<>();
+        ListNode temp = A;
+        while (temp != null) {
+            visitedSet.add(temp);
+            if (temp.next != null && visitedSet.contains(temp.next)) {
+                temp.next = null;
+                return A;
+            }
+            temp = temp.next;
+        }
+        return A;
+    }
 
-        return null;
+    public static ListNode solveHelp(ListNode A) {
+        if (A == null || A.next == null) return A;
+
+        ListNode slow = A;
+        ListNode fast = A;
+
+        // Detect loop
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                break;
+            }
+        }
+
+        // If there's no loop, return
+        if (slow != fast) {
+            return A;
+        }
+
+        // Move one pointer to the head
+        slow = A;
+
+        // Move both pointers one step at a time until they meet again
+        while (slow.next != fast.next) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // Break the loop
+        fast.next = null;
+        return A;
     }
 }

@@ -87,17 +87,7 @@ public class MergeTwoSortedList {
                 head = head.next;
             }
         }
-
-        while (AStart != null) {
-            head.next = new ListNode(AStart.val);
-            head = head.next;
-            AStart = AStart.next;
-        }
-        while (BStart != null) {
-            head.next = new ListNode(BStart.val);
-            head = head.next;
-            BStart = BStart.next;
-        }
+        head.next = AStart != null ? AStart : BStart;
         return temp;
     }
 

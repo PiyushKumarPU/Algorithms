@@ -28,4 +28,22 @@ public class ListNodeConstructor {
         }
         return copyHead;
     }
+
+    public static ListNode reverseList(ListNode A) {
+        return reverseList(A, true);
+    }
+
+    public static ListNode reverseList(ListNode B, boolean isCloneRequired) {
+        ListNode A = isCloneRequired ? cloneListNode(B) : B;
+        if (A == null || A.next == null) return A;
+        ListNode current = A;
+        ListNode next, prev = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
 }

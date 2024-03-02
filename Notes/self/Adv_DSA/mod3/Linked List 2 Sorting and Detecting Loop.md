@@ -18,7 +18,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/25.%20Adv%20Linked%20List%20Sorting%20and%20Detecting%20Loop.pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=Vroikqg_oFA&list=PLWV5FkQMcDU7gC6Lh87kP5ECv2HlsYF_7&index=31&ab_channel=GrowTogether)
+2. [Class/Lecture Video](https://youtu.be/p-NnMyyjMx0)
 
 
 ## Reverse a Linked List
@@ -302,6 +302,89 @@
             Merging A and B will result in 4 -> 5 -> 8 -> 11 -> 15 -> 20
         Explanation 2:
             We don't need to merge as B is empty.
+### Solution approach
+    We will use merge sort here and start iterating from head of both the list, whichever element is smaller will pick it and add it to result and move respective node to the next node.
+    At last which linked list has data keep adding it to the result.
+    TC : O(m+n)
+    SC : O(1) --> only result list node is there
+### Solution
+```java
+    public ListNode mergeTwoListsPlain(ListNode A, ListNode B) {
+        if (A == null && B == null) return null;
+        else if (A == null) return B;
+        else if (B == null) return A;
+        ListNode head = null, temp = null;
+        ListNode AStart = A;
+        ListNode BStart = B;
+        while (AStart != null && BStart != null) {
+            int nodeVal = AStart.val;
+            boolean isSameVal = false;
+            if (AStart.val <= BStart.val) {
+                if (AStart.val == BStart.val) {
+                    isSameVal = true;
+                    BStart = BStart.next;
+                }
+                AStart = AStart.next;
+            } else {
+                nodeVal = BStart.val;
+                BStart = BStart.next;
+            }
+            if (head == null) {
+                head = new ListNode(nodeVal);
+                temp = head;
+            } else {
+                head.next = new ListNode(nodeVal);
+                head = head.next;
+            }
+            if (isSameVal) {
+                head.next = new ListNode(nodeVal);
+                head = head.next;
+            }
+        }
+
+        while (AStart != null) {
+            head.next = new ListNode(AStart.val);
+            head = head.next;
+            AStart = AStart.next;
+        }
+        while (BStart != null) {
+            head.next = new ListNode(BStart.val);
+            head = head.next;
+            BStart = BStart.next;
+        }
+        return temp;
+    }
+```
+```Solution given by scaler```
+```java
+    public ListNode mergeTwoLists(ListNode A, ListNode B) {
+        if (A == null)
+            return B;
+        if (B == null)
+            return A;
+        ListNode head;
+        ListNode node = new ListNode(0);
+        head = node;
+        while (A != null && B != null) {
+            // compare both the values
+            if (A.val <= B.val) {
+                node.next = A;
+                A = A.next;
+                node = node.next;
+            } else {
+                node.next = B;
+                B = B.next;
+                node = node.next;
+            }
+        }
+        if (A == null)
+            node.next = B;
+        else
+            node.next = A;
+        head = head.next;
+        return head;
+    }
+```
 ## Sort a LinkedList
     Problem Description
         Sort a linked list, A in O(n log n) time.
