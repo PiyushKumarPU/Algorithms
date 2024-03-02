@@ -17,7 +17,7 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/37.%20Heaps%20Introduction.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/37.%20Heaps%20Introduction.pdf)
 2. [Class/Lecture Video](https://youtu.be/-bqK0plm4xI)
 
 

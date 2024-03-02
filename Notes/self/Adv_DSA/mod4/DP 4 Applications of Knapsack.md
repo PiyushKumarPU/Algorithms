@@ -16,7 +16,7 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/43.%20DP%204%20Applicaiton%20of%20Knapsack.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/43.%20DP%204%20Applicaiton%20of%20Knapsack.pdf)
 2. [Class/Lecture Video](https://youtu.be/WVM8zZECzO4)
 
 ## Cutting the Rod

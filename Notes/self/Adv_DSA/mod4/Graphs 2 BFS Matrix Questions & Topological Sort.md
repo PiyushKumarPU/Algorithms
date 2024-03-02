@@ -17,7 +17,7 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/46.%20graph%202.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/46.%20graph%202.pdf)
 2. [Class/Lecture Video](https://youtu.be/yYlVP_1vkss)
 
 

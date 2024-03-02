@@ -1,9 +1,5 @@
 package com.learning.scaler.advance.module3.linkedlist1.assignment;
 
-import com.learning.scaler.advance.module3.ListNode;
-
-import javax.swing.*;
-
 /*
 Problem Description
     Design and implement a Linked List data structure.
@@ -30,7 +26,7 @@ Output Format
     There should not be any trailing space.
     NOTE: You don't need to return anything.
 * */
-public class LinkedList {
+public class LinkedList{
 
     static Node listNode;
 
@@ -150,6 +146,7 @@ public class LinkedList {
                 temp = temp.next;
                 start++;
             }
+            assert temp != null;
             temp.next = new Node(value);
         }
     }
@@ -181,10 +178,7 @@ public class LinkedList {
     static class Node {
         int data;
         Node next;
-        public Node() {
-            this.data = 0;
-            this.next = null;
-        }
+
         public Node(int data) {
             this.data = data;
         }

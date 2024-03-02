@@ -12,7 +12,7 @@
 1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/contest5)
 
 ## Class Notes and Videos
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/Tree%20Heap%20and%20Greedy%20Contest.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/Tree%20Heap%20and%20Greedy%20Contest.pdf)
 2. [Class/Lecture Video](https://youtu.be/GXraklk5Nd8)
 
 ## Asteroid Destruction

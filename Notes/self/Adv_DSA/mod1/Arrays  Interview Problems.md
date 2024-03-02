@@ -13,7 +13,7 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/3.%20Adv%20Arrays%203%20Intevriew%20Problems(29-09-23).pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/3.%20Adv%20Arrays%203%20Intevriew%20Problems(29-09-23).pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=-7ATeTDUZi4)
 
 

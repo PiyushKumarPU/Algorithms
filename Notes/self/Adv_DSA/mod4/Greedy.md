@@ -15,7 +15,7 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/39.%20Greedy%20Algorithm.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/39.%20Greedy%20Algorithm.pdf)
 2. [Class/Lecture Video](https://youtu.be/99IaWptUDBE)
 
 

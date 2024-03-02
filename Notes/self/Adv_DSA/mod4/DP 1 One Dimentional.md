@@ -17,7 +17,7 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/40.%20DP%201%20Dimensional.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/40.%20DP%201%20Dimensional.pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=QUpIV6IncXY)
 
 ## What is Dynamic Programming

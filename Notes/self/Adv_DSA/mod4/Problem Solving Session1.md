@@ -10,7 +10,7 @@
 1. [Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/psp1/problems)
 
 ## Class Notes and Videos
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/Problem%20Solving%20Session%201.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/Problem%20Solving%20Session%201.pdf)
 2. [Class/Lecture Video](https://youtu.be/t86c5ldDXic)
 
 ## Flip Array

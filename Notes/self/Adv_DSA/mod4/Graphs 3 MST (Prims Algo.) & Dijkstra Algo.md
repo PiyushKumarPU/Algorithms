@@ -19,7 +19,7 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/47.%20graph3.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/47.%20graph3.pdf)
 2. [Class/Lecture Video](https://youtu.be/SN0tiLJwU4k)
 
 ## Applications of DSU

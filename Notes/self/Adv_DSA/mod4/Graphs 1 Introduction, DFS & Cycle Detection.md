@@ -13,13 +13,13 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Class/Lecture Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/graph1/lecture)
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module4/graph1/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module4/graph1/additional/)
+3. [Class/Lecture Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module4/graph1/lecture)
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/45.%20Graphs%201%20Introduction,%20DFS%20&%20Cycle%20Detection.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/45.%20Graphs%201%20Introduction%2C%20DFS%20%26%20Cycle%20Detection.pdf)
 2. [Class/Lecture Video](https://youtu.be/xYF6ZFMD2R0)
 
 ## What are Graphs
