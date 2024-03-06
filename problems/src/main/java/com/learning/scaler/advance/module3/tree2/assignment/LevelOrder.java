@@ -8,65 +8,75 @@ import java.util.Queue;
 
 /*
 Problem Description
-Given a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
-
-
+    Given a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
 
 Problem Constraints
-1 <= number of nodes <= 105
-
-
+    1 <= number of nodes <= 10^5
 
 Input Format
-First and only argument is root node of the binary tree, A.
-
-
+    First and only argument is root node of the binary tree, A.
 
 Output Format
-Return a 2D integer array denoting the level order traversal of the given binary tree.
-
-
+    Return a 2D integer array denoting the level order traversal of the given binary tree.
 
 Example Input
-Input 1:
-
-    3
-   / \
-  9  20
-    /  \
-   15   7
-Input 2:
-
-   1
-  / \
- 6   2
-    /
-   3
-
+    Input 1:
+        3
+       / \
+      9  20
+        /  \
+       15   7
+    Input 2:
+       1
+      / \
+     6   2
+        /
+       3
 
 Example Output
-Output 1:
-
- [
-   [3],
-   [9, 20],
-   [15, 7]
- ]
-Output 2:
-
- [
-   [1]
-   [6, 2]
-   [3]
- ]
+    Output 1:
+         [
+           [3],
+           [9, 20],
+           [15, 7]
+         ]
+    Output 2:
+         [
+           [1]
+           [6, 2]
+           [3]
+         ]
 
 
 Example Explanation
-Explanation 1:
-
- Return the 2D array. Each row denotes the traversal of each level.
+    Explanation 1:
+         Return the 2D array. Each row denotes the traversal of each level.
 * */
 public class LevelOrder {
+
+
+    public ArrayList<ArrayList<Integer>> solveAgain(TreeNode A) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        if (A == null) return result;
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(A);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            ArrayList<Integer> row = new ArrayList<>(size);
+            for (int i = 0; i < size; i++) {
+                TreeNode current = queue.poll();
+                if (current != null) {
+                    row.add(current.val);
+                    if (current.left != null)
+                        queue.add(current.left);
+                    if (current.right != null)
+                        queue.add(current.right);
+                }
+            }
+            result.add(row);
+        }
+        return result;
+    }
 
 
     public ArrayList<ArrayList<Integer>> solve(TreeNode A) {

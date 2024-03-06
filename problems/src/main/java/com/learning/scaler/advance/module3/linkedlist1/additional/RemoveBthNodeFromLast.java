@@ -75,4 +75,26 @@ public class RemoveBthNodeFromLast {
         }
         return A;
     }
+
+    public ListNode removeNthFromEndScaler(ListNode A, int B) {
+        int n;
+        ListNode node;
+        if (A == null)
+            return null;
+        n = 0;
+        node = A;
+        // calculates the size of the linked list
+        while (node != null) {
+            n++;
+            node = node.next;
+        }
+        if (B >= n) {
+            return A.next;
+        }
+        node = A;
+        for (int i = 0; i < n - B - 1; i++)
+            node = node.next;
+        node.next = node.next.next;
+        return A;
+    }
 }

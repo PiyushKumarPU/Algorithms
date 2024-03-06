@@ -72,7 +72,7 @@ public class ZigZagLevelOrderTraversalBT {
         int start = 0;
         while (!treeNodes.isEmpty()) {
             int size = treeNodes.size();
-            Queue<TreeNode> local = new LinkedList<>();
+            LinkedList<TreeNode> local = new LinkedList<>();
             ArrayList<Integer> tempResult = new ArrayList<>();
             for (int cnt = 0; cnt < size; cnt++) {
                 TreeNode current = treeNodes.poll();
@@ -82,7 +82,7 @@ public class ZigZagLevelOrderTraversalBT {
                     if (current.right != null) local.offer(current.right);
                 }
             }
-            LinkedList<TreeNode> temp = (LinkedList<TreeNode>) local;
+            LinkedList<TreeNode> temp = local;
             while (!temp.isEmpty()) {
                 TreeNode current = (start % 2 == 0) ? temp.poll() : temp.pollLast();
                 treeNodes.offer(current);

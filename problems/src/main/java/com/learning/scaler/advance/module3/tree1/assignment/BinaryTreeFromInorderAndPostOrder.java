@@ -51,18 +51,19 @@ Example Explanation
 public class BinaryTreeFromInorderAndPostOrder {
 
     public static void main(String[] args) {
-        buildTree(new ArrayList<>(List.of(6, 1, 3, 2)), new ArrayList<>(List.of(6, 3, 2, 1)));
+        //buildTree(new ArrayList<>(List.of(6, 1, 3, 2)), new ArrayList<>(List.of(6, 3, 2, 1)));
+
+        PrintTreeNode.traversePreOrder(buildTree(new int[]{6, 1, 3, 2}, new int[]{6, 3, 2, 1}));
     }
 
-    public static TreeNode buildTree(ArrayList<Integer> A, ArrayList<Integer> B) {
+    public static void buildTree(ArrayList<Integer> A, ArrayList<Integer> B) {
         TreeNode root = constructTree(A, B);
         PrintTreeNode.traversePreOrder(root);
-        return root;
     }
 
     private static TreeNode constructTree(ArrayList<Integer> A, ArrayList<Integer> B) {
-        if(A.isEmpty() || B.isEmpty()) return new TreeNode(0);
-        int poSize = B.size(), inSize = A.size();
+        if (A.isEmpty() || B.isEmpty()) return new TreeNode(0);
+        int poSize = B.size();
         TreeNode root = new TreeNode(B.get(poSize - 1));
 
         int rootIndex = A.indexOf(root.getVal());
@@ -80,5 +81,35 @@ public class BinaryTreeFromInorderAndPostOrder {
         return root;
     }
 
+
+    private static TreeNode buildTree(int[] A, int[] B) {
+        int size = B.length;
+        if(size == 1){
+            return new TreeNode(A[0]);
+        }
+        int root = B[size - 1];
+        int rootIndex = -1;
+        for (int i = 0; i < size; i++) {
+            if (A[i] == root) {
+                rootIndex = i;
+                break;
+            }
+        }
+        TreeNode rootNode = new TreeNode(root);
+        int[] preLeft = new int[rootIndex];
+        int[] posLeft = new int[preLeft.length];
+        int[] preRight = new int[size - rootIndex - 1];
+        int[] posRight = new int[preRight.length];
+        System.arraycopy(A, 0, preLeft, rootIndex - 1, rootIndex);
+        System.arraycopy(B, 0, posLeft, rootIndex - 1, rootIndex);
+        rootNode.setLeft(buildTree(preLeft, posLeft));
+
+
+        System.arraycopy(A, rootIndex + 1, preRight, rootIndex + 1 + (preRight.length - 1), rootIndex);
+        System.arraycopy(B, posLeft.length, posRight, rootIndex + 1 + (preRight.length - 1), rootIndex);
+
+        rootNode.setRight(buildTree(preRight, posRight));
+        return rootNode;
+    }
 
 }

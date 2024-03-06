@@ -1,6 +1,9 @@
 package com.learning.scaler.advance.module3.linkedlist1.additional;
 
 import com.learning.scaler.advance.module3.ListNode;
+import com.learning.scaler.advance.module3.ListNodeConstructor;
+
+import java.util.List;
 
 /*
 Problem Description
@@ -50,33 +53,38 @@ public class ReverseLinkedListII {
 
     public static void main(String[] args) {
 
-        ListNode fifth = new ListNode(5);
-        ListNode fourth = new ListNode(4);
-        ListNode third = new ListNode(3);
-        ListNode second = new ListNode(2);
-
-        ListNode head = new ListNode(1);
-        head.next = second;
-        second.next = third;
-        third.next = fourth;
-        fourth.next = fifth;
-        head.printAll();
-        head = reverseBetween(head, 2, 4);
-        head.printAll();
-
     }
 
-    public static ListNode reverseBetween(ListNode A, int B, int C) {
-        int nodeToReverse = C - B + 1, start = 1;
-        ListNode temp = A;
-        while(start < B){
-            temp = temp.next;
-            start++;
+    public ListNode reverseBetween(ListNode A, int m, int n) {
+        int i;
+        ListNode node = A;
+        ListNode prev = null;
+        m--;
+        n--;
+        for (i = 0; i < m; i++) {
+            prev = node;
+            node = node.next;
         }
-        ListNode revStart = temp.next;
-        temp.next = null;
-
-
+        if (prev != null)
+            prev.next = reverseList(node, n - m + 1);
+        else
+            A = reverseList(node, n - m + 1);
         return A;
     }
+
+    private ListNode reverseList(ListNode A, int count) {
+        if (A == null)
+            return null;
+        ListNode node = A, prev = null, temp;
+        while (node != null && count > 0) {
+            temp = node.next;
+            node.next = prev;
+            prev = node;
+            node = temp;
+            count--;
+        }
+        A.next = node;
+        return prev;
+    }
+
 }

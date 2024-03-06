@@ -10,8 +10,8 @@ public class CheckPalindromeInLinkedList {
 
     public static void main(String[] args) {
         ListNode A = ListNodeConstructor.construct(List.of(1, 3, 2, 2, 3, 1));
-        /*System.out.println(isPalindromeWithoutReverse(A));
-        System.out.println(isPalindrome(A));*/
+        System.out.println(isPalindromeWithoutReverse(A));
+        System.out.println(isPalindrome(A));
         System.out.println(isPalindromeSuperSolution(A));
 
     }

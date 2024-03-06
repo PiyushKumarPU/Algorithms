@@ -2,8 +2,10 @@ package com.learning.scaler.advance.module3.tree2.assignment;
 
 import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
 import com.learning.scaler.advance.module3.TreeNode;
+import com.learning.scaler.advance.module3.tree2.LevelNode;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
 Problem Description
@@ -17,7 +19,7 @@ Problem Constraints
     0 <= number of nodes <= 10^5
 
 Input Format
-    First and only arument is a pointer to the root node of binary tree, A.
+    First and only argument is a pointer to the root node of binary tree, A.
 
 Output Format
     Return a 2D array denoting the vertical order traversal of tree as shown.
@@ -70,42 +72,28 @@ public class VerticalOrderTraversal {
 
     public ArrayList<ArrayList<Integer>> verticalOrderTraversal(TreeNode A) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        TreeMap<Long, Vector<Integer>> mp = new TreeMap<>();
-        preOrderTraversal(A, 0, 1, mp);
+        if (A == null) return result;
+        Map<Integer, List<Integer>> levelNodesMap = new TreeMap<>();
 
-        // print map
-        int prekey = Integer.MAX_VALUE;
-        for (Map.Entry<Long, Vector<Integer>> entry :
-                mp.entrySet()) {
-            if (prekey != Integer.MAX_VALUE
-                    && (entry.getKey() >> 30) != prekey) {
-            }
-            prekey = (int) (entry.getKey() >> 30);
-            result.add(new ArrayList<>(entry.getValue()));
+        Queue<LevelNode> levelNodes = new ArrayDeque<>();
+        levelNodes.add(new LevelNode(0, A));
+        while (!levelNodes.isEmpty()) {
+            LevelNode current = levelNodes.poll();
+            List<Integer> currentNodes = levelNodesMap.getOrDefault(current.level, new ArrayList<>());
+            currentNodes.add(current.node.val);
+            levelNodesMap.put(current.level, currentNodes);
+            if (current.node.left != null)
+                levelNodes.add(new LevelNode(current.level - 1, current.node.left));
+            if (current.node.right != null)
+                levelNodes.add(new LevelNode(current.level + 1, current.node.right));
         }
-        return result;
-    }
-
-    void preOrderTraversal(TreeNode root, long hd, long vd,
-                           TreeMap<Long, Vector<Integer>> m) {
-        if (root == null || root.val == -1)
-            return;
-        long val = hd << 30 | vd;
-
-        if (m.get(val) != null)
-            m.get(val).add(root.val);
-        else {
-            Vector<Integer> v = new Vector<>();
-            v.add(root.val);
-            m.put(val, v);
+        return levelNodesMap.values().stream().map(ArrayList::new).collect(Collectors.toCollection(ArrayList::new));
+        /*for (int key : levelNodesMap.keySet()) {
+            result.add(new ArrayList<>(levelNodesMap.get(key)));
         }
-        preOrderTraversal(root.left, hd - 1, vd + 1, m);
-        preOrderTraversal(root.right, hd + 1, vd + 1, m);
+
+        return result;*/
     }
-
-    static void verticalOrder(TreeNode root) {
-
-    }
-
-
 }
+
+

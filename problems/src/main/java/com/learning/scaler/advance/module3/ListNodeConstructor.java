@@ -46,4 +46,19 @@ public class ListNodeConstructor {
         }
         return prev;
     }
+
+    public static ListNode reverseList(ListNode A, int count) {
+        if (A == null)
+            return null;
+        ListNode node = A, prev = null, temp;
+        while (node != null && count > 0) {
+            temp = node.next;
+            node.next = prev;
+            prev = node;
+            node = temp;
+            count--;
+        }
+        A.next = node;
+        return prev;
+    }
 }

@@ -43,12 +43,6 @@ public class RemoveDuplicateFromSortedList {
 
     }
 
-    public static ListNode deleteDuplicatesNew(ListNode A){
-
-
-        return A;
-    }
-
     public static ListNode deleteDuplicates(ListNode A) {
         if (A != null && A.next != null) {
             ListNode first = A;
@@ -63,6 +57,26 @@ public class RemoveDuplicateFromSortedList {
                     second = first.next;
                 } else first.next = null;
             }
+        }
+        return A;
+    }
+
+    public ListNode deleteDuplicatesScaler(ListNode A) {
+        if (A == null)
+            return A;
+        ListNode next;
+        ListNode prevNode;
+        int prev = A.val;
+        next = A.next;
+        prevNode = A;
+        while (next != null) {
+            if (next.val == prev) {
+                prevNode.next = next.next;
+            } else {
+                prevNode = next;
+                prev = next.val;
+            }
+            next = next.next;
         }
         return A;
     }

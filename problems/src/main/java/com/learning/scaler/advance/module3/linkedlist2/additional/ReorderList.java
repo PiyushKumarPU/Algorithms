@@ -89,4 +89,66 @@ public class ReorderList {
         return resultTemp;
     }
 
+    public ListNode reorderListScaler(ListNode head) {
+        if (head == null || head.next == null || head.next.next == null)
+            return head;
+
+        ListNode slow = head, fast = head;
+        while (slow != null && fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        assert slow != null;
+        ListNode mid = slow.next;
+        slow.next = null;
+
+        ListNode secondHalfReversed = reverseLinkedList(mid);
+        return head = mergeTwoLists(head, secondHalfReversed);
+    }
+
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null)
+            return l2;
+        if (l2 == null)
+            return l1;
+        ListNode head = l1; // head of the list to return
+        l1 = l1.next;
+        ListNode p = head; // pointer to form new list
+        // A boolean to track which list we need to extract from.
+        // We alternate between first and second list.
+        boolean curListNum = true;
+        while (l1 != null && l2 != null) {
+            if (curListNum == false) {
+                p.next = l1;
+                l1 = l1.next;
+            } else {
+                p.next = l2;
+                l2 = l2.next;
+            }
+            p = p.next;
+            if (curListNum) curListNum = false;
+            else curListNum = true;
+        }
+        // add the rest of the tail, done!
+        if (l1 != null) {
+            p.next = l1;
+        } else {
+            p.next = l2;
+        }
+        return head;
+    }
+
+    ListNode reverseLinkedList(ListNode head) {
+        if (head.next == null) return head;
+        ListNode cur = head, nextNode = head.next, tmp;
+        while (nextNode != null) {
+            tmp = nextNode.next;
+            nextNode.next = cur;
+            cur = nextNode;
+            nextNode = tmp;
+        }
+        head.next = nextNode;
+        return cur;
+    }
+
 }

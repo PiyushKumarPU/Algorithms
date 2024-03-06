@@ -68,4 +68,31 @@ public class SwapListNodeInPairs {
 
         return dummy.next;
     }
+
+    // scaler solution
+    public ListNode swapPairsScaler(ListNode A) {
+        if (A == null)
+            return null;
+        A = rec(A);
+        return A;
+    }
+
+    public ListNode rec(ListNode node) {
+        ListNode nextNode;
+        ListNode firstNode = node;
+        ListNode prevNode = null;
+        if (node.next != null)
+            firstNode = node.next;
+        while (!(node == null || node.next == null)) {
+            // swap the two adjacent nodes
+            nextNode = node.next;
+            node.next = nextNode.next;
+            nextNode.next = node;
+            if (prevNode != null)
+                prevNode.next = nextNode;
+            prevNode = node;
+            node = node.next;
+        }
+        return firstNode;
+    }
 }
