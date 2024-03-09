@@ -15,14 +15,14 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree1/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree1/additional/)
+3. [Self Practise Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree1/lecture/)
 
 ## Class Notes and Videos
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/30%20Trees%201%20Structure%20and%20Traversal.pdf)
-2. [Class/Lecture Video](https://youtu.be/sfZ76utvYHo)
+2. [Class/Lecture Video](https://youtu.be/-ZEpncxL304)
 
 
 ## What is Tree?
@@ -232,6 +232,158 @@ Structure class of Binary tree
     L R N --> Post order traversal
     TC and SC is same for all the traversal
 
-
-
 ## Construct Tree Question
+### Binary Tree From Inorder And Postorder
+    Problem Description
+        Given the inorder and postorder traversal of a tree, construct the binary tree.
+        NOTE: You may assume that duplicates do not exist in the tree.
+
+    Problem Constraints
+        1 <= number of nodes <= 10^5
+
+    Input Format
+        First argument is an integer array A denoting the inorder traversal of the tree.
+        Second argument is an integer array B denoting the postorder traversal of the tree.
+
+    Output Format
+        Return the root node of the binary tree.
+
+    Example Input
+        Input 1:
+            A = [2, 1, 3]
+            B = [2, 3, 1]
+        Input 2:
+            A = [6, 1, 3, 2]
+            B = [6, 3, 2, 1]
+
+    Example Output
+        Output 1:
+
+            1
+            / \
+            2   3
+        Output 2:
+
+            1
+            / \
+            6   2
+                /
+            3
+
+
+    Example Explanation
+        Explanation 1:
+            Create the binary tree and return the root node of the tree.
+### Solution approach
+    Take below input:
+        A = [6, 1, 3, 2]
+        B = [6, 3, 2, 1]
+    Our main issue is to find the root node and all the node of left tree and right subtree.
+    We will follow below steps until tree is constrcuted
+        Step 1: Find the root node with the help of post order traversal
+        Step 2: Find the index of root node in inorder traversal
+        Step 3: Based on the root node index we can find the number of node from right subtree and left subtree.
+        Step 4: All the element available in inorder traversal before root node index would be left and subtree and all the element available after root node index would be right subtree.
+        Step 5 : Will keep doing above mentioned steps untill we get invald index.
+
+### Solution
+```java
+public TreeNode buildTree(int[] A, int[] B) {
+    if (A == null || A.length == 0 || B == null || B.length == 0) return null;
+    Map<Integer, Integer> valIndexMap = new HashMap<>();
+    for (int i = 0; i < A.length; i++) {
+        valIndexMap.put(A[i], i);
+    }
+    return buildTree(A, B, valIndexMap, 0, A.length - 1, 0, A.length - 1);
+}
+
+public TreeNode buildTree(int[] A, int[] B, Map<Integer, Integer> valIndexMap, int inStart, int inEnd, int postStart, int postEnd) {
+    if(inStart > inEnd) return null;
+    int rootNode = B[postEnd];
+    int rootIndex = valIndexMap.get(rootNode);
+    int count = rootIndex - inStart;
+    TreeNode root = new TreeNode(rootNode);
+    // build left tree
+    root.left = buildTree(A, B, valIndexMap, inStart, inStart + count - 1, postStart, postStart + count - 1);
+    // build right tree
+    root.right = buildTree(A, B, valIndexMap, rootIndex + 1, inEnd, postStart + count, postEnd - 1);
+    return root;
+}
+```
+### Construct Binary Tree from Preorder and Inorder Traversal
+    Problem Description
+        Given two integer arrays preorder and inorder where preorder is the preorder traversal of a
+        binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
+
+    Problem Constraint:
+        1 <= preorder.length <= 3000
+        inorder.length == preorder.length
+        -3000 <= preorder[i], inorder[i] <= 3000
+        preorder and inorder consist of unique values.
+        Each value of inorder also appears in preorder.
+        preorder is guaranteed to be the preorder traversal of the tree.
+        inorder is guaranteed to be the inorder traversal of the tree.
+
+    Input:
+        Example 1:
+            Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+            Output: [3,9,20,null,null,15,7]
+        Example 2:
+            Input: preorder = [-1], inorder = [-1]
+            Output: [-1]
+### Solution Approach:
+    We will use similar kind of approach as prev problem, the only difference would be in place of post order traversal we will use preOrder traversal to decide root element.
+### Solution
+```java
+public TreeNode buildTreeFromInorderAndPreOrder(int[] preorder, int[] inorder) {
+    if (preorder == null || preorder.length == 0 || inorder == null || inorder.length == 0) return null;
+    Map<Integer, Integer> valIndexMap = new HashMap<>();
+    for (int i = 0; i < inorder.length; i++) {
+        valIndexMap.put(inorder[i], i);
+    }
+    return buildTreeFromInorderAndPreOrder(preorder, valIndexMap, 0,
+            0, preorder.length - 1);
+}
+
+private TreeNode buildTreeFromInorderAndPreOrder(int[] preorder, Map<Integer, Integer> valIndexMap, int preStart,
+                                                    int inStart, int inEnd) {
+    if (inStart > inEnd) return null;
+
+    int rootVal = preorder[preStart];
+    int rootIndex = valIndexMap.get(rootVal);
+    int count = rootIndex - inStart;
+    TreeNode root = new TreeNode(rootVal);
+    // construct left tree
+    root.left = buildTreeFromInorderAndPreOrder(preorder, valIndexMap, preStart + 1,
+            inStart, inStart + count - 1);
+
+    //construct right tree
+    root.right = buildTreeFromInorderAndPreOrder(preorder, valIndexMap, preStart + count + 1,
+            rootIndex + 1, inEnd);
+
+    return root;
+}
+```
+
+### Another super solution for Construct Binary Tree from Preorder and Inorder Traversal
+### Solution
+```java
+private int i = 0, j = 0;
+public TreeNode buildTree(int[] preorder, int[] inorder) {
+    return build(preorder, inorder, Integer.MIN_VALUE);
+}
+private TreeNode build(int[] preorder, int[] inorder, int min_v) {
+    if (i >= preorder.length) {
+        return null;
+    }
+    if (inorder[j] == min_v) {
+        ++j;
+        return null;
+    }
+    TreeNode tree = new TreeNode(preorder[i++]);
+    tree.left = build(preorder, inorder, tree.val);
+    tree.right = build(preorder, inorder, min_v);
+    return tree;
+}
+```
+

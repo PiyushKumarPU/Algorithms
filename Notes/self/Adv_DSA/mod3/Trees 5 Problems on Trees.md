@@ -9,11 +9,10 @@
 - [Longest path across root node of Binary Tree](#longest-path-across-root-node-of-binary-tree)
 - [Diameter of Binary Tree](#diameter-of-binary-tree)
 
-
 ## Problems and solutions
-1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module3/tree5/assignment)
-2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module3/tree5/additional)
-3. [Self Practise Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module3/tree5/lecture)
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree5/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree5/additional/)
+3. [Self Practise Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree5/lecture/)
 
 ## Class Notes and Videos
 

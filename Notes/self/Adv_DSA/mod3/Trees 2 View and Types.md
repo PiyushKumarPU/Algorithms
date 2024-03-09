@@ -19,7 +19,7 @@
 ## Class Notes and Videos
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/31.%20Adv%20Tree%202%20View%20and%20Types.pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=MLvv-LQFyhw&list=PLWV5FkQMcDU7gC6Lh87kP5ECv2HlsYF_7&index=33&ab_channel=GrowTogether)
+2. [Class/Lecture Video](https://youtu.be/QvghI4MnDUM)
 
 ## Level Order Traversal
 > Level order means we will traverse tree node from left to right i.e. all nodes at root is at level 0, all nodes at height 1 is at level 1 and so on
@@ -67,7 +67,9 @@
         Explanation 1:
             Return the 2D array. Each row denotes the traversal of each level.
 ### Solution Approach
-    Start traversing from root node and add left and right child of the root to queue if present and in iteration we will get the size of queue and operate on only those many node.
+    Start traversing from root node and add left and right child of the root 
+    to queue if present and in iteration we will get the size of queue and 
+    operate on only those many node.
     Example 
         Level 1: only root node
         Level 2: Left and right node of root node
@@ -101,8 +103,10 @@ public ArrayList<ArrayList<Integer>> levelOrder(TreeNode A) {
 ```
 ## Right view
     Problem Description
-        Given a binary tree of integers denoted by root A. Return an array of integers representing the right view of the Binary tree.
-        Right view of a Binary Tree is a set of nodes visible when the tree is visited from Right side.
+        Given a binary tree of integers denoted by root A. Return an array of 
+        integers representing the right view of the Binary tree. Right view of 
+        a Binary Tree is a set of nodes visible when the tree is 
+        visited from Right side.
 
     Problem Constraints
         1 <= Number of nodes in binary tree <= 100000
@@ -180,8 +184,10 @@ public ArrayList<Integer> solve(TreeNode A) {
 ![vertical Order](../../../images/vertical_order_images.jpeg)
     
     Problem Description
-        Given a binary tree, return a 2-D array with vertical order traversal of it. Go through the example and image for more details.
-        NOTE: If 2 Tree Nodes shares the same vertical level then the one with lesser depth will come first.
+        Given a binary tree, return a 2-D array with vertical order traversal of it. Go through the example and image for more details. 
+        NOTE: 
+            If 2 Tree Nodes shares the same vertical level then the one with 
+            lesser depth will come first.
 
     Problem Constraints
         0 <= number of nodes <= 10^5
@@ -231,8 +237,11 @@ public ArrayList<Integer> solve(TreeNode A) {
         Explanation 1:
             First row represent the vertical line 1 and so on.
 ### Solution approach
-    If we look at problem statement, we need to traverse the tree in top down approach. We will consider root at 0 level and left child node at root level -1 and right child node at root level + 1
-    Will maintain a hashmap to store all the level and its list of nodes and at last we will traverse it and convert it into result.
+    If we look at problem statement, we need to traverse the tree in top down 
+    approach. We will consider root at 0 level and left child node at root 
+    level -1 and right child node at root level + 1.
+    Will maintain a hashmap to store all the level and its list of nodes 
+    and at last we will traverse it and convert it into result.
 ### Solution
 ```java
 public ArrayList<ArrayList<Integer>> verticalOrderTraversal(TreeNode A) {
@@ -271,8 +280,10 @@ class LevelNode {
 ```
 ## Top view
     Problem Description
-        Given a binary tree of integers denoted by root A. Return an array of integers representing the top view of the Binary tree.
-        The top view of a Binary Tree is a set of nodes visible when the tree is visited from the top.
+        Given a binary tree of integers denoted by root A. Return an array of 
+        integers representing the top view of the Binary tree. The top view 
+        of a Binary Tree is a set of nodes visible when the tree is visited 
+        from the top.
         Return the nodes in any order.
 
     Problem Constraints
@@ -315,7 +326,8 @@ class LevelNode {
         Explanation 2:
             Top view is described.
 ### Solution Approach
-    If we look at problem statement carefully top view would be first node of each level of vertical traversal. Will use same technique to do top view traversal.
+    If we look at problem statement carefully top view would be first node of each 
+    level of vertical traversal. Will use same technique to do top view traversal.
 ### Solution
 ```java
 public int[] solve(TreeNode A) {
@@ -353,7 +365,9 @@ class LevelNode {
 ```
 ## Bottom View 
 ### Solution Approach
-    If we look at problem statement carefully top view would be last node of each level of vertical traversal. Will use same technique to do top view traversal.  
+    If we look at problem statement carefully bottom view would be last node of 
+    each level of vertical traversal. Will use same technique to do 
+    bottom view traversal.  
 ### Solution
 ```java
 public int[] solve(TreeNode A) {
@@ -443,7 +457,9 @@ public int findHeight(TreeNode node) {
             Because for the root node, left subtree has depth 2 and right subtree has depth 0.
             Difference = 2 > 1.
 ### Solution approach
-    In order to check if root is balanced, we will check if both of its children is balanced tree or not. If it is a leaf node then it is balanced node with height 1.
+    In order to check if root is balanced, we will check if both of its children 
+    is balanced tree or not. 
+    If it is a leaf node then it is balanced node with height 1.
     TC : O(n)
     SC : O(h)
 ### Solution

@@ -4,7 +4,9 @@ import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /*
 Problem Description
@@ -51,8 +53,6 @@ Example Explanation
 public class BinaryTreeFromInorderAndPostOrder {
 
     public static void main(String[] args) {
-        //buildTree(new ArrayList<>(List.of(6, 1, 3, 2)), new ArrayList<>(List.of(6, 3, 2, 1)));
-
         PrintTreeNode.traversePreOrder(buildTree(new int[]{6, 1, 3, 2}, new int[]{6, 3, 2, 1}));
     }
 
@@ -83,33 +83,25 @@ public class BinaryTreeFromInorderAndPostOrder {
 
 
     private static TreeNode buildTree(int[] A, int[] B) {
-        int size = B.length;
-        if(size == 1){
-            return new TreeNode(A[0]);
+        if (A == null || A.length == 0 || B == null || B.length == 0) return null;
+        Map<Integer, Integer> valIndexMap = new HashMap<>();
+        for (int i = 0; i < A.length; i++) {
+            valIndexMap.put(A[i], i);
         }
-        int root = B[size - 1];
-        int rootIndex = -1;
-        for (int i = 0; i < size; i++) {
-            if (A[i] == root) {
-                rootIndex = i;
-                break;
-            }
-        }
-        TreeNode rootNode = new TreeNode(root);
-        int[] preLeft = new int[rootIndex];
-        int[] posLeft = new int[preLeft.length];
-        int[] preRight = new int[size - rootIndex - 1];
-        int[] posRight = new int[preRight.length];
-        System.arraycopy(A, 0, preLeft, rootIndex - 1, rootIndex);
-        System.arraycopy(B, 0, posLeft, rootIndex - 1, rootIndex);
-        rootNode.setLeft(buildTree(preLeft, posLeft));
+        return buildTree(A, B, valIndexMap, 0, A.length - 1, 0, A.length - 1);
+    }
 
-
-        System.arraycopy(A, rootIndex + 1, preRight, rootIndex + 1 + (preRight.length - 1), rootIndex);
-        System.arraycopy(B, posLeft.length, posRight, rootIndex + 1 + (preRight.length - 1), rootIndex);
-
-        rootNode.setRight(buildTree(preRight, posRight));
-        return rootNode;
+    private static TreeNode buildTree(int[] A, int[] B, Map<Integer, Integer> valIndexMap, int inStart, int inEnd, int postStart, int postEnd) {
+        if(inStart > inEnd) return null;
+        int rootNode = B[postEnd];
+        int rootIndex = valIndexMap.get(rootNode);
+        int count = rootIndex - inStart;
+        TreeNode root = new TreeNode(rootNode);
+        // build left tree
+        root.left = buildTree(A, B, valIndexMap, inStart, inStart + count - 1, postStart, postStart + count - 1);
+        // build right tree
+        root.right = buildTree(A, B, valIndexMap, rootIndex + 1, inEnd, postStart + count, postEnd - 1);
+        return root;
     }
 
 }

@@ -16,8 +16,8 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../../class_Notes/Advance%20DSA%20Notes/28%20Stack%202%20Nearest%20Smaller%20or%20Greater%20Element.pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=o7zYY4_ydo8&ab_channel=GrowTogether)
+1. [Class Notes](https://github.com/rajpiyush220/GrowTogetherWithDSA/blob/cf799e36725064c49dd623f426c5f9b3f28b5291/Notes/class_Notes/Advance%20DSA%20Notes/28%20Stack%202%20Nearest%20Smaller%20or%20Greater%20Element.pdf)
+2. [Class/Lecture Video](https://youtu.be/m8Qf0BdOFhA)
 
 ## Nearest Smaller element
 ## Largest rectangle in histogram
