@@ -35,7 +35,9 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 ![Input](../../../images/BST_search_input.png?raw=true)
 
 ### Solution approach
-    We will use BST property to find a value and based on the available node value we will decide whether given value will be present in left subtree or right subtree.
+    We will use BST property to find a value and based on the available node value 
+    we will decide whether given value will be present in left subtree or 
+    right subtree.
     Steps:
         * Check of current node value is same as search value, if yes return true.
         * If current node value is greater than search value then do the search in left subtree.
@@ -143,7 +145,7 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 
 ### Solution
 ```java
-    public static TreeNode insert(TreeNode A, int newVal) {
+    public TreeNode insert(TreeNode A, int newVal) {
         TreeNode newNode = new TreeNode(newVal);
         if (A == null) return newNode;
         TreeNode parent = null, temp = A;
@@ -180,19 +182,83 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
         H = N i.e. height of the tree will be same as no of node
         TC : O(N^2) --> TC of 1 insertion would be O(H)
         Similarly, TC of N insertion O(H *N) --> given H ==N
-    Idea 1 : Construct Right Skewed tree but maitain right most node
+    Idea 2 : Construct Right Skewed tree but maitain right most node
         Take element one by one and keep adding at the right most node and maintain address of right most node
         TC : O(N)
         SC : O(1)
     Idea 3 : Balance tree
         Use the property of sorted array and start with middle element
-        
+        Basically we are going to find mid element of the array and construct left and right subtree from the given array.
+        All the element before mid index will be used to construct left subtree and all the element after mid index will be used to construct right subtree.
+### Solution
+```java
+public TreeNode sortedArrayToBST(final List<Integer> A) {
+    return constructTree(A, 0, A.size() - 1);
+}
 
-
-
+private TreeNode constructTree(final List<Integer> A, int start, int end) {
+    if (start > end) return null;
+    else if (start == end) return new TreeNode(A.get(start));
+    int mid = (end + start) / 2;
+    TreeNode root = new TreeNode(A.get(mid));
+    if (mid - 1 >= start)
+        root.left = constructTree(A, start, mid - 1);
+    if (mid + 1 <= end)
+        root.right = constructTree(A, mid + 1, end);
+    return root;
+}
+```
 ## Check valid BST
+    Problem Description
+        You are given a binary tree represented by root A. You need to check if it is a Binary Search Tree or not.
+    Assume a BST is defined as follows:
+        1) The left subtree of a node contains only nodes with keys less than the node's key.
+        2) The right subtree of a node contains only nodes with keys greater than the node's key.
+        3) Both the left and right subtrees must also be binary search trees.
 
+    Problem Constraints
+        1 <= Number of nodes in binary tree <= 10^5
+        0 <= node values <= 2^32-1
 
+    Input Format
+        First and only argument is head of the binary tree A.
+
+    Output Format
+        Return 0 if false and 1 if true.
+
+    Example Input
+        Input 1:
+
+            1
+            /  \
+            2    3
+        Input 2:
+
+            2
+            / \
+            1   3
+
+    Example Output
+        Output 1:
+            0
+        Output 2:
+            1
+
+    Example Explanation
+        Explanation 1:
+            2 is not less than 1 but is in left subtree of 1.
+        Explanation 2:
+            Satisfies all conditions.
+### Solution approach
+    We need to check two condition here
+            1. Each node should be valid binary tree
+            2. All nodes of a parent node should be valid binary tree
+    Idea 1:
+        In order to check root node is valid binary tree, its value should be bigger or equal then max element of left subtree and it should be less than min value of right subtree.
+    Idea 2: Enhancement to prev solution
+        In place of checking min and max for each node we can specify range like 
+            All the element in left subtree should have less or equal value than root node value 
+            All the element in ritgh subtree should have greater value than root node value.
 ### Solution
 ```java
     public int isValidBST(TreeNode A) {

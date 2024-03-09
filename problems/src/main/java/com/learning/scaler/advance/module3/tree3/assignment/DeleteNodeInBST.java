@@ -20,7 +20,7 @@ Input Format
 Output Format
     Delete the given node if found and return the root of the BST.
 
-Example Input
+Example
     Input 1:
 
                 15
@@ -43,7 +43,7 @@ Example Input
 
          B = 6
 
-Example Output
+Example
     Output 1:
 
                 15
@@ -60,7 +60,7 @@ Example Output
                \
                 7
 
-Example Explanation
+Example
     Explanation 1:
         Node with value 10 is deleted
     Explanation 2:
