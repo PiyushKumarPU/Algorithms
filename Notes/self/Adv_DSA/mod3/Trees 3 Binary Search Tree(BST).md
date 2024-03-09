@@ -176,6 +176,57 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
     > We will replace node to be deleted with either max of the left subtree or the min of the right subtree.
 * Case 3.1, If max of left subtree or min of right subtree is leaf node then nothing to worry about.
 * Case 3.1, If either of left or right subtree has child node, max of left subtree may have left child and min of right subtree will right child. In this case we will replace max/min of left/right subtree with the root node.
+### Solution
+```java
+public TreeNode solve(TreeNode A, int B) {
+    if (A == null || B == 0) return null;
+    TreeNode parent = null, temp = A;
+    // finding node to be deleted
+    while (temp != null && temp.val != B) {
+        parent = temp;
+        temp = temp.val > B ? temp.left : temp.right;
+    }
+    // if required node present
+    if (temp != null) {
+        int childCount = (temp.left != null ? 1 : 0) + (temp.right != null ? 1 : 0);
+        if (childCount == 0) { // leaf node
+            if (parent == null) return null;
+            else {
+                if (parent.left != null && parent.left.val == temp.val) parent.left = null;
+                else if (parent.right != null && parent.right.val == temp.val) parent.right = null;
+            }
+        } else if (childCount == 1) { // node with child
+            if (parent == null) return temp.left != null ? temp.left : temp.right;
+            else {
+                TreeNode newNode = temp.left != null ? temp.left : temp.right;
+                if (parent.left != null && parent.left.val == temp.val) parent.left = newNode;
+                else if (parent.right != null && parent.right.val == temp.val) parent.right = newNode;
+            }
+        } else {
+            TreeNode replacementNode = replaceWithLeftMaxNode(temp.left);
+            replacementNode.right = temp.right;
+            if (parent == null) return replacementNode;
+            else {
+                if (parent.left != null && parent.left.val == temp.val) parent.left = replacementNode;
+                else if (parent.right != null && parent.right.val == temp.val) parent.right = replacementNode;
+            }
+        }
+    }
+    return A;
+}
+// finding new node
+private TreeNode replaceWithLeftMaxNode(TreeNode A) {
+    if (A.right == null) return A;
+    TreeNode parent = null, temp = A;
+    while (temp.right != null) {
+        parent = temp;
+        temp = temp.right;
+    }
+    parent.right = temp.left;
+    temp.left = A;
+    return temp;
+}
+```
 ## Construct BST from sorted array
     Idea 1 : Construct Right Skewed tree
         Take element one by one and insert into BST

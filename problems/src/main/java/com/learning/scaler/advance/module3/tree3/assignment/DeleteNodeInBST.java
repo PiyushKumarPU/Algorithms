@@ -53,7 +53,6 @@ Example
            8  14  16  27
 
     Output 2:
-
                 8
                / \
               1  21
@@ -69,69 +68,58 @@ Example
 public class DeleteNodeInBST {
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(3);
-        root.right = new TreeNode(4);
+        TreeNode root = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left = new TreeNode(1);
 
         DeleteNodeInBST bst = new DeleteNodeInBST();
-        System.out.println(PrintTreeNode.traversePreOrder(bst.solve(root, 3)));
+        System.out.println(PrintTreeNode.traversePreOrder(bst.solve(root, 2)));
     }
 
     public TreeNode solve(TreeNode A, int B) {
-        // check if tree has only one node and that should be deleted
-        if (A == null || (A.left == null && A.right == null && A.val == B)) return null;
-        // find node to be deleted and its parent node
+        if (A == null) return A;
         TreeNode parent = null, temp = A;
         while (temp != null && temp.val != B) {
             parent = temp;
-            temp = temp.val > B ? temp.right : temp.left;
+            temp = temp.val > B ? temp.left : temp.right;
         }
-        // if parent is null then node to be deleted is root node
-        if (parent == null) {
-            parent = temp;
-        }
-
         if (temp != null) {
-            // check if node to be deleted is leaf node
-            if (temp.left == null && temp.right == null) {
-                // delete node and reset parent node respective child
-                if (parent.left != null && parent.left.val == temp.val) parent.left = null;
-                if (parent.right != null && parent.right.val == temp.val) parent.right = null;
-            } else if (temp.left == null || temp.right == null) {
-                // check if node to be deleted has only one child
-                TreeNode nextNode = temp.left != null ? temp.left : temp.right;
-                if (parent.val == temp.val) {
-                    parent = temp.left == null ? temp.right : temp.left;
-                } else if (parent.left != null && parent.left.val == temp.val) parent.left = nextNode;
-                else if (parent.right != null && parent.right.val == temp.val) parent.right = nextNode;
-
+            int childCount = (temp.left != null ? 1 : 0) + (temp.right != null ? 1 : 0);
+            if (childCount == 0) { // leaf node
+                if (parent == null) return null;
+                else {
+                    if (parent.left != null && parent.left.val == temp.val) parent.left = null;
+                    else if (parent.right != null && parent.right.val == temp.val) parent.right = null;
+                }
+            } else if (childCount == 1) { // node with child
+                if (parent == null) return temp.left != null ? temp.left : temp.right;
+                else {
+                    TreeNode newNode = temp.left != null ? temp.left : temp.right;
+                    if (parent.left != null && parent.left.val == temp.val) parent.left = newNode;
+                    else if (parent.right != null && parent.right.val == temp.val) parent.right = newNode;
+                }
             } else {
-                // check if node to be deleted has both the child
-                // find either min of right subtree or max of left subtree
-                TreeNode nextNode = new TreeNode(findLeftSubTreeMin(temp.left));
-                if (parent.val == temp.val) {
-                    nextNode.right = parent.right;
-                    nextNode.left = (parent.left.val == nextNode.val) ? null : parent.left;
-                    parent = nextNode;
-                } else if (parent.left != null && parent.left.val == temp.val) parent.left = nextNode;
-                else if (parent.right != null && parent.right.val == temp.val) parent.right = nextNode;
+                TreeNode replacementNode = replaceWithLeftMaxNode(temp.left);
+                replacementNode.right = temp.right;
+                if (parent == null) return replacementNode;
+                else {
+                    if (parent.left != null && parent.left.val == temp.val) parent.left = replacementNode;
+                    else if (parent.right != null && parent.right.val == temp.val) parent.right = replacementNode;
+                }
             }
         }
-
-        return parent;
+        return A;
     }
 
-    private int findLeftSubTreeMin(TreeNode A) {
+    private TreeNode replaceWithLeftMaxNode(TreeNode A) {
+        if (A.right == null) return A;
         TreeNode parent = null, temp = A;
-        if (A.left != null) {
-            while (temp.left != null) {
-                parent = temp;
-                temp = temp.left;
-            }
+        while (temp.right != null) {
+            parent = temp;
+            temp = temp.right;
         }
-        // check if temp has right child
-        if (parent != null && temp.right != null) {
-            parent.left = temp.right;
-        }
-        return temp.val;
+        parent.right = temp.left;
+        temp.left = A;
+        return temp;
     }
 }

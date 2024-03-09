@@ -2,7 +2,8 @@ package com.learning.scaler.advance.module3.tree3.additional;
 
 /*
 Problem Description
-    Given preorder traversal of a binary tree, check if it is possible that it is also a preorder traversal of a Binary Search Tree (BST), where each internal node (non-leaf nodes) have exactly one child.
+    Given preorder traversal of a binary tree, check if it is possible that it is also a preorder traversal of a
+    Binary Search Tree (BST), where each internal node (non-leaf nodes) have exactly one child.
 
 Problem Constraints
     1 <= number of nodes <= 100000

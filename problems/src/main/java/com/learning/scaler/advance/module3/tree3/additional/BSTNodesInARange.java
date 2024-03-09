@@ -3,7 +3,6 @@ package com.learning.scaler.advance.module3.tree3.additional;
 import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
 import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
-import com.sun.source.tree.Tree;
 
 import java.util.List;
 
@@ -66,24 +65,43 @@ public class BSTNodesInARange {
     public static void main(String[] args) {
 
         TreeNode root = LevelOrderTreeConstruction.constructTree(List.of(
-                1,2,3,4,5,-1,-1,-1,-1,-1,6,-1,-1));
+                1, 2, 3, 4, 5, -1, -1, -1, -1, -1, 6, -1, -1));
 
         System.out.println(PrintTreeNode.traversePreOrder(root));
-       // System.out.println(new BSTNodesInARange().solve(root, 10, 51));
     }
 
     public int solve(TreeNode A, int B, int C) {
-        if (A == null || A.val == -1) return 0;
-        return ((A.val >= B && A.val <= C) ? 1 : 0) +
-                (A.left != null ? solve(A.left, B, C) : 0) +
-                (A.right != null ? solve(A.right, B, C) : 0);
+        if (A == null) return 0;
+
+        int count = (A.val >= B && A.val <= C) ? 1 : 0;
+        int leftCount = A.left != null ? solve(A.left, B, C) : 0;
+        int rightCount = A.right != null ? solve(A.right, B, C) : 0;
+        return count + leftCount + rightCount;
+
     }
 
-    public int solve(List<Integer> A, int B, int C) {
-        int currentSum = 0;
-        for (int i : A) {
-            if (i >= B && i <= C) currentSum += 1;
-        }
-        return currentSum;
+    public int solveComplex(TreeNode A, int B, int C) {
+        if (A == null) return 0;
+        int count = (A.val >= B && A.val <= C) ? 1 : 0;
+        int leftCount = A.left != null ? solve(A.left, B, C) : 0;
+        int rightCount = A.right != null ? solve(A.right, B, C) : 0;
+        return count + leftCount + rightCount;
+    }
+
+    static int ans = 0;
+
+    public int solveScaler(TreeNode A, int B, int C) {
+        ans = 0;
+        traverse(A, B, C);
+        return ans;
+    }
+
+    public static void traverse(TreeNode a, int B, int C) {
+        if (a == null)
+            return;
+        if (a.val >= B && a.val <= C)
+            ans++;
+        traverse(a.left, B, C);
+        traverse(a.right, B, C);
     }
 }
