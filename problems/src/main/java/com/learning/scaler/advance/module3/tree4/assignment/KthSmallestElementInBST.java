@@ -1,7 +1,6 @@
 package com.learning.scaler.advance.module3.tree4.assignment;
 
 import com.learning.scaler.advance.module3.TreeNode;
-import com.sun.source.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,5 +60,23 @@ public class KthSmallestElementInBST {
         inOrder(A.left, inOrder);
         inOrder.add(A.val);
         inOrder(A.right, inOrder);
+    }
+
+    int ans = 0, count = 0;
+
+    public int kthsmallestWithConstantSpace(TreeNode A, int B) {
+        ans = 0;
+        count = 0;
+        inOrderWithCount(A, B);
+        return ans;
+    }
+
+    private void inOrderWithCount(TreeNode A, int B) {
+        if (A == null || count == B) return;
+        inOrderWithCount(A.left, B);
+        count++;
+        if (count == B) ans = A.val;
+        if (count < B)
+            inOrderWithCount(A.right, B);
     }
 }

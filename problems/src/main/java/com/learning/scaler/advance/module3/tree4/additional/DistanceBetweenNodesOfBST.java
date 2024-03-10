@@ -54,7 +54,28 @@ Example
 public class DistanceBetweenNodesOfBST {
 
     public int solve(TreeNode A, int B, int C) {
+        if (A == null) return 0;
+        if (B <= A.val && C <= A.val) {
+            // find C value first and then start traversing to find B and count no of nodes
+        } else if (B > A.val && C > A.val) {
+            // find B value first and then start traversing to find C and count no of nodes
+        } else {
+            // find B in left tree and C in right subtree
+        }
 
+        return 0;
+    }
+
+    public TreeNode findNode(TreeNode A, int val) {
+        if (A == null) return null;
+        TreeNode temp = A;
+        while (temp != null && temp.val != val) {
+            temp = temp.val > val ? temp.left : temp.right;
+        }
+        return temp;
+    }
+
+    public int countEdge(TreeNode A, int val, int count) {
         return 0;
     }
 }

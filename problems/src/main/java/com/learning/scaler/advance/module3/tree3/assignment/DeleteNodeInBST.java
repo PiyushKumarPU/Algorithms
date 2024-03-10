@@ -111,6 +111,27 @@ public class DeleteNodeInBST {
         return A;
     }
 
+    public TreeNode solveScaler(TreeNode A, int B) {
+        if(A != null)
+            if(B < A.val)
+                A.left = solveScaler(A.left, B);
+            else if(B > A.val)
+                A.right = solveScaler(A.right, B);
+            else{
+                if(A.left == null && A.right == null)
+                    return null;
+                if (A.left == null || A.right == null)
+                    return A.left != null ? A.left : A.right;
+
+                TreeNode temp = A.left;
+                while(temp.right != null)
+                    temp = temp.right;
+                A.val = temp.val;
+                A.left = solveScaler(A.left, temp.val);
+            }
+        return A;
+    }
+
     private TreeNode replaceWithLeftMaxNode(TreeNode A) {
         if (A.right == null) return A;
         TreeNode parent = null, temp = A;

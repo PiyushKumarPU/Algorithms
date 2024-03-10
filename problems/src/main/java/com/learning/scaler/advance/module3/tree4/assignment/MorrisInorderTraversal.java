@@ -2,6 +2,8 @@ package com.learning.scaler.advance.module3.tree4.assignment;
 
 import com.learning.scaler.advance.module3.TreeNode;
 
+import java.util.ArrayList;
+
 /*
 Problem Description
     Given a binary tree, return the inorder traversal of its nodes' values.
@@ -45,7 +47,30 @@ Example
 * */
 public class MorrisInorderTraversal {
 
-    public int[] solve(TreeNode A) {
-        return new int[]{};
+    public ArrayList<Integer> solve(TreeNode A) {
+        ArrayList<Integer> result = new ArrayList<>();
+        TreeNode curr = A;
+
+        while (curr != null) {
+            if (curr.left == null) {
+                result.add(curr.val);
+                curr = curr.right;
+            } else {
+                TreeNode pre = curr.left;
+                while (pre.right != null && pre.right != curr) {
+                    pre = pre.right;
+                }
+
+                if (pre.right == null) {
+                    pre.right = curr;
+                    curr = curr.left;
+                } else {
+                    pre.right = null;
+                    result.add(curr.val);
+                    curr = curr.right;
+                }
+            }
+        }
+        return result;
     }
 }
