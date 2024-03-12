@@ -44,6 +44,6 @@ Example Explanation
 public class ToggleIthBit {
 
     public int solve(int A, int B) {
-        return 0;
+        return A ^ (1 << B);
     }
 }

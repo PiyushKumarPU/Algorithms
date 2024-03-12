@@ -41,7 +41,16 @@ Example Explanation
 * */
 public class SetBit {
 
-    public int solve(int A, int B) {
-        return 0;
+    public static void main(String[] args) {
+        System.out.println(solve(3, 5));
+        System.out.println(solve(4, 4));
+
+    }
+
+    public static int solve(int A, int B) {
+        int result = 0;
+        result = result | (1 << A);
+        result = result | (1 << B);
+        return result;
     }
 }

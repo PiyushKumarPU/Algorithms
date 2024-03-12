@@ -44,6 +44,9 @@ Example Explanation
 public class UnsetIthbit {
 
     public int solve(int A, int B) {
-        return 0;
+        if((A & (1 << B)) >0){
+            A = A ^ (1 << B);
+        }
+        return A;
     }
 }

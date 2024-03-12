@@ -11,14 +11,14 @@
 
 ## Problems and solutions
 
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module1/bitmanipulation2/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module1/bitmanipulation2/additional/)
+3. [Self Practise Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module1/bitmanipulation2/lecture/)
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/5.%20Adv%20Bit%20Manipulation%202(06-10-23).pdf)
-2. [Class/Lecture Video](https://www.youtube.com/watch?v=c7C99hdUNUs)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/5.%20Adv%20Bit%20Manipulation%202(06-10-23).pdf)
+2. [Class/Lecture Video](https://www.youtube.com/watch?v=TRsl7EmUUSo)
 
 
 ## Single number I
