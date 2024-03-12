@@ -1,6 +1,11 @@
 package com.learning.scaler.advance.module1.bitmanipulation2.additional;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 /*
 Problem Description
     Given an integer array A of N integers, find the pair of integers in the array which have minimum XOR value.
@@ -34,7 +39,17 @@ Example
 * */
 public class MinXORValue {
 
-    public int findMinXor(int[] A) {
-        return 0;
+    public static void main(String[] args) {
+        System.out.println(findMinXor(new ArrayList<>(List.of(6, 2, 7))));
+    }
+
+    public static int findMinXor(ArrayList<Integer> A) {
+        A.sort(Comparator.naturalOrder());
+        int minXor = Integer.MAX_VALUE, val = 0;
+        for (int i = 0; i < A.size() - 1; i++) {
+            val = A.get(i) ^ A.get(i + 1);
+            minXor = Math.min(minXor, val);
+        }
+        return minXor;
     }
 }

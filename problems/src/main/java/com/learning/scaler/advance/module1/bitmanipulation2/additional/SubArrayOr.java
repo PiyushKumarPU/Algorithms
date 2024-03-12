@@ -5,7 +5,7 @@ package com.learning.scaler.advance.module1.bitmanipulation2.additional;
 Problem Description
     You are given an array of integers A of size N.
     The value of a subarray is defined as BITWISE OR of all elements in it.
-    Return the sum of value of all subarrays of A % 109 + 7.
+    Return the sum of value of all subarrays of A % 10^9 + 7.
 
 Problem Constraints
     1 <= N <= 10^5
