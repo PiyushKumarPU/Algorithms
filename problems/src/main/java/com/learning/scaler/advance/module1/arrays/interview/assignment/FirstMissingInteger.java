@@ -12,9 +12,9 @@ Input Format
     First argument is an integer array A.
 
 Output Format
-    Return an integer denoting the first missing positive integer.
+    Returns an integer denoting the first missing positive integer.
 
-Example Input
+Example
     Input 1:
         [1, 2, 0]
     Input 2:
@@ -22,7 +22,7 @@ Example Input
     Input 3:
         [-8, -7, -6]
 
-Example Output
+Example
     Output 1:
         3
     Output 2:

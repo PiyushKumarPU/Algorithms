@@ -39,7 +39,23 @@ Example
 * */
 public class SingleNumberII {
 
-    public int singleNumber(final int[] A) {
-        return 0;
+    public static void main(String[] args) {
+        int[] input = new int[]{1, 2, 4, 3, 3, 2, 2, 3, 1, 1};
+        System.out.println(singleNumber(input));
+    }
+
+    public static int singleNumber(final int[] A) {
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            int count = 0;
+            int leftShift = 1 << i;
+            for (int element : A) {
+                if ((element & leftShift) > 0) count++;
+            }
+            if (count % 3 > 0) {
+                result += (int) Math.pow(2, i);
+            }
+        }
+        return result;
     }
 }

@@ -40,7 +40,18 @@ Example
 * */
 public class UnsetXBitsFromRight {
 
-    public long solve(long A, int B) {
+    public static void main(String[] args) {
+        System.out.println(solve(25, 3));
+        System.out.println(solve(37, 3));
+
+    }
+
+    public static long solve(long A, int B) {
+        for (int i = 1; i <= B; i++) {
+            if ((A | (1L << i)) > 0) {
+                A = A & (1L << i);
+            }
+        }
         return 0;
     }
 }

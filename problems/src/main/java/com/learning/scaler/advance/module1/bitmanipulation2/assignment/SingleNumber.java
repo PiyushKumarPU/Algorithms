@@ -36,7 +36,11 @@ Example Explanation
 * */
 public class SingleNumber {
     public int singleNumber(final int[] A) {
-
-        return 0;
+        if (A == null || A.length == 0) return 0;
+        int result = A[0];
+        for (int i = 1; i < A.length; i++) {
+            result = result ^ A[i];
+        }
+        return result;
     }
 }
