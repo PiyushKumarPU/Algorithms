@@ -1,6 +1,8 @@
-package com.learning.scaler.advance.module4.heap2.assignment;
+package com.learning.scaler.advance.module4.heap2.lecture;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /*
 Problem Description
@@ -52,36 +54,7 @@ Example Explanation
 public class AthLargestElement {
 
     public static void main(String[] args) {
-        AthLargestElement element = new AthLargestElement();
         ArrayList<Integer> B = new ArrayList<>(List.of(1, 2, 3, 4, 5));
-        System.out.println(element.solve(2, B));
-    }
-
-    public static ArrayList<Integer> solve(int A, ArrayList<Integer> B) {
-        ArrayList<Integer> result = new ArrayList<>();
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
-        for (int i = 0; i < A; i++) {
-            minHeap.add(B.get(i));
-            if (i < A - 1) result.add(-1);
-        }
-        result.add(minHeap.peek());
-        for (int index = A; index < B.size() && !minHeap.isEmpty(); index++) {
-            int currentMin = minHeap.peek();
-            int currentVal = B.get(index);
-            if (currentVal > currentMin) {
-                minHeap.poll();
-                minHeap.add(currentVal);
-            }
-            result.add(minHeap.peek());
-        }
-        return result;
-    }
-
-    private ArrayList<Integer> buildHugeInput() {
-        ArrayList<Integer> result = new ArrayList<>(20000);
-        for (int i = 200; i < 20200; i++) {
-            result.add(i);
-        }
-        return result;
+        com.learning.scaler.advance.module4.heap2.assignment.AthLargestElement.solve(2, B);
     }
 }

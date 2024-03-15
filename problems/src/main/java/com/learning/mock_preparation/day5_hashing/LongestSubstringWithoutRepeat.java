@@ -57,5 +57,6 @@ Explanation 2:
 public class LongestSubstringWithoutRepeat {
 
     public int lengthOfLongestSubstring(String A) {
+        return 0;
     }
 }

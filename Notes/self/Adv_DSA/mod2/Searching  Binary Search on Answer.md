@@ -11,8 +11,8 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/17.%20Searching%20Binary%20Search%20on%20Answers.pdf)
-2. [Class/Lecture Video](https://youtu.be/gw_jadeMFA8)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/17.%20Searching%20Binary%20Search%20on%20Answers.pdf)
+2. [Class/Lecture Video](https://youtu.be/r2U83yA6viM)
 
 ## Painters Partition
     Problem Description

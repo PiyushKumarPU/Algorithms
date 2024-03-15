@@ -8,9 +8,10 @@
 
 
 ## Problems and solutions
-1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/heap2/assignment)
-2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/heap2/additional)
-3. [Lecture Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/heap2/lecture)
+1. [](../../../../problems/src/main/java/com/learning/scaler/advance/module4/heap2/)
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module4/heap2/assignment)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module4/heap2/additional)
+3. [Lecture Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module4/heap2/lecture)
 
 ## Class Notes and Videos
 
@@ -101,5 +102,37 @@
         So, output array is [-1, 15, 20, 20].
 
 ### Solution approach
+    Approach 1: 
+        Find Ath largest in each subarray from 1 to i
+        TC : O(n^3)
+        SC : O(1)
+    Approach 2: Using min heap
+        We will start with creating min heap of and we will maintain A largest element
+        In each iteration we will check current element with heap min element, if current element is bigger than current min will replace current heap min with current element.
+        At last we will current min heap element to the result.
+        TC : N*AlogA
+        SC : O(A)
+### Solution
+```java
+public ArrayList<Integer> solve(int A, ArrayList<Integer> B) {
+    ArrayList<Integer> result = new ArrayList<>();
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
+    for (int i = 0; i < A; i++) {
+        minHeap.add(B.get(i));
+        if (i < A - 1) result.add(-1);
+    }
+    result.add(minHeap.peek());
+    for (int index = A; index < B.size() && !minHeap.isEmpty(); index++) {
+        int currentMin = minHeap.peek();
+        int currentVal = B.get(index);
+        if (currentVal > currentMin) {
+            minHeap.poll();
+            minHeap.add(currentVal);
+        }
+        result.add(minHeap.peek());
+    }
+    return result;
+}
+```
 ## Sort Nearly Sorted Array
 ## Median of stream of Integers

@@ -68,6 +68,7 @@ public class RemoveLoopFromLinkedList {
     public ListNode solve(ListNode A) {
         if (A == null || A.next == null) return A;
         HashSet<ListNode> visitedSet = new HashSet<>();
+        visitedSet.contains(null);
         ListNode temp = A;
         while (temp != null) {
             visitedSet.add(temp);
