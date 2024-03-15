@@ -43,6 +43,8 @@ The distinct elements of the array are 3, 9, 0 and 1.
 * */
 public class CountDistinctElements {
 
+    // https://www.scaler.com/academy/mentee-dashboard/class/118936/assignment/problems/27502
+
     public int solve(int[] A) {
         HashMap<Integer, Integer> freqMap = new HashMap<>();
         for (int i : A) {

@@ -1,6 +1,13 @@
 package com.learning.mock_preparation.day5_hashing;
 
 
+import com.learning.scaler.advance.module3.ListNode;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /*
 Problem Description
     Given an array A of N integers.
@@ -36,7 +43,52 @@ Example
          No subarray sums up to 0.
 * */
 public class LongestSubarrayZeroSum {
-    public int solve(int[] A) {
-        return 0;
+
+    public static void main(String[] args) {
+        int[] inputs = {1, -2, 1, 2};
+        //System.out.println(solveBruteForce(inputs));
+        System.out.println(solve(new ArrayList<>(List.of(9, -20, -11, -8, -4, 2, -12, 14, 1))));
+
     }
+
+    // https://www.scaler.com/academy/mentee-dashboard/class/155293/assignment/problems/27742
+    public int solve(int[] A) {
+        HashMap<Long, Integer> sumMap = new HashMap<>();
+        int maxLen = 0;
+        long sum = 0;
+        for (int i = 0; i < A.length; i++) {
+            sum += A[i];
+            if (sum == 0) {
+                maxLen = i + 1;
+            } else {
+                if (sumMap.containsKey(sum)) {
+                    maxLen = Math.max(maxLen, i - sumMap.get(sum));
+                } else {
+                    sumMap.put(sum, i);
+                }
+            }
+        }
+        return maxLen;
+    }
+
+
+    public static int solve(ArrayList<Integer> A) {
+        int maxLength = 0;
+        HashMap<Long, Integer> sumMap = new HashMap<>();
+        long currentVal = 0;
+        for (int i = 0; i < A.size(); i++) {
+            currentVal += A.get(i);
+            if (currentVal == 0) {
+                maxLength = Math.max(maxLength, i + 1);
+            } else {
+                int prevIndex = sumMap.getOrDefault(currentVal, -1);
+                if (prevIndex > -1) {
+                    maxLength = Math.max(maxLength, (i - prevIndex));
+                } else sumMap.put(currentVal, i);
+            }
+        }
+        return maxLength;
+    }
+
+
 }
