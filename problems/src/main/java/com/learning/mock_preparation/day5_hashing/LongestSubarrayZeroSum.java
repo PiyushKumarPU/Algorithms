@@ -1,12 +1,9 @@
 package com.learning.mock_preparation.day5_hashing;
 
 
-import com.learning.scaler.advance.module3.ListNode;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /*
 Problem Description
@@ -45,8 +42,6 @@ Example
 public class LongestSubarrayZeroSum {
 
     public static void main(String[] args) {
-        int[] inputs = {1, -2, 1, 2};
-        //System.out.println(solveBruteForce(inputs));
         System.out.println(solve(new ArrayList<>(List.of(9, -20, -11, -8, -4, 2, -12, 14, 1))));
 
     }
