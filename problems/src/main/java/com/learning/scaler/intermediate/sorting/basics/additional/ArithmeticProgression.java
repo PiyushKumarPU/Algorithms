@@ -1,5 +1,7 @@
 package com.learning.scaler.intermediate.sorting.basics.additional;
 
+import java.util.Arrays;
+
 /*
 
 Problem Description
@@ -40,6 +42,12 @@ Example Explanation
 public class ArithmeticProgression {
 
     public int solve(int[] A) {
-        return -1;
+        if (A == null || A.length == 1) return 0;
+        Arrays.sort(A);
+        int diff = A[1] - A[0];
+        for (int i = 2; i < A.length; i++) {
+            if (A[i] - A[i - 1] != diff) return 0;
+        }
+        return 1;
     }
 }

@@ -57,8 +57,22 @@ public class DistanceBetweenNodesOfBST {
         if (A == null) return 0;
         if (B <= A.val && C <= A.val) {
             // find C value first and then start traversing to find B and count no of nodes
+            TreeNode CNode = findNode(A, C);
+            int count = 0;
+            while (CNode != null && CNode.val != B) {
+                count++;
+                CNode = (CNode.val > C) ? CNode.left : CNode.right;
+            }
+            return count;
         } else if (B > A.val && C > A.val) {
             // find B value first and then start traversing to find C and count no of nodes
+            TreeNode BNode = findNode(A, B);
+            int count = 0;
+            while (BNode != null && BNode.val != C) {
+                count++;
+                BNode = (BNode.val > B) ? BNode.left : BNode.right;
+            }
+            return count;
         } else {
             // find B in left tree and C in right subtree
         }
