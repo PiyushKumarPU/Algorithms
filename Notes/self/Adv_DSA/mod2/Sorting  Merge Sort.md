@@ -146,8 +146,143 @@ Also, update countArray[ inputArray[0] ] = countArray[ inputArray[0] ]
     }
 ```
 ## Stable and Inplace sorting
+### [Stable sort:](https://www.geeksforgeeks.org/stable-and-unstable-sorting-algorithms/)
+
+> Stable Sorting : When two same data appear in the same order in sorted data without changing their position is called stable sort.
+
+> Unstable Sorting : When two same data appear in the different order in sorted data it is called unstable sort.
+
+### [In-place sorting:](https://www.geeksforgeeks.org/in-place-algorithm/)
+> An in-place algorithm is an algorithm that does not need an extra space and produces an output in the same memory that contains the data by transforming the input ‘in-place’. However, a small constant extra space used for variables is allowed.
+
+**Note :** In-place means that the algorithm does not use extra space for manipulating the input but may require a small though non-constant extra space for its operation. Usually, this space is O(log n), though sometimes anything in O(n) (Smaller than linear) is allowed.
 ## Merge 2 Sorted Arrays
+    You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+    Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+
+    The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+    Example 1:
+        Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+        Output: [1,2,2,3,5,6]
+        Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+        The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+    Example 2:
+        Input: nums1 = [1], m = 1, nums2 = [], n = 0
+        Output: [1]
+        Explanation: The arrays we are merging are [1] and [].
+        The result of the merge is [1].
+    Example 3:
+        Input: nums1 = [0], m = 0, nums2 = [1], n = 1
+        Output: [1]
+        Explanation: The arrays we are merging are [] and [1].
+        The result of the merge is [1].
+        Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
+### Soluion approach
+    Idea 1:
+        Create a temp array of size m +n and sort it
+        TC : O((m+n)log(m+n))
+        SC : O(m+n)
+    Idea 2:
+        As given, both the array is sorted and we will use this properties to reduce the time complexity.
+
+        1. Create a temp array of size m + n to hold final result
+        2. Start iterating from 0 till min(m,n)
+        3. Pull one element from both the arrat and add the smaller one to the resultant array.
+        4. Once loop finishes check the remaining element of larger array.
+### Solution
+```java
+public int[] merge(int[] nums1, int[] nums2) {
+    int m = nums1.length, n = nums2.length;
+    int[] result = new int[m + n];
+    int index1 = 0, index2 = 0, currentIndex = 0;
+    while (index1 < m && index2 < n) {
+        int first = nums1[index1];
+        int second = nums2[index2];
+        if (first <= second) {
+            result[currentIndex++] = first;
+            index1++;
+            if (first == second) {
+                result[currentIndex++] = second;
+                index2++;
+            }
+        } else {
+            result[currentIndex++] = second;
+            index2++;
+        }
+    }
+
+    // check for a remaining element of a larger array
+    if (index1 < m) {
+        while (index1 < m) {
+            result[currentIndex++] = nums1[index1];
+            index1++;
+        }
+    }
+    if (index2 < n) {
+        while (index2 < n) {
+            result[currentIndex++] = nums2[index2];
+            index2++;
+        }
+    }
+    return result;
+}
+```
+## Merge Probles
+    Given an array of size N and 3 indices l,y and r. In the array, subarray from l to y and y +1 to r is sorted. Sort subarray from l to r.
+### Solution approach:
+    We will be using same approach as prev one but the only difference would be starting and ending index will change
+### Solution
+```java
+public int[] merge(int[] arr, int l, int y, int r) {
+    int[] result = new int[r - l + 1];
+    int currentIndex = 0, index2 = y + 1, index1 = l;
+    while (index1 <= y && index2 < r) {
+        int first = arr[index1];
+        int second = arr[index2];
+        if (first <= second) {
+            result[currentIndex++] = first;
+            index1++;
+            if (first == second) {
+                result[currentIndex++] = second;
+                index2++;
+            }
+        } else {
+            result[currentIndex++] = second;
+            index2++;
+        }
+    }
+
+    // check for a remaining element of a larger array
+    if (index1 <= y) {
+        while (index1 <= y) {
+            result[currentIndex++] = arr[index1];
+            index1++;
+        }
+    }
+    if (index2 <= r) {
+        while (index2 <= r) {
+            result[currentIndex++] = arr[index2];
+            index2++;
+        }
+    }
+    return result;
+}
+```
 ## Merge Sort	
+> Merge sort is defined as a sorting algorithm that works by dividing an array into smaller subarrays, sorting each subarray, and then merging the sorted subarrays back together to form the final sorted array.
+
+**Note :** In simple terms, we can say that the process of merge sort is to divide the array into two halves, sort each half, and then merge the sorted halves back together. This process is repeated until the entire array is sorted.
+
+### How does Merge Sort work?
+> Merge sort is a recursive algorithm that continuously splits the array in half until it cannot be further divided i.e., the array has only one element left (an array with one element is always sorted). Then the sorted subarrays are merged into one sorted array.
+
+
+![Step 1](../../../images/1.webp)
+![Step 2](../../../images/2.webp)
+![Step 3](../../../images/3.webp)
+![Step 4](../../../images/4.webp)
+
 ## Inversion Count
 ## No of Pairs
 ## No of Open Doors

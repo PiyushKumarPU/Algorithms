@@ -13,7 +13,7 @@ public class QuickSort {
     }
 
     private int parition(int[] A){
-        
+        return 0;
     }
 
 }
