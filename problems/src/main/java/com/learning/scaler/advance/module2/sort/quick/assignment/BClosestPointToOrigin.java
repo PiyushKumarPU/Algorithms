@@ -52,9 +52,6 @@ Example Explanation
 
 * */
 public class BClosestPointToOrigin {
-
-
-
     public ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> A, int B) {
 
         return new ArrayList<>();

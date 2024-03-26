@@ -48,8 +48,6 @@ public class TensDigitSorting {
     public static void main(String[] args) {
 
     }
-
-
     public static ArrayList<Integer> self(ArrayList<Integer> A) {
         A.sort((o1, o2) -> {
             Integer first = o1, second = o2, firstDigit = 0, secondDigit = 0;
