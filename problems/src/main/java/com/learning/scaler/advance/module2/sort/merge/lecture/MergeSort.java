@@ -1,28 +1,34 @@
 package com.learning.scaler.advance.module2.sort.merge.lecture;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class MergeSort {
 
-    public int[] sortArray(int[] A) {
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(sortArray(new int[]{85, 14, 897, 25, 4, 36, 45, 89})));
+    }
+
+    public static int[] sortArray(int[] A) {
         if (A == null || A.length == 1) return A;
-        int start = 0, end = A.length - 1, mid = (end + start) / 2;
-        return mergeSort(A, start, mid, end);
+        mergeSort(A, 0, A.length - 1);
+        return A;
     }
 
-    private int[] mergeSort(int[] A, int start, int mid, int end) {
-
-        
-
-        return null;
+    private static void mergeSort(int[] A, int start, int end) {
+        if (start == end) return;
+        int mid = (end + start) / 2;
+        mergeSort(A, start, mid);
+        mergeSort(A, mid + 1, end);
+        merge(A, start, mid, end);
     }
 
-
-    private int[] mergeSortedArray(int[] nums1, int[] nums2) {
-        int m = nums1.length, n = nums2.length;
-        int[] result = new int[m + n];
-        int index1 = 0, index2 = 0, currentIndex = 0;
-        while (index1 < m && index2 < n) {
-            int first = nums1[index1];
-            int second = nums2[index2];
+    private static void merge(int[] arr, int l, int y, int r) {
+        int[] result = new int[r - l + 1];
+        int currentIndex = 0, index2 = y + 1, index1 = l;
+        while (index1 <= y && index2 <= r) {
+            int first = arr[index1];
+            int second = arr[index2];
             if (first <= second) {
                 result[currentIndex++] = first;
                 index1++;
@@ -36,19 +42,24 @@ public class MergeSort {
             }
         }
 
-        if (index1 < m) {
-            while (index1 < m) {
-                result[currentIndex++] = nums1[index1];
+        // check for a remaining element of a larger array
+        if (index1 <= y) {
+            while (index1 <= y) {
+                result[currentIndex++] = arr[index1];
                 index1++;
             }
         }
-        if (index2 < n) {
-            while (index2 < n) {
-                result[currentIndex++] = nums2[index2];
+        if (index2 <= r) {
+            while (index2 <= r) {
+                result[currentIndex++] = arr[index2];
                 index2++;
             }
         }
-        return result;
+        // copy a result array to the main array
+        int start = 0, i = l;
+        while (i <= r) {
+            arr[i++] = result[start++];
+        }
     }
 
 }

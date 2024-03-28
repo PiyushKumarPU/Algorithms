@@ -3,7 +3,8 @@ package com.learning.scaler.advance.module2.sort.merge.additional;
 
 /*
 Problem Description
-Given an array of integers A, find and return the minimum value of | A [ i ] - A [ j ] | where i != j and |x| denotes the absolute value of x.
+    Given an array of integers A, find and return the minimum value of | A [ i ] - A [ j ] |
+    where i != j and |x| denotes the absolute value of x.
 
 
 

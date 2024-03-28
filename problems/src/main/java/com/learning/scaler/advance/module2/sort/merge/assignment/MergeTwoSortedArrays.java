@@ -39,7 +39,39 @@ Example
 * */
 public class MergeTwoSortedArrays {
 
-    public int[] solve(final int[] A, final int[] B) {
-        return null;
+    public static int[] merge(int[] A, int[] B) {
+        int m = A.length, n = B.length;
+        int[] result = new int[m + n];
+        int index1 = 0, index2 = 0, currentIndex = 0;
+        while (index1 < m && index2 < n) {
+            int first = A[index1];
+            int second = B[index2];
+            if (first <= second) {
+                result[currentIndex++] = first;
+                index1++;
+                if (first == second) {
+                    result[currentIndex++] = second;
+                    index2++;
+                }
+            } else {
+                result[currentIndex++] = second;
+                index2++;
+            }
+        }
+
+        // check for a remaining element of a larger array
+        if (index1 < m) {
+            while (index1 < m) {
+                result[currentIndex++] = A[index1];
+                index1++;
+            }
+        }
+        if (index2 < n) {
+            while (index2 < n) {
+                result[currentIndex++] = B[index2];
+                index2++;
+            }
+        }
+        return result;
     }
 }

@@ -2,6 +2,9 @@ package com.learning.scaler.advance.module3.tree4.assignment;
 
 import com.learning.scaler.advance.module3.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 Problem Description
     Two elements of a Binary Search Tree (BST), represented by root A are swapped by mistake.
@@ -50,7 +53,28 @@ Example
 * */
 public class RecoverBinarySearchTree {
 
+    List<Integer> inOrder;
+
     public int[] recoverTree(TreeNode A) {
-        return new int[]{};
+        inOrder = new ArrayList<>();
+        int[] result = new int[2];
+        doInOrder(A);
+        for (int i = 0; i < (inOrder.size() - 1); i++) {
+            if (inOrder.get(i) < inOrder.get(i + 1)) {
+                result[0] = inOrder.get(i);
+                result[1] = inOrder.get(i + 1);
+                return result;
+            }
+        }
+        return result;
     }
+
+    private void doInOrder(TreeNode A) {
+        if (A == null) return;
+        doInOrder(A.left);
+        inOrder.add(A.val);
+        doInOrder(A.right);
+    }
+
+
 }
