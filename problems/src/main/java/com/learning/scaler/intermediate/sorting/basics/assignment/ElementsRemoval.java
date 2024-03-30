@@ -43,8 +43,23 @@ Example Explanation
 * */
 public class ElementsRemoval {
 
-    public int solve(int[] A) {
+    public static void main(String[] args) {
+        System.out.println(solve(new int[]{8, 0, 10}));
+    }
+
+    public static int solve(int[] A) {
         Arrays.sort(A);
-        return 0;
+        int arraySum = 0, totalSum = 0;
+        for (int a : A) arraySum += a;
+        for (int i = A.length - 1; i >= 0; i--) {
+            int sumToRemove = 0;
+            int index = i + 1;
+            while (index < A.length) {
+                sumToRemove += A[index];
+                index++;
+            }
+            totalSum += (arraySum - sumToRemove);
+        }
+        return totalSum;
     }
 }

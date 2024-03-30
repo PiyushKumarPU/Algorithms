@@ -77,19 +77,18 @@ Example Explanation
 public class NobleInteger {
 
     public static void main(String[] args) {
-
+        System.out.println(solve(new ArrayList<>(List.of(-4, -2, 0, -1, -6))));
     }
 
-    public int solve(ArrayList<Integer> A) {
+    public static int solve(ArrayList<Integer> A) {
         int result = 0;
-        List<Integer> sorted = A.stream().sorted(Comparator.reverseOrder())
-                .toList();
+        A.sort(Comparator.reverseOrder());
         int currentCount = 0;
-        for (int index = 1; index < sorted.size(); index++) {
-            if(Objects.equals(sorted.get(index), sorted.get(index - 1))){
-                if(index == currentCount) result++;
-            }else{
-                if(index == sorted.get(index)) result++;
+        for (int index = 1; index < A.size(); index++) {
+            if (Objects.equals(A.get(index), A.get(index - 1))) {
+                if (index == currentCount) result++;
+            } else {
+                if (index == A.get(index)) result++;
                 currentCount = index;
             }
         }

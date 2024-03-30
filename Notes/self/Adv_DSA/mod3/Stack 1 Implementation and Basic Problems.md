@@ -19,7 +19,7 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/27%20Stack%20Implementation%20and%20Basic%20Problems.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/self/Adv_DSA/mod3/Stack%201%20Implementation%20and%20Basic%20Problems.md)
 2. [Class/Lecture Video](https://youtu.be/oZ06N3evwrY)
 
 

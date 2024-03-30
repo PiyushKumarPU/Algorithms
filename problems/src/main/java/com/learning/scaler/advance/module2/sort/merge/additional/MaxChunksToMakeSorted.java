@@ -16,7 +16,7 @@ Input Format
     The only argument given is the integer array A.
 
 Output Format
-    Return the maximum number of chunks that we could have made.
+     Returns the maximum number of chunks that we could have made.
 
 Example
     Input 1:

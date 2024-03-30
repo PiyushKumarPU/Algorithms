@@ -24,6 +24,15 @@ public class LowestCommonAncestorOfBinaryTree {
 
     // https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        return null;
+        if (root == null) return null;
+        if(p.val == root.val) return p;
+        if (root.val >= p.val && root.val >= q.val) {
+            if(root.left != null)
+                lowestCommonAncestor(root.left, p, q);
+        } else if (root.val <= p.val && root.val <= q.val) {
+            if(root.right != null)
+                lowestCommonAncestor(root.right, p, q);
+        }
+        return root;
     }
 }

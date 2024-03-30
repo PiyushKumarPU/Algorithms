@@ -2,6 +2,7 @@ package com.learning.scaler.advance.module2.sort.quick.additional;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /*
@@ -50,8 +51,7 @@ public class WaveArray {
 
     public static ArrayList<Integer> waveSelf(ArrayList<Integer> A) {
         ArrayList<Integer> result = new ArrayList<>(A.size());
-        A.sort(Integer::compareTo);
-        // start with first index and swap two consecutive element
+        A.sort(Comparator.naturalOrder());
         for (int index = 0; index < A.size(); ) {
             if (index + 1 < A.size())
                 result.add(A.get(index + 1));

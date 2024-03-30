@@ -14,7 +14,7 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/23%20Quick%20Sort%20and%20Comparator%20Problems.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/23%20Quick%20Sort%20and%20Comparator%20Problems.pdf)
 2. [Class/Lecture Video](https://youtu.be/pBX58fe7zgA)
 
 
@@ -99,15 +99,32 @@ public int[] pivot(int[] A) {
         SC : O(n)
 ### Psuedo code
 ```java
-    void quickSort(int[] arr, int start, int end){
-        // if start and end is same that means only one element
-        // if start is greater than end  that means its invalid index
-        if(Start >= end) return;
-        int pivotIndex = partition(arr, int start, int end);    // select pivot element of your choice but
-        // randon pivot selection gives best performance of quick sort
-        quickSort(arr,start, pivotIndex -1);
-        quickSort(arr,pivotIndex +1,end);
+void quickSort(int[] arr, int start, int end) {
+    if (start >= end) return;
+    int pivotIndex = partition(arr, start, end);
+    quickSort(arr, start, pivotIndex - 1);
+    quickSort(arr, pivotIndex + 1, end);
+}
+
+
+int partition(int[] A, int start, int end) {
+    int pivot = A[start], i = start + 1, j = end;
+    while (i <= j) {
+        if (A[i] >= pivot && A[j] < pivot) {
+            int temp = A[i];
+            A[i] = A[j];
+            A[j] = temp;
+            i++;
+            j--;
+        } else if (A[i] < pivot) i++;
+        else j--;
     }
+
+    int temp = A[j];
+    A[j] = pivot;
+    A[start] = temp;
+    return j;
+}
 ```
 ## Time complexity comparision for first/last element as pivot and random element as pivot
 |  | Merge Sort | Quick Sort |

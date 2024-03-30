@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module2.sort.quick.assignment;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 /*
 Problem Description
@@ -11,14 +13,14 @@ Problem Description
 
 Problem Constraints
     1 <= B <= length of the list A <= 10^5
-    -105 <= A[i][0] <= 10^5
-    -105 <= A[i][1] <= 10^5
+    -10^5 <= A[i][0] <= 10^5
+    -10^5 <= A[i][1] <= 10^5
 
 Input Format
     The argument given is list A and an integer B.
 
 Output Format
-    Return the B closest points to the origin (0, 0) in any order.
+    Returns the B closest points to the origin (0, 0) in any order.
 
 Example Input
     Input 1:
@@ -53,7 +55,8 @@ Example Explanation
 * */
 public class BClosestPointToOrigin {
     public ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> A, int B) {
-
-        return new ArrayList<>();
+        return A.stream()
+                .sorted(Comparator.comparingInt(o -> o.get(0) * o.get(0) + o.get(1) * o.get(1))).limit(B)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }

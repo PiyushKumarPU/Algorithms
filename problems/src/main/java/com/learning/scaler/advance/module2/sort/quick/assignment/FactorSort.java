@@ -1,4 +1,7 @@
 package com.learning.scaler.advance.module2.sort.quick.assignment;
+
+import java.util.ArrayList;
+
 /*
 Problem Description
     You are given an array A of N elements. Sort the given array in increasing order of number of
@@ -36,4 +39,22 @@ Example Explanation
     The number 2 has 2 factors, 7 has 2 factors and 4 has 3 factors.
 * */
 public class FactorSort {
+
+    public ArrayList<Integer> solve(ArrayList<Integer> A) {
+        A.sort((o1, o2) -> {
+            int compare = factor(o1).compareTo(factor(o2));
+            return compare != 0 ? compare : o1.compareTo(o2);
+        });
+        return A;
+    }
+
+    private Integer factor(Integer N) {
+        int cnt = 0;
+        for (int i = 1; i * i <= N; i++) {
+            if (N % i == 0) {
+                cnt += (i == N / i) ? 1 : 2;
+            }
+        }
+        return cnt;
+    }
 }
