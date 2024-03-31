@@ -256,7 +256,6 @@ public DoublyLinkedList deleteNode(DoublyLinkedList head, int x) {
     return head;
 }
 ```
-
 ## LRU(Least recent Used) Cache
 ## Clone a LL (Separate Recording will be available) 
     Problem Description

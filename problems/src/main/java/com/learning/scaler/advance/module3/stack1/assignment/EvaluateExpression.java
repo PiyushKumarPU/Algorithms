@@ -1,6 +1,10 @@
 package com.learning.scaler.advance.module3.stack1.assignment;
 
 
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Stack;
+
 /*
 Problem Description
     An arithmetic expression is given by a string array A of size N. Evaluate the value of an arithmetic
@@ -49,7 +53,26 @@ Example
 * */
 public class EvaluateExpression {
 
-    public int evalRPN(String[] A) {
-        return 0;
+    public static void main(String[] args) {
+    }
+    public int evalRPN(ArrayList<String> A) {
+        Stack<Integer> stack = new Stack<>();
+
+        for (String token : A) {
+            if (token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/")) {
+                int operand2 = stack.pop();
+                int operand1 = stack.pop();
+                int result = switch (token) {
+                    case "+" -> operand1 + operand2;
+                    case "-" -> operand1 - operand2;
+                    case "*" -> operand1 * operand2;
+                    default -> operand1 / operand2;
+                };
+                stack.push(result);
+            } else {
+                stack.push(Integer.parseInt(token));
+            }
+        }
+        return stack.pop();
     }
 }

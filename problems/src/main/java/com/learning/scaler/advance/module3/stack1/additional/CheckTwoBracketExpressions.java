@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module3.stack1.additional;
 
 
+import java.util.Stack;
+
 /*
 Problem Description
     Given two strings A and B. Each string represents an expression consisting of lowercase English alphabets,
@@ -36,11 +38,13 @@ Example
     Explanation 1:
          The expression "-(a+b+c)" can be written as "-a-b-c" which is equal as B.
     Explanation 2:
-         Both the expression are different.
+         Both the expressions are different.
 * */
 public class CheckTwoBracketExpressions {
 
     public int solve(String A, String B) {
+
+
         return 0;
     }
 }

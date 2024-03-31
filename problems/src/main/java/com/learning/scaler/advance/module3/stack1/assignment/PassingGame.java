@@ -1,4 +1,7 @@
 package com.learning.scaler.advance.module3.stack1.assignment;
+
+import java.util.Stack;
+
 /*
 Problem Description
     There is a football event going on in your city. In this event, you are given A passes and players having ids between 1 and 106.
@@ -62,4 +65,14 @@ Explanation 2:
  Ball is passed to 2.
 * */
 public class PassingGame {
+
+    public int solve(int A, int B, int[] C) {
+        Stack<Integer> intStack = new Stack<>();
+        intStack.push(B);
+        for (int pass : C) {
+            if (pass == 0) intStack.pop();
+            else intStack.push(pass);
+        }
+        return intStack.peek();
+    }
 }

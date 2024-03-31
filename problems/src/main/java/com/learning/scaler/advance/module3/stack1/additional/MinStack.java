@@ -1,6 +1,6 @@
 package com.learning.scaler.advance.module3.stack1.additional;
 
-/*
+import java.util.Stack;/*
 Problem Description
     Design a stack that supports push, pop, top, and retrieve the minimum element in constant time.
         push(x) -- Push element x onto stack.
@@ -57,21 +57,48 @@ Example
         2) pop() :  Returns nothing as the stack is empty.
         3) top() : Returns -1 as the stack is empty.
 * */
+
 public class MinStack {
 
-    public void push(int x) {
 
+}
+
+class Solution {
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
+
+    public Solution() {
+        stack = new Stack<>();
+        minStack = new Stack<>();
+    }
+
+    public void push(int x) {
+        stack.push(x);
+        if (minStack.isEmpty())
+            minStack.push(x);
+        else if (x <= minStack.peek()) {
+            minStack.push(x);
+        }
     }
 
     public void pop() {
-
+        if (stack.isEmpty())
+            return;
+        int num = stack.pop();
+        if (num == minStack.peek())
+            minStack.pop();
     }
 
     public int top() {
-        return 0;
+        if (stack.isEmpty())
+            return -1;
+
+        return stack.peek();
     }
 
     public int getMin() {
-        return 0;
+        if (minStack.isEmpty())
+            return -1;
+        return minStack.peek();
     }
 }

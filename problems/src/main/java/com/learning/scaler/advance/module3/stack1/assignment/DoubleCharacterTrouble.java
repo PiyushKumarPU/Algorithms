@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module3.stack1.assignment;
 
 
+import java.util.Stack;
+
 /*
 Problem Description
     You have a string, denoted as A.
@@ -47,6 +49,14 @@ Example
 public class DoubleCharacterTrouble {
 
     public String solve(String A) {
-        return A;
+        if (A == null || A.length() == 1) return A;
+        Stack<Character> charStack = new Stack<>();
+        for (int i = 0; i < A.length(); i++) {
+            char current = A.charAt(i);
+            if (!charStack.isEmpty() && charStack.peek() == current) charStack.pop();
+            else charStack.push(current);
+        }
+        return charStack.stream().map(String::valueOf)
+                .collect(java.util.stream.Collectors.joining());
     }
 }
