@@ -60,14 +60,10 @@ Example
 
 public class MinStack {
 
-
-}
-
-class Solution {
     private Stack<Integer> stack;
     private Stack<Integer> minStack;
 
-    public Solution() {
+    public MinStack() {
         stack = new Stack<>();
         minStack = new Stack<>();
     }

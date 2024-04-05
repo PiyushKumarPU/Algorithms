@@ -1,7 +1,6 @@
-package com.learning.scaler.advance.module3.stack2.additional;
+package com.learning.scaler.advance.module3.stack2.lecture;
 
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Stack;
 

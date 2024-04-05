@@ -277,7 +277,6 @@ public int[] merge(int[] arr, int l, int y, int r) {
 ### How does Merge Sort work?
 > Merge sort is a recursive algorithm that continuously splits the array in half until it cannot be further divided i.e., the array has only one element left (an array with one element is always sorted). Then the sorted subarrays are merged into one sorted array.
 
-
 ![Step 1](../../../images/1.webp)
 ![Step 2](../../../images/2.webp)
 ![Step 3](../../../images/3.webp)
@@ -343,10 +342,43 @@ private void merge(int[] arr, int l, int y, int r) {
     }
 }
 ```
+
+## No of Pairs
+    Given two array A[n] and B[m]. Calculate no of pairs such that A[i] > B[j]
+### Solution Approach
+    Approach 1: Brute force
+        Iterate through all possible pair and find the required output.
+        TC : O(n^2)
+        SC : O(1)
+    Approach 2: Using sort
+        We will sort array 1 and array 2
+        Step 2: Use the strategy which we are using in merge sort, keeping one pointer at start of 1 and second at starting of second array
+        Step 2: Keep jumping pointer 1 until pointer 1 val become larger that pointer 2 value.
+        Step 3: If current element of array 2 is making pair with array 1 value, it will make pair with all future value of array 1 as array is sorted.
+        Step 4: Keep iterating till end of the array and find the total count.
+        TC : O(nlogn + mlogm)  --> Sorting TC + n to calculate pair
+        SC : Space taken by sorting algo
+### Solution
+```java
+public int countPairs(int[] arr1, int[] arr2) {
+    Arrays.sort(arr1);
+    Arrays.sort(arr2);
+    int count = 0, arr1Size = arr1.length, arr2Size = arr2.length, i = 0, j = 0;
+    while (i < arr1Size && j < arr2Size) {
+        while (i < arr1Size && arr1[i] <= arr2[j]) i++;
+        count += (arr1Size - i);
+        j++;
+    }
+    return count;
+}
+```
+## No of Pairs 2
+    Given and array A[n], calculate no of pairs i,j such that i < j and a[i] > a[j]
+
 ## Inversion Count
     Problem Description
         Given an array of integers A. If i < j and A[i] > A[j], then the pair (i, j) is called an inversion of A.
-        Find the total number of inversions of A modulo (109 + 7).
+        Find the total number of inversions of A modulo (10^9 + 7).
 
     Problem Constraints
         1 <= length of the array <= 10^5
@@ -378,11 +410,7 @@ private void merge(int[] arr, int l, int y, int r) {
             The pair (0, 3) is an inversion as 0 < 3 and A[0] > A[3]
             The pair (1, 2) is an inversion as 1 < 2 and A[1] > A[2]
             The pair (1, 3) is an inversion as 1 < 3 and A[1] > A[3]
-## No of Pairs
-    Given two array A[n] and B[m]. Calculate no of pairs such that A[i] > B[j]
 
-## No of Pairs 2
-    
 ## No of Open Doors
     Problem Description
         Given an integer A, which denotes the number of doors in a row numbered 1 to A. All the doors are closed initially.

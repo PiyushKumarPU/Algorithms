@@ -1,4 +1,4 @@
-package com.learning.scaler.advance.module3.stack2.assignment;
+package com.learning.scaler.advance.module3.stack2.lecture;
 
 
 import java.util.Arrays;
