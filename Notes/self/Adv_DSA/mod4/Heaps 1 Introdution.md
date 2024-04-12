@@ -22,13 +22,72 @@
 
 
 ## Connecting the Ropes
-    Problem Description:
-        You can connect any two ropes together, there is a cost associated to connect them = sum of length of both ropes that 
-        we re-connecting.
-        Find min cost to connect all the ropes together.
-    Input
-        Give an array of length of ropes
-        2 5 2 6 3
+    Problem Description
+        You are given an array A of integers that represent the lengths of ropes.
+        You need to connect these ropes into one rope. The cost of joining two ropes equals the sum of
+        their lengths.
+        Find and return the minimum cost to connect these ropes into one rope.
+
+    Problem Constraints
+        1 <= length of the array <= 100000
+        1 <= A[i] <= 1000
+
+    Input Format
+        The only argument given is the integer array A.
+
+    Output Format
+        Returns an integer denoting the minimum cost to connect these ropes into one rope.
+
+    Example Input
+        1:
+            A = [1, 2, 3, 4, 5]
+        2:
+            A = [5, 17, 100, 11]
+
+    Example Output
+        1:
+            33
+        2:
+            182
+
+    Example Explanation
+        1:
+            Given array A = [1, 2, 3, 4, 5].
+            Connect the ropes in the following manner:
+            1 + 2 = 3
+            3 + 3 = 6
+            4 + 5 = 9
+            6 + 9 = 15
+
+            So, the total cost to connect the ropes into one is 3 + 6 + 9 + 15 = 33.
+        2:
+            Given array A = [5, 17, 100, 11].
+            Connect the ropes in the following manner:
+            5 + 11 = 16
+            16 + 17 = 33
+            33 + 100 = 133
+
+            So, total cost  to connect the ropes into one is 16 + 33 + 133 = 182.
+### Solution Approach:
+    Our target is to reduce the total cost and in order to do that we have to connect larger ropes
+    at the end to reduce its total value.
+    We will be using min heap properties and will add first two smallest rope and push the result back to 
+    min heap and we will keep adding untill we reach to one.
+### Solution
+```java
+public int connectingRopes(List<Integer> A) {
+    if (A.size() == 1) return A.get(0);
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
+    int totalCost = 0;
+    while (minHeap.size() != 1) {
+        int firstMin = !minHeap.isEmpty() ? minHeap.poll() : 0;
+        int secondMin = minHeap.isEmpty() ? 0 : minHeap.poll();
+        totalCost += (firstMin + secondMin);
+        minHeap.add(firstMin + secondMin);
+    }
+    return totalCost;
+}
+```
 ## Heap Introduction
     A Heap is a special Tree-based data structure in which the tree is a complete binary tree.
 ![Heap](../../../images/MinHeapAndMaxHeap1.png?raw=true)
