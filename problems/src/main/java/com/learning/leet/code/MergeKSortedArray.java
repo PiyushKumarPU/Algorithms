@@ -46,7 +46,6 @@ public class MergeKSortedArray {
                 current.index = nextIndex;
                 minHeap.offer(current);
             }
-
         }
         return result;
     }

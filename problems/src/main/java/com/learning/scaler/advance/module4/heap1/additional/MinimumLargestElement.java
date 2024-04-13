@@ -62,15 +62,16 @@ public class MinimumLargestElement {
 
     public static int solve(ArrayList<Integer> A, int B) {
         PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparing(Pair::getImpact));
-        minHeap.addAll(A.stream().map(val -> new Pair(val, val)).toList());
+        minHeap.addAll(A.stream().map(val -> new Pair(val, val)).collect(Collectors.toList()));
         int remainingOps = B;
         while (!minHeap.isEmpty() && remainingOps > 0) {
             Pair pair = minHeap.poll();
-            System.out.println(pair);
             minHeap.add(new Pair(pair.currentValue + pair.actualValue, pair.actualValue));
             remainingOps--;
         }
-        return minHeap.stream().map(pair1 -> pair1.currentValue).max(Comparator.naturalOrder()).orElse(0);
+        return minHeap.stream()
+                .map(pair1 -> pair1.currentValue)
+                .max(Comparator.naturalOrder()).orElse(0);
     }
 }
 

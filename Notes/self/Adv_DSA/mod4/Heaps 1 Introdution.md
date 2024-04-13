@@ -19,7 +19,8 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/37.%20Heaps%20Introduction.pdf)
 2. [Class/Lecture Video](https://youtu.be/-bqK0plm4xI)
-
+3. [New Batch Video](https://youtu.be/TE_hkeZD6ks)
+4. [New Batch Notes](../../../new_batch_notes/Heaps%201.pdf)
 
 ## Connecting the Ropes
     Problem Description
@@ -88,6 +89,7 @@ public int connectingRopes(List<Integer> A) {
     return totalCost;
 }
 ```
+
 ## Heap Introduction
     A Heap is a special Tree-based data structure in which the tree is a complete binary tree.
 ![Heap](../../../images/MinHeapAndMaxHeap1.png?raw=true)
@@ -101,12 +103,10 @@ public int connectingRopes(List<Integer> A) {
     Process of Insertion: Elements can be inserted to the heap following a similar approach as discussed above for deletion. 
     
     The idea is to: 
-        * First increase the heap size by 1, so that it can store the 
+    * First increase the heap size by 1, so that it can store the 
         new element.
     * Insert the new element at the end of the Heap.
-    * This newly inserted element may distort the properties of Heap 
-        for its parents. So, in order to keep the properties of Heap, 
-        heapify this newly inserted element following a bottom-up approach.
+    * This newly inserted element may distort the properties of Heap for its parents. So, in order to keep the properties of Heap, heapify this newly inserted element following a bottom-up approach.
 
     TC : O(height of tree) i.e. logN
     SC : O(1)
