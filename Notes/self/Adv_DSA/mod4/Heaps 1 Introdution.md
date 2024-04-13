@@ -304,28 +304,3 @@ min heap properties or max heap properties.
         return root;
     }
 ```
-
-## Connecting the Ropes
-### Problem Description
-    You are given an array A of integers that represent the lengths of ropes.
-    You need to connect these ropes into one rope. The cost of joining two ropes equals the sum of their lengths.
-    Find and return the minimum cost to connect these ropes into one rope.
-### Solution approach
-    Always choose two minimum rope and push back the sum to the heap for further processing
-
-### Solution
-```java
-    public int connectingRopes(List<Integer> A) {
-        if (A.size() == 1) return A.get(0);
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>(A);
-        int totalCost = 0;
-        while (minHeap.size() != 1) {
-            int firstMin = !minHeap.isEmpty() ? minHeap.poll() : 0;
-            int secondMin = minHeap.isEmpty() ? 0 : minHeap.poll();
-            totalCost += (firstMin + secondMin);
-            minHeap.add(firstMin + secondMin);
-        }
-        return totalCost;
-    }
-```
-
