@@ -129,11 +129,22 @@ public int connectingRopes(List<Integer> A) {
         }
     }
 ```
-## [Heapify](https://www.geeksforgeeks.org/building-heap-from-array/)
-    Basically it is constructing heap from given array.
 
-    TC : O(logN)
-    SC : O(1)
+### Heap properites in array representation
+#### Find child index if parent index is given
+* Left Child index : ```2 * parent index + 1```
+* Right child index : ```2 * parent index + 2```
+#### Find parent index if child index is given
+* ```(child index - 1) / 2```
+
+## [Heapify](https://www.geeksforgeeks.org/building-heap-from-array/)
+>Heapify is a proecss to place respective element at its proper place to follow either 
+min heap properties or max heap properties.
+
+>If We look at respective CBT structure of Heap, we can observe that all leaf node is already follwing heap properties as it does not have a child so we need to check all non leaf node whether it is present at proper place or not.
+
+**TC : O(logN)**\
+**SC : O(1)**
 
 ### Psuedo Code
 ```java
@@ -169,9 +180,12 @@ public int connectingRopes(List<Integer> A) {
         * Swap first element with last element so that we can ignore 
         * reduce size by 1 so that last element will be out of heap
         * Heapify with index 0 so that element creating issue in heap will get settled
+
+    TC : O(logn)
+    SC : O(1)
 ### Psuedo code
 ```java
-   void removeMin(int[] heap){
+   void extractMin(int[] heap){
         // swap 0 index element with last index
         int temp = heap[0]
         heap[0] = heap[heap.size - 1]
@@ -197,10 +211,18 @@ public int connectingRopes(List<Integer> A) {
             right child node : 2 * parent index + 2
         Parent node to find any child node index c
             parent node index = (c - 2)/2
+        TC : O(n)
+        SC : O(1)
+### Time Complexity explanation
+> Here time complexity would depend on number of swap we will do.
+
+![Img1](../../../images/heap_construct_TC_1.png)
+![Img2](../../../images/heap_construct_TC_2.png)
 
 ### Psuedo code
 ```java
     void createHeap(int[] arr)
+    // start with last non leaf node and heapify till root
         for(i = (n-2)/2; i >= 0; i--){
             heapify(arr,i);
         }

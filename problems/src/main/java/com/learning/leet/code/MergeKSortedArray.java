@@ -30,7 +30,7 @@ public class MergeKSortedArray {
                 List.of(954, 2350, 2506, 3376, 3559, 4426, 8826, 15239, 18722, 21449, 21782, 23589, 23622, 24211, 25163, 26780, 28287, 29144, 29218, 29978)
         );
 
-        System.out.println(solve(A));
+        System.out.println(solveClassApproach(A));
     }
 
     public static ArrayList<Integer> solve(List<List<Integer>> A) {
@@ -42,9 +42,27 @@ public class MergeKSortedArray {
             Pair current = minHeap.poll();
             result.add(A.get(current.valIndex).get(current.index));
             int nextIndex = current.index + 1;
-            if (nextIndex < A.get(current.valIndex).size()){
+            if (nextIndex < A.get(current.valIndex).size()) {
                 current.index = nextIndex;
                 minHeap.offer(current);
+            }
+        }
+        return result;
+    }
+
+    public static ArrayList<Integer> solveClassApproach(List<List<Integer>> A) {
+        ArrayList<Integer> result = new ArrayList<>();
+        PriorityQueue<PairWithRef> minHeap =
+                new PriorityQueue<>(Comparator.comparing(p -> p.currentVal));
+        for (int i = 0; i < A.size(); i++) minHeap.add(new PairWithRef(A.get(i).get(0), A.get(i), 0));
+        while (!minHeap.isEmpty()) {
+            PairWithRef current = minHeap.poll();
+            result.add(current.currentVal);
+            int nextIndex = current.index + 1;
+            if (nextIndex < current.ref.size()) {
+                current.index = nextIndex;
+                current.currentVal = current.ref.get(nextIndex);
+                minHeap.offer(new PairWithRef(current.ref.get(nextIndex), current.ref, nextIndex));
             }
         }
         return result;
@@ -60,5 +78,17 @@ class Pair {
     public Pair(int index, int valIndex) {
         this.index = index;
         this.valIndex = valIndex;
+    }
+}
+
+class PairWithRef {
+    int currentVal;
+    List<Integer> ref;
+    int index;
+
+    public PairWithRef(int currentVal, List<Integer> ref, int index) {
+        this.currentVal = currentVal;
+        this.ref = ref;
+        this.index = index;
     }
 }
