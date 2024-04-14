@@ -12,9 +12,9 @@
 
 ## Problems and solutions
 
-1. [Assignments](../../../../)
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree4/assignment/)
+2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree4/additional/)
+3. [Self Practise Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree4/lecture/)
 
 ## Class Notes and Videos
 
