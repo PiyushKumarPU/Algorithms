@@ -54,7 +54,7 @@ public class MergeKSortedArray {
         ArrayList<Integer> result = new ArrayList<>();
         PriorityQueue<PairWithRef> minHeap =
                 new PriorityQueue<>(Comparator.comparing(p -> p.currentVal));
-        for (int i = 0; i < A.size(); i++) minHeap.add(new PairWithRef(A.get(i).get(0), A.get(i), 0));
+        for (List<Integer> integers : A) minHeap.add(new PairWithRef(integers.get(0), integers, 0));
         while (!minHeap.isEmpty()) {
             PairWithRef current = minHeap.poll();
             result.add(current.currentVal);

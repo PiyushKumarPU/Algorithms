@@ -93,10 +93,8 @@ public class IterativeInOrderTraversal {
         if (root == null) {
             return;
         }
-
         Stack<TreeNode> stack = new Stack<>();
         TreeNode current = root;
-
         while (current != null || !stack.isEmpty()) {
             // Reach the leftmost node
             while (current != null) {
@@ -106,10 +104,7 @@ public class IterativeInOrderTraversal {
 
             // Visit the top of the stack (current leftmost node)
             current = stack.pop();
-           // System.out.print(current.getVal() + " ");
             result2.add(current.getVal());
-
-            // Move to the right subtree
             current = current.getRight();
         }
     }

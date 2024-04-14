@@ -30,13 +30,13 @@
 
     e.g. Family tree
 
-    A tree data structure is a hierarchical structure that is used to represent and organize data in a way that is easy to navigate and search. It is a collection 
-    of nodes that are connected by edges and has a hierarchical relationship 
-    between the nodes. 
+    A tree data structure is a hierarchical structure that is used to represent and organize data in a way that is easy 
+    to navigate and search. It is a collection of nodes that are connected by edges and has a hierarchical 
+    relationship between the nodes. 
 
-    The topmost node of the tree is called the root, and the nodes below it are 
-    called the child nodes. Each node can have multiple child nodes, and these 
-    child nodes can also have their own child nodes, forming a recursive structure.
+    The topmost node of the tree is called the root, and the nodes below it are called the child nodes. 
+    Each node can have multiple child nodes, and these child nodes can also have their own child nodes, 
+    forming a recursive structure.
 
 
 
@@ -147,6 +147,28 @@ Structure class of Binary tree
 ---
 ![Output](../../../images/in_order_iterative.png.png?raw=true)
 
+### Sample code
+```java
+public  void iterativeInOrderTraversal(TreeNode root) {
+    if (root == null) {
+        return;
+    }
+    Stack<TreeNode> stack = new Stack<>();
+    TreeNode current = root;
+    while (current != null || !stack.isEmpty()) {
+        // Reach the leftmost node
+        while (current != null) {
+            stack.push(current);
+            current = current.getLeft();
+        }
+
+        // Visit the top of the stack (current leftmost node)
+        current = stack.pop();
+        result2.add(current.getVal());
+        current = current.getRight();
+    }
+}
+```
 
 ## [Pre-Order traversal](https://www.geeksforgeeks.org/preorder-traversal-of-binary-tree/)
 ### Steps to follow while performing Pre-order traversal
@@ -283,7 +305,8 @@ Structure class of Binary tree
         Step 1: Find the root node with the help of post order traversal
         Step 2: Find the index of root node in inorder traversal
         Step 3: Based on the root node index we can find the number of node from right subtree and left subtree.
-        Step 4: All the element available in inorder traversal before root node index would be left and subtree and all the element available after root node index would be right subtree.
+        Step 4: All the element available in inorder traversal before root node index would be left and subtree 
+        and all the element available after root node index would be right subtree.
         Step 5 : Will keep doing above mentioned steps untill we get invald index.
 
 ### Solution
@@ -297,7 +320,8 @@ public TreeNode buildTree(int[] A, int[] B) {
     return buildTree(A, B, valIndexMap, 0, A.length - 1, 0, A.length - 1);
 }
 
-public TreeNode buildTree(int[] A, int[] B, Map<Integer, Integer> valIndexMap, int inStart, int inEnd, int postStart, int postEnd) {
+public TreeNode buildTree(int[] A, int[] B, Map<Integer, Integer> valIndexMap, int inStart, 
+int inEnd, int postStart, int postEnd) {
     if(inStart > inEnd) return null;
     int rootNode = B[postEnd];
     int rootIndex = valIndexMap.get(rootNode);
@@ -332,7 +356,8 @@ public TreeNode buildTree(int[] A, int[] B, Map<Integer, Integer> valIndexMap, i
             Input: preorder = [-1], inorder = [-1]
             Output: [-1]
 ### Solution Approach:
-    We will use similar kind of approach as prev problem, the only difference would be in place of post order traversal we will use preOrder traversal to decide root element.
+    We will use similar kind of approach as prev problem, the only difference would be in place of 
+    post order traversal we will use preOrder traversal to decide root element.
 ### Solution
 ```java
 public TreeNode buildTreeFromInorderAndPreOrder(int[] preorder, int[] inorder) {
