@@ -130,6 +130,7 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 ## Insert in BST
 ### Input
 ![Input](../../../images/BST_Insert.png?raw=true)
+\
     Item to insert: \
         22 \
         10
@@ -162,7 +163,7 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 ```
 ## Delete in BST
 ### Input
-![Input](../../../images/BST_Insert.png?raw=true)
+![Input](../../../images/BST_Insert.png?raw=true)\
     Item to insert: \
         22 \
         10
@@ -240,7 +241,8 @@ private TreeNode replaceWithLeftMaxNode(TreeNode A) {
     Idea 3 : Balance tree
         Use the property of sorted array and start with middle element
         Basically we are going to find mid element of the array and construct left and right subtree from the given array.
-        All the element before mid index will be used to construct left subtree and all the element after mid index will be used to construct right subtree.
+        All the element before mid index will be used to construct left subtree and all the element after mid index 
+        will be used to construct right subtree.
 ### Solution
 ```java
 public TreeNode sortedArrayToBST(final List<Integer> A) {
@@ -305,7 +307,8 @@ private TreeNode constructTree(final List<Integer> A, int start, int end) {
             1. Each node should be valid binary tree
             2. All nodes of a parent node should be valid binary tree
     Idea 1:
-        In order to check root node is valid binary tree, its value should be bigger or equal then max element of left subtree and it should be less than min value of right subtree.
+        In order to check root node is valid binary tree, its value should be bigger or equal then max element
+        of left subtree and it should be less than min value of right subtree.
     Idea 2: Enhancement to prev solution
         In place of checking min and max for each node we can specify range like 
             All the element in left subtree should have less or equal value than root node value 

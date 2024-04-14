@@ -3,8 +3,11 @@ package com.learning.scaler.advance.module3.tree2.additional;
 import com.learning.scaler.advance.module3.TreeNode;
 import com.learning.scaler.advance.module3.tree2.LevelNode;
 
+import java.util.AbstractMap;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
@@ -87,7 +90,6 @@ public class TopViewOfBinaryTree {
     public int[] bottomView(TreeNode A) {
         if (A == null) return new int[]{};
         Map<Integer, List<Integer>> levelNodesMap = new TreeMap<>();
-
         Queue<LevelNode> levelNodes = new ArrayDeque<>();
         levelNodes.add(new LevelNode(0, A));
         while (!levelNodes.isEmpty()) {
@@ -108,4 +110,3 @@ public class TopViewOfBinaryTree {
         return result;
     }
 }
-

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 /*
 Problem Description
@@ -91,5 +92,40 @@ public class ZigZagLevelOrderTraversalBT {
             result.add(tempResult);
         }
         return result;
+    }
+
+    public ArrayList<ArrayList<Integer>> zigzagLevelOrderScaler(TreeNode A) {
+        Stack<TreeNode> stack1 = new Stack<>(), stack2 = new Stack<>();
+        ArrayList<ArrayList<Integer>> zigzag = new ArrayList<>();
+        if (A == null)
+            return null;
+
+        stack1.push(A);
+        while (!stack1.isEmpty() || !stack2.isEmpty()) {
+            ArrayList<Integer> level = new ArrayList<>();
+            while (!stack1.isEmpty()) {
+                TreeNode node = stack1.pop();
+                level.add(node.val);
+                if (node.left != null)
+                    stack2.push(node.left);
+                if (node.right != null)
+                    stack2.push(node.right);
+            }
+            if (!level.isEmpty())
+                zigzag.add(level);
+            level = new ArrayList<>();
+
+            while (!stack2.isEmpty()) {
+                TreeNode node = stack2.pop();
+                level.add(node.val);
+                if (node.right != null)
+                    stack1.push(node.right);
+                if (node.left != null)
+                    stack1.push(node.left);
+            }
+            if (level.size() != 0)
+                zigzag.add(level);
+        }
+        return zigzag;
     }
 }

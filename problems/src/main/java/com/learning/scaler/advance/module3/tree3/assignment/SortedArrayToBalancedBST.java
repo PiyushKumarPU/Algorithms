@@ -71,6 +71,18 @@ public class SortedArrayToBalancedBST {
         return root;
     }
 
+    private static TreeNode constructTree(int[] A, int start, int end) {
+        if (start > end) return null;
+        if (start == end) return new TreeNode(A[start]);
+        int mid = (end + start) / 2;
+        TreeNode root = new TreeNode(A[mid]);
+        if (mid - 1 >= start)
+            root.left = constructTree(A, start, mid - 1);
+        if (mid + 1 <= end)
+            root.right = constructTree(A, mid + 1, end);
+        return root;
+    }
+
 
 
     private TreeNode constructBST(final int[] A, int start, int end) {
