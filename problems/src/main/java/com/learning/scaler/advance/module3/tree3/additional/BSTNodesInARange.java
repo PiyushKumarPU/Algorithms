@@ -12,7 +12,7 @@ Problem Description
     Return the count of the number of nodes that lie in the given range.
 
 Problem Constraints
-    1 <= Number of nodes in binary tree <= 100000
+    1 <= Number of nodes in a binary tree <= 100000
     0 <= B < = C <= 10^9
 
 Input Format
@@ -21,7 +21,7 @@ Input Format
     Third argument is an integer C.
 
 Output Format
-    Return the count of the number of nodes that lies in the given range.
+     Returns the count of the number of nodes that lies in the given range.
 
 Example Input
     Input 1:
@@ -56,9 +56,9 @@ Example Output
 
 Example Explanation
     Explanation 1:
-        Nodes which are in range [12, 20] are : [12, 14, 15, 20, 16]
+        Nodes which are in range [12, 20] are: [12, 14, 15, 20, 16]
     Explanation 2:
-        Nodes which are in range [2, 20] are : [8, 6, 7]
+        Nodes which are in range [2, 20] are: [8, 6, 7]
 * */
 public class BSTNodesInARange {
 
@@ -77,7 +77,6 @@ public class BSTNodesInARange {
         int leftCount = A.left != null ? solve(A.left, B, C) : 0;
         int rightCount = A.right != null ? solve(A.right, B, C) : 0;
         return count + leftCount + rightCount;
-
     }
 
     public int solveComplex(TreeNode A, int B, int C) {

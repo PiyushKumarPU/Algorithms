@@ -1,7 +1,5 @@
 ## Advance DSA Day 34 Trees 4 LCA + Morris Inorder Traversal
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
-
 ## Scope / Agenda
 - [Kth Smallest Element](#kth-smallest-element)
 - [Morris Inorder Traversal](#morris-inorder-traversal)
@@ -12,13 +10,13 @@
 
 ## Problems and solutions
 
-1. [Assignments](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree4/assignment/)
-2. [Additional Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree4/additional/)
-3. [Self Practise Problems](../../../../problems/src/main/java/com/learning/scaler/advance/module3/tree4/lecture/)
+1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module3/tree4/assignment)
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module3/tree4/additional)
+3. [Self Practise Problems](https://github.com/rajpiyush220/Algorithms/blob/master/problems/src/main/java/com/learning/scaler/advance/module3/tree4/lecture)
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/34.%20LCA%20and%20Moris%20InOrder%20Traversal.pdf)
+1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/34.%20LCA%20and%20Moris%20InOrder%20Traversal.pdf)
 2. [Class/Lecture Video](https://youtu.be/B-6XbM0cnYo)
 
 ## Kth Smallest Element

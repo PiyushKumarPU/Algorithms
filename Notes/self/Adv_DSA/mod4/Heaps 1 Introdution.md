@@ -106,7 +106,8 @@ public int connectingRopes(List<Integer> A) {
     * First increase the heap size by 1, so that it can store the 
         new element.
     * Insert the new element at the end of the Heap.
-    * This newly inserted element may distort the properties of Heap for its parents. So, in order to keep the properties of Heap, heapify this newly inserted element following a bottom-up approach.
+    * This newly inserted element may distort the properties of Heap for its parents. So, in order to keep the 
+    properties of Heap, heapify this newly inserted element following a bottom-up approach.
 
     TC : O(height of tree) i.e. logN
     SC : O(1)
