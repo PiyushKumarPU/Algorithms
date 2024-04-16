@@ -285,7 +285,7 @@ public ArrayList<Integer> solve(ArrayList<Integer> A, int B) {
 
 ![Running median example](../../../images/running_median.png)
 
-> For details understating of **running median** please watch [this video]() from 1:57 minutes till 2:22 minutes
+> For details understating of **running median** please watch [this video]() from 1:57 hrs till 2:22 hrs
 
 ### Solution
 ```java
