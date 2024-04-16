@@ -1,7 +1,10 @@
 package com.learning;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -54,10 +57,28 @@ public class App {
     }
 
     public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>(List.of(5, 12, 20, 25, 13, 24, 22, 35));
+        insert(list, 10);
+        System.out.println(list);
+    }
 
-        //System.out.println(numWaysToSendSignal(2));
-        System.out.println(threeSumClosest(
-                new int[]{-5, 1, 4, -7, 10, -7, 0, 7, 3, 0, -2, -5, -3, -6, 4, -7, -8, 0, 4, 9, 4, 1, -8, -6, -6, 0, -9, 5, 3, -9, -5, -9, 6, 3, 8, -10, 1, -2, 2, 1, -9, 2, -3, 9, 9, -10, 0, -9, -2, 7, 0, -4, -3, 1, 6, -3},
-                -1));
+    public static ArrayList<Integer> insert(ArrayList<Integer> list, int insert) {
+        list.add(insert);
+        int eleIdx = list.size() - 1;
+        while (eleIdx >= 0) {
+            int parentIdx = (eleIdx - 1) / 2;
+            if (list.get(parentIdx) > list.get(eleIdx)) {
+                //Collections.swap(list,parentIdx,eleIdx);
+                swap(list, parentIdx, eleIdx);
+                eleIdx = parentIdx;
+            } else break;
+        }
+        return list;
+    }
+
+    public static void swap(ArrayList<Integer> list, int srcIdx, int destIdx) {
+        int temp = list.get(srcIdx);
+        list.set(srcIdx, list.get(destIdx));
+        list.set(destIdx, temp);
     }
 }

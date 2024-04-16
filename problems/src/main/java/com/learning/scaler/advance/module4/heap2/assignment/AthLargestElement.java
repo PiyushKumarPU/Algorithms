@@ -5,7 +5,8 @@ import java.util.*;
 /*
 Problem Description
     Given an integer array B of size N.
-    You need to find the Ath largest element in the subarray [1 to i], where i varies from 1 to N. In other words, find the Ath largest element in the sub-arrays [1 : 1], [1 : 2], [1 : 3], ...., [1 : N].
+    You need to find the Ath largest element in the subarray [1 to i], where i varies from 1 to N.
+    In other words, find the Ath largest element in the sub-arrays [1 : 1], [1 : 2], [1 : 3], ...., [1 : N].
     NOTE: If any subarray [1 : i] has less than A elements, then the output should be -1 at the ith index.
 
 
@@ -19,7 +20,8 @@ Input Format
     The second argument is an integer array B of size N.
 
 Output Format
-    Return an integer array C, where C[i] (1 <= i <= N) will have the Ath largest element in the subarray [1 : i].
+    Return an integer array C, where C[i] (1 <= i <= N) will have the Ath largest element in the
+    subarray [1 : i].
 
 Example Input
     Input 1:
@@ -52,9 +54,8 @@ Example Explanation
 public class AthLargestElement {
 
     public static void main(String[] args) {
-        AthLargestElement element = new AthLargestElement();
         ArrayList<Integer> B = new ArrayList<>(List.of(1, 2, 3, 4, 5));
-        System.out.println(element.solve(2, B));
+        System.out.println(solve(2, B));
     }
 
     public static ArrayList<Integer> solve(int A, ArrayList<Integer> B) {
@@ -73,14 +74,6 @@ public class AthLargestElement {
                 minHeap.add(currentVal);
             }
             result.add(minHeap.peek());
-        }
-        return result;
-    }
-
-    private ArrayList<Integer> buildHugeInput() {
-        ArrayList<Integer> result = new ArrayList<>(20000);
-        for (int i = 200; i < 20200; i++) {
-            result.add(i);
         }
         return result;
     }

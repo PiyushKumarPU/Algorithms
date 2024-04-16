@@ -1,4 +1,4 @@
-package com.learning.scaler.advance.module4.heap2.assignment;
+package com.learning.scaler.advance.module4.heap2.lecture;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -86,11 +86,10 @@ public class RunningMedian {
                 else
                     maxHeap.offer(minHeap.poll());
 
-            result[index++] = (maxHeap.isEmpty() ? 0 : maxHeap.peek());
-            /*result[index++] =
+            result[index++] =
                     ((size % 2 == 0) ?
                             ((maxHeap.isEmpty() ? 0 : maxHeap.peek()) + (minHeap.isEmpty() ? 0 :
-                                    minHeap.peek())) / 2 : (maxHeap.isEmpty() ? 0 : maxHeap.peek()));*/
+                                    minHeap.peek())) / 2 : (maxHeap.isEmpty() ? 0 : maxHeap.peek()));
         }
         return result;
     }
