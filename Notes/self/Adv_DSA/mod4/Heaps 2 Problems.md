@@ -60,7 +60,8 @@
 ## Ath Largest Element
     Problem Description
         Given an integer array B of size N.
-        You need to find the Ath largest element in the subarray [1 to i], where i varies from 1 to N. In other words, find the Ath largest element in the sub-arrays [1 : 1], [1 : 2], [1 : 3], ...., [1 : N].
+        You need to find the Ath largest element in the subarray [1 to i], where i varies from 1 to N. 
+        In other words, find the Ath largest element in the sub-arrays [1 : 1], [1 : 2], [1 : 3], ...., [1 : N].
         NOTE: If any subarray [1 : i] has less than A elements, then the output should be -1 at the ith index.
 
     Problem Constraints
@@ -114,7 +115,8 @@
         SC: Sorting algo space
     Approach 2: Using min heap
         We will start with creating min heap of and we will maintain A largest element
-        In each iteration we will check current element with heap min element, if current element is bigger than current min will replace current heap min with current element.
+        In each iteration we will check current element with heap min element, if current element is bigger than 
+        current min will replace current heap min with current element.
         At last we will current min heap element to the result.
         TC : (N-A)logA
         SC : O(A)
