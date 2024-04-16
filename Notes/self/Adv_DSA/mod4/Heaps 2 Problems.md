@@ -280,7 +280,8 @@ public ArrayList<Integer> solve(ArrayList<Integer> A, int B) {
                 5. if ds is [0,1] then do nothing
                 6. if ds is greater then one it means max heap has more data and we will move root of max heap to min heap
                 7. if ds is less than 0 it mean min heap has more element and we will move root of min heap to max heap
-
+        TC : O(nlogn) --> Considering worst case in which I need to perform heapify for each insertion
+        SC : O(n) --> space taken by heap (n/2 + n/2)
 
 ![Running median example](../../../images/running_median.png)
 
