@@ -30,9 +30,10 @@
 * [Interview Bit](https://www.interviewbit.com/courses/programming/greedy-algorithm/)
 ## Free cars 
 #### Problem Description
-    Given two arrays, A and B of size N. A[i] represents the time by which you can buy the ith car without paying any money.
-    B[i] represents the profit you can earn by buying the ith car. It takes 1 minute to buy a car, so you can only buy the ith car when the current time <= A[i] - 1.
-    Your task is to find the maximum profit one can earn by buying cars considering that you can only buy one car at a time.
+    Given two arrays, A and B of size N. A[i] represents the time by which you can buy the ith car without paying any money. B[i] represents the profit you can earn by buying the ith car. It takes 1 minute 
+    to buy a car, so you can only buy the ith car when the current time <= A[i] - 1.
+    Your task is to find the maximum profit one can earn by buying cars considering that you can 
+    only buy one car at a time.
 
     NOTE:
         * You can start buying from time = 0.

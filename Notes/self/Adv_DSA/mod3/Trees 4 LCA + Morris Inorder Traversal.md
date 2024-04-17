@@ -18,6 +18,7 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/34.%20LCA%20and%20Moris%20InOrder%20Traversal.pdf)
 2. [Class/Lecture Video](https://youtu.be/B-6XbM0cnYo)
+3. [New Batch Class Notes](../../../new_batch_notes/LCA%20And%20Morris%20InOrder%20Traversal.pdf)
 
 ## Kth Smallest Element
     Problem Description

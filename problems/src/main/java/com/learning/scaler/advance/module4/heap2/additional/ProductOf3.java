@@ -57,22 +57,15 @@ public class ProductOf3 {
     public static void main(String[] args) {
 
         System.out.println(new ProductOf3().solve(new ArrayList<>(List.of(1, 2, 3, 4, 5))));
-        System.out.println(new ProductOf3().solve(new ArrayList<>(List.of(10, 2, 13, 4))));
+        ///System.out.println(new ProductOf3().solve(new ArrayList<>(List.of(10, 2, 13, 4))));
 
     }
 
     public ArrayList<Integer> solve(ArrayList<Integer> A) {
         if (A == null || A.isEmpty()) return new ArrayList<>(List.of(0));
-        ArrayList<Integer> result = new ArrayList<>();
-        if (A.size() < 3) {
-            for (int i = 0; i < A.size(); i++) {
-                result.add(-1);
-            }
-            return result;
-        }
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         minHeap.addAll(A.subList(0, 3));
-        result.addAll(List.of(-1, -1));
+        ArrayList<Integer> result = new ArrayList<>(List.of(-1, -1));
         result.add(findHeapMul(minHeap));
         for (int i = 3; i < A.size(); i++) {
             minHeap.add(A.get(i));

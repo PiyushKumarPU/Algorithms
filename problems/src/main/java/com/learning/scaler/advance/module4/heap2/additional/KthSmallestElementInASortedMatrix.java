@@ -2,6 +2,7 @@ package com.learning.scaler.advance.module4.heap2.additional;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.PriorityQueue;
 
 /*
@@ -51,31 +52,28 @@ Example Explanation
 * */
 public class KthSmallestElementInASortedMatrix {
 
-    public static void main(String[] args) {
-
-    }
-
     public int solve(ArrayList<ArrayList<Integer>> A, int B) {
-        int n = A.size(), m = A.get(0).size();
-        if (B == 1) return A.get(0).get(0);
-        if (B >= n * m) return A.get(n - 1).get(m - 1);
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        for (ArrayList<Integer> integers : A) {
-            minHeap.addAll(integers);
-        }
-        if (!minHeap.isEmpty()) {
-            for (int i = 0; i < B && !minHeap.isEmpty(); i++) {
-                if (i == B - 1) return minHeap.poll();
-                minHeap.poll();
+        int m = A.get(0).size();
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(Comparator.reverseOrder());
+        for (ArrayList<Integer> row : A) {
+            for (int j = 0; j < m; j++) {
+                int currentEle = row.get(j);
+                if (minHeap.size() < B)
+                    minHeap.offer(currentEle);
+                else {
+                    if (!minHeap.isEmpty() && currentEle < minHeap.peek()) {
+                        minHeap.poll();
+                        minHeap.offer(currentEle);
+                    }
+                }
             }
         }
-        return 0;
+        return minHeap.isEmpty() ? 0 : minHeap.peek();
     }
 
     public int solve(int[][] A, int B) {
         int m = A[0].length;
-
-        PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
+        PriorityQueue<Integer> q = new PriorityQueue<>(Comparator.reverseOrder());
         for (int[] ints : A) {
             for (int j = 0; j < m; j++) {
                 if (q.size() < B)
