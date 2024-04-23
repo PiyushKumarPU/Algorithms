@@ -1,10 +1,6 @@
 package com.learning.scaler.advance.module4.dp1.assignment;
 
-import com.learning.practise.scaler.advance.dsa.bitmanipulation2.MaxAndPair;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /*
 Problem Description
@@ -46,50 +42,29 @@ Example Output
 * */
 public class MaxSumWithoutAdjacentElements {
 
-    public static void main(String[] args) {
-        ArrayList<ArrayList<Integer>> A = new ArrayList<>(
-                List.of(new ArrayList<>(List.of(1, 2, 3, 4)),
-                        new ArrayList<>(List.of(2, 3, 4, 5)))
-        );
-        System.out.println(adjacent(A));
+    int[] maxSumArray;
+
+    public int adjacent(int[][] A) {
+        if (A.length < 2 || A[0].length < 1) return 0;
+        maxSumArray = new int[A[0].length];
+        Arrays.fill(maxSumArray, -1);
+        return adjacentWithRec(A, 0, A[0].length - 1);
     }
 
-    public static int adjacent(ArrayList<ArrayList<Integer>> A) {
-        int size = A.get(0).size();
-        int[] dp = new int[size];
-        Arrays.fill(dp, -1);
-        //  System.out.println(adjacentRec(A, 0, size - 1));
-        System.out.println(adjacentRecWithDp(A, dp, 0, size - 1));
-        return 0;
-    }
-
-
-    public static int adjacentRecWithDp(ArrayList<ArrayList<Integer>> A, int[] dp, int start, int end) {
+    public int adjacentWithRec(int[][] A, int start, int end) {
+        // add base condition
         if (start > end) return 0;
-        ArrayList<Integer> row1 = A.get(0);
-        ArrayList<Integer> row2 = A.get(1);
-        if (start == end) {
-            if (dp[start] == -1)
-                dp[start] = Math.max(row1.get(start), row2.get(start));
-            return dp[start];
-        }
-        if (start + 2 <= end && dp[start + 2] == -1)
-            dp[start + 2] = adjacentRecWithDp(A, dp, start + 2, end);
-        if (start + 1 <= end && dp[start + 1] == -1)
-            dp[start + 1] = adjacentRecWithDp(A, dp, start + 1, end);
-        int currentMax = Math.max(row1.get(start), row2.get(start)) + (start + 2 <= end ? dp[start + 2] : 0);
-        dp[start] = Math.max(currentMax, (start + 1 <= end ? dp[start + 1] : 0));
-        return dp[start];
+        if (maxSumArray[start] != -1) return maxSumArray[start];
+        int take = Math.max(A[0][start], A[1][start]) + adjacentWithRec(A, start + 2, end);
+        int dontTake = adjacentWithRec(A, start + 1, end);
+        maxSumArray[start] = Math.max(take, dontTake);
+        return maxSumArray[start];
     }
 
-    public static int adjacentRec(ArrayList<ArrayList<Integer>> A, int start, int end) {
-        if (start > end) return 0;
-        ArrayList<Integer> row1 = A.get(0);
-        ArrayList<Integer> row2 = A.get(1);
-        if (start == end) return Math.max(row1.get(start), row2.get(start));
-
-        int currentMax = Math.max(row1.get(start), row2.get(start)) + adjacentRec(A, start + 2, end);
-        return Math.max(currentMax, adjacentRec(A, start + 1, end));
+    public int adjacentIterative(int[][] A) {
+        if (A.length < 2 || A[0].length < 1) return 0;
+        maxSumArray = new int[A[0].length];
+        Arrays.fill(maxSumArray, -1);
+        return adjacentWithRec(A, 0, A[0].length - 1);
     }
-
 }

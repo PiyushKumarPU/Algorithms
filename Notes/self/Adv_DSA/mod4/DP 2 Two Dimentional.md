@@ -22,7 +22,8 @@
 
 ## Max Subsequence Sum
     Problem statement:
-    Given an array arr[] of positive numbers, The task is to find the maximum sum of a subsequence such that no 2 numbers in the sequence should be adjacent in the array.
+    Given an array arr[] of positive numbers, The task is to find the maximum sum of a subsequence such that no 2 numbers 
+    in the sequence should be adjacent in the array.
     Examples :
         Input: arr[] = {5, 5, 10, 100, 10, 5}
         Output: 110

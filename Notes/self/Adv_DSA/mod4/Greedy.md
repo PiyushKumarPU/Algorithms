@@ -3,7 +3,7 @@
 ## Scope / Agenda
 - [What is Greedy](#what-is-greedy)
 - [Free cars](#free-cars)
-- [Flipkart's Challenge in Effective Inventory Management]
+- [Flipkart's Challenge in Effective Inventory Management](#flipkarts-challenge-in-effective-inventory-management)
 - [Candy Distribution](#candy-distribution)
 - [Maximum Jobs](#maximum-jobs)
 
@@ -33,14 +33,15 @@
 * [Interview Bit](https://www.interviewbit.com/courses/programming/greedy-algorithm/)
 ## Free cars 
 #### Problem Description
-    Given two arrays, A and B of size N. A[i] represents the time by which you can buy the ith car without paying any money. B[i] represents the profit you can earn by buying the ith car. It takes 1 minute 
-    to buy a car, so you can only buy the ith car when the current time <= A[i] - 1.
+    Given two arrays, A and B of size N. A[i] represents the time by which you can buy the ith car without paying any money. 
+    B[i] represents the profit you can earn by buying the ith car. It takes 1 minute to buy a car, so you can only buy the 
+    ith car when the current time <= A[i] - 1.
     Your task is to find the maximum profit one can earn by buying cars considering that you can 
     only buy one car at a time.
 
     NOTE:
         * You can start buying from time = 0.
-        * Return your answer modulo 109 + 7.
+        * Return your answer modulo 10^9 + 7.
 
 
     Problem Constraints
@@ -84,6 +85,15 @@
         At time 3, buy car with profit 19.
         We are able to buy all cars within their deadline. So, total profit that one can earn is 30.
 
+### Solution approach
+    Using greedy approach
+        Step 1 : Sort cars in ascneding order of expiry and start buying it one by one and maintain profilt
+        in min heap to keep lowest profit on top.
+        Step 2: Once we reach any expired product we will just if it is giving more profit then current
+        lowest profit, if yes replace it with current lowest if not then proceed to next
+        step 3: Return sum of all element of min heap and that would be the result.
+    TC : O(nlogn)  --> if we need to replace all the element from heap
+    SC : O(n)  --> Heap space
 ### Solution
 ```java
     class Toy {
@@ -179,6 +189,9 @@
             At time 3, buy item with profit 19.
             We are able to buy all items within their deadline. So, the total profit that one can earn is 30.
 
+### Solution 
+    use the same approach as prev problem.
+
 ### Solution
 ```java
 public int solve(ArrayList<Integer> A, ArrayList<Integer> B) {
@@ -258,6 +271,20 @@ class Grocery {
         Explanation 2:
             Candies given = [1, 3, 2, 1]
 
+### Solution approach
+    If we look at problem statement it say each candidate should have at least 1 candy and 
+    candidate should have at least 1 extra candy if his score is more than any of the neighbours.
+
+    We will follow below steps to assign candy to each candidate
+    Step 1: Give 1 candy to each candidate
+    Step 2: Iterate from left to right and check if current candidate has more score then its right neighbor,
+    if yes assign one more candy than his right neighbour if it has lesser or equal candy than right neighbour.
+    Step 3: Iterate from right to left and check if current candidate has more score then its left neighbour,
+    if yes then assign one more candy than its left neighbour if it has lesser or equal candy than left neighbour.
+
+    TC : O(n)
+    SC : O(n)
+
 #### Solution
 ```java
     public int candy(ArrayList<Integer> A) {
@@ -315,6 +342,8 @@ class Grocery {
         Explanation 2:
             Since all three jobs collide with each other. We can do only 1 job.
 
+### Solution approach
+    
 ### Solution
 ```java
     class Pair {
@@ -333,12 +362,12 @@ class Grocery {
             jobs.add(new Pair(A.get(i), B.get(i)));
         }
 
-        jobs.sort((a, b) -> a.start.compareTo(b.start) & a.end.compareTo(b.end));
-        Integer currentJobEnd = jobs.get(0).end;
+        jobs.sort(Comparator.comparing(Pair::getEnd));
+        int currentJobEnd = jobs.get(0).end;
         for (int i = 1; i < jobs.size(); i++) {
             Pair nextJob = jobs.get(i);
             if (nextJob.start >= currentJobEnd) {
-                result++;
+                result += 1;
                 currentJobEnd = nextJob.end;
             }
         }
