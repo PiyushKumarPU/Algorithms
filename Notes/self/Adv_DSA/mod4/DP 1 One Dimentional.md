@@ -39,8 +39,8 @@
 * Overlapping subproblems: If same subproblems is getting repeated or it is getting called multiple time for the same input.
 > Note : For the above scenario we can use DP to solve the problems
 ## Why DP? Fibonacci series
-    If we look at DP, it is avoiding the repeatative call for the same input basically it is storing the result of respective input 
-    on the very first call and same in being used in further call. Suppose if same function is getting 
+    If we look at DP, it is avoiding the repeatative call for the same input basically it is storing the result of respective 
+    input on the very first call and same in being used in further call. Suppose if same function is getting 
     called n times, in that case and each execution take n time then
         * without dp the total execution time would be n ^ 2
         * With dp same execution can be done in n times
