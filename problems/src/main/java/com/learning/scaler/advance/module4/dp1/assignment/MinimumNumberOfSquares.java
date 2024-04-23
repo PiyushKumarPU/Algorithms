@@ -41,7 +41,6 @@ public class MinimumNumberOfSquares {
     public static void main(String[] args) {
         MinimumNumberOfSquares squares = new MinimumNumberOfSquares();
         System.out.println(squares.countMinSquares(6));
-        System.out.println(squares.countMinSquaresIterative(6));
     }
 
     public int countMinSquares(int A) {
@@ -49,18 +48,6 @@ public class MinimumNumberOfSquares {
             squareCount = new int[A + 1];
             Arrays.fill(squareCount, -1);
         }
-        if (A == 0) return 0;
-        if (squareCount[A] != -1) return squareCount[A];
-        int min = Integer.MAX_VALUE;
-        for (int i = 1; i * i <= A; i++) {
-            min = Math.min(min, countMinSquares(A - i * i));
-        }
-        squareCount[A] = min + 1;
-        return squareCount[A];
-    }
-
-
-    public int countMinSquaresIterative(int A) {
         if (A == 0) return 0;
         if (squareCount[A] != -1) return squareCount[A];
         int min = Integer.MAX_VALUE;

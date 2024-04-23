@@ -7,13 +7,14 @@
 - [Why DP? Fibonacci series](#why-dp-fibonacci-series)
 - [Types of DP](#types-of-dp)
 - [No of stairs](#no-of-stairs)
+- [Minimum Number of Squares](#minimum-number-of-squares)
 
 
 ## Problems and solutions
 
 1. [Assignments](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/dp1/assignment)
-2. [Additional Problems]()
-3. [Self Practise Problems]()
+2. [Additional Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/dp1/additional)
+3. [Self Practise Problems](https://github.com/rajpiyush220/Algorithms/tree/master/problems/src/main/java/com/learning/scaler/advance/module4/dp1/lecture)
 
 ## Class Notes and Videos
 
@@ -129,20 +130,116 @@
 
 ![Stair case](../../../images/Stair_Case_DP1.png?raw=true)
 
+### Solution Approach
+
+![Ways count](../../../images/stairs.jpg)
+
+    Approach 1 : Using recursion
+        As we can see in the problem we are allowed to take either one step or two step.
+        We will try to find number of ways we can reach to the last step and suppose last step in n
+        then number of ways to reach last step would be
+            stepCount(n) = stepCount(n-1) + stepCount(n-2)
+            base case for recursion would be
+            if(A < 0) return 0;
+            if(A <= 1) return 1;
+        TC : O(2^n) --> recursion TC
+        SC : O(n) --> Recursion stack space
+    Approach 2: Using dynamic programming top down approach
+        We will just remove the duplicate calculation from prev approach using dynamic programming
+        TC : O(n)
+        SC : O(n) --> dp array space
+    Approach 3: Using dynamic programming bottom up approach
+        In place of stating from last step we will start from first step and keep counting till last step
+        and that would be the result.
+        TC : O(n)
+        SC : O(1)
 ### Solution
 ```java
-    int[] climbWayCount;
-    public int climbStairsRecursive(int A) {
-        if (climbWayCount == null) {
-            climbWayCount = new int[A + 1];
-            Arrays.fill(climbWayCount, 0, A + 1, -1);
-        }
-        if (A < 0) return 0;
-        if (A == 0 || A == 1) return 1;
-        if (climbWayCount[A] != -1) return climbWayCount[A];
-        int count = climbStairsRecursive(A - 1) + climbStairsRecursive(A - 2);
-        count = count % 1000000007;
-        climbWayCount[A] = count;
-        return count;
+public int climbStairsApproach2(int A) {
+    if (climbWayCount == null) {
+        climbWayCount = new int[A + 1];
+        Arrays.fill(climbWayCount, 0, A + 1, -1);
     }
+    if (A < 0) return 0;
+    if (A == 0 || A == 1) return 1;
+    if (climbWayCount[A] != -1) return climbWayCount[A];
+    int count = climbStairsRecursive(A - 1) + climbStairsRecursive(A - 2);
+    count = count % 1000000007;
+    climbWayCount[A] = count;
+    return count;
+}
+
+public int climbStairsApproach3(int A) {
+    int[] waysCount = new int[A + 1];
+    waysCount[0] = waysCount[1] = 1;
+    for (int i = 2; i < waysCount.length; i++) {
+        waysCount[i] = (waysCount[i - 1] + waysCount[i - 2]) % 1000000007;
+    }
+    return waysCount[A] % 1000000007;
+}
+```
+## Minimum Number of Squares
+    Problem Description
+        Given an integer A. Return minimum count of numbers, sum of whose squares is equal to A.
+
+    Problem Constraints
+        1 <= A <= 10^5
+
+    Input Format
+        First and only argument is an integer A.
+
+    Output Format
+        Return an integer denoting the minimum count.
+
+    Example Input
+        Input 1:
+            A = 6
+        Input 2:
+            A = 5
+
+    Example Output
+        Output 1:
+            3
+        Output 2:
+            2
+
+    Example Explanation
+    Explanation 1:
+        Possible combinations are : (12 + 12 + 12 + 12 + 12 + 12) and (12 + 12 + 22).
+        Minimum count of numbers, sum of whose squares is 6 is 3.
+    Explanation 2:
+        We can represent 5 using only 2 numbers i.e. 12 + 22 = 5
+### Solution approach
+
+![Perfect Square](../../../images/Perfect_Squares.png)
+
+    Approach 1: Using Recursion
+        As per the problem statement largest number that can be used to calculate no of perfect square would be
+        sqrt(n), and we will use same propeties to find the number of perfect square whose sum would be as same as n.
+
+        Find all the number from 1 to sqrt(n) and subtract it to find the number of perfect square that can be
+        used to calculate the total sum and whichever gives minimun count that would be the result.
+
+        TC : O(2^n)
+        SC : O(n) --> Stack space
+    Approach 2: Using dynamic programming Top down approach
+        We will just remove duplicate calculation from prev approach and will calculate once and reuse it multiple times.
+        TC : O(n*sqrt(n))
+        SC : O(n)
+### Solution
+```java
+public int countMinSquaresApproach2(int A) {
+    if (squareCount == null) {
+        squareCount = new int[A + 1];
+        Arrays.fill(squareCount, -1);
+    }
+    if (A == 0) return 0;
+    if (squareCount[A] != -1) return squareCount[A];
+    int min = Integer.MAX_VALUE;
+    for (int i = 1; i * i <= A; i++) {
+        min = Math.min(min, countMinSquares(A - i * i));
+    }
+    squareCount[A] = min + 1;
+    return squareCount[A];
+}
 ```
