@@ -1,10 +1,11 @@
 package com.learning.scaler.advance.module4.greedy.assignment;
 
-import com.learning.scaler.advance.module4.greedy.Pair;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 Problem Description
@@ -51,8 +52,8 @@ public class FinishMaximumJobs {
     public static void main(String[] args) {
         FinishMaximumJobs jobs = new FinishMaximumJobs();
 
-        System.out.println(jobs.solve(new ArrayList<>(List.of(1, 5, 7, 1)), new ArrayList<>(List.of(7, 8, 8, 8))));
-        System.out.println(jobs.solve(new ArrayList<>(List.of(3, 2, 6)), new ArrayList<>(List.of(9, 8, 9))));
+        System.out.println(jobs.solve2(new ArrayList<>(List.of(4, 4, 8, 15, 6)),
+                new ArrayList<>(List.of(9, 5, 15, 16, 7))));
     }
 
     public int solve(ArrayList<Integer> A, ArrayList<Integer> B) {
@@ -63,7 +64,8 @@ public class FinishMaximumJobs {
             jobs.add(new Pair(A.get(i), B.get(i)));
         }
 
-        jobs.sort((a, b) -> a.start.compareTo(b.start) & a.end.compareTo(b.end));
+        jobs.sort(Comparator.comparing(Pair::getStart)
+                .thenComparing(Pair::getEnd));
         Integer currentJobEnd = jobs.get(0).end;
         for (int i = 1; i < jobs.size(); i++) {
             Pair nextJob = jobs.get(i);
@@ -74,5 +76,36 @@ public class FinishMaximumJobs {
         }
         return result;
     }
+
+    public int solve2(ArrayList<Integer> A, ArrayList<Integer> B) {
+        int result = 1;
+        // construct pair
+        List<Pair> jobs = new ArrayList<>();
+        for (int i = 0; i < A.size(); i++) {
+            jobs.add(new Pair(A.get(i), B.get(i)));
+        }
+
+        jobs.sort(Comparator.comparing(Pair::getEnd));
+        int currentJobEnd = jobs.get(0).end;
+        for (int i = 1; i < jobs.size(); i++) {
+            Pair nextJob = jobs.get(i);
+            if (nextJob.start >= currentJobEnd) {
+                result += 1;
+                currentJobEnd = nextJob.end;
+            }
+        }
+        return result;
+    }
+}
+
+@Getter
+class Pair {
+    public Integer start, end;
+
+    public Pair(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+
 }
 

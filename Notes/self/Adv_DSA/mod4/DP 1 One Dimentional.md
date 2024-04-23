@@ -19,6 +19,8 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/40.%20DP%201%20Dimensional.pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=QUpIV6IncXY)
+3. [New Batch Notes](../../../new_batch_notes/Dp%201.pdf)
+4. [New Batch video](https://youtu.be/khYRq5-4ugc)
 
 ## What is Dynamic Programming
     Dynamic Programming is mainly an optimization over plain recursion.

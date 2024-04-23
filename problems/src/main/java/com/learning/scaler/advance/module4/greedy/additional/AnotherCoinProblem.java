@@ -59,7 +59,7 @@ public class AnotherCoinProblem {
     public static void main(String[] args) {
 
         AnotherCoinProblem coinProblem = new AnotherCoinProblem();
-        System.out.println(coinProblem.solve(2000000000));   // 2
+        System.out.println(coinProblem.solve(1));   // 2
 
     }
 
@@ -68,7 +68,7 @@ public class AnotherCoinProblem {
         BigInteger value = BigInteger.valueOf(A);
         for (int i = index; i >= 0 && value.compareTo(BigInteger.ZERO) > 0; i--) {
             BigInteger val = powerMap.get(i);
-            if (value.compareTo(val) > 0) {
+            if (value.compareTo(val) >= 0) {
                 count += value.divide(val).intValue();
                 value = value.mod(val);
             }

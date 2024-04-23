@@ -17,6 +17,8 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/41.%20DP%202%20Two%20Dimensional.pdf)
 2. [Class/Lecture Video](https://youtu.be/Bb-K2N2GA3A)
+3. [New Batch Video](https://youtu.be/nSmzx29wM9I)
+4. [New Batch Notes](/Notes/new_batch_notes/Dp%202.pdf)
 
 ## Max Subsequence Sum
     Problem statement:

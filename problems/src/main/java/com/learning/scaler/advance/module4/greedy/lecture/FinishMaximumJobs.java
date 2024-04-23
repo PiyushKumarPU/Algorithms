@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module4.greedy.lecture;
 
-import com.learning.scaler.advance.module4.greedy.Pair;
+
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,5 +74,16 @@ public class FinishMaximumJobs {
         }
         return result;
     }
+}
+
+@Getter
+class Pair {
+    public Integer start, end;
+
+    public Pair(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+
 }
 

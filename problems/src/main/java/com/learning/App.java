@@ -57,51 +57,12 @@ public class App {
     }
 
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>(List.of(5, 12, 20, 25, 13, 24, 22, 35));
-        insert(list, 10);
-        System.out.println(list);
+
+        System.out.println();
     }
 
-    public static ArrayList<Integer> insert(ArrayList<Integer> list, int insert) {
-        list.add(insert);
-        int eleIdx = list.size() - 1;
-        while (eleIdx >= 0) {
-            int parentIdx = (eleIdx - 1) / 2;
-            if (list.get(parentIdx) > list.get(eleIdx)) {
-                //Collections.swap(list,parentIdx,eleIdx);
-                swap(list, parentIdx, eleIdx);
-                eleIdx = parentIdx;
-            } else break;
-        }
-        return list;
-    }
 
-    public static void swap(ArrayList<Integer> list, int srcIdx, int destIdx) {
-        int temp = list.get(srcIdx);
-        list.set(srcIdx, list.get(destIdx));
-        list.set(destIdx, temp);
-    }
 
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int i = 0, i1 = 0, i2 = 0;
-        int l = nums1.length + nums2.length;
-        int[] a = new int[(l / 2) + 1];
-        while (i < a.length) {
-            if (i1 < nums1.length && i2 < nums2.length) {
-                a[i++] = nums1[i1] < nums2[i2] ? nums1[i1++] : nums2[i2++];
-            } else if (i1 < nums1.length) {
-                a[i++] = nums1[i1++];
-            } else {
-                a[i++] = nums2[i2++];
-            }
-        }
-        if (l % 2 == 1) {
-            return a[a.length - 1];
-        } else {
-            double t = (a[a.length - 2] + a[a.length - 1]);
-            return t / 2.00;
-        }
-    }
 }
 
 

@@ -1,7 +1,5 @@
 package com.learning.mock_preparation.day12_greedy;
 
-import com.learning.scaler.advance.module4.greedy.Pair;
-
 import java.util.ArrayList;
 import java.util.List;
 

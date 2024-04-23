@@ -13,7 +13,6 @@ public class FindAllSubArray {
 
 
     public int maxProduct(final List<Integer> A) {
-
         int[] prodArr = new int[A.size()];
         prodArr[0] = max = A.get(0);
         for (int i = 1; i < A.size(); i++) {
