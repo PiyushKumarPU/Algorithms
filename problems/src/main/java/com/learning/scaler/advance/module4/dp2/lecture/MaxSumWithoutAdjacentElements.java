@@ -1,8 +1,6 @@
-package com.learning.scaler.advance.module4.dp1.lecture;
+package com.learning.scaler.advance.module4.dp2.lecture;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /*
 Problem Description

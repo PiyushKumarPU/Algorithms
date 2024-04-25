@@ -40,7 +40,8 @@
         Third argument is an integer C denoting the knapsack capacity.
 
     Output Format
-        Return a single integer denoting the maximum total value of A such that sum of the weights of this subset is smaller than or equal to C.
+        Return a single integer denoting the maximum total value of A such that sum of the weights of this 
+        subset is smaller than or equal to C.
 
     Example Input
         Input 1:
@@ -71,8 +72,10 @@
         Steps:
             1. Sort given item in ascending order with max unit price i.e. item which add   more profit with less weight
             2. Iterate throught sorted item array
-            3. if current item weight is greater than sack weight then add unit price * sack weight in max profit and break the loop.
-            4. If current item weight is less that sack weight then add complete profit of that item in max weight and reduce sack weight with item weight.
+            3. if current item weight is greater than sack weight then add unit price * sack weight in max profit and 
+            break the loop.
+            4. If current item weight is less that sack weight then add complete profit of that item in max weight 
+            and reduce sack weight with item weight.
 
 ### Solution
 ```java

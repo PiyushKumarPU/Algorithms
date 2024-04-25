@@ -10,6 +10,8 @@ DSA and system design notes and problems
 
 Trying to make an easy and readable DSA notes for quick understanding of related topics.
 
+## Scaler Lecture Notes repo
+* [Notes](https://github.com/KingsGambitLab/Lecture_Notes)
 
 ## Class/Lecture Playlist
    - [Intermediate DSA](https://www.youtube.com/watch?v=6PaQPJamGGI&list=PLWV5FkQMcDU5xx5M4_T0Skms_lLzTtQpO)

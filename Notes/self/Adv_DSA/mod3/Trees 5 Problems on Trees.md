@@ -19,16 +19,66 @@
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes//35.%20Problems%20on%20Trees.pdf)
 2. [Class/Lecture Video](https://youtu.be/YnmGLLiFT_Q)
 3. [Notability Link](https://notability.com/n/2dGLLHz5G3GeJOUxYUQKVp)
+4. [New Batch Video](https://youtu.be/DmI4mJXMAT0)
+5. [New Lecture Notes](../../../new_batch_notes/DSA%20Trees%205%20Problems%20on%20Trees.pdf)
 
 
 ## Invert Binary Tree
 
 ### Problem Description
-    Create mirror image of given binary tree. i.e. invert given binary tree.
+    Problem Description
+        Given a binary tree A, invert the binary tree and return it.
+        Inverting refers to making the left child the right child and vice versa.
+
+    Problem Constraints
+        1 <= size of tree <= 100000
+
+    Input Format
+        First and only argument is the head of the tree A.
+
+    Output Format
+        Return the head of the inverted tree.
+
+    Example Input
+        Input 1:
+
+                1
+              /   \
+             2     3
+        Input 2:
+
+                1
+              /   \
+             2     3
+            / \   / \
+            4   5 6   7
+
+    Example Output
+        Output 1:
+                1
+              /   \
+             3     2
+        Output 2:
+                1
+              /   \
+             3     2
+            / \   / \
+            7   6 5   4
+
+    Example Explanation
+        Explanation 1:
+            Tree has been inverted.
+        Explanation 2:
+            Tree has been inverted.
+
 ![Problem image](../../../images/invert_binary_tree_problems.png?raw=true)
 
 ### Solution approach
-    We will swap left child with right child and right child with left child for all the none leaf node and that will be inverted binary tree.
+    We will swap left child with right child and right child with left child for all the none leaf node 
+    and that will be inverted binary tree.
+
+    TC : O(n)
+    SC : O(h) --> stack space
 
 ### Psuedo Code
 ```java
@@ -39,8 +89,8 @@
     node.left = node.right;
     node.right = temp;
     // invert left and right child
-    invert(node.left);
-    invert(node.right);
+    if(node.left != null) invert(node.left);
+    if(node.right != null) invert(node.right);
    }
 ```
 
@@ -52,21 +102,74 @@
         TreeNode temp = node.getLeft();
         node.setLeft(node.getRight());
         node.setRight(temp);
-        invert(node.getLeft());
-        invert(node.getRight());
+        if(node.left != null) invert(node.left);
+        if(node.right != null) invert(node.right);
     }
 ```
 
 ## Equal Tree Partition
+    Problem Description
+        Given a binary tree A. Check whether it is possible to partition the tree to two trees which have equal
+        sum of values after removing exactly one edge on the original tree.
 
-### Problem Description:
-    Check if it is possible to remove an edge from Binary Tree s.t. sum of resultant two trees is equal
+    Problem Constraints
+        1 <= size of tree <= 100000
+        0 <= value of node <= 10^9
+
+    Input Format
+        First and only argument is head of tree A.
+
+    Output Format
+        Return 1 if the tree can be partitioned into two trees of equal sum else return 0.
+
+    Example Input
+        Input 1:
+
+                        5
+                      /  \
+                     3    7
+                    / \  / \
+                    4  6  5  6
+        Input 2:
+
+
+                        1
+                       / \
+                       2   10
+                           / \
+                           20  2
+
+    Example Output
+        Output 1:
+            1
+        Output 2:
+            0
+
+    Example Explanation
+    Explanation 1:
+    Remove edge between 5(root node) and 7:
+            Tree 1 =                                                       Tree 2 =
+                        5                                                     7
+                        /                                                     / \
+                        3                                                     5   6
+                        / \
+                        4   6
+            Sum of Tree 1 = Sum of Tree 2 = 18
+    Explanation 2:
+    The given Tree cannot be partitioned.
+
+
+
 ![Tree Equal Partition](../../../images/Tree_Equal_partition.png?raw=true)
 
 ### Solution approach:
     1. First calculate the sum of all node of tree
     2. If total sum is odd there is no chance of getting a subtree which can divide tree in equal partition and return false
     3. Start finding iterative some of each node and check if any node value is matching with required sum
+
+    TC : O(n)
+    SC : O(h)  
+    SC : O(h+n) --> in case of Map approach
 
 ### Psuedo code:
 #### Map approach
@@ -78,7 +181,7 @@
 #### Recursive approach
 ```java
     1. find sum of all node and store in a variable
-    2. check if sum is odd then return true
+    2. check if sum is odd then return false
     3. find left sum and right sum of all node one by one and check below condition
     4. if any of left sum, right sum, left sum + root val and right sum + root val is mathcing with required sum then return true
     5. if none of the value matching with required sum return false at the end
@@ -156,12 +259,64 @@ public class TreeLinkNode {
 
 ## Populate Next Pointer in Binary Tree
 #### Problem Description
-    Populate next pointer in BT
-    
-    Note : Initially each node's next points to NULL update each node's went to store address of next node in same level
+    Problem Description
+        Given a binary tree,
+        Populate each next pointer to point to its next right node. If there is no next right node, the next pointer 
+        should be set to NULL.
+        Initially, all next pointers are set to NULL.
+
+        Assume perfect binary tree.
+
+    Problem Constraints
+        1 <= Number of nodes in binary tree <= 100000
+        0 <= node values <= 10^9
+
+    Input Format
+        First and only argument is head of the binary tree A.
+
+    Output Format
+        Return the head of the binary tree after the changes are made.
+
+    Example Input
+        Input 1:
+
+            1
+            /  \
+        2    3
+        Input 2:
+
+              1
+            /  \
+            2    5
+            / \  / \
+            3  4  6  7
+
+    Example Output
+        Output 1:
+
+              1 -> NULL
+            /  \
+            2 -> 3 -> NULL
+        Output 2:
+
+             1 -> NULL
+            /  \
+            2 -> 5 -> NULL
+            / \  / \
+            3->4->6->7 -> NULL
+
+
+    Example Explanation
+        Explanation 1:
+            Next pointers are set as given in the output.
+        Explanation 2:
+            Next pointers are set as given in the output.
 
 #### Solution approach:
     1. Perform level order traversal and assign next node(if present) address to the next properties of current node
+
+    TC : O(n)
+    SC : O(n) --> queue size
 
 #### Psuedo code:
 ```java

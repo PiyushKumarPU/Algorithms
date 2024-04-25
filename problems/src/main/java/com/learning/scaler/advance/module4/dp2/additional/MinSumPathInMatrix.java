@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module4.dp2.additional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /*
 Problem Description
@@ -47,42 +49,23 @@ Example Explanation
          The path will be: 1 -> -3 -> 5 -> -5 -> 1.
 * */
 public class MinSumPathInMatrix {
-    int[][] pathMatrix;
 
-    public static void main(String[] args) {
-        int[][] A = new int[][]{{1, 3, 2}, {4, 3, 1}, {5, 6, 1}};
+    int[][] minSumPathMatrix;
 
-        MinSumPathInMatrix matrix = new MinSumPathInMatrix();
-        System.out.println(matrix.minPathSum(A));
+    public int minPathSum(ArrayList<ArrayList<Integer>> A) {
+        minSumPathMatrix = new int[A.size()][A.get(0).size()];
+        for (int[] arr : minSumPathMatrix) Arrays.fill(arr, Integer.MIN_VALUE);
+        return minPathSum(A, A.size() - 1, A.get(0).size() - 1);
     }
 
-
-    public int minPathSum(int[][] A) {
-        return minPathSumRecursion(A, 0, 0);
+    private int minPathSum(ArrayList<ArrayList<Integer>> A, int start, int end) {
+        if (start < 0 || end < 0) return Integer.MAX_VALUE;
+        else if (start == 0 && end == 0) return A.get(start).get(end);
+        else if (minSumPathMatrix[start][end] != Integer.MIN_VALUE) return minSumPathMatrix[start][end];
+        else if (start == 0) return A.get(start).get(end) + minPathSum(A, start, end - 1);
+        else if (end == 0) return A.get(start).get(end) + minPathSum(A, start - 1, end);
+        else
+            minSumPathMatrix[start][end] = A.get(start).get(end) + Math.min(minPathSum(A, start - 1, end), minPathSum(A, start, end - 1));
+        return minSumPathMatrix[start][end];
     }
-
-    public int minPathSumRecursion(int[][] A, int start, int end) {
-        if (pathMatrix == null) {
-            pathMatrix = new int[A.length][A[0].length];
-            for (int i = 0; i < A.length; i++) {
-                Arrays.fill(pathMatrix[i], -1);
-            }
-        }
-        if ((start == A.length - 1) && (end == A[0].length - 1)) return A[start][end];
-        if (start == A.length || end == A[0].length) return 0;
-
-
-        if (start < A.length - 1 && pathMatrix[start + 1][end] == -1) {
-            pathMatrix[start + 1][end] = minPathSumRecursion(A, start + 1, end);
-        }
-
-        if (end < A[0].length - 1 && pathMatrix[start][end + 1] == -1) {
-            pathMatrix[start][end + 1] = minPathSumRecursion(A, start, end + 1);
-        }
-
-        int right = start == A.length - 1 ? Integer.MAX_VALUE : pathMatrix[start + 1][end];
-        int down = end == A[0].length - 1 ? Integer.MAX_VALUE : pathMatrix[start][end + 1];
-        return A[start][end] + Math.min(right, down);
-    }
-
 }

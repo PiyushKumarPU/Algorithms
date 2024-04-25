@@ -38,8 +38,151 @@
         Input: arr[] = {3, 2, 5, 10, 7}
         Output: 15
         Explanation: Pick the subsequence {3, 5, 7}. The sum is 15.
+### Solution Approach
+    Approach 1: Brute Fore
+        Try all possible options
+        TC : O(2^n)
+        SC : O(n)
+    Approach 2: Using dynamic programming
+        Take below array as example
+            arr = [2,-1,-4,5,6,-1,4,7]
+        As pe the problem statement, we can choose consecutive element, selected element should be at least 1 distance apart.
+        Lets think of choosing element at index 0
+            in this case we can choose any other element from index (2-n-1)
+        Lets think of not choosing element at index 0
+            in this case we can choose any other element from index (1-n-1)
+
+        so basically max sum would be
+            max[i] = max( (A[i] + maxSum(2,n-1)), maxSum(1,n-1))
+        Please take a look at below image for better understanding
+
+        TC : O(n)
+        SC : O(n)/O(1) --> O(n) for top down approach and O(1) for bottom up approach
+
+![Max sum](../../../images/Max_sum_no_consecutive.png)
+
+![generalzation](../../../images/gen_Max_sum_no_consecutive.png)
+### Solution
+```java
+// Brute Force
+public int adjacentBF(int[] A) {
+    return adjacentBFRec(A, A.length - 1);
+}
+public int adjacentBFRec(int[] A, int i) {
+    if (i < 0) return 0;
+    return Math.max((A[i] + adjacentBFRec(A, i - 2)), adjacentBFRec(A, i - 1));
+}
+
+// Using Top down approach
+int[] maxSumArray;
+public int adjacentDp1(int[] A) {
+    maxSumArray = new int[A.length + 1];
+    Arrays.fill(maxSumArray, -1);
+    return adjacentTopDown(A, A.length - 1);
+}
+
+public int adjacentTopDown(int[] A, int i) {
+    if (i < 0) return 0;
+    if (maxSumArray[i] != -1) return maxSumArray[i];
+    maxSumArray[i] = Math.max((A[i] + adjacentBFRec(A, i - 2)), adjacentBFRec(A, i - 1));
+    return maxSumArray[i];
+}
+// using bottom up approach
+public int adjacentDp2(int[] A) {
+    int first = Math.max(A[0], 0), second = Math.max(A[1], first);
+    for (int i = 2; i < A.length; i++) {
+        int current = Math.max((A[i] + first), second);
+        first = second;
+        second = current;
+    }
+    return second;
+}
+```
 ## Unique path in a grid I
+> [Question Link](https://leetcode.com/problems/unique-paths/description/)
+
+    There is a robot on an m x n grid. The robot is initially located at the top-left corner 
+    (i.e., grid[0][0]). The robot tries to move to the bottom-right corner 
+    (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
+
+    Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
+
+    The test cases are generated so that the answer will be less than or equal to 2 * 10^9.
+
+![Explanation](../../../images/grid_path_1.png)
+
+### Solution approach
+![Approach](../../../images/grid_path_1_approach.png)
+
+    Approach 1: Brute force 
+        We will follow the above mentioned approach and we will use it to calculate
+        the total number of ways
+         waysToReach(m,n) = waysToReach(m-1,n)  + waysToReach(m,n-1);
+        TC : O(2^n)
+        SC : O(n)
+    Approach 2: Using dynamic programming
+        We will just remove duplicate calculation from previous approach using top down approach of dynamic programming
+        TC : O(n)
+        SC : O(n)
+    Approach 3 : Using dynamic programming bottom up approach
+        Its approach would be similar as top down approach, the only difference would be we will calculate border value in advance.
+        TC : O(n)
+        SC : O(n)
+### Solution
+```java
+// Brute force
+public int uniquePathsBF(int[][] A) {
+    if (A.length == 0 || A[0].length == 0) return 0;
+    return uniquePathsBFRec(A.length - 1, A[0].length - 1);
+}
+
+private int uniquePathsBFRec(int start, int end) {
+    if (start == 0 || end == 0) return 1;
+    return uniquePathsBFRec(start - 1, end) + uniquePathsBFRec(start, end - 1);
+}
+
+// Top down approach
+int[][] pathMatrix;
+public int uniquePathsDP1(int[][] A) {
+    if (pathMatrix == null) {
+        pathMatrix = new int[A.length][A[0].length];
+        for (int[] arr : pathMatrix) Arrays.fill(arr, -1);
+    }
+    return uniquePathsDP1Rec(A.length - 1, A[0].length - 1);
+}
+
+private int uniquePathsDP1Rec(int start, int end) {
+    if (start == 0 || end == 0) return 1;
+    if (pathMatrix[start][end] != -1) return pathMatrix[start][end];
+    pathMatrix[start][end] = uniquePathsBFRec(start - 1, end) + uniquePathsBFRec(start, end - 1);
+    return pathMatrix[start][end];
+}
+
+// bottom up
+public int uniquePathsDP2(int[][] A) {
+    if (pathMatrix == null) {
+        pathMatrix = new int[A.length][A[0].length];
+        for (int i = 0; i < pathMatrix.length; i++) {
+            if (i == 0) Arrays.fill(pathMatrix[i], 1);
+            else {
+                Arrays.fill(pathMatrix[i], -1);
+                pathMatrix[i][0] = 1;
+            }
+        }
+    }
+    return uniquePathsDP2Rec(A.length - 1, A[0].length - 1);
+}
+
+private int uniquePathsDP2Rec(int start, int end) {
+    if (pathMatrix[start][end] != -1) return pathMatrix[start][end];
+    pathMatrix[start][end] = uniquePathsDP2Rec(start - 1, end) + uniquePathsDP2Rec(start, end - 1);
+    return pathMatrix[start][end];
+}
+
+```
 ## Unique path in a grid II
+> [Leet code Question Link](https://leetcode.com/problems/unique-paths-ii/description/)\
+> [Scaler question link](https://www.scaler.com/academy/mentee-dashboard/class/160983/assignment/problems/8?navref=cl_tt_lst_nm)
 ### Problem Description
     Given a grid of size n * m, lets assume you are starting at (1,1) and your goal is to reach (n, m). 
     At any instance, if you are on (x, y), you can either go to (x, y + 1) or (x + 1, y).
@@ -88,6 +231,53 @@
         So, the total number of unique paths is 2. 
     Explanation 2:
         It is not possible to reach (n, m) from (1, 1). So, ans is 0.
+
+### Solution Approach
+![Approach](../../../images/grid_path_2.png)
+
+> Note : We have to keep in mind that if any cell has obstacle then it would return 0 because there is obstacle and we can not use that path.
+
+    Approach 1: Brute force 
+        We will follow the above mentioned approach and we will use it to calculate
+        the total number of ways
+         waysToReach(m,n) = waysToReach(m-1,n)  + waysToReach(m,n-1);
+        TC : O(2^n)
+        SC : O(n)
+    Approach 2: Using dynamic programming
+        We will just remove duplicate calculation from previous approach using top down approach of dynamic programming
+        TC : O(n)
+        SC : O(n)
+    Approach 3 : Using dynamic programming bottom up approach
+        Its approach would be similar as top down approach, the only difference would be we will calculate border value in advance.
+        TC : O(n)
+        SC : O(n)
+### Soluton
+```java
+// Top down approach
+int[][] pathMatrix;
+public int uniquePathsWithObstacles(int[][] A) {
+    if (pathMatrix == null) {
+        pathMatrix = new int[A.length][A[0].length];
+        for (int[] arr : pathMatrix) Arrays.fill(arr, -1);
+    }
+    return uniquePathsWithObstaclesDp1Rec(A, A.length - 1, A[0].length - 1);
+}
+
+public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
+    if (start < 0 || end < 0) return 0;
+    else if (start == 0 && end == 0) return (A[start][end] == 1) ? 0 : 1;
+    else if (pathMatrix[start][end] != -1) return pathMatrix[start][end];
+    else if (A[start][end] == 1) {
+        pathMatrix[start][end] = 0;
+    } else {
+        pathMatrix[start][end] = uniquePathsWithObstaclesTDRec(A, start - 1, end) +
+                uniquePathsWithObstaclesTDRec(A, start, end - 1);
+    }
+    return pathMatrix[start][end];
+}
+// bottom up is yet to be solved 
+
+```
 ## Dungeons and princess
 ### Problem Description
     The demons had captured the princess and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant knight was initially positioned in the top-left room and must fight his way through the dungeon to rescue the princess.
@@ -143,7 +333,6 @@
         
         Explanation 2:
             Take the path DOWN -> DOWN ->RIGHT -> RIGHT, the minimum health required will be 1.
-
 ### Solution approach:
     Idea 1:
         Identify all possible way and calculate min health point to start with

@@ -117,8 +117,8 @@ public class EqualTreePartition {
         }
 
         // Recur on left and right subtrees
-        isTreeAvailable(A.left, sum);
-        isTreeAvailable(A.right, sum);
+        if (A.left != null) isTreeAvailable(A.left, sum);
+        if (A.right != null) isTreeAvailable(A.right, sum);
     }
 
     private BigInteger findTreeSum(TreeNode node) {

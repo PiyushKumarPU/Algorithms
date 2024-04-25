@@ -6,7 +6,8 @@ import java.util.List;
 
 /*
 Problem Description
-    Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+    Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent
+    numbers on the row below.
     Adjacent numbers for jth column of ith row is jth and (j+1)th column of (i + 1)th row
 
 Problem Constraints
@@ -49,14 +50,34 @@ public class MinSumPathInTriangle {
         MinSumPathInTriangle triangle = new MinSumPathInTriangle();
         int result = triangle.minimumTotal(new ArrayList<>(List.of(
                 new ArrayList<>(List.of(2)),
-                new ArrayList<>(List.of(3, 4)),
-                new ArrayList<>(List.of(6, 5, 7)),
-                new ArrayList<>(List.of(4, 1, 8, 3)))
+                new ArrayList<>(List.of(6, 6)),
+                new ArrayList<>(List.of(7, 8, 4)))
         ));
         System.out.println(result);
     }
 
+    int[][] minSumMatrix;
+
     public int minimumTotal(ArrayList<ArrayList<Integer>> a) {
+        minSumMatrix = new int[a.size()][a.get(a.size() - 1).size()];
+        for (int[] arr : minSumMatrix) Arrays.fill(arr, -1);
+        return minimumTotal(a, 0, 0);
+    }
+
+    private int minimumTotal(ArrayList<ArrayList<Integer>> a, int start, int end) {
+        if (start < 0 || start >= a.size() || end >= a.size() || end >= a.get(start).size()) return Integer.MAX_VALUE;
+        else if (minSumMatrix[start][end] == -1) {
+            int bottom =  minimumTotal(a, start + 1, end);
+            int bottomRight = minimumTotal(a, start + 1, end + 1);
+            minSumMatrix[start][end] = a.get(start).get(end) +
+                    Math.min(bottom, bottomRight);
+        }
+
+        return minSumMatrix[start][end];
+    }
+
+
+    /*public int minimumTotal(ArrayList<ArrayList<Integer>> a) {
         int n = a.size();
         int[][] pathMatrix = new int[n][n];
         for (int i = 0; i < n; i++) {
@@ -82,4 +103,5 @@ public class MinSumPathInTriangle {
         pathMatrix[start][end] = a.get(start).get(end) + Math.min(downNext, down);
         return pathMatrix[start][end];
     }
+*/
 }

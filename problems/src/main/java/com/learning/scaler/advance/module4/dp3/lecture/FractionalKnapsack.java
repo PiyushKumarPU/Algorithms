@@ -65,7 +65,6 @@ public class FractionalKnapsack {
             sackList.add(new Sack(A.get(i), B.get(i)));
         }
         sackList.sort((a, b) -> b.unitPrice.compareTo(a.unitPrice));
-        System.out.println(sackList);
         for (Sack sack : sackList) {
             if (C == 0) break;
             else if (sack.weight >= C) {
