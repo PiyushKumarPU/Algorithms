@@ -507,10 +507,10 @@ private void isPathPresent(TreeNode A, int sum) {
 ## Longest path across root node of Binary Tree
     Find the longest path of the tree that goes across root node and duplicate edge is not allowed
 ### Solutuon apporoach
-* Height of any node is max(height of left node, height of right node) + 1
-* Similary longest path would be the sum of height of left node and right node + 2\ (+2 because there are two edge to reach till the root node)
+* Height of any node is ```max(height of left node, height of right node) + 1```
+* Similary longest path would be the sum of height of left node and right node + 2\ (+2 because there are two edge to reach till the root node)  ```height of left node + height of right node + 2```
 
-    Find the longest path using this approach
+> Find the longest path using this approach
 
 ### Solution
 ```java
