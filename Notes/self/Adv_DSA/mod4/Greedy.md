@@ -89,10 +89,10 @@
     Using greedy approach
         Step 1 : Sort cars in ascneding order of expiry and start buying it one by one and maintain profilt
         in min heap to keep lowest profit on top.
-        Step 2: Once we reach any expired product we will just if it is giving more profit then current
+        Step 2: Once we reach any expired product we will check if it is giving more profit then current
         lowest profit, if yes replace it with current lowest if not then proceed to next
         step 3: Return sum of all element of min heap and that would be the result.
-    TC : O(nlogn)  --> if we need to replace all the element from heap
+    TC : O(nlogn) 
     SC : O(n)  --> Heap space
 ### Solution
 ```java
@@ -243,7 +243,7 @@ class Grocery {
 
     Problem Constraints
         1 <= N <= 10^5
-        -109 <= A[i] <= 10^9
+        -10^9 <= A[i] <= 10^9
 
 
     Input Format

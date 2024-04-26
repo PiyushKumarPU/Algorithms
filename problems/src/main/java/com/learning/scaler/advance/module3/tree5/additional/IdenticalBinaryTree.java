@@ -60,7 +60,7 @@ public class IdenticalBinaryTree {
     }
 
     private int isSameTree(TreeNode A, TreeNode B) {
-        if ((A == null && B == null)) return 1;
+        if (A == null && B == null) return 1;
         if (A == null || B == null) return 0;
         int root = (A.val == B.val) ? 1 : 0;
         return root * isSameTree(A.left, B.left) * isSameTree(A.right, B.right);

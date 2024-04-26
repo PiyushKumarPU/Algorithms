@@ -45,7 +45,19 @@ Example Explanation
 * */
 public class DiameterOfBinaryTree {
 
+    int diameter = Integer.MIN_VALUE;
     public int solve(TreeNode A) {
-        return 0;
+        if (A == null) return 0;
+        findHeight(A);
+        return diameter;
+    }
+
+    private int findHeight(TreeNode treeNode) {
+        if (treeNode == null) return -1;
+        int leftHeight = (treeNode.left != null) ? findHeight(treeNode.left) : -1;
+        int rightHeight = (treeNode.right != null) ? findHeight(treeNode.right) : -1;
+        int currentNodeHeight = Math.max(leftHeight, rightHeight) + 1;
+        diameter = Math.max((leftHeight + rightHeight + 2), diameter);
+        return currentNodeHeight;
     }
 }

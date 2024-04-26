@@ -73,10 +73,6 @@ public class NextPointerBinaryTree {
         System.out.println(root);
     }
 
-    public void connect(TreeLinkNode root) {
-
-    }
-
     public void connectUsingQueue(TreeLinkNode root) {
         Queue<TreeLinkNode> queue = new ArrayDeque<>();
         if (root.left != null) queue.add(root.left);
@@ -100,6 +96,32 @@ public class NextPointerBinaryTree {
                     current = next;
                 }
             }
+        }
+    }
+
+    public void connectUsingRecursion(TreeLinkNode treeNode) {
+        if (treeNode == null) return;
+        if (treeNode.left == null && treeNode.right == null) return;
+        else if (treeNode.left != null) {
+            treeNode.left.next = treeNode.right;
+            if (treeNode.next != null)
+                treeNode.right.next = treeNode.next.left;
+        }
+        connectUsingRecursion(treeNode.left);
+        connectUsingRecursion(treeNode.right);
+    }
+
+    public void connectWithConstantSpace(TreeLinkNode treeNode) {
+        TreeLinkNode temp = treeNode;
+        while (temp.left != null) {
+            TreeLinkNode current = temp;
+            while (temp != null) {
+                temp.left.next = temp.right;
+                if (temp.next != null)
+                    temp.right.next = temp.next.left;
+                temp = temp.next;
+            }
+            temp = current.left;
         }
     }
 }

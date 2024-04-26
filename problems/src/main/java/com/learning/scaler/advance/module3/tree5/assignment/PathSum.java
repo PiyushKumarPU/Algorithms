@@ -78,11 +78,11 @@ public class PathSum {
     }
 
     private void isPathPresent(TreeNode A, int sum) {
-        if (A == null || A.val == -1 || hasPathSum == 1) return;
+        if (A == null || hasPathSum == 1) return;
         int remainingSum = sum - A.val;
-        boolean isChildNode = (A.left == null || A.left.val == -1) && (A.right == null || A.right.val == -1);
+        boolean isChildNode = A.left == null && A.right == null;
         if (remainingSum == 0 && isChildNode) hasPathSum = 1;
-        if (A.left != null && A.left.val != -1) isPathPresent(A.left, remainingSum);
-        if (A.right != null && A.right.val != -1) isPathPresent(A.right, remainingSum);
+        if (A.left != null) isPathPresent(A.left, remainingSum);
+        if (A.right != null) isPathPresent(A.right, remainingSum);
     }
 }
