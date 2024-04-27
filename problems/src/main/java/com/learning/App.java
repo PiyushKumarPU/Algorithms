@@ -61,6 +61,33 @@ public class App {
         System.out.println();
     }
 
+    int[][] healthPoints;
+
+    public int calculateMinimumHP(ArrayList<ArrayList<Integer>> A) {
+        int n = A.size(), m = A.get(0).size();
+        healthPoints = new int[A.size()][A.get(0).size()];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+
+                int damage = A.get(i).get(j);
+                int nextHealth = calculateNextHealth(healthPoints, i, j, damage);
+                healthPoints[i][j] = Math.max(1, nextHealth);
+            }
+        }
+        return healthPoints[0][0];
+    }
+
+    private int calculateNextHealth(int[][] healthPoints, int i, int j, int damage) {
+        if (i == healthPoints.length - 1 && j == healthPoints[0].length - 1) {
+            return 1; // Bottom-right corner
+        } else if (i == healthPoints.length - 1) {
+            return healthPoints[i][j + 1] - damage; // Last row
+        } else if (j == healthPoints[0].length - 1) {
+            return healthPoints[i + 1][j] - damage; // Last column
+        } else {
+            return Math.min(healthPoints[i][j + 1], healthPoints[i + 1][j]) - damage; // Normal case
+        }
+    }
 
 
 }

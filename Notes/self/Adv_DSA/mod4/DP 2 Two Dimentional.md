@@ -105,7 +105,8 @@ public int adjacentDp2(int[] A) {
     (i.e., grid[0][0]). The robot tries to move to the bottom-right corner 
     (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
 
-    Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
+    Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the 
+    bottom-right corner.
 
     The test cases are generated so that the answer will be less than or equal to 2 * 10^9.
 
@@ -125,7 +126,8 @@ public int adjacentDp2(int[] A) {
         TC : O(n)
         SC : O(n)
     Approach 3 : Using dynamic programming bottom up approach
-        Its approach would be similar as top down approach, the only difference would be we will calculate border value in advance.
+        Its approach would be similar as top down approach, the only difference would be we will calculate border 
+        value in advance.
         TC : O(n)
         SC : O(n)
 ### Solution
@@ -180,6 +182,7 @@ private int uniquePathsDP2Rec(int start, int end) {
 }
 
 ```
+
 ## Unique path in a grid II
 > [Leet code Question Link](https://leetcode.com/problems/unique-paths-ii/description/)\
 > [Scaler question link](https://www.scaler.com/academy/mentee-dashboard/class/160983/assignment/problems/8?navref=cl_tt_lst_nm)
@@ -248,7 +251,8 @@ private int uniquePathsDP2Rec(int start, int end) {
         TC : O(n)
         SC : O(n)
     Approach 3 : Using dynamic programming bottom up approach
-        Its approach would be similar as top down approach, the only difference would be we will calculate border value in advance.
+        Its approach would be similar as top down approach, the only difference would be we will calculate 
+        border value in advance.
         TC : O(n)
         SC : O(n)
 ### Soluton
@@ -280,15 +284,20 @@ public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
 ```
 ## Dungeons and princess
 ### Problem Description
-    The demons had captured the princess and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant knight was initially positioned in the top-left room and must fight his way through the dungeon to rescue the princess.
+    The demons had captured the princess and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of 
+    M x N rooms laid out in a 2D grid. Our valiant knight was initially positioned in the top-left room and must fight his 
+    way through the dungeon to rescue the princess.
 
-    The knight has an initial health point represented by a positive integer. If at any point his health point drops to 0 or below, he dies immediately.
+    The knight has an initial health point represented by a positive integer. If at any point his health point drops to 
+    0 or below, he dies immediately.
 
-    Some of the rooms are guarded by demons, so the knight loses health (negative integers) upon entering these rooms; other rooms are either empty (0's) or contain magic orbs that increase the knight's health (positive integers).
+    Some of the rooms are guarded by demons, so the knight loses health (negative integers) upon entering these rooms; 
+    other rooms are either empty (0's) or contain magic orbs that increase the knight's health (positive integers).
 
     In order to reach the princess as quickly as possible, the knight decides to move only rightward or downward in each step.
 
-    Given a 2D array of integers A of size M x N. Find and return the knight's minimum initial health so that he is able to rescue the princess.
+    Given a 2D array of integers A of size M x N. Find and return the knight's minimum initial health so that he is 
+    able to rescue the princess.
 
     Problem Constraints
         1 <= M, N <= 500
@@ -337,10 +346,12 @@ public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
     Idea 1:
         Identify all possible way and calculate min health point to start with
     Idea 2:
-        Start from right bottom cell and calculate min healpoint required to reach here so once we cross the cell, post execution health point should be at least 1
+        Start from right bottom cell and calculate min healpoint required to reach here so once we cross the cell, 
+        post execution health point should be at least 1
     Use below formula to calculate min energy required
         min_ene = 1 - current cell value
-        there is a chance min_ene value could be negative in that case we will take max of 1 and min_ene and that will be the min energy we need in order to successfully cross that cell.
+        there is a chance min_ene value could be negative in that case we will take max of 1 and min_ene and 
+        that will be the min energy we need in order to successfully cross that cell.
 
 ### Psuedo code
 ```java
