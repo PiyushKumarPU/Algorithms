@@ -18,6 +18,8 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/42%20DP%203%20Knapsack.pdf)
 2. [Class/Lecture Video](https://youtu.be/msGIIQSJ5bw)
+3. [new Batch Notes](../../../new_batch_notes/Dp%203.pdf)
+4. [New Batch Video](https://youtu.be/pZb_8tC7XpU)
 
 ## Fractional Knapsack
     Problem Description
