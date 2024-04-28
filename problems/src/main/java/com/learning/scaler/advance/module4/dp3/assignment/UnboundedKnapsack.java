@@ -48,65 +48,31 @@ Example Explanation
 public class UnboundedKnapsack {
 
     public static void main(String[] args) {
-        UnboundedKnapsack knapsack = new UnboundedKnapsack();
-         /*System.out.println(knapsack.solve(10, new ArrayList<>(List.of(5)), new ArrayList<>(
-                List.of(10)
-        )));*/
-
-        System.out.println(knapsack.solve(10, new ArrayList<>(List.of(6, 7)), new ArrayList<>(
-                List.of(5, 5)
-        )));
+        ArrayList<Integer> B = new ArrayList<>(List.of(14, 13, 7, 5, 5, 7, 13, 16, 17, 1));
+        ArrayList<Integer> C = new ArrayList<>(List.of(10, 20, 9, 4, 15, 4, 4, 1, 15, 2));
+        int A = 80;
+        System.out.println(new UnboundedKnapsack().solve(A, B, C));
 
     }
 
+    int[] weighValues;
     public int solve(int A, ArrayList<Integer> B, ArrayList<Integer> C) {
-        int[] weightRange = new int[A + 1];
-        weightRange[0] = 0;
-        for (int i = 1; i <= A; i++) {
-            int maxValue = 0;
-            for (int j = 0; j < B.size(); j++) {
-                if (C.get(j) <= i) {
-                    int index = i - B.get(j);
-                    maxValue = Math.max(maxValue, B.get(j) + (index > 0 ? weightRange[index] : 0));
-                }
-            }
-            weightRange[i] = maxValue;
-        }
-        return weightRange[A];
+        if (A <= 0 || B.isEmpty() || C.isEmpty()) return 0;
+        weighValues = new int[A + 1];
+        Arrays.fill(weighValues, -1);
+        return solveRec(A, B, C);
     }
 
-    public ArrayList<Integer> solve(int A) {
-        List<Integer> result = new ArrayList<>();
-        Queue<Integer> queue = new LinkedList<>();
-        for (int i = 1; i <= 3; i++) {
-            result.add(i);
-            queue.add(i);
+    private int solveRec(int A, ArrayList<Integer> B, ArrayList<Integer> C) {
+        if (A < 0) return 0;
+        if (weighValues[A] != -1) return weighValues[A];
+        int currentMax = Integer.MIN_VALUE;
+        for (int i = 0; i < B.size(); i++) {
+            int take = (A >= C.get(i)) ? (B.get(i) + solveRec((A - C.get(i)), B, C)) : 0;
+            currentMax = Math.max(currentMax, take);
         }
-        if (A <= 3) {
-            List<Integer> temp = new ArrayList<>();
-            for (int i = 0; i < A; i++) {
-                temp.add(result.get(i));
-            }
-            return new ArrayList<>(temp);
-        }
-        while (!queue.isEmpty()) {
-            int t = queue.poll();
-            String str = Integer.toString(t);
-            result.add(Integer.parseInt(str + "1"));
-            if (result.size() == A)
-                break;
-            queue.add(Integer.parseInt(str + "1"));
-            result.add(Integer.parseInt(str + "2"));
-            if (result.size() == A)
-                break;
-            queue.add(Integer.parseInt(str + "2"));
-            result.add(Integer.parseInt(str + "3"));
-            if (result.size() == A)
-                break;
-            queue.add(Integer.parseInt(str + "3"));
-        }
-        result.sort(Comparator.naturalOrder());
-        return new ArrayList<>(result);
+        weighValues[A] = currentMax;
+        return weighValues[A];
     }
 
 }

@@ -37,7 +37,7 @@ Example Explanation
         Here, we will flip the sign of 15 and the resultant sum will be 1.
     Explanation 2:
         Here, we will flip the sign of 14 and the resultant sum will be 0.
-     Note that flipping the sign of 10 and 4 also gives the resultant sum 0 but flippings there sign are not minimum.
+     Note that flipping the sign of 10 and 4 also gives the resultant sum 0, but flipping their sign are not minimum.
 * */
 public class FlipArray {
 
@@ -45,6 +45,11 @@ public class FlipArray {
         List<Integer> input = List.of(4, 4, 3, 1);
         System.out.println(solve(input));
 
+    }
+
+    public int solve(final int[] A) {
+
+        return 0;
     }
 
     public static int solve(final List<Integer> A) {
