@@ -518,7 +518,8 @@ public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
         if n = 3, here we have option to choose 1 to 3 as root node
 
         Step 1: if 1 is root node, 2 and 3 would be nodes of right subtree and we can arrange then in 2 way
-        step 2: if 2 is root node, 1 would be nodes of left subtree and 3 would be nodes of right subtree and \ we can construct only one distinct node
+        step 2: if 2 is root node, 1 would be nodes of left subtree and 3 would be nodes of right subtree and 
+                we can construct only one distinct node
         step 3: if 3 is root node, 1 and 2 would be nodes of left subteee and we can arrange them in 2 different way
 
         so total number of arrangement is 2 + 1 + 2 = 5
