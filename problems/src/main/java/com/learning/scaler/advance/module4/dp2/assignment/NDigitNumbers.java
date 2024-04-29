@@ -41,12 +41,31 @@ Example Explanation
 * */
 public class NDigitNumbers {
 
+    static final int MOD = 1000000007;
+
     public static void main(String[] args) {
-        System.out.println(solve(75,22));
+        System.out.println(new NDigitNumbers().solveBF(2, 5));
     }
 
+    // Brute Force
+    int count = 0;
+    int[][] digitSumMatrix;
 
-    public static int solve(int A, int B) {
+    public int solveBF(int A, int B) {
+        if (B < 0)
+            return 0;
+        if (A == 0 && B == 0)
+            return 1;
+        if (A == 0)
+            return 0;
+        for (int digit = 0; digit <= 9; digit++) {
+            if (digit > A || (A == 1 && digit == 0)) continue;
+            count += solveBF(A - 1, B - digit);
+        }
+        return count % MOD;
+    }
+
+    public static int solveRecursive(int A, int B) {
         long[][] dp = new long[A + 1][B + 1];
         for (int j = 1; j < Math.min(10, B + 1); j++) {
             dp[1][j] = 1;
@@ -57,12 +76,12 @@ public class NDigitNumbers {
             for (int j = 1; j <= B; j++) {
                 for (int k = 0; k < 10; k++) {
                     if (j - k >= 0) {
-                        dp[i][j] =  dp[i][j] + (dp[i - 1][j - k] % 1000000007);
+                        dp[i][j] = dp[i][j] + (dp[i - 1][j - k] % MOD);
                     }
                 }
             }
         }
 
-        return (int) (dp[A][B] % 1000000007);
+        return (int) (dp[A][B] % MOD);
     }
 }

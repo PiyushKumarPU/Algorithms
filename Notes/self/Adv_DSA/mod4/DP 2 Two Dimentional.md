@@ -5,6 +5,8 @@
 - [Unique path in a grid I](#unique-path-in-a-grid-i)
 - [Unique path in a grid II](#unique-path-in-a-grid-ii)
 - [Dungeons and princess](#dungeons-and-princess)
+- [N Digit Number](#n-digit-number)
+- [Unique Binary Search Trees II](#unique-binary-search-trees-ii)
 
 
 ## Problems and solutions
@@ -98,6 +100,7 @@ public int adjacentDp2(int[] A) {
     return second;
 }
 ```
+
 ## Unique path in a grid I
 > [Question Link](https://leetcode.com/problems/unique-paths/description/)
 
@@ -396,3 +399,170 @@ public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
         return healthPoints[0][0];
     }
 ```
+
+## N Digit Number
+    Problem Description
+        Find out the number of A digit positive numbers, whose digits on being added equals to a given number B.
+        Note that a valid number starts from digits 1-9 except the number 0 itself. i.e. leading zeroes are not allowed.
+        Since the answer can be large, output answer modulo 1000000007
+
+    Problem Constraints
+        1 <= A <= 1000
+        1 <= B <= 10000
+
+    Input Format
+        First argument is the integer A
+        Second argument is the integer B
+
+    Output Format
+        Return a single integer, the answer to the problem
+
+    Example Input
+        Input 1:
+            A = 2
+            B = 4
+        Input 2:
+            A = 1
+            B = 3
+
+
+    Example Output
+        Output 1:
+            4
+        Output 2:
+            1
+
+    Example Explanation
+        Explanation 1:
+            Valid numbers are {22, 31, 13, 40}
+            Hence output 4.
+        Explanation 2:
+            Only valid number is 3
+
+### Solution Approach
+    Approach 1: Brute Force
+        Lets take an example of 2 digit number with sum k and we cant take 0 as first digit.
+            Options for digit 0 : 1 to 9 where digit <= k
+            options for digit 1 : 0 to 9 where digit <= (k - first digit)
+
+        Generalized one
+            count(digit_count,sum) = ∑ count(digit_count-1,sum-x) where 0 <= x <= 9 && sum-x >= 0
+            ∑ --> Sum of all available options
+        TC : O(10 * 2^n)
+        SC : O(n)
+    Approach 2: Using DP
+        Avoid recalculation in previous approach and good to go
+        TC : O(10 * n)
+        SC : O(10 * n)
+### Solution
+```java
+    static final int MOD = 1000000007;
+    public int solveRecursive(int A, int B) {
+        long[][] dp = new long[A + 1][B + 1];
+        for (int j = 1; j < Math.min(10, B + 1); j++) {
+            dp[1][j] = 1;
+        }
+
+        // Build up the solution
+        for (int i = 2; i <= A; i++) {
+            for (int j = 1; j <= B; j++) {
+                for (int k = 0; k < 10; k++) {
+                    if (j - k >= 0) {
+                        dp[i][j] = dp[i][j] + (dp[i - 1][j - k] % MOD);
+                    }
+                }
+            }
+        }
+
+        return (int) (dp[A][B] % MOD);
+    }
+```
+
+## Unique Binary Search Trees II
+    Problem Description
+        Given an integer A, how many structurally unique BST's (binary search trees) exist that can store values 1...A?
+
+    Problem Constraints
+        1 <= A <=18
+
+    Input Format
+        First and only argument is the integer A
+
+    Output Format
+        Return a single integer, the answer to the problem
+
+    Example Input
+        Input 1:
+            1
+        Input 2:
+            2
+
+    Example Output
+        Output 1:
+            1
+        Output 2:
+            2
+
+    Example Explanation
+        Explanation 1:
+            Only single node tree is possible.
+        Explanation 2:
+            2 trees are possible, one rooted at 1 and the other rooted at 2.
+
+### Solution approach
+> Note : This example is as same catalane number
+
+> Note : Even if there is no node we can construct empty BST
+
+    Let take an example of n =3
+        if n = 3, here we have option to choose 1 to 3 as root node
+
+        Step 1: if 1 is root node, 2 and 3 would be nodes of right subtree and we can arrange then in 2 way
+        step 2: if 2 is root node, 1 would be nodes of left subtree and 3 would be nodes of right subtree and \ we can construct only one distinct node
+        step 3: if 3 is root node, 1 and 2 would be nodes of left subteee and we can arrange them in 2 different way
+
+        so total number of arrangement is 2 + 1 + 2 = 5
+        Generalized form
+            count(n) = sum of count(1...n)
+    Approach 1: BF
+        Consider each element from 1 to n as root and use remaining as left and right subtree and find the 
+        number of tree that can be constructed
+        TC : O(2^n)
+        SC : O(n) --> stack space in case of skew tree structure
+    Approach2 : Using DP
+        Remove duplicate operation from previous approach and we are good to go
+        TC : O(n^2)  --> for each n, we are traversing from 1 to n
+        SC : O(n)
+### Solution
+```java
+// Approach 1
+public int numTreesBf(int A) {
+    if (A == 0 || A == 1) return 1;
+    if (A < 0) return 0;
+    int total = 0;
+    for (int i = 1; i <= A; i++) {
+        total += numTreesBf(i - 1) * numTreesBf(A - i);
+    }
+    bstCount[A] = total;
+    return bstCount[A];
+}
+// Approach 2
+int[] bstCount;
+public int numTrees(int A) {
+    if (bstCount == null) {
+        bstCount = new int[A + 1];
+        Arrays.fill(bstCount, -1);
+        bstCount[0] = bstCount[1] = 1;
+    }
+    if (bstCount[A] != -1) return bstCount[A];
+    int total = 0;
+    for (int i = 1; i <= A; i++) {
+        total += numTrees(i - 1) * numTrees(A - i);
+    }
+    bstCount[A] = total;
+    return bstCount[A];
+}
+```
+
+        
+        
