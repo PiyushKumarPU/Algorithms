@@ -56,10 +56,6 @@ public class App {
         return closestSum;
     }
 
-    public static void main(String[] args) {
-
-        System.out.println();
-    }
 
     int[][] healthPoints;
 
@@ -88,7 +84,6 @@ public class App {
             return Math.min(healthPoints[i][j + 1], healthPoints[i + 1][j]) - damage; // Normal case
         }
     }
-
 
 }
 

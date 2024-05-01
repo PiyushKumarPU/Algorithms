@@ -3,10 +3,10 @@
 ## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 
 ## Scope / Agenda
-- [Cutting the Rod]()
-- [Coin change I]()
-- [Coin change II]()
-- [Extended 0-1 Knapsack]()
+- [Cutting the Rod](#cutting-the-rod)
+- [Coin change I](#coin-change-i)
+- [Coin change II](#coin-change-ii)
+- [Extended 0-1 Knapsack](#extended-0-1-knapsack)
 
 ## Problems and solutions
 
@@ -18,6 +18,8 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/43.%20DP%204%20Applicaiton%20of%20Knapsack.pdf)
 2. [Class/Lecture Video](https://youtu.be/WVM8zZECzO4)
+3. [New Batch video](https://youtu.be/A7J1obf6JuE)
+4. [New Batch Notes](../../../new_batch_notes/DP4%20Applications%20of%20Knapsack.pdf)
 
 ## Cutting the Rod
     Problem Description
@@ -107,7 +109,9 @@
         {1, 3}
         Explanation 2:
         There is only 1 way to make sum 10.
+
 ## Coin change II
+
 ## Extended 0-1 Knapsack 
     Problem Description
         Given two integer arrays A and B of size N each which represent values and weights associated with N items respectively.

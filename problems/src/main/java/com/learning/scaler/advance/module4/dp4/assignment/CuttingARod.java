@@ -2,7 +2,7 @@ package com.learning.scaler.advance.module4.dp4.assignment;
 
 /*
 Problem Description
-    Given a rod of length N units and an array A of size N denotes prices that contains prices of all
+    Given a rod of length N units and an array A of size N denotes prices that contain prices of all
     pieces of size 1 to N.
     Find and return the maximum value that can be obtained by cutting up the rod and selling the pieces.
 
@@ -14,7 +14,7 @@ Input Format
     First and only argument is an integer array A of size N.
 
 Output Format
-    Return an integer denoting the maximum value that can be obtained by cutting up
+     Returns an integer denoting the maximum value that can be obtained by cutting up
     the rod and selling the pieces.
 
 Example Input

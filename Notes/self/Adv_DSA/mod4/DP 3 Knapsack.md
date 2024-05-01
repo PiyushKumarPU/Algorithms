@@ -4,6 +4,7 @@
 - [Fractional Knapsack](#fractional-knapsack)
 - [0-1 Knapsack](#0-1-knapsack)
 - [Unbounded Knapsack](#unbounded-knapsack)
+- [Flip Array](#flip-array)
   
 
 ## Problems and solutions
@@ -186,6 +187,7 @@ private int solve(int[] A, int[] B, int C, int index) {
     return indexWeightPair[index][C];
 }
 ``` 
+
 ## Unbounded Knapsack
     Problem Description
     Given a knapsack weight A and a set of items with certain value B[i] and weight C[i], we need to calculate

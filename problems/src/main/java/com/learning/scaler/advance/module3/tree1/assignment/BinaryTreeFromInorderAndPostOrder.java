@@ -52,16 +52,12 @@ Example Explanation
 * */
 public class BinaryTreeFromInorderAndPostOrder {
 
-    public static void main(String[] args) {
-        PrintTreeNode.traversePreOrder(buildTree(new int[]{6, 1, 3, 2}, new int[]{6, 3, 2, 1}));
-    }
-
-    public static void buildTree(ArrayList<Integer> A, ArrayList<Integer> B) {
+    public void buildTree(ArrayList<Integer> A, ArrayList<Integer> B) {
         TreeNode root = constructTree(A, B);
         PrintTreeNode.traversePreOrder(root);
     }
 
-    private static TreeNode constructTree(ArrayList<Integer> A, ArrayList<Integer> B) {
+    private TreeNode constructTree(ArrayList<Integer> A, ArrayList<Integer> B) {
         if (A.isEmpty() || B.isEmpty()) return new TreeNode(0);
         int poSize = B.size();
         TreeNode root = new TreeNode(B.get(poSize - 1));
@@ -82,7 +78,7 @@ public class BinaryTreeFromInorderAndPostOrder {
     }
 
 
-    private static TreeNode buildTree(int[] A, int[] B) {
+    private TreeNode buildTree(int[] A, int[] B) {
         if (A == null || A.length == 0 || B == null || B.length == 0) return null;
         Map<Integer, Integer> valIndexMap = new HashMap<>();
         for (int i = 0; i < A.length; i++) {
@@ -91,7 +87,7 @@ public class BinaryTreeFromInorderAndPostOrder {
         return buildTree(A, B, valIndexMap, 0, A.length - 1, 0, A.length - 1);
     }
 
-    private static TreeNode buildTree(int[] A, int[] B, Map<Integer, Integer> valIndexMap, int inStart, int inEnd, int postStart, int postEnd) {
+    private TreeNode buildTree(int[] A, int[] B, Map<Integer, Integer> valIndexMap, int inStart, int inEnd, int postStart, int postEnd) {
         if(inStart > inEnd) return null;
         int rootNode = B[postEnd];
         int rootIndex = valIndexMap.get(rootNode);

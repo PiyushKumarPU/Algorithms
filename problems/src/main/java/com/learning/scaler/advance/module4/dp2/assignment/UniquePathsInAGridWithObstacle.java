@@ -55,73 +55,60 @@ Example Explanation
 public class UniquePathsInAGridWithObstacle {
 
     public static void main(String[] args) {
-        System.out.println(new UniquePathsInAGridWithObstacle()
-                .uniquePathsWithObstaclesBU(new int[][]{{0}}));
+
     }
 
-    // top down
-    int[][] pathMatrix;
-
-    public int uniquePathsWithObstacles(int[][] A) {
-        if (pathMatrix == null) {
-            pathMatrix = new int[A.length][A[0].length];
-            for (int[] arr : pathMatrix) Arrays.fill(arr, -1);
-        }
-        return uniquePathsWithObstaclesDp1Rec(A, A.length - 1, A[0].length - 1);
+    // brute force
+    public int uniquePathsWithObstaclesBF(int[][] A) {
+        return pathWithObstABF(A, A.length - 1, A[0].length - 1);
     }
 
-    public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
+    public int pathWithObstABF(int[][] A, int start, int end) {
+        if (start == 0 && end == 0 && A[start][end] != 1) return 1;
         if (start < 0 || end < 0) return 0;
-        else if (start == 0 && end == 0) return (A[start][end] == 1) ? 0 : 1;
-        else if (pathMatrix[start][end] != -1) return pathMatrix[start][end];
-        else if (A[start][end] == 1) {
-            pathMatrix[start][end] = 0;
-        } else {
-            pathMatrix[start][end] = uniquePathsWithObstaclesTDRec(A, start - 1, end) +
-                    uniquePathsWithObstaclesTDRec(A, start, end - 1);
-        }
-        return pathMatrix[start][end];
+        else if (A[start][end] == 1) return 0;
+        return pathWithObstABF(A, start, end - 1) + pathWithObstABF(A, start - 1, end);
     }
 
     // bottom up
-    // need to correct it
-    public int uniquePathsWithObstaclesBU(int[][] A) {
-        if (pathMatrix == null) {
-            pathMatrix = new int[A.length][A[0].length];
-            if (pathMatrix.length > 1) {
-                for (int i = 0; i < pathMatrix.length; i++) {
-                    if (i == 0) {
-                        for (int j = 0; j < pathMatrix[0].length; j++) {
-                            pathMatrix[0][j] = A[0][j] > 0 ? 0 : 1;
-                        }
-                    } else {
-                        Arrays.fill(pathMatrix[i], -1);
-                        pathMatrix[i][0] = A[i][0] > 0 ? 0 : 1;
-                    }
-                }
-            } else {
-                Arrays.fill(pathMatrix[0], -1);
-            }
+    int[][] pathMatrix;
 
-        }
-        return uniquePathsWithObstaclesBURec(A, A.length - 1, A[0].length - 1);
+    public int uniquePathsWithObstacles(int[][] A) {
+        pathMatrix = new int[A.length][A[0].length];
+        for (int[] arr : pathMatrix) Arrays.fill(arr, -1);
+        return pathWithObstA(A, A.length - 1, A[0].length - 1);
     }
 
-    public int uniquePathsWithObstaclesBURec(int[][] A, int start, int end) {
+    public int pathWithObstA(int[][] A, int start, int end) {
+        if (start == 0 && end == 0 && A[start][end] != 1) return 1;
         if (start < 0 || end < 0) return 0;
-        else if (start == 0 && end == 0 && A[start][end] == 0) return 1;
-        else if (pathMatrix[start][end] > 0) return pathMatrix[start][end];
-        else if (A[start][end] == 1) {
-            pathMatrix[start][end] = 0;
-        } else {
-            pathMatrix[start][end] = uniquePathsWithObstaclesBURec(A, start - 1, end) +
-                    uniquePathsWithObstaclesBURec(A, start, end - 1);
-        }
+        else if (pathMatrix[start][end] != -1) return pathMatrix[start][end];
+        else
+            pathMatrix[start][end] = (A[start][end] == 1) ? 0 :
+                    pathWithObstA(A, start, end - 1) + pathWithObstA(A, start - 1, end);
+        return pathMatrix[start][end];
+    }
+
+    // top down
+    public int pathWithObstATD(int[][] A) {
+        pathMatrix = new int[A.length][A[0].length];
+        for (int[] arr : pathMatrix) Arrays.fill(arr, -1);
+        return pathWithObstATD(A, 0, 0);
+    }
+
+    public int pathWithObstATD(int[][] A, int start, int end) {
+        if (start == A.length - 1 && end == A[0].length - 1 && A[start][end] != 1) return 1;
+        else if (start >= A.length || end >= A[0].length) return 0;
+        else if (pathMatrix[start][end] != -1) return pathMatrix[start][end];
+        else
+            pathMatrix[start][end] = (A[start][end] == 1) ? 0 :
+                    pathWithObstATD(A, start, end + 1) + pathWithObstATD(A, start + 1, end);
         return pathMatrix[start][end];
     }
 
     // leet code
     int[][] lPathMatrix;
+
     public int uniquePathsWithObstaclesTD(int[][] obstacleGrid) {
         if (lPathMatrix == null) {
             lPathMatrix = new int[obstacleGrid.length][obstacleGrid[0].length];

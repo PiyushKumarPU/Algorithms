@@ -30,10 +30,6 @@ Input:
  * */
 public class BinaryTreeFromInorderAndPreOrder {
 
-    public static void main(String[] args) {
-
-    }
-
     public TreeNode buildTreeFromInorderAndPreOrder(int[] preorder, int[] inorder) {
         if (preorder == null || preorder.length == 0 || inorder == null || inorder.length == 0) return null;
         Map<Integer, Integer> valIndexMap = new HashMap<>();
