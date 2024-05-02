@@ -61,12 +61,6 @@ public class BuyingCandies {
     }
 
     public int solve(int[] A, int[] B, int[] C, int D) {
-        return 0;
-    }
-
-
-
-    /*public int solveScaler(int[] A, int[] B, int[] C, int D) {
         int[] dp = new int[D + 1];
         for (int i = 0; i < A.length; i++) {
             for (int j = C[i]; j <= D; j++) {
@@ -75,24 +69,5 @@ public class BuyingCandies {
         }
         return dp[D];
     }
-
-    public int solve(ArrayList<Integer> A, ArrayList<Integer> B,
-                     ArrayList<Integer> C, int D) {
-        int[] sweetnessRange = new int[D + 1];
-        sweetnessRange[0] = 0;
-        for (int i = 1; i <= D; i++) {
-            int maxValue = 0;
-            for (int j = 0; j < A.size(); j++) {
-                if (C.get(j) <= i) {
-                    int remainingCost = i - C.get(j);
-                    int totalSweetness = A.get(j) * B.get(j) +
-                            (remainingCost > 0 ? sweetnessRange[remainingCost] : 0);
-                    maxValue = Math.max(maxValue, totalSweetness);
-                }
-            }
-            sweetnessRange[i] = maxValue;
-        }
-        return sweetnessRange[D];
-    }*/
 
 }

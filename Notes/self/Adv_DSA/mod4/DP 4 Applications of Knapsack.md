@@ -63,10 +63,152 @@
         TC : O(2^N) Same as time complexity of recursion 
         SC : O(h) --> height of recursion stack
     Idea 2:
-        We will use greedy approach to maximise the profit.
-     * Start cutting rod in all possible options and find the max of each steps.
+        If we look at problem description, it is as same as unbounded knapsack because for each step we can cut rod in all
+        available options.
 
-## Coin change I
+        Step 1: Cut rods in all possible length
+        Step 2: Calculate profit and then again cut it into all available length
+        step 3: Chosse the length which gives max profit
+        TC : O(n^2)
+        SC : O(n) --> dp length
+### Solution
+```java
+// brute force
+public int cuttingRods(int[] A) {
+    if (A == null || A.length == 0) return 0;
+    return cuttingRods(A, A.length);
+}
+public int cuttingRods(int[] A, int capacity) {
+    if (capacity <= 0) return 0;
+    int currentMax = Integer.MIN_VALUE;
+    for (int i = 0; i < A.length; i++) {
+        int current = 0;
+        if (i + 1 <= capacity) {
+            current = A[i] + cuttingRods(A, capacity - (i + 1));
+        }
+        currentMax = Math.max(currentMax, current);
+    }
+    return (currentMax == Integer.MIN_VALUE) ? 0 : currentMax;
+}
+// Using dynamic programming top down approach
+int[] profitMatrix;
+public int cuttingRods(int[] A) {
+    if (A == null || A.length == 0) return 0;
+    profitMatrix = new int[A.length + 1];
+    Arrays.fill(profitMatrix, -1);
+    profitMatrix[0] = 0;
+    return cuttingRodsTopDown(A, A.length);
+}
+public int cuttingRodsTopDown(int[] A, int capacity) {
+    if (capacity <= 0) return 0;
+    if (profitMatrix[capacity] != -1) return profitMatrix[capacity];
+    int currentMax = Integer.MIN_VALUE;
+    for (int i = 0; i < A.length; i++) {
+        int current = 0;
+        if (i + 1 <= capacity) {
+            current = A[i] + cuttingRods(A, capacity - (i + 1));
+        }
+        currentMax = Math.max(currentMax, current);
+    }
+    profitMatrix[capacity] = (currentMax == Integer.MIN_VALUE) ? 0 : currentMax;
+    return profitMatrix[capacity];
+}
+```
+## Coin sum infinite with duplicate
+    Problem Description
+        You are given a set of coins A. In how many ways can you make sum B assuming you have infinite amount
+        of each coin in the set.
+        NOTE:
+            Coins in set A will be unique. Expected space complexity of this problem is O(B).
+            The answer can overflow. So, return the answer % (10^6 + 7).
+
+    Problem Constraints
+        1 <= A <= 500
+        1 <= A[i] <= 1000
+        1 <= B <= 50000
+
+    Input Format
+        First argument is an integer array A representing the set.
+        Second argument is an integer B.
+
+    Output Format
+        Return an integer denoting the number of ways.
+
+    Example Input
+        Input 1:
+        A = [1, 2, 3]
+        B = 4
+        Input 2:
+        A = [10]
+        B = 10
+
+    Example Output
+        Output 1:
+            7
+        Output 2:
+            1
+
+    Example Explanation
+        Explanation 1:
+        The 4 possible ways are:
+        {1, 1, 1, 1}
+        {1, 1, 2}
+        {1, 2, 1}
+        {2, 1, 1}
+        {2, 2}
+        {1, 3}
+        {3, 1}
+        Explanation 2:
+        There is only 1 way to make sum 10.
+### Solution Approach
+    Approach 1: Brute Force
+        Look for all possible options as we can select same coin as many as times we can.
+        TC : O(2^n)
+        SC: O(n) --> stack space
+    Approach 2:
+        Store and resuse duplicate calculation in above approach
+        TC : O(B * A.length)
+        SC : O(B)
+### Solution
+```java
+// Brute force
+public int coinSum(int[] A, int B) {
+    if (A == null || A.length == 0 || B < 0) return 0;
+    if (B == 0) return 1;
+    int count = 0;
+    for (int a : A) {
+        if (a <= B) {
+            count += coinSum(A, B - a);
+        }
+    }
+    return count;
+}
+// Dp top down approach
+int[] waysMatrix;
+public int coinSumTopDown(int[] A, int B) {
+    if (A == null || A.length == 0 || B < 0) return 0;
+    waysMatrix = new int[B + 1];
+    Arrays.fill(waysMatrix, -1);
+    waysMatrix[0] = 1;
+    return coinSumTopDownRec(A, B);
+}
+
+public int coinSumTopDownRec(int[] A, int B) {
+    if (A == null || A.length == 0 || B < 0) return 0;
+    if (B == 0) return 1;
+    if (waysMatrix[B] != -1) return waysMatrix[B];
+    int count = 0;
+    for (int a : A) {
+        if (a <= B) {
+            count += coinSumTopDownRec(A, B - a);
+        }
+    }
+    waysMatrix[B] = count;
+    return waysMatrix[B];
+}
+```
+    
+## Coin Sum Infinite
     Problem Description
         You are given a set of coins A. In how many ways can you make sum B assuming you have infinite amount
         of each coin in the set.
@@ -110,7 +252,7 @@
         Explanation 2:
         There is only 1 way to make sum 10.
 
-## Coin change II
+
 
 ## Extended 0-1 Knapsack 
     Problem Description
