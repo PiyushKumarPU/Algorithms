@@ -1,4 +1,4 @@
-package com.learning.scaler.advance.module4.dp4.assignment;
+package com.learning.scaler.advance.module4.dp4.lecture;
 
 import java.util.Arrays;
 

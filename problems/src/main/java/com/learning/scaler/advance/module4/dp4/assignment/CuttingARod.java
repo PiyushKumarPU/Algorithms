@@ -39,9 +39,6 @@ Example
 * */
 public class CuttingARod {
 
-    int maxProfit = Integer.MIN_VALUE;
-
-
     public static void main(String[] args) {
         CuttingARod rod = new CuttingARod();
         System.out.println(rod.cuttingRods(new int[]{3, 4, 1, 6, 2}));
@@ -85,6 +82,7 @@ public class CuttingARod {
         return profitMatrix[capacity];
     }
 
+    // need to check it
     public int cuttingRodsIterative(int[] A) {
         int[] profitMatrix = new int[A.length + 1];
         profitMatrix[0] = 0;

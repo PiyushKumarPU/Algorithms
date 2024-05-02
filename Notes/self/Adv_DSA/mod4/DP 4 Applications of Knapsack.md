@@ -1,11 +1,9 @@
 ## Advance DSA Day 43 DP 4  Applications of Knapsack
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
-
 ## Scope / Agenda
 - [Cutting the Rod](#cutting-the-rod)
-- [Coin change I](#coin-change-i)
-- [Coin change II](#coin-change-ii)
+- [Coin sum infinite with duplicate](#coin-sum-infinite-with-duplicate)
+- [Coin Sum Infinite](#coin-sum-infinite)
 - [Extended 0-1 Knapsack](#extended-0-1-knapsack)
 
 ## Problems and solutions
@@ -114,6 +112,7 @@ public int cuttingRodsTopDown(int[] A, int capacity) {
     return profitMatrix[capacity];
 }
 ```
+
 ## Coin sum infinite with duplicate
     Problem Description
         You are given a set of coins A. In how many ways can you make sum B assuming you have infinite amount

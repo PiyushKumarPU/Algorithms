@@ -39,20 +39,58 @@ Example Explanation
 * */
 public class CuttingARod {
 
-    int[] profits;
-
     public static void main(String[] args) {
-
+        com.learning.scaler.advance.module4.dp4.assignment.CuttingARod rod = new com.learning.scaler.advance.module4.dp4.assignment.CuttingARod();
+        System.out.println(rod.cuttingRods(new int[]{3, 4, 1, 6, 2}));
     }
 
+    int[] profitMatrix;
 
-    public int solve(int[] A) {
-        int length = A.length;
-        if (profits == null) {
-            profits = new int[length + 1];
+    public int cuttingRods(int[] A) {
+        if (A == null || A.length == 0) return 0;
+        profitMatrix = new int[A.length + 1];
+        Arrays.fill(profitMatrix, -1);
+        profitMatrix[0] = 0;
+        return cuttingRodsTopDown(A, A.length);
+    }
+
+    public int cuttingRods(int[] A, int capacity) {
+        if (capacity <= 0) return 0;
+        int currentMax = Integer.MIN_VALUE;
+        for (int i = 0; i < A.length; i++) {
+            int current = 0;
+            if (i + 1 <= capacity) {
+                current = A[i] + cuttingRods(A, capacity - (i + 1));
+            }
+            currentMax = Math.max(currentMax, current);
         }
+        return (currentMax == Integer.MIN_VALUE) ? 0 : currentMax;
+    }
 
+    public int cuttingRodsTopDown(int[] A, int capacity) {
+        if (capacity <= 0) return 0;
+        if (profitMatrix[capacity] != -1) return profitMatrix[capacity];
+        int currentMax = Integer.MIN_VALUE;
+        for (int i = 0; i < A.length; i++) {
+            int current = 0;
+            if (i + 1 <= capacity) {
+                current = A[i] + cuttingRods(A, capacity - (i + 1));
+            }
+            currentMax = Math.max(currentMax, current);
+        }
+        profitMatrix[capacity] = (currentMax == Integer.MIN_VALUE) ? 0 : currentMax;
+        return profitMatrix[capacity];
+    }
 
-        return profits[length];
+    // need to check it
+    public int cuttingRodsIterative(int[] A) {
+        int[] profitMatrix = new int[A.length + 1];
+        profitMatrix[0] = 0;
+        for (int i = 1; i <= A.length; i++) {
+            for (int j = 1; j <= i; j++) {
+                profitMatrix[i] = Math.max(profitMatrix[i], A[j] + profitMatrix[i - j]);
+            }
+        }
+        return profitMatrix[A.length];
     }
 }
