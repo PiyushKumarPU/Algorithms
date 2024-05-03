@@ -53,10 +53,12 @@ public class CoinSumInfiniteWithDuplicate {
 
     public static void main(String[] args) {
         CoinSumInfiniteWithDuplicate infinite = new CoinSumInfiniteWithDuplicate();
-        System.out.println(infinite.coinSum(new int[]{1,2,3}, 4));
-        System.out.println(infinite.coinSumTopDown(new int[]{1,2,3}, 4));
+        System.out.println(infinite.coinSum(new int[]{1, 2, 3}, 4));
+        System.out.println(infinite.coinSumTopDown(new int[]{1, 2, 3}, 4));
+        System.out.println(infinite.coinSumRec(new int[]{1, 2, 3}, 4));
     }
 
+    // Recursive/brute force approach
     public int coinSum(int[] A, int B) {
         if (A == null || A.length == 0 || B < 0) return 0;
         if (B == 0) return 1;
@@ -69,6 +71,7 @@ public class CoinSumInfiniteWithDuplicate {
         return count;
     }
 
+    // top-down approach
     int[] waysMatrix;
 
     public int coinSumTopDown(int[] A, int B) {
@@ -91,5 +94,21 @@ public class CoinSumInfiniteWithDuplicate {
         }
         waysMatrix[B] = count;
         return waysMatrix[B];
+    }
+
+
+    // bottom up approach
+    public int coinSumRec(int[] A, int B) {
+        int[] coinCountMatrix = new int[B + 1];
+        coinCountMatrix[0] = 1;
+        // calculate number of ways from 1
+        for (int i = 1; i <= B; i++) {
+            for (int k : A) {
+                if (k <= i) {
+                    coinCountMatrix[i] = coinCountMatrix[i] + coinCountMatrix[i - k];
+                }
+            }
+        }
+        return coinCountMatrix[B];
     }
 }

@@ -41,7 +41,7 @@ public class CuttingARod {
 
     public static void main(String[] args) {
         com.learning.scaler.advance.module4.dp4.assignment.CuttingARod rod = new com.learning.scaler.advance.module4.dp4.assignment.CuttingARod();
-        System.out.println(rod.cuttingRods(new int[]{3, 4, 1, 6, 2}));
+        System.out.println(rod.cuttingRodsIterative(new int[]{3, 4, 1, 6, 2}));
     }
 
     int[] profitMatrix;

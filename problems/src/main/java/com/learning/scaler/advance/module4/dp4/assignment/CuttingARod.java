@@ -88,7 +88,7 @@ public class CuttingARod {
         profitMatrix[0] = 0;
         for (int i = 1; i <= A.length; i++) {
             for (int j = 1; j <= i; j++) {
-                profitMatrix[i] = Math.max(profitMatrix[i], A[j] + profitMatrix[i - j]);
+                profitMatrix[i] = Math.max(profitMatrix[i], A[j - 1] + profitMatrix[i - j]);
             }
         }
         return profitMatrix[A.length];

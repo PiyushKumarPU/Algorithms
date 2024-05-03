@@ -250,9 +250,82 @@ public int coinSumTopDownRec(int[] A, int B) {
         {1, 3}
         Explanation 2:
         There is only 1 way to make sum 10.
+### Solution approach
+    As per the problem statement we are not allowed to pick duplicate.
+    Take below input as example to understand the problem
+    A = {1,2,3}
+    B = 4
+    We can have following options to build 4 out of available coins
+        1 + 3
+        3 + 1
+        2 + 1 + 1
+        1 + 2 + 1
+        1 + 1 + 2
+        2 + 2
+        1 + 1 + 1 + 1
+    but as per the problem descrption (i,j) is same (j,i)
+    so we can not pick combination with duplicates and we can only pick
+        1 + 3
+        2 + 1 + 1
+        2 + 2
+        1 + 1 + 1 + 1
+    Approach 1: Brute Force
+        As we are not allowed to pick duplicate combination, 
+        why cant we think of choosing one index and using it as much as we can so that same combination will not 
+        be available for future calculation
+        Step 1: Choose any index and given target
+        step 2: We have two options either we can choose the respective index or not
+        step 3: If we are not choosing that index then we will calculate it with remaining index
+        step 4: If we are choosing that index, then taget will be reduced by value of that index 
+                and we will calculate remaining target upon same index
+        step 5: Total ways to form that specific target on given index would be sum of dont take and take value
+        TC : O(2^n)
+        SC : Recursion stack space
+    Approach 2: Using dynamic programming
+        Remove duplicate calculation using dp array
+        TC : O(n * B)
+        SC : O(B)
 
+![Coin sum infinite](../../../images/CointSumInfinite.png) 
 
+> Note : Above problem will not work with recursion in case of large target and smaller coin. 
+It would end up throwing stack overflow error.
 
+### Solution
+```java
+// Using Top down approach
+int[][] coinCounts;
+public int coinSumInfinite(int[] A, int B) {
+    coinCounts = new int[A.length][B + 1];
+    for (int[] arr : coinCounts) Arrays.fill(arr, -1);
+    return coinSumInfinite(A, B, A.length - 1);
+}
+
+// not possible with recursion for larget input, as recursion stack will be full
+public int coinSumInfinite(int[] A, int target, int index) {
+    if (target == 0) return 1;
+    if (index < 0 || target < 0) return 0;
+    if (coinCounts[index][target] != -1) return coinCounts[index][target];
+    int dontTake = coinSumInfinite(A, target, index - 1);
+    int take = coinSumInfinite(A, (target - A[index]), index);
+    int ways = (take + dontTake) % 1000007;
+    coinCounts[index][target] = ways;
+    return ways;
+}
+
+// Using Bottom up approach
+public int coinSumInfiniteRec(int[] A, int B) {
+    int mod = 1000007;
+    int[] dp = new int[B + 1];
+    dp[0] = 1;
+    for (int coin : A) {
+        for (int i = coin; i <= B; i++) {
+            dp[i] = (dp[i] + dp[i - coin]) % mod;
+        }
+    }
+    return dp[B];
+}
+```
 ## Extended 0-1 Knapsack 
     Problem Description
         Given two integer arrays A and B of size N each which represent values and weights associated with N items respectively.
