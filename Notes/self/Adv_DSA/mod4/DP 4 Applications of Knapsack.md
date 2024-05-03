@@ -314,7 +314,7 @@ public int coinSumInfinite(int[] A, int target, int index) {
 }
 
 // Using Bottom up approach
-public int coinSumInfiniteRec(int[] A, int B) {
+public int coinSumInfinite(int[] A, int B) {
     int mod = 1000007;
     int[] dp = new int[B + 1];
     dp[0] = 1;
