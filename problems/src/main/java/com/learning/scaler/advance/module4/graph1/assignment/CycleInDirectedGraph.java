@@ -1,23 +1,21 @@
-package com.learning.scaler.advance.module4.graph1.additional;
-
-import com.learning.scaler.advance.module4.ConstructGraphs;
+package com.learning.scaler.advance.module4.graph1.assignment;
 
 import java.util.*;
 
 /*
 Problem Description
-    Given an directed graph having A nodes. A matrix B of size M x 2 is given which represents the
-    M edges such that there is a edge directed from node B[i][0] to node B[i][1].
+    Given a directed graph having A nodes. A matrix B of size M x 2 is given which represents the
+    M edges such that there is an edge directed from node B[i][0] to node B[i][1].
     Find whether the graph contains a cycle or not, return 1 if cycle is present else return 0.
 
 NOTE:
-    The cycle must contain atleast two nodes.
+    The cycle must contain at least two nodes.
     There are no self-loops in the graph.
     There are no multiple edges between two nodes.
     The graph may or may not be connected.
     Nodes are numbered from 1 to A.
     Your solution will run on multiple test cases.
-    If you are using global variables make sure to clear them.
+    If you are using global variables, make sure to clear them.
 
 Problem Constraints
     2 <= A <= 10^5
@@ -25,15 +23,15 @@ Problem Constraints
     1 <= B[i][0], B[i][1] <= A
 
 Input Format
-    The first argument given is an integer A representing the number of nodes in the graph.
-    The second argument given a matrix B of size M x 2 which represents the M edges such that there is a
+    The first argument given is an integer representing the number of nodes in the graph.
+    The second argument given a matrix B of size M x 2 which represents the M edges such that there is an
     edge directed from node B[i][0] to node B[i][1].
 
 
 Output Format
-    Return 1 if cycle is present else return 0.
+    Return 1 if cycle is presently else return 0.
 
-Example Input
+Example
     Input 1:
          A = 5
          B = [  [1, 2]
@@ -49,15 +47,15 @@ Example Input
                 [3, 4]
                 [4, 5] ]
 
-Example Output
+Example
     Output 1:
         1
     Output 2:
         0
 
-Example Explanation
+Example
     Explanation 1:
-        The given graph contain cycle 1 -> 3 -> 4 -> 1 or the cycle 1 -> 2 -> 4 -> 1
+        The given graph contains cycle 1 -> 3 -> 4 -> 1 or the cycle 1 -> 2 -> 4 -> 1
     Explanation 2:
          The given graph doesn't contain any cycle.
 * * */
@@ -1766,35 +1764,30 @@ public class CycleInDirectedGraph {
     }
 
     public int solve(int A, int[][] B) {
-        return hasCycle(1, ConstructGraphs.constructAdjList(B, A), new boolean[A + 1],  new int[A + 1]) ? 1 : 0;
+        return hasCycle(1, constructAdjMap(A, B), new boolean[A + 1], new int[A + 1]) ? 1 : 0;
     }
 
-    public boolean hasCycle(int src, List<List<Integer>> adjList, boolean[] visited, int[] paths) {
+    public boolean hasCycle(int src, Map<Integer, List<Integer>> adjMap, boolean[] visited, int[] paths) {
         if (!visited[src]) {
             visited[src] = true;
             paths[src] = 1;
-            for (Integer val : adjList.get(src)) {
+            for (Integer val : adjMap.get(src)) {
                 if (paths[val] == 1 ||
-                        (!visited[val] && hasCycle(val, adjList, visited, paths))) return true;
+                        (!visited[val] && hasCycle(val, adjMap, visited, paths))) return true;
             }
         }
         paths[src] = 0;
         return false;
     }
 
-    private List<List<Integer>> constructAdjList(ArrayList<ArrayList<Integer>> inputs, int nodeCount) {
-        if (inputs.isEmpty()) return new ArrayList<>();
-        int edgeCount = inputs.size();
-        List<List<Integer>> adjList = new ArrayList<>();
-        for (int i = 0; i <= nodeCount; i++) {
-            adjList.add(new ArrayList<>());
+    private Map<Integer, List<Integer>> constructAdjMap(int A, int[][] B) {
+        Map<Integer, List<Integer>> adjMap = new HashMap<>(A);
+        for (int[] rows : B) {
+            List<Integer> integers = adjMap.getOrDefault(rows[0], new ArrayList<>());
+            integers.add(rows[1]);
+            adjMap.put(rows[0], integers);
         }
-        for (int i = 1; i <= edgeCount; i++) {
-            int src = inputs.get(i - 1).get(0);
-            int dest = inputs.get(i - 1).get(1);
-            adjList.get(src).add(dest);
-        }
-        return adjList;
+        return adjMap;
     }
 
 

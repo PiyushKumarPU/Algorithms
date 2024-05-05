@@ -1,7 +1,5 @@
 package com.learning.scaler.advance.module4.graph2.lecture;
 
-import java.util.ArrayList;
-
 /*
 Problem Description
     Given a matrix of integers A of size N x M consisting of 0 and 1. A group of connected 1's forms an island.
@@ -74,6 +72,6 @@ public class NumberOfIslands {
     }
 
     public int solve(int[][] A) {
-        return com.learning.scaler.advance.module4.graph1.additional.NumberOfIslands.solve(A);
+        return com.learning.scaler.advance.module4.graph1.assignment.NumberOfIslands.solve(A);
     }
 }
