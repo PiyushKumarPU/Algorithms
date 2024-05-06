@@ -9,6 +9,7 @@
 - [BFS](#bfs)
 - [DFS](#dfs)
 - [Find cycle in directed graph](#find-cycle-in-directed-graph)
+- 
 
 
 ## Problems and solutions
@@ -195,7 +196,7 @@ Follwing is the adjacency list for above input.
     type boolean which will store information of visited array.
     2. We will iterate untill queue is empty
     3. pop element from queue and before adding its neighbour to the queue, we will check whether
-    never is already visited or not. If not then only we will add neighbour into the queue.
+    neighbour is already visited or not. If not then only we will add neighbour into the queue.
     4. At last we will check in visited array whether dest node is visited or not and return respective value.
 
 ### Solution
