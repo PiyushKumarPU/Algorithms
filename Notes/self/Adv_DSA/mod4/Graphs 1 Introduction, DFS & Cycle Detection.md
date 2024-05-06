@@ -21,6 +21,8 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/45.%20Graphs%201%20Introduction%2C%20DFS%20%26%20Cycle%20Detection.pdf)
 2. [Class/Lecture Video](https://youtu.be/xYF6ZFMD2R0)
+3. [New Batch Notes](../../../new_batch_notes/Graph1.pdf)
+4. [New Batch Video](https://youtu.be/H1gDtb3Z8i8)
 
 ## What are Graphs
     A Graph is a non-linear data structure consisting of vertices and edges. The vertices are 
