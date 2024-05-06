@@ -326,6 +326,7 @@ public int coinSumInfinite(int[] A, int B) {
     return dp[B];
 }
 ```
+
 ## Extended 0-1 Knapsack 
     Problem Description
         Given two integer arrays A and B of size N each which represent values and weights associated with N items respectively.
@@ -369,3 +370,46 @@ public int coinSumInfinite(int[] A, int B) {
         Explanation 2:
             Knapsack capacity is 10 but each item has weight greater than 10 so no items can be considered in the knapsack 
             therefore answer is 0.
+### Solution approach
+    If we look at problem statement it looks like 0-1 knapsack and its space coomplexity would be
+        O(N*C)  --> N is length of weight/value array and C is the capacity.
+    
+    But if we look at problem constraints
+        1 <= N <= 500
+        1 <= C <= 10^6
+    Time complexity become 6 * 10 ^8 and it would exceed memory limit as well as
+    time complexity would be same and it throw TLE as it can not execute in 1 sec.
+
+    So we need to find some other approach to solve this.
+    cant we think of reversing the approach, in previous approach we used to calculate maximum happiness by using
+    available weight. Lets think of using happiness as input and calculate minimum weight to get this happiness.
+
+    Step 1: Calculate max happiness that we can get using values array
+    step 2: Create a dp array of size max happiness + 1 to accomadate max happiness index
+    step 3: Start iterating from values array and calculate its contribution to the happiness
+    step 4: Choose min capacity out of all the available options
+    step 3: Iterate through in reverse and find the first value whose weight is less or equal to given capacity.
+
+    TC : O(N * sum(values[]))
+    SC : O(N * sum(values[]))
+### Solution
+```java
+public int solve(ArrayList<Integer> A, ArrayList<Integer> B, int C) {
+    int n = A.size(), maxHappiness = A.stream().reduce(0, Integer::sum);
+    int[] dp = new int[maxHappiness + 1];
+    Arrays.fill(dp, 1000000000);
+    dp[0] = 0;
+    for (int i = 0; i < n; i++) {
+        for (int val = maxHappiness; val >= A.get(i); val--) {
+            dp[val] = Math.min(dp[val], B.get(i) + dp[val - A.get(i)]);
+        }
+    }
+    for (int val = maxHappiness; val >= 0; val--) {
+        if (dp[val] <= C) {
+            return val;
+        }
+    }
+    return 0;
+}
+```
+
