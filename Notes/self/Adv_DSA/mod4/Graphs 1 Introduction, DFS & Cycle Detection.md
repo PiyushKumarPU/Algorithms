@@ -5,11 +5,11 @@
 - [Components of Graph](#components-of-graph)
 - [Classification of Graphs](#classification-of-graphs)
 - [Graph Representation](#graph-representation)
-- [Dest node can be visited from source]()
+- [Dest node can be visited from source](#dest-node-can-be-visited-from-source)
 - [BFS](#bfs)
 - [DFS](#dfs)
 - [Find cycle in directed graph](#find-cycle-in-directed-graph)
-- 
+- [No of Islands](#no-of-islands)
 
 
 ## Problems and solutions
@@ -373,7 +373,96 @@ Follwing is the adjacency list for above input.
         return false;
     }
 ```
-    
+
+## No of Islands
+    Problem Description
+        Given a matrix of integers A of size N x M consisting of 0 and 1. A group of connected 1's forms an island.
+        From a cell (i, j) such that A[i][j] = 1 you can visit any cell that shares a corner with (i, j)
+        and value in that cell is 1.
+        More formally, from any cell (i, j) if A[i][j] = 1 you can visit:
+            (i-1, j) if (i-1, j) is inside the matrix and A[i-1][j] = 1.
+            (i, j-1) if (i, j-1) is inside the matrix and A[i][j-1] = 1.
+            (i+1, j) if (i+1, j) is inside the matrix and A[i+1][j] = 1.
+            (i, j+1) if (i, j+1) is inside the matrix and A[i][j+1] = 1.
+            (i-1, j-1) if (i-1, j-1) is inside the matrix and A[i-1][j-1] = 1.
+            (i+1, j+1) if (i+1, j+1) is inside the matrix and A[i+1][j+1] = 1.
+            (i-1, j+1) if (i-1, j+1) is inside the matrix and A[i-1][j+1] = 1.
+            (i+1, j-1) if (i+1, j-1) is inside the matrix and A[i+1][j-1] = 1.
+        Return the number of islands.
+        NOTE: Rows are numbered from top to bottom and columns are numbered from left to right.
+
+
+    Problem Constraints
+        1 <= N, M <= 100
+        0 <= A[i] <= 1
+
+    Input Format
+        The only argument given is the integer matrix A.
+
+    Output Format
+        Return the number of islands.
+
+    Example Input
+        Input 1:
+        A = [
+            [0, 1, 0]
+            [0, 0, 1]
+            [1, 0, 0]
+            ]
+        Input 2:
+        A = [
+            [1, 1, 0, 0, 0]
+            [0, 1, 0, 0, 0]
+            [1, 0, 0, 1, 1]
+            [0, 0, 0, 0, 0]
+            [1, 0, 1, 0, 1]
+            ]
+
+
+    Example Output
+        Output 1:
+        2
+        Output 2:
+        5
+
+    Example Explanation
+        Explanation 1:
+        The 1's at position A[0][1] and A[1][2] forms one island.
+        Other is formed by A[2][0].
+        Explanation 2:
+        There 5 island in total.
+### Solution approach
+    We will look for all the cell which has 1 as value and then we will keep finding all its neighbour with same value and we will change its value to something else so that same cell should not be counted again.
+    Will do DFS for all the neighbours until we find water cell or boundary cell.
+
+### Solution
+```java
+    public int solve(int[][] A) {
+        int n = A.length, m = A[0].length, count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (A[i][j] == 1) {
+                    count++;
+                    DFS(A, i, j);
+                }
+            }
+        }
+        return count;
+    }
+
+    private void DFS(int[][] A, int i, int j) {
+        if (i < 0 || i >= A.length || j < 0 || j >= A[0].length || A[i][j] != 1) return;
+        A[i][j] = 2;
+        DFS(A, i - 1, j);
+        DFS(A, i, j - 1);
+        DFS(A, i + 1, j);
+        DFS(A, i, j + 1);
+        DFS(A, i - 1, j - 1);
+        DFS(A, i + 1, j + 1);
+        DFS(A, i - 1, j + 1);
+        DFS(A, i + 1, j - 1);
+    }
+```   
 
 
 

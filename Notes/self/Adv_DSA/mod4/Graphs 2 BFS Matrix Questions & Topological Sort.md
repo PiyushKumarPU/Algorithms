@@ -3,8 +3,12 @@
 ## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 
 ## Scope / Agenda
-- [No of Islands](#no-of-islands)
+- [BFS](#bfs)
+- [Multi Source BFS](#multi-source-bfs)
+- [Rotten Oranges](#rotten-oranges)
+- [Possibility of finishing course](#possibility-of-finishing-course)
 - [Topological sort](#topological-sort)
+- [Reverse Topological sort]()
 - [Union Find](#union-find)
 - [Knight On Chess Board](#knight-on-chess-board)
 
@@ -19,97 +23,61 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/46.%20graph%202.pdf)
 2. [Class/Lecture Video](https://youtu.be/yYlVP_1vkss)
+3. [New Batch Notes](../../../new_batch_notes/Graph2.pdf)
+4. [New Batch Video](https://youtu.be/RpCnBlqCw20)
 
 
-## No of Islands
-    Problem Description
-        Given a matrix of integers A of size N x M consisting of 0 and 1. A group of connected 1's forms an island.
-        From a cell (i, j) such that A[i][j] = 1 you can visit any cell that shares a corner with (i, j)
-        and value in that cell is 1.
-        More formally, from any cell (i, j) if A[i][j] = 1 you can visit:
-            (i-1, j) if (i-1, j) is inside the matrix and A[i-1][j] = 1.
-            (i, j-1) if (i, j-1) is inside the matrix and A[i][j-1] = 1.
-            (i+1, j) if (i+1, j) is inside the matrix and A[i+1][j] = 1.
-            (i, j+1) if (i, j+1) is inside the matrix and A[i][j+1] = 1.
-            (i-1, j-1) if (i-1, j-1) is inside the matrix and A[i-1][j-1] = 1.
-            (i+1, j+1) if (i+1, j+1) is inside the matrix and A[i+1][j+1] = 1.
-            (i-1, j+1) if (i-1, j+1) is inside the matrix and A[i-1][j+1] = 1.
-            (i+1, j-1) if (i+1, j-1) is inside the matrix and A[i+1][j-1] = 1.
-        Return the number of islands.
-        NOTE: Rows are numbered from top to bottom and columns are numbered from left to right.
+## BFS
+    The Breadth First Search (BFS) algorithm is used to search a graph data structure for a
+    node that meets a set of criteria. It starts at the root of the graph and visits all 
+    nodes at the current depth level before moving on to the nodes at the next depth level.
 
+    Basically it is level order traversal, first we will trvaerse all the direct neighbour and then 
+    we will traverse to next level neighbours.
 
-    Problem Constraints
-        1 <= N, M <= 100
-        0 <= A[i] <= 1
+![BFS](../../../images/bfs_1.png?raw=true)
+![BFS](../../../images/bfs_2.png?raw=true)
+![BFS](../../../images/bfs_3.png?raw=true)
+![BFS](../../../images/bfs_4.png?raw=true)
+![BFS](../../../images/bfs_5.png?raw=true)
+![BFS](../../../images/bfs_6.png?raw=true)
+![BFS](../../../images/bfs_7.png?raw=true)
 
-    Input Format
-        The only argument given is the integer matrix A.
-
-    Output Format
-        Return the number of islands.
-
-    Example Input
-        Input 1:
-        A = [
-            [0, 1, 0]
-            [0, 0, 1]
-            [1, 0, 0]
-            ]
-        Input 2:
-        A = [
-            [1, 1, 0, 0, 0]
-            [0, 1, 0, 0, 0]
-            [1, 0, 0, 1, 1]
-            [0, 0, 0, 0, 0]
-            [1, 0, 1, 0, 1]
-            ]
-
-
-    Example Output
-        Output 1:
-        2
-        Output 2:
-        5
-
-    Example Explanation
-        Explanation 1:
-        The 1's at position A[0][1] and A[1][2] forms one island.
-        Other is formed by A[2][0].
-        Explanation 2:
-        There 5 island in total.
 ### Solution approach
-    We will look for all the cell which has 1 as value and then we will keep finding all its neighbour with same value and we will change its value to something else so that same cell should not be counted again.
-    Will do DFS for all the neighbours until we find water cell or boundary cell.
-
+    We will start visiting from root node and one level at a time
+    TC : O(V + E) --> No of vertices + max no of edges that can be 2* edged count
+    SC : O(V + V)     --> Space taken by visited node array + space take by queue
+ 
 ### Solution
 ```java
-    public int solve(int[][] A) {
-        int n = A.length, m = A[0].length, count = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (A[i][j] == 1) {
-                    count++;
-                    DFS(A, i, j);
-                }
+public List<Integer> bfsSearch(List<List<Integer>> graphs, int root) {
+    List<Integer> result = new ArrayList<>();
+    boolean[] visitedNodes = new boolean[graphs.size()];
+    Queue<Integer> paths = new LinkedList<>();
+    paths.add(root);
+    visitedNodes[root] = true;
+    while (!paths.isEmpty()) {
+        int current = paths.poll();
+        result.add(current);
+        List<Integer> nbrs = graphs.get(current);
+        for (Integer nbr : nbrs) {
+            if (!visitedNodes[nbr]) {
+                paths.add(nbr);
+                visitedNodes[nbr] = true;
             }
         }
-        return count;
     }
-
-    private void DFS(int[][] A, int i, int j) {
-        if (i < 0 || i >= A.length || j < 0 || j >= A[0].length || A[i][j] != 1) return;
-        A[i][j] = 2;
-        DFS(A, i - 1, j);
-        DFS(A, i, j - 1);
-        DFS(A, i + 1, j);
-        DFS(A, i, j + 1);
-        DFS(A, i - 1, j - 1);
-        DFS(A, i + 1, j + 1);
-        DFS(A, i - 1, j + 1);
-        DFS(A, i + 1, j - 1);
-    }
+    return result;
+}
 ```
+
+## Multi Source BFS
+
+
+## Rotten Oranges
+
+## Possibility of finishing course
+
 ## Topological sort
     Problem Description
         Given an directed acyclic graph having A nodes. A matrix B of size M x 2 is given which represents the M edges such 
@@ -171,6 +139,7 @@
             The given graph contain no cycle so topological ordering exists which is [5, 6, 1, 3, 4, 2]
         Explanation 2:
             The given graph contain cycle so topological ordering not possible we will return empty array.
+
 ## Union Find
 ## Knight On Chess Board
     Problem Description

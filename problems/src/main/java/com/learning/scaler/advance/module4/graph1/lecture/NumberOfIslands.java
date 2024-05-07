@@ -1,4 +1,4 @@
-package com.learning.scaler.advance.module4.graph2.lecture;
+package com.learning.scaler.advance.module4.graph1.lecture;
 
 /*
 Problem Description
