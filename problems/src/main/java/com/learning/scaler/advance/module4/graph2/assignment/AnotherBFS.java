@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module4.graph2.assignment;
 
-import java.util.ArrayList;
+import com.learning.scaler.advance.module4.graph3.Pair;
+
+import java.util.*;
 
 /*
 Problem Description
@@ -66,7 +68,35 @@ Example Explanation
          Path will be 0-> 1.
 * */
 public class AnotherBFS {
+
+    public static void main(String[] args) {
+
+    }
+
     public int solve(int A, ArrayList<ArrayList<Integer>> B, int C, int D) {
-        return 0;
+        List<List<Pair>> adjList = constructAdjList(B, A);
+        int[] distances = new int[A + 1];
+        Arrays.fill(distances, Integer.MAX_VALUE);
+        PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparingInt(p -> p.weight));
+        minHeap.add(new Pair(C, 0));
+        while (!minHeap.isEmpty()) {
+            Pair current = minHeap.poll();
+            if (current.weight > distances[current.node]) continue;
+            distances[current.node] = current.weight;
+            for (Pair nbr : adjList.get(current.node)) minHeap.add(new Pair(nbr.node, nbr.weight + current.weight));
+        }
+        return distances[D] == Integer.MAX_VALUE ? -1 : distances[D];
+    }
+
+    private List<List<Pair>> constructAdjList(ArrayList<ArrayList<Integer>> B, int nodeCount) {
+        List<List<Pair>> result = new ArrayList<>(nodeCount + 1);
+        for (int i = 0; i <= nodeCount; i++) {
+            result.add(new ArrayList<>());
+        }
+        for (ArrayList<Integer> row : B) {
+            result.get(row.get(0)).add(new Pair(row.get(1), row.get(2)));
+            result.get(row.get(1)).add(new Pair(row.get(0), row.get(2)));
+        }
+        return result;
     }
 }

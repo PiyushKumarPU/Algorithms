@@ -91,33 +91,18 @@ public class TopologicalSort {
             indegree[end]++;
             adjList.get(start).add(end);
         }
-
-        for (int i = 0; i < adjList.size(); i++) {
-            List<Integer> row = adjList.get(i);
-            row.sort(Comparator.naturalOrder());
-            adjList.set(i, row);
-        }
-        Queue<Integer> orderQueue = new LinkedList<>();
-
-        orderQueue.add(1);
-        ArrayList<Integer> result = new ArrayList<>(solve1(orderQueue, indegree, adjList));
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         for (int i = 1; i < indegree.length; i++) {
-            if (indegree[i] > 0)
-                result.addAll(solve1(orderQueue, indegree, adjList));
-            orderQueue.clear();
+            if (indegree[i] == 0) minHeap.add(i);
         }
-        return result;
-    }
 
-    private ArrayList<Integer> solve1(Queue<Integer> orderQueue, int[] indegree,
-                                      List<List<Integer>> adjList) {
         ArrayList<Integer> result = new ArrayList<>();
-        while (!orderQueue.isEmpty()) {
-            int current = orderQueue.poll();
+        while (!minHeap.isEmpty()) {
+            int current = minHeap.poll();
             result.add(current);
             for (int nbr : adjList.get(current)) {
                 indegree[nbr]--;
-                if (indegree[nbr] == 0) orderQueue.add(nbr);
+                if (indegree[nbr] == 0) minHeap.add(nbr);
             }
         }
         return result;
