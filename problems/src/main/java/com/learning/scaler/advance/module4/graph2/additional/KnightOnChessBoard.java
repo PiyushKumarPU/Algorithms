@@ -1,5 +1,10 @@
 package com.learning.scaler.advance.module4.graph2.additional;
 
+import com.learning.scaler.advance.module4.graph3.Pair;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 /*
 *
 Problem Description
@@ -55,13 +60,49 @@ Example Explanation
 */
 public class KnightOnChessBoard {
 
-    public int knight(int A, int B, int C, int D, int E, int F) {
-        int[][] chessBoard = new int[A][B];
+    public static void main(String[] args) {
+        KnightOnChessBoard chessBoard = new KnightOnChessBoard();
 
-        return 0;
+        System.out.println(chessBoard.knight(8, 8, 1, 1, 8, 8));
     }
 
-    public void knightMovement(int[][] chessBoard, int i, int j, int endI, int endJ) {
+    public int knight(int A, int B, int C, int D, int E, int F) {
+        boolean[][] visited = new boolean[A + 1][B + 1];
+        Queue<Triplet> queue = new LinkedList<>();
+        queue.add(new Triplet(C, D, 0));
+        int minStepCount = Integer.MAX_VALUE;
+        int[] start = {-2, -2, 2, 2, -1, 1, -1, 1};
+        int[] end = {1, -1, 1, -1, 2, 2, -2, -2};
+        while (!queue.isEmpty()) {
+            Triplet current = queue.poll();
+            if (visited[current.i][current.j]) continue;
+            if (current.i == E && current.j == F) {
+                minStepCount = Math.min(minStepCount, current.steps);
+            }
+            visited[current.i][current.j] = true;
+            // check all options and add it to queue if valid
+            for (int i = 0; i < 8; i++) {
+                int X = current.i + start[i], Y = current.j + end[i];
+                if (isValidIndex(X, Y, A, B) && !visited[X][Y])
+                    queue.add(new Triplet(X, Y, current.steps + 1));
+            }
+        }
+        return minStepCount == Integer.MAX_VALUE ? -1 : minStepCount;
+    }
 
+    boolean isValidIndex(int i, int j, int N, int M) {
+        return i > 0 && j > 0 && i <= N && j <= M;
+    }
+}
+
+class Triplet {
+    public int i;
+    public int j;
+    public int steps;
+
+    public Triplet(int i, int j, int steps) {
+        this.i = i;
+        this.j = j;
+        this.steps = steps;
     }
 }

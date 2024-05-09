@@ -507,3 +507,60 @@ public ArrayList<Integer> solve(int A, ArrayList<ArrayList<Integer>> B) {
             The minimum number of moves required for this is 6.
         Explanation 2:
             It is not possible to move knight to position (4, 4) from (2, 1)
+
+### Solution Approach
+    We can solve this using DP and graph combination, in place of creating adj list in advance. We will create it
+    on the go and use dijkastra flow to calculate min steps to reach target.
+
+    Step 1: Define a 2D visited array of size [A+1][B+1]
+    Step 2: Define a Queue of Triple to hold current cell cordinate and steps to reach till that cell
+    Step 3: Add source to the queue with stepCount as 0 and start trversing till queue is empty
+    step 4: Exract element from queue and check if it already visited then continue or mark it visited
+    Step 5: Check if current cordinate is destination cordinate, if yes then assign min of totalStepCount and 
+            current step count to min step count
+    Step 6: Check all 8 direction if that is valid index and not already visited
+    Step 7: If not visited then add it to queue with new index and step count as current step count + 1
+    Step 8: Check min step count at last if unchange then reurn -1 or return minStepCount
+
+### Solution
+```java
+public int knight(int A, int B, int C, int D, int E, int F) {
+    boolean[][] visited = new boolean[A + 1][B + 1];
+    Queue<Triplet> queue = new LinkedList<>();
+    queue.add(new Triplet(C, D, 0));
+    int minStepCount = Integer.MAX_VALUE;
+    int[] start = {-2, -2, 2, 2, -1, 1, -1, 1};
+    int[] end = {1, -1, 1, -1, 2, 2, -2, -2};
+    while (!queue.isEmpty()) {
+        Triplet current = queue.poll();
+        if (visited[current.i][current.j]) continue;
+        if (current.i == E && current.j == F) {
+            minStepCount = Math.min(minStepCount, current.steps);
+        }
+        visited[current.i][current.j] = true;
+        // check all options and add it to queue if valid
+        for (int i = 0; i < 8; i++) {
+            int X = current.i + start[i], Y = current.j + end[i];
+            if (isValidIndex(X, Y, A, B) && !visited[X][Y])
+                queue.add(new Triplet(X, Y, current.steps + 1));
+        }
+    }
+    return minStepCount == Integer.MAX_VALUE ? -1 : minStepCount;
+}
+
+boolean isValidIndex(int i, int j, int N, int M) {
+    return i > 0 && j > 0 && i <= N && j <= M;
+}
+
+class Triplet {
+    public int i;
+    public int j;
+    public int steps;
+
+    public Triplet(int i, int j, int steps) {
+        this.i = i;
+        this.j = j;
+        this.steps = steps;
+    }
+}
+```
