@@ -1,5 +1,6 @@
 package com.learning.scaler.advance.module4.graph3.assignment;
 
+import com.learning.scaler.advance.module4.graph3.Pair;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
@@ -78,12 +79,11 @@ public class CommutableIslands {
         minHeap.add(new Pair(1, 0));
         while (!minHeap.isEmpty()) {
             Pair current = minHeap.poll();
-            if (visited[current.dest]) continue;
-            ;
-            visited[current.dest] = true;
+            if (visited[current.node]) continue;
+            visited[current.node] = true;
             ans += current.weight;
-            for (Pair nbr : adjList.get(current.dest)) {
-                if (visited[nbr.dest]) continue;
+            for (Pair nbr : adjList.get(current.node)) {
+                if (visited[nbr.node]) continue;
                 minHeap.add(nbr);
             }
         }
@@ -101,55 +101,4 @@ public class CommutableIslands {
         }
         return result;
     }
-
-
-
-    /*public int solve(int A, ArrayList<ArrayList<Integer>> B) {
-        boolean[] visitedNodes = new boolean[A + 1];
-        List<List<Pair>> adjList = constructAdjList(B, A);
-        PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparing(a -> a.weight));
-        int totalCost = 0;
-        minHeap.add(new Pair(1, 0));
-        while (!minHeap.isEmpty()) {
-            Pair current = minHeap.poll();
-            if (!visitedNodes[current.node]) {
-                visitedNodes[current.node] = true;
-                totalCost += current.weight;
-                for (Pair nbr : adjList.get(current.node)) {
-                    if (!visitedNodes[nbr.node]) {
-                        minHeap.add(nbr);
-                    }
-                }
-            }
-        }
-        return totalCost;
-    }
-
-
-    private List<List<Pair>> constructAdjList(ArrayList<ArrayList<Integer>> inputs, int nodeCount) {
-        if (inputs.isEmpty()) return new ArrayList<>();
-        int edgeCount = inputs.size();
-        List<List<Pair>> adjList = new ArrayList<>(nodeCount + 1);
-        for (int i = 0; i <= nodeCount; i++) {
-            adjList.add(new ArrayList<>());
-        }
-        for (int i = 0; i < edgeCount; i++) {
-            int src = inputs.get(i).get(0);
-            int dest = inputs.get(i).get(1);
-            int weight = inputs.get(i).get(2);
-            adjList.get(src).add(new Pair(dest, weight));
-            adjList.get(dest).add(new Pair(src, weight));
-        }
-        return adjList;
-    }*/
-}
-
-class Pair {
-    public int dest, weight;
-
-    public Pair(int dest, int weight) {
-        this.dest = dest;
-        this.weight = weight;
-    }
-
 }

@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module4.graph3.assignment;
 
-import java.util.ArrayList;
+import com.learning.scaler.advance.module4.graph3.Pair;
+
+import java.util.*;
 
 /*
 Problem Description
@@ -68,8 +70,56 @@ Example Explanation
          All Paths can be considered from the node C to get shortest path
 * */
 public class Dijkstra {
+    public static void main(String[] args) {
+        int A = 5, C = 4;
+        ArrayList<ArrayList<Integer>> B =
+                new ArrayList<>(
+                        List.of(
+                                new ArrayList<>(List.of(0, 3, 4)),
+                                new ArrayList<>(List.of(2, 3, 3)),
+                                new ArrayList<>(List.of(0, 1, 9)),
+                                new ArrayList<>(List.of(3, 4, 10)),
+                                new ArrayList<>(List.of(1, 3, 8))
+                        )
+                );
+
+        Dijkstra dijkstra = new Dijkstra();
+        System.out.println(dijkstra.solve(A, B, C));
+    }
 
     public ArrayList<Integer> solve(int A, ArrayList<ArrayList<Integer>> B, int C) {
-        return null;
+        ArrayList<Integer> distance = new ArrayList<>();
+        for (int i = 0; i < A; i++) {
+            distance.add(Integer.MAX_VALUE);
+        }
+        List<List<Pair>> adjList = constructAdjList(B, A);
+        PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparingInt(p -> p.weight));
+        minHeap.add(new Pair(C, 0));
+        while (!minHeap.isEmpty()) {
+            Pair current = minHeap.poll();
+            if (distance.get(current.node) > current.weight) {
+                distance.set(current.node, current.weight);
+                for (Pair nbr : adjList.get(current.node)) {
+                    minHeap.add(new Pair(nbr.node, nbr.weight + current.weight));
+                }
+            }
+        }
+        // check if any node is unreachable
+        for (int i = 0; i < A; i++) {
+            if (distance.get(i) == Integer.MAX_VALUE) distance.set(i, -1);
+        }
+        return distance;
+    }
+
+    private List<List<Pair>> constructAdjList(ArrayList<ArrayList<Integer>> B, int A) {
+        List<List<Pair>> result = new ArrayList<>(A);
+        for (int i = 0; i <= A; i++) {
+            result.add(new ArrayList<>());
+        }
+        for (ArrayList<Integer> row : B) {
+            result.get(row.get(0)).add(new Pair(row.get(1), row.get(2)));
+            result.get(row.get(1)).add(new Pair(row.get(0), row.get(2)));
+        }
+        return result;
     }
 }

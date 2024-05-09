@@ -10,8 +10,10 @@ import java.util.PriorityQueue;
 
 /*
 Problem Description
-    Given a graph with A nodes and C weighted edges. Cost of constructing the graph is the sum of weights of all the edges in the graph.
-    Find the minimum cost of constructing the graph by selecting some given edges such that we can reach every other node from the 1st node.
+    Given a graph with A nodes and C weighted edges. Cost of constructing the graph is the sum of weights of all the
+    edges in the graph.
+    Find the minimum cost of constructing the graph by selecting some given edges such that we can reach every
+    other node from the 1st node.
     NOTE: Return the answer modulo 10^9+7 as the answer can be large.
 
 Problem Constraints
@@ -22,7 +24,8 @@ Problem Constraints
 
 Input Format
     First argument is an integer A.
-    Second argument is a 2-D integer array B of size C*3 denoting edges. B[i][0] and B[i][1] are connected by ith edge with weight B[i][2]
+    Second argument is a 2-D integer array B of size C*3 denoting edges. B[i][0] and B[i][1] are connected
+    by ith edge with weight B[i][2]
 
 Output Format
     Return an integer denoting the minimum construction cost.
@@ -69,42 +72,35 @@ public class ConstructionCost {
     }
 
     public int solve(int A, ArrayList<ArrayList<Integer>> B) {
-        if (B.isEmpty()) return 0;
-        boolean[] visitedNodes = new boolean[A + 1];
+        int MOD = 1000000000 + 7;
         List<List<Pair>> adjList = constructAdjList(B, A);
-        PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparing(a -> a.weight));
-        int totalCost = 0;
-        minHeap.add(new Pair(1, 0));
-        while (!minHeap.isEmpty()) {
-            Pair current = minHeap.poll();
-            if (!visitedNodes[current.node]) {
-                visitedNodes[current.node] = true;
-                totalCost += (current.weight % 1000000007);
-                totalCost = totalCost % 1000000007;
-                for (Pair nbr : adjList.get(current.node)) {
-                    if (!visitedNodes[nbr.node]) {
-                        minHeap.add(nbr);
-                    }
-                }
+        boolean[] visited = new boolean[A + 1];
+        PriorityQueue<Pair> minWeightHeap = new PriorityQueue<>(Comparator.comparingInt(p -> p.weight));
+        int ans = 0;
+        minWeightHeap.add(new Pair(1, 0));
+        while (!minWeightHeap.isEmpty()) {
+            Pair current = minWeightHeap.poll();
+            if (visited[current.node]) continue;
+            ans += current.weight;
+            ans = ans % MOD;
+            visited[current.node] = true;
+            for (Pair nbr : adjList.get(current.node)) {
+                if (visited[nbr.node]) continue;
+                minWeightHeap.add(nbr);
             }
         }
-        return totalCost;
+        return ans;
     }
 
-    private List<List<Pair>> constructAdjList(ArrayList<ArrayList<Integer>> inputs, int nodeCount) {
-        if (inputs.isEmpty()) return new ArrayList<>();
-        int edgeCount = inputs.size();
-        List<List<Pair>> adjList = new ArrayList<>(nodeCount + 1);
+    private List<List<Pair>> constructAdjList(ArrayList<ArrayList<Integer>> B, int nodeCount) {
+        List<List<Pair>> result = new ArrayList<>(nodeCount + 1);
         for (int i = 0; i <= nodeCount; i++) {
-            adjList.add(new ArrayList<>());
+            result.add(new ArrayList<>());
         }
-        for (int i = 0; i < edgeCount; i++) {
-            int src = inputs.get(i).get(0);
-            int dest = inputs.get(i).get(1);
-            int weight = inputs.get(i).get(2);
-            adjList.get(src).add(new Pair(dest, weight));
-            adjList.get(dest).add(new Pair(src, weight));
+        for (ArrayList<Integer> row : B) {
+            result.get(row.get(0)).add(new Pair(row.get(1), row.get(2)));
+            result.get(row.get(1)).add(new Pair(row.get(0), row.get(2)));
         }
-        return adjList;
+        return result;
     }
 }
