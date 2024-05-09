@@ -134,7 +134,8 @@ class NodeDistance {
 ## Possibility of finishing course
     Problem Description
         There are a total of A courses you have to take, labeled from 1 to A.
-        Some courses may have prerequisites, for example to take course 2 you have to first take course 1, which is expressed as a pair: [1,2].
+        Some courses may have prerequisites, for example to take course 2 you have to first take course 1, which 
+        is expressed as a pair: [1,2].
         So you are given two integer array B and C of same size where for each i (B[i], C[i]) denotes a pair.
         Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses?
         Return 1 if it is possible to finish all the courses, or 0 if it is not possible to finish all the courses.
@@ -174,6 +175,61 @@ class NodeDistance {
                 1 -> 2 -> 3
         Explanation 2:
             It is not possible to complete all the courses.
+
+### Solution Approach
+    As per the problem statement course may or may not depend on other course so we need to start with course
+    which has no dependency.
+
+    Step 1: Calculate adjacency list along with indegree of each node
+    Step 2: Create a queue and add all nodes with 0 indegree
+    Step 3: Iterate until queue has data
+    Step 4: Poll from front and reduce its dependency by 1
+    Step 4: Iterate through all of its neighbour and reduce its dependency by 1
+    Step 5: If any of the neighbour has 0 indegree then add it to queue.
+    Step 6: Once queue becomes empty check if any of the node has more than 0 indegree
+    Step 7: If present return 0 or return 1 at last
+
+### Solution
+```java
+public int solve(int A, ArrayList<Integer> B, ArrayList<Integer> C) {
+    if (B.isEmpty() || C.isEmpty()) return 1;
+    int[] indegree = new int[A + 1];
+    List<List<Integer>> adjList = constructAdjList(B, C, A, indegree);
+    Queue<Integer> paths = new LinkedList<>();
+    for (int i = 1; i <= A; i++) {
+        if (indegree[i] == 0) paths.add(i);
+    }
+    while (!paths.isEmpty()) {
+        int current = paths.poll();
+        indegree[current]--;
+        for (int nbr : adjList.get(current)) {
+            indegree[nbr]--;
+            if (indegree[nbr] == 0) paths.add(nbr);
+        }
+    }
+    for (int i = 1; i <= A; i++) {
+        if (indegree[i] > 0) return 0;
+    }
+    return 1;
+}
+
+private List<List<Integer>> constructAdjList(List<Integer> startNodes, List<Integer> endNodes, int nodeCount, int[] nodes) {
+    if (startNodes.isEmpty() || endNodes.isEmpty()) return new ArrayList<>();
+    int edgeCount = startNodes.size();
+    List<List<Integer>> adjList = new ArrayList<>();
+    for (int i = 0; i <= nodeCount; i++) {
+        adjList.add(new ArrayList<>());
+    }
+    for (int i = 1; i <= edgeCount; i++) {
+        int src = startNodes.get(i - 1);
+        int dest = endNodes.get(i - 1);
+        nodes[dest]++;
+        adjList.get(src).add(dest);
+    }
+    return adjList;
+}
+```
+
 ## Rotten Oranges
     Problem Description
         Given a matrix of integers A of size N x M consisting of 0, 1 or 2.
@@ -181,7 +237,8 @@ class NodeDistance {
         The value 0 representing an empty cell.
         The value 1 representing a fresh orange.
         The value 2 representing a rotten orange.
-        Every minute, any fresh orange that is adjacent (Left, Right, Top, or Bottom) to a rotten orange becomes rotten. Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1 instead.
+        Every minute, any fresh orange that is adjacent (Left, Right, Top, or Bottom) to a rotten orange becomes rotten. Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, 
+        return -1 instead.
         Note: Your solution will run on multiple test cases. If you are using global variables, make sure to clear them.
 
     Problem Constraints
@@ -231,6 +288,69 @@ class NodeDistance {
             At Minute 4, all the oranges are rotten.
         Explanation 2:
             The fresh orange at 2nd row and 0th column cannot be rotten, So return -1.
+### Solution Approach
+    As per the problem statement only rotten orange can trigger fresh orange to rotten, if fresh orange in the range of
+    rotten orange, so we will start travering from each rotten orange and will keep calculating time and whichever time
+    is max that would be the result.
+
+    Step 1: Creata a queue of Triplet object which hold current index and time taken to reach here
+    Step 2: Add all rotten orange to the queue with time zero
+    Step 3: Extract Triplet from queue and assign max of totoal time and current time to total time
+    Step 4: Traverse to left, right , bottom and top if it has fresh orange and that index to queue with +1 in current time
+    Step 5: Keep iterating until queue is empty and keep calculating time
+    Strp 6: At last check if any fresh orange is available if yes return 0 or return total time
+
+### Solution
+```java
+public static int solve(ArrayList<ArrayList<Integer>> A) {
+    int N = A.size(), M = A.get(0).size(), totalTime = 0;
+    int[] row = {-1, 0, 1, 0};
+    int[] col = {0, 1, 0, -1};
+    Queue<Triplet> rottenQueue = new LinkedList<>();
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            if (A.get(i).get(j) == 2)
+                rottenQueue.add(new Triplet(i, j, 0));
+        }
+    }
+
+    while (!rottenQueue.isEmpty()) {
+        Triplet triplet = rottenQueue.poll();
+        int i = triplet.i, j = triplet.j, time = triplet.time;
+        totalTime = Math.max(totalTime, time);
+        for (int nbr = 0; nbr < 4; nbr++) {
+            int nbrI = i + row[nbr];
+            int nbrJ = j + col[nbr];
+            if (isValidIndex(nbrI, nbrJ, N, M) && A.get(nbrI).get(nbrJ) == 1) {
+                rottenQueue.add(new Triplet(nbrI, nbrJ, time + 1));
+                A.get(nbrI).set(nbrJ, 2);
+            }
+        }
+    }
+    for (List<Integer> rows : A) {
+        for (Integer val : rows) {
+            if (val == 1) return -1;
+        }
+    }
+    return totalTime;
+}
+
+private static boolean isValidIndex(int i, int j, int N, int M) {
+    return i >= 0 && j >= 0 && i < N && j < M;
+}
+
+class Triplet {
+    public int i;
+    public int j;
+    public int time;
+
+    public Triplet(int i, int j, int time) {
+        this.i = i;
+        this.j = j;
+        this.time = time;
+    }
+}
+```
 
 ## Topological sort
     Problem Description
@@ -265,7 +385,8 @@ class NodeDistance {
         to node B[i][1].
 
     Output Format
-        Return a one-dimensional array denoting the topological ordering of the graph and it it doesn't exist then return empty array.
+        Return a one-dimensional array denoting the topological ordering of the graph and it 
+        it doesn't exist then return empty array.
 
     Example Input
         Input 1:
@@ -294,14 +415,52 @@ class NodeDistance {
         Explanation 2:
             The given graph contain cycle so topological ordering not possible we will return empty array.
 
-## Union Find
+### Solution approach
+    Follow the same approach as Possibility of finishing with a small twist.
+    In prev problem we used queue as ordering was not a condition but here ordering matters so we will be using 
+    min heap in place of queue. Remaining steps would be same
+
+### Solution
+```java
+public ArrayList<Integer> solve(int A, ArrayList<ArrayList<Integer>> B) {
+    List<List<Integer>> adjList = new ArrayList<>();
+    for (int i = 0; i <= A; i++) {
+        adjList.add(new ArrayList<>());
+    }
+    int[] indegree = new int[A + 1];
+    for (ArrayList<Integer> row : B) {
+        int start = row.get(0);
+        int end = row.get(1);
+        indegree[end]++;
+        adjList.get(start).add(end);
+    }
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    for (int i = 1; i < indegree.length; i++) {
+        if (indegree[i] == 0) minHeap.add(i);
+    }
+
+    ArrayList<Integer> result = new ArrayList<>();
+    while (!minHeap.isEmpty()) {
+        int current = minHeap.poll();
+        result.add(current);
+        for (int nbr : adjList.get(current)) {
+            indegree[nbr]--;
+            if (indegree[nbr] == 0) minHeap.add(nbr);
+        }
+    }
+    return result;
+}
+```
+
 ## Knight On Chess Board
     Problem Description
-        Given any source point, (C, D) and destination point, (E, F) on a chess board of size A x B, we need to find whether Knight can move to the destination or not.
+        Given any source point, (C, D) and destination point, (E, F) on a chess board of size A x B, 
+        we need to find whether Knight can move to the destination or not.
 ![Chess](../../../images/Chess_boards.jpeg?raw=true)
 
         The above figure details the movements for a knight ( 8 possibilities ).
-        If yes, then what would be the minimum number of steps for the knight to move to the said point. If knight can not move from the source point to the destination point, then return -1.
+        If yes, then what would be the minimum number of steps for the knight to move to the said point. 
+        If knight can not move from the source point to the destination point, then return -1.
             NOTE: A knight cannot go out of the board.
 
     Problem Constraints

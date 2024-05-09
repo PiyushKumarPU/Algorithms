@@ -60,22 +60,22 @@ public class PossibilityOfFinishing {
 
     public int solve(int A, ArrayList<Integer> B, ArrayList<Integer> C) {
         if (B.isEmpty() || C.isEmpty()) return 1;
-        int[] nodes = new int[A + 1];
-        List<List<Integer>> adjList = constructAdjList(B, C, A, nodes);
+        int[] indegree = new int[A + 1];
+        List<List<Integer>> adjList = constructAdjList(B, C, A, indegree);
         Queue<Integer> paths = new LinkedList<>();
         for (int i = 1; i <= A; i++) {
-            if (nodes[i] == 0) paths.add(i);
+            if (indegree[i] == 0) paths.add(i);
         }
         while (!paths.isEmpty()) {
             int current = paths.poll();
-            nodes[current]--;
+            indegree[current]--;
             for (int nbr : adjList.get(current)) {
-                nodes[nbr]--;
-                if (nodes[nbr] == 0) paths.add(nbr);
+                indegree[nbr]--;
+                if (indegree[nbr] == 0) paths.add(nbr);
             }
         }
         for (int i = 1; i <= A; i++) {
-            if (nodes[i] > 0) return 0;
+            if (indegree[i] > 0) return 0;
         }
         return 1;
     }
