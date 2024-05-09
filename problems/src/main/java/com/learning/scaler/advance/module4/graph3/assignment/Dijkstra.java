@@ -24,8 +24,11 @@ Problem Constraints
 
 Input Format
     The first argument is an integer A, representing the number of nodes in the graph.
-    The second argument is a matrix B of size M x 3, where each row represents an edge in the graph. The three columns of each row denote the source node B[i][0], the destination node B[i][1], and the weight of the edge B[i][2].
-    The third argument is an integer C, representing the source node for which the shortest distance to all other nodes needs to be found.
+    The second argument is a matrix B of size M x 3, where each row represents an edge in the graph.
+    The three columns of each row denote the source node B[i][0], the destination node B[i][1], and the
+    weight of the edge B[i][2].
+    The third argument is an integer C, representing the source node for which the shortest distance to
+    all other nodes needs to be found.
 
 Output Format
     Return the integer array D.

@@ -1,7 +1,5 @@
 ## Advance DSA Day 46 Graphs 2: BFS, Matrix Questions & Topological Sort
 
-## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
-
 ## Scope / Agenda
 - [BFS](#bfs)
 - [Multi Source BFS](#multi-source-bfs)
@@ -9,7 +7,6 @@
 - [Possibility of finishing course](#possibility-of-finishing-course)
 - [Topological sort](#topological-sort)
 - [Reverse Topological sort]()
-- [Union Find](#union-find)
 - [Knight On Chess Board](#knight-on-chess-board)
 
 
@@ -34,6 +31,9 @@
 
     Basically it is level order traversal, first we will trvaerse all the direct neighbour and then 
     we will traverse to next level neighbours.
+
+    TC : O(V+E)
+    SC : O(V+E)  --> O(V*E) in case of adjacency matrix
 
 ![BFS](../../../images/bfs_1.png?raw=true)
 ![BFS](../../../images/bfs_2.png?raw=true)
@@ -72,11 +72,165 @@ public List<Integer> bfsSearch(List<List<Integer>> graphs, int root) {
 ```
 
 ## Multi Source BFS
+    Multi source BFS is all about starting BFS from multiple nodes(in place of single source like legacy BFS) 
+    choosen based on some condition and trversing level by level
 
+![MSBFS](../../../images/MSBFS.png)
 
-## Rotten Oranges
+### Solution approach
+    If we look at problem statment, we need to find minimum distance from any source till the target
+
+    step 1: Intialize a queue which will hold Pair(node val and distance from its source) class
+    Step 2: Add all sources in queue
+    Step 3: Traverse until queue is empty while calculating distance
+
+    TC : O(V+E) --> time complexity to calculate adj list
+    SC : O(V+E)
+### Solution
+```java
+public Map<Integer, Integer> findNearestSource(List<Integer> sources, List<Integer> targets,
+                                                          int A, List<List<Integer>> edges) {
+    Map<Integer, Integer> result = new HashMap<>(sources.size());
+    List<List<Integer>> adjList = ConstructGraphs.constructAdjList(edges, A);
+    Queue<NodeDistance> queue = new LinkedList<>();
+    boolean[] visited = new boolean[A + 1];
+    for (int source : sources) {
+        queue.add(new NodeDistance(0, source));
+        visited[source] = true;
+    }
+    while (!queue.isEmpty()) {
+        NodeDistance current = queue.poll();
+        visited[current.node] = true;
+        if (targets.contains(current.node)) {
+            if (result.containsKey(current.node)) {
+                if (result.get(current.node) > current.distance)
+                    result.replace(current.node, current.distance);
+            } else result.put(current.node, current.distance);
+        } else {
+            // add all neighbour
+            for (int nbr : adjList.get(current.node)) {
+                if (!visited[nbr]) {
+                    visited[nbr] = true;
+                    queue.add(new NodeDistance(current.distance + 1, nbr));
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+class NodeDistance {
+    int distance;
+    int node;
+
+    public NodeDistance(int distance, int node) {
+        this.distance = distance;
+        this.node = node;
+    }
+}
+```
 
 ## Possibility of finishing course
+    Problem Description
+        There are a total of A courses you have to take, labeled from 1 to A.
+        Some courses may have prerequisites, for example to take course 2 you have to first take course 1, which is expressed as a pair: [1,2].
+        So you are given two integer array B and C of same size where for each i (B[i], C[i]) denotes a pair.
+        Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses?
+        Return 1 if it is possible to finish all the courses, or 0 if it is not possible to finish all the courses.
+
+    Problem Constraints
+        1 <= A <= 6*10^4
+        1 <= length(B) = length(C) <= 10^5
+        1 <= B[i], C[i] <= A
+
+    Input Format
+        The first argument of input contains an integer A, representing the number of courses.
+        The second argument of input contains an integer array, B.
+        The third argument of input contains an integer array, C.
+
+    Output Format
+        Return 1 if it is possible to finish all the courses, or 0 if it is not possible to finish all the courses.
+
+    Example Input
+        Input 1:
+            A = 3
+            B = [1, 2]
+            C = [2, 3]
+        Input 2:
+            A = 2
+            B = [1, 2]
+            C = [2, 1]
+
+    Example Output
+        Output 1:
+            1
+        Output 2:
+            0
+
+    Example Explanation
+        Explanation 1:
+            It is possible to complete the courses in the following order:
+                1 -> 2 -> 3
+        Explanation 2:
+            It is not possible to complete all the courses.
+## Rotten Oranges
+    Problem Description
+        Given a matrix of integers A of size N x M consisting of 0, 1 or 2.
+        Each cell can have three values:
+        The value 0 representing an empty cell.
+        The value 1 representing a fresh orange.
+        The value 2 representing a rotten orange.
+        Every minute, any fresh orange that is adjacent (Left, Right, Top, or Bottom) to a rotten orange becomes rotten. Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1 instead.
+        Note: Your solution will run on multiple test cases. If you are using global variables, make sure to clear them.
+
+    Problem Constraints
+        1 <= N, M <= 1000
+        0 <= A[i][j] <= 2
+
+    Input Format
+        The first argument given is the integer matrix A.
+
+    Output Format
+        Return the minimum number of minutes that must elapse until no cell has a fresh orange.
+        If this is impossible, return -1 instead.
+
+    Example Input
+        Input 1:
+            A = [   [2, 1, 1]
+                    [1, 1, 0]
+                    [0, 1, 1]   ]
+        Input 2:
+            A = [   [2, 1, 1]
+                    [0, 1, 1]
+                    [1, 0, 1]   ]
+
+    Example Output
+        Output 1:
+            4
+        Output 2:
+            -1
+
+    Example Explanation
+        Explanation 1:
+            Minute 0: [ [2, 1, 1]
+                        [1, 1, 0]
+                        [0, 1, 1] ]
+            Minute 1: [ [2, 2, 1]
+                        [2, 1, 0]
+                        [0, 1, 1] ]
+            Minute 2: [ [2, 2, 2]
+                        [2, 2, 0]
+                        [0, 1, 1] ]
+            Minute 3: [ [2, 2, 2]
+                        [2, 2, 0]
+                        [0, 2, 1] ]
+            Minute 4: [ [2, 2, 2]
+                        [2, 2, 0]
+                        [0, 2, 2] ]
+            At Minute 4, all the oranges are rotten.
+        Explanation 2:
+            The fresh orange at 2nd row and 0th column cannot be rotten, So return -1.
 
 ## Topological sort
     Problem Description

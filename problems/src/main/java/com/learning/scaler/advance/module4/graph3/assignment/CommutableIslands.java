@@ -1,6 +1,6 @@
 package com.learning.scaler.advance.module4.graph3.assignment;
 
-import com.learning.scaler.advance.module4.graph3.Pair;
+import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,7 +26,7 @@ Input Format
 Output Format
     Return an integer representing the minimal cost required.
 
-Example Input
+Example
     Input 1:
          A = 4
          B = [  [1, 2, 1]
@@ -57,15 +57,13 @@ Example Explanation
 public class CommutableIslands {
 
     public static void main(String[] args) {
-        int A = 4;
+        int A = 3;
         ArrayList<ArrayList<Integer>> B =
                 new ArrayList<>(
                         List.of(
-                                new ArrayList<>(List.of(1, 2, 1)),
-                                new ArrayList<>(List.of(2, 3, 4)),
-                                new ArrayList<>(List.of(1, 4, 3)),
-                                new ArrayList<>(List.of(4, 3, 2)),
-                                new ArrayList<>(List.of(1, 3, 10))
+                                new ArrayList<>(List.of(1, 2, 10)),
+                                new ArrayList<>(List.of(1, 3, 9)),
+                                new ArrayList<>(List.of(2, 3, 5))
                         )
                 );
         CommutableIslands islands = new CommutableIslands();
@@ -73,6 +71,40 @@ public class CommutableIslands {
     }
 
     public int solve(int A, ArrayList<ArrayList<Integer>> B) {
+        int ans = 0;
+        boolean[] visited = new boolean[A + 1];
+        List<List<Pair>> adjList = constructAdjList(B, A);
+        PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparingInt(p -> p.weight));
+        minHeap.add(new Pair(1, 0));
+        while (!minHeap.isEmpty()) {
+            Pair current = minHeap.poll();
+            if (visited[current.dest]) continue;
+            ;
+            visited[current.dest] = true;
+            ans += current.weight;
+            for (Pair nbr : adjList.get(current.dest)) {
+                if (visited[nbr.dest]) continue;
+                minHeap.add(nbr);
+            }
+        }
+        return ans;
+    }
+
+    private List<List<Pair>> constructAdjList(ArrayList<ArrayList<Integer>> B, int nodeCount) {
+        List<List<Pair>> result = new ArrayList<>(nodeCount + 1);
+        for (int i = 0; i <= nodeCount; i++) {
+            result.add(new ArrayList<>());
+        }
+        for (ArrayList<Integer> row : B) {
+            result.get(row.get(0)).add(new Pair(row.get(1), row.get(2)));
+            result.get(row.get(1)).add(new Pair(row.get(0), row.get(2)));
+        }
+        return result;
+    }
+
+
+
+    /*public int solve(int A, ArrayList<ArrayList<Integer>> B) {
         boolean[] visitedNodes = new boolean[A + 1];
         List<List<Pair>> adjList = constructAdjList(B, A);
         PriorityQueue<Pair> minHeap = new PriorityQueue<>(Comparator.comparing(a -> a.weight));
@@ -109,5 +141,15 @@ public class CommutableIslands {
             adjList.get(dest).add(new Pair(src, weight));
         }
         return adjList;
+    }*/
+}
+
+class Pair {
+    public int dest, weight;
+
+    public Pair(int dest, int weight) {
+        this.dest = dest;
+        this.weight = weight;
     }
+
 }

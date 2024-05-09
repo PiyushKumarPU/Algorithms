@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module4.graph2.assignment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 Problem Description
@@ -51,7 +52,40 @@ Example Explanation
 * */
 public class ShortestDistanceInAMaze {
 
-    public int solve(ArrayList<ArrayList<Integer>> A, ArrayList<Integer> B, ArrayList<Integer> C) {
-        return 0;
+    public static void main(String[] args) {
+        ArrayList<ArrayList<Integer>> A = new ArrayList<>(List.of(new ArrayList<>(List.of(0, 0)), new ArrayList<>(List.of(0, 0))));
+        ArrayList<Integer> B = new ArrayList<>(List.of(0, 0));
+        ArrayList<Integer> C = new ArrayList<>(List.of(0, 1));
+
+        System.out.println(solve(A, B, C));
+    }
+
+    static int destX, destY;
+    static ArrayList<ArrayList<Integer>> maze;
+
+    public static int solve(ArrayList<ArrayList<Integer>> A, ArrayList<Integer> B, ArrayList<Integer> C) {
+        destX = C.get(0);
+        destY = C.get(1);
+        maze = A;
+
+        return findShortestDistance(B.get(0), B.get(1));
+    }
+
+    private static int findShortestDistance(int i, int j) {
+        if (i == destX && j == destY) return 0;
+        if (maze.get(i).get(j) == 1) return Integer.MAX_VALUE;
+
+        int left = (isValidIndex(i, j - 1)) ? findShortestDistance(i, j - 1) : Integer.MAX_VALUE;
+        int top = (isValidIndex(i - 1, j)) ? findShortestDistance(i - 1, j) : Integer.MAX_VALUE;
+        int bottom = (isValidIndex(i + 1, j)) ? findShortestDistance(i + 1, j) : Integer.MAX_VALUE;
+        int right = (isValidIndex(i, j + 1)) ? findShortestDistance(i, j + 1) : Integer.MAX_VALUE;
+        /*if (left == Integer.MAX_VALUE && right == Integer.MAX_VALUE && bottom == Integer.MAX_VALUE
+                && top == Integer.MAX_VALUE) return -1;
+        return Math.min(Math.min(left, right), Math.min(top, bottom)) + 1;*/
+        return 1;
+    }
+
+    private static boolean isValidIndex(int x, int y) {
+        return x >= 0 && y >= 0 && x < maze.size() && y < maze.get(x).size();
     }
 }

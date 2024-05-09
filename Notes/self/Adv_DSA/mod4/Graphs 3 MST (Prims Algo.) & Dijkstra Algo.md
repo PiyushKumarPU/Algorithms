@@ -21,6 +21,8 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/47.%20graph3.pdf)
 2. [Class/Lecture Video](https://youtu.be/SN0tiLJwU4k)
+3. [New Batch Notes](../../../new_batch_notes/Graph3.pdf)
+4. [New Batch Video](https://youtu.be/0MvAMl7hqnQ)
 
 ## Applications of DSU
 * Checking if undirected graph is connected

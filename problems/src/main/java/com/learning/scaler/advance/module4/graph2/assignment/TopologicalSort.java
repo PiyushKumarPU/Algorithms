@@ -4,16 +4,22 @@ import java.util.*;
 
 /*
 Problem Description
-    Given an directed acyclic graph having A nodes. A matrix B of size M x 2 is given which represents the M edges such that there is a edge directed from node B[i][0] to node B[i][1].
-    Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such that for every directed edge uv, vertex u comes before v in the ordering. Topological Sorting for a graph is not possible if the graph is not a DAG.
+    Given a directed acyclic graph having A nodes. A matrix B of size M x 2 is given which represents
+    the M edges such that there is a edge directed from node B[i][0] to node B[i][1].
+    Topological sorting for Directed Acyclic Graph (DAG) is a linear ordering of vertices such
+    that for every directed edge uv, vertex u comes before v in the ordering. Topological Sorting
+    for a graph is not possible if the graph is not a DAG.
     Return the topological ordering of the graph and if it doesn't exist then return an empty array.
-    If there is a solution return the correct ordering. If there are multiple solutions print the lexographically smallest one.
-    Ordering (a, b, c) is said to be lexographically smaller than ordering (e, f, g) if a < e or if(a==e) then b < f and so on.
+    If there is a solution return the correct ordering. If there are multiple solutions print
+    the lexographically smallest one.
+    Ordering (a, b, c) is said to be lexographically smaller than ordering
+    (e, f, g) if a < e or if(a==e) then b < f and so on.
     NOTE:
         There are no self-loops in the graph.
         The graph may or may not be connected.
         Nodes are numbered from 1 to A.
-        Your solution will run on multiple test cases. If you are using global variables make sure to clear them.
+        Your solution will run on multiple test cases. If you are using global variables
+        make sure to clear them.
 
 Problem Constraints
     2 <= A <= 10^4
@@ -27,7 +33,7 @@ Input Format
 Output Format
     Return a one-dimensional array denoting the topological ordering of the graph and it it doesn't exist then return empty array.
 
-Example Input
+Example
     Input 1:
          A = 6
          B = [  [6, 3]
@@ -48,7 +54,7 @@ Example Output
     Output 2:
          []
 
-Example Explanation
+Example
     Explanation 1:
          The given graph contain no cycle so topological ordering exists which is [5, 6, 1, 3, 4, 2]
     Explanation 2:
@@ -69,7 +75,8 @@ public class TopologicalSort {
         inputs.add(new ArrayList<>(List.of(8, 6)));
 
         TopologicalSort topologicalSort = new TopologicalSort();
-        System.out.println(topologicalSort.solve(8,inputs));
+        System.out.println(topologicalSort.solve(8, inputs));
+        System.out.println(new ArrayList<>(List.of(1, 4, 3, 5, 7, 8, 2, 6)));
     }
 
     public ArrayList<Integer> solve(int A, ArrayList<ArrayList<Integer>> B) {
@@ -84,10 +91,26 @@ public class TopologicalSort {
             indegree[end]++;
             adjList.get(start).add(end);
         }
-        Queue<Integer> orderQueue = new LinkedList<>();
-        for (int i = 1; i < indegree.length; i++) {
-            if (indegree[i] == 0) orderQueue.add(i);
+
+        for (int i = 0; i < adjList.size(); i++) {
+            List<Integer> row = adjList.get(i);
+            row.sort(Comparator.naturalOrder());
+            adjList.set(i, row);
         }
+        Queue<Integer> orderQueue = new LinkedList<>();
+
+        orderQueue.add(1);
+        ArrayList<Integer> result = new ArrayList<>(solve1(orderQueue, indegree, adjList));
+        for (int i = 1; i < indegree.length; i++) {
+            if (indegree[i] > 0)
+                result.addAll(solve1(orderQueue, indegree, adjList));
+            orderQueue.clear();
+        }
+        return result;
+    }
+
+    private ArrayList<Integer> solve1(Queue<Integer> orderQueue, int[] indegree,
+                                      List<List<Integer>> adjList) {
         ArrayList<Integer> result = new ArrayList<>();
         while (!orderQueue.isEmpty()) {
             int current = orderQueue.poll();
