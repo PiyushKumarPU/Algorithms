@@ -17,34 +17,27 @@ public class MatrixMedian {
         ))));
 
 
+        // 1 2 3 3 5 6 6 9 9
+        // 1 2 3 4 5 6
+
+
     }
 
 
     public static int findMedian(ArrayList<ArrayList<Integer>> A) {
-        int N = A.size(), M = A.get(0).size(), start = 0, end = N * M - 1, k = ((N * M) / 2);
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-            int i = mid / M, j = mid % M;
-            int current = A.get(i).get(j);
-            int count = count(A, current, i, j);
-            if (count == k) {
-                return current;
-            }
-            if (count > k) end = mid - 1;
-            else start = mid + 1;
+        int start = Integer.MAX_VALUE, end = Integer.MIN_VALUE, N = A.size(), M = A.get(0).size(), elementCount = M * N;
+        // find min for start and max for end
+        for (ArrayList<Integer> row : A) {
+            start = Math.min(start, row.get(0));
+            end = Math.max(end, row.get(M - 1));
         }
-        return 0;
+
+        while (start <= end) {
+
+        }
+
+
     }
 
-    private static int count(ArrayList<ArrayList<Integer>> A, int target, int i, int j) {
-        int count = 0;
-        for (int start = 0; start < A.size(); start++) {
-            for (int end = 0; end < A.get(0).size(); end++) {
-                if (start == i && end == j && A.get(0).size() == 1) return count;
-                if (A.get(start).get(end) <= target) count++;
-            }
-        }
-        return count;
-    }
 
 }
