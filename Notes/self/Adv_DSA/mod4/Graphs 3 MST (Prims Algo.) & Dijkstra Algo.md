@@ -27,12 +27,18 @@
 * Checking if undirected graph is connected
 * Cycle in an undirected graph
 ## Minimum spanning Tree
-    A minimum spanning tree (MST) or minimum weight spanning tree for a weighted, connected, undirected graph is a spanning tree with a weight less than or equal to the weight of every other spanning tree. 
+    A minimum spanning tree (MST) or minimum weight spanning tree for a weighted, connected, 
+    undirected graph is a spanning tree with a weight less than or equal to the weight of every 
+    other spanning tree. 
     
 >To learn more about Minimum Spanning Tree, refer to this [article](https://www.geeksforgeeks.org/what-is-minimum-spanning-tree-mst/).
 
 ## Prim's Algorithm 
-    The algorithm starts with an empty spanning tree. The idea is to maintain two sets of vertices. The first set contains the vertices already included in the MST, and the other set contains the vertices not yet included. At every step, it considers all the edges that connect the two sets and picks the minimum weight edge from these edges. After picking the edge, it moves the other endpoint of the edge to the set containing MST. 
+    The algorithm starts with an empty spanning tree. The idea is to maintain two sets of vertices. 
+    The first set contains the vertices already included in the MST, and the other set contains the 
+    vertices not yet included. At every step, it considers all the edges that connect the two sets 
+    and picks the minimum weight edge from these edges. After picking the edge, it moves the other 
+    endpoint of the edge to the set containing MST. 
 
 >To learn more about Prim's Algo Minimum Spanning Tree, refer to this [article](https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/).
 
@@ -40,7 +46,8 @@
     Problem Description
         There are A islands and there are M bridges connecting them. Each bridge has some cost attached to it.
         We need to find bridges with minimal cost such that all islands are connected.
-        It is guaranteed that input data will contain at least one possible scenario in which all islands are connected with each other.
+        It is guaranteed that input data will contain at least one possible scenario in which all islands are 
+        connected with each other.
         
     Problem Constraints
         1 <= A, M <= 6*10^4
@@ -78,16 +85,19 @@
 
     Example Explanation
         Explanation 1:
-            We can choose bridges (1, 2, 1), (1, 4, 3) and (4, 3, 2), where the total cost incurred will be (1 + 3 + 2) = 6.
+            We can choose bridges (1, 2, 1), (1, 4, 3) and (4, 3, 2), where the total cost incurred 
+            will be (1 + 3 + 2) = 6.
         Explanation 2:
-            We can choose bridges (1, 2, 1), (2, 3, 2) and (1, 4, 3), where the total cost incurred will be (1 + 2 + 3) = 6.
+            We can choose bridges (1, 2, 1), (2, 3, 2) and (1, 4, 3), where the total cost incurred 
+            will be (1 + 2 + 3) = 6.
     
 ### Solution approach
     As per the proble statment we need to find min distance to connect all the island together.
     Step 1: Constrcut bidirectionla adj list along with cost of each bridge
     Step 2: Create a visited array which will maintain state of visited array
     Step 3: Create a min heap on weight on edges
-    Step 4: Consider any node of your choice as source node and add that node to min heap with 0 weight associated to it
+    Step 4: Consider any node of your choice as source node and add that node to min heap with 0 
+            weight associated to it
     Step 5: Iterate untill heap is not empty and all node is not visited
     Step 6: Extract min from heap and if respective ndoe is already visited skip it.
     Step 7: Mark node is visited and add its weight to answer variable
@@ -162,8 +172,11 @@ public class Pair {
 
     Input Format
         The first argument is an integer A, representing the number of nodes in the graph.
-        The second argument is a matrix B of size M x 3, where each row represents an edge in the graph. The three columns of each row denote the source node B[i][0], the destination node B[i][1], and the weight of the edge B[i][2].
-        The third argument is an integer C, representing the source node for which the shortest distance to all other nodes needs to be found.
+        The second argument is a matrix B of size M x 3, where each row represents an edge in the graph. 
+        The three columns of each row denote the source node B[i][0], the destination node B[i][1], and the 
+        weight of the edge B[i][2].
+        The third argument is an integer C, representing the source node for which the shortest distance 
+        to all other nodes needs to be found.
 
     Output Format
         Return the integer array D.
