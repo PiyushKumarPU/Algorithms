@@ -20,13 +20,15 @@
 
 
 ## Stack Introduction
-    A stack is a linear data structure in which the insertion of a new element and removal of an existing element takes place at the same end represented as the top of the stack.
+    A stack is a linear data structure in which the insertion of a new element and removal of an existing 
+    element takes place at the same end represented as the top of the stack.
 
-    Stack follow LIFO(Last in first out strategies because we perform all the operations(pop and push) from same end)
+    Stack follow LIFO(Last in first out strategies because we perform all the operations(pop and push) 
+    from same end)
 
 ### For more information on stack please refer below links:
-[Intro to Stack](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/)
-[Stack Wikipedia](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
+* [Intro to Stack](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/)
+* [Stack Wikipedia](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
 
 ## Operations on Stack
 ![Stack Operations](../../../images/StackOperations.gif?raw=true)
@@ -151,18 +153,27 @@ public class StackUsingLinkedList {
     Example Explanation
         You can clearly see that the first and third case contain valid parenthesis.
         In the second case, there is no closing bracket for {, thus the parenthesis sequence is invalid.
+
 ### Solution approach
-    As per the problem statment a set of paranthesis can be called as balance if and only if all the opening parenthesis has proper closing paranthesis.
-    We will be using stack to check the paranthesis, if current one is openinng parenthesis will push it to stack and if it closing paranthesis then it should match with last opening paranthesis.
+    As per the problem statment a set of paranthesis can be called as balance if and only if all the opening parenthesis has 
+    proper closing paranthesis.
+    We will be using stack to check the paranthesis, if current one is openinng parenthesis will push it to stack and if it 
+    closing paranthesis then it should match with last opening paranthesis.
     TC : O(n)
     SC : O(n)
+
 ### Solution
+
+
 ## Double Char trouble
-    You are given a string s consisting of lowercase English letters. A duplicate removal consists of choosing two adjacent and equal letters and removing them.
+    You are given a string s consisting of lowercase English letters. A duplicate removal consists of choosing two adjacent 
+    and equal letters and removing them.
     We repeatedly make duplicate removals on s until we no longer can.
     Return the final string after all such duplicate removals have been made. It can be proven that the answer is unique.
+    
 ### Solution approach
-    We can use similar approach like balanced paranthesis. Check every character with previous if same the pop it out from stack. At last convert stack content back into string.
+    We can use similar approach like balanced paranthesis. Check every character with previous if same the pop it out from stack. 
+    At last convert stack content back into string.
 ### Solution
 ```java
 public String removeDuplicates(String s) {

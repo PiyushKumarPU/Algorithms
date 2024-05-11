@@ -39,13 +39,13 @@
         Input 1:
 
                     2
-                /   \
-                1    3
+                  /   \
+                  1    3
         B = 2
         Input 2:
                     3
-                /
-                2
+                  /
+                 2
                 /
                 1
         B = 1
@@ -67,9 +67,12 @@
         TC : O(n)
         SC : O(h + n)
     Approach 2:
-        We need to find the kth smallest element so we will use property of BST, all the smaller element would be in left subtree of any node so we will do inorder traversal on left subtree first and if we are not able to find the kth smallest element then will traverse in right subtree.
+        We need to find the kth smallest element so we will use property of BST, all the smaller element would be 
+        in left subtree of any node so we will do inorder traversal on left subtree first and if we are not able 
+        to find the kth smallest element then will traverse in right subtree.
         TC : O(n) --> Worst case if we need to traverse through all node of a tree
         SC : O(1)
+
 ### Solution
 ```java
     // Approach 1
@@ -119,17 +122,17 @@
 
     Example
         Input 1:
-        1
+           1
             \
             2
             /
-        3
+           3
         Input 2:
-        1
+         1
         / \
         6   2
             /
-        3
+           3
 
     Example
         Output 1:
@@ -143,9 +146,13 @@
             The Inorder Traversal of the given tree is [1, 3, 2].
         Explanation 2:
             The Inorder Traversal of the given tree is [6, 1, 3, 2].
+
 ### Solution approach
 > We will use morris in order traversal technique to perform inorder traversal 
 in constant space.
+
+![Flow chart](../../../images/Morris_inorder_flow.jpg)
+
 #### Steps to perform while doing in order traversal
 1. Initialize current as root 
 2. While current is not NULL

@@ -84,6 +84,7 @@
         return prev;
     }
 ```
+
 ## Check whether LL is palindrome or not
     Problem Description:
         Given the head of a singly linked list, return true if it is a palindrome or false otherwise
@@ -93,13 +94,15 @@
         TC : O(n)
         SC: O(n)
     Approach 2:
-        Find size of linked list and reversed second half of the list, then compare second half of the linked list with first half of the linked list
+        Find size of linked list and reversed second half of the list, then compare second half of the linked list 
+            with first half of the linked list
         TC : O(n)
         SC : O(n)
     Approach 3: 
         Define a separate dynmic list of the array of same size as linked list
         Iterate through linkedlist and add node in dynamic array or array
-        Now compare first element of the array with last and keep doing it till the middle element, if any of the node value mismatched then return false.
+        Now compare first element of the array with last and keep doing it till the middle element, if any of 
+        the node value mismatched then return false.
         TC : O(n)
         SC : O(n)
 ### Solution
@@ -194,6 +197,7 @@
         return true;
     }
 ```
+
 ## Find middle element of LL
     Problem Description
         Given a linked list of integers, find and return the middle element of the linked list.
@@ -229,11 +233,14 @@
             The middle element in even length linked list of length N is ((N/2) + 1)th element which is 2.
 ### Solution approach
     Approach 1:
-        We will find the size of LinkedList and using that size we will trvaerse again till the mid of the element and find the mid element value.
+        We will find the size of LinkedList and using that size we will trvaerse again till the mid of the element 
+        and find the mid element value.
         TC : O(n)
         SC : O(1)
     Approach 2: Using fast and slowpointer technique
-        We will create two pointer called as slow and fast pointer, slow pointer will jump one node at a time whereas fast pointer will jump 2 node at a time. Once fast pointer will reach end of the list till that slow pointer will be at the middle of the linked list
+        We will create two pointer called as slow and fast pointer, slow pointer will jump one node at a time 
+        whereas fast pointer will jump 2 node at a time. Once fast pointer will reach end of the list till that 
+        slow pointer will be at the middle of the linked list
         TC : O(n) --> Even though time complexity is same no of iteration will be half
 ### Solution
 ```java
@@ -303,10 +310,12 @@
         Explanation 2:
             We don't need to merge as B is empty.
 ### Solution approach
-    We will use merge sort here and start iterating from head of both the list, whichever element is smaller will pick it and add it to result and move respective node to the next node.
+    We will use merge sort here and start iterating from head of both the list, whichever element is smaller 
+    will pick it and add it to result and move respective node to the next node.
     At last which linked list has data keep adding it to the result.
     TC : O(m+n)
     SC : O(1) --> only result list node is there
+
 ### Solution
 ```java
     public ListNode mergeTwoListsPlain(ListNode A, ListNode B) {
@@ -415,17 +424,20 @@
             The sorted form of [3, 4, 2, 8] is [2, 3, 4, 8].
         Explanation 2:
             The sorted form of [1] is [1].
+
 ## Find cycle in Linked List
     Problem Description
         Given a linked list of N nodes. The task is to check if the linked list has a loop. Linked list can contain self loop.
 ### Solution approach
     Approach 1: Using HashSet
-        We will maintain a visited set which contains all the visited node information and we will start iterating from head till last.
+        We will maintain a visited set which contains all the visited node information and we will start iterating 
+        from head till last.
         If any of the node is already visited then we will return true otherwise false.
         TC : O(n)
         SC : O(n)
     Approach 2: Using slow and fast pointer
-        We will maintain slow and fast pointer and if there is a loop then slow and fast pointer will land on same node after few iteration.
+        We will maintain slow and fast pointer and if there is a loop then slow and fast pointer will land on 
+        same node after few iteration.
         TC : O(n)
         SC : O(1)
 ### Solution

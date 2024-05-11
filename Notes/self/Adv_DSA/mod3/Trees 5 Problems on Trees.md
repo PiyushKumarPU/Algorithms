@@ -218,7 +218,8 @@ public class TreeLinkNode {
 ![Structure](../../../images/Next_Pointer_Tree.png?raw=true)
 
 ## Populate Next Pointer in Binary Tree
-#### Problem Description
+
+### Problem Description
     Problem Description
         Given a binary tree,
         Populate each next pointer to point to its next right node. If there is no next right node, the next pointer 
@@ -305,6 +306,7 @@ public class TreeLinkNode {
         }
     }
 ```
+
 ## Populate Next Pointer in Perfect Binary Tree
     Problem Description
         Given a binary tree,
@@ -328,12 +330,12 @@ public class TreeLinkNode {
     Example Input
         Input 1:
 
-            1
+              1
             /  \
-        2    3
+           2    3
         Input 2:
 
-                1
+              1
             /  \
             2    5
             / \  / \
@@ -342,17 +344,16 @@ public class TreeLinkNode {
     Example Output
         Output 1:
 
-                1 -> NULL
+             1 -> NULL
             /  \
             2 -> 3 -> NULL
         Output 2:
 
-                1 -> NULL
+              1 -> NULL
             /  \
             2 -> 5 -> NULL
             / \  / \
             3->4->6->7 -> NULL
-
 
     Example Explanation
         Explanation 1:
@@ -365,6 +366,7 @@ public class TreeLinkNode {
         Do level order traversal, and link current node with next node present in same level
         TC : O(n)
         SC : O(n)
+
     Approach 2: Using recursion space
         Use preorder traversal and use current node as linkage to create link to next node
             step 1: connect current.left with current.right
@@ -372,10 +374,12 @@ public class TreeLinkNode {
             step 3: if yes, connect connect.right.next = current.next.left
         TC : O(n)
         SC : O(h) --> recursion stack space
+
     Approach 3: Using no space, not even recursion space
         Note : This approach needs to be understand properly
         TC : O(n)
         SC : O(1)
+
 ### Solution
 ```java
 // Approach 1
@@ -453,8 +457,8 @@ public void connectWithConstantSpace(TreeLinkNode treeNode) {
         Tree:    5
                 / \
                 4   8
-            /   / \
-            11  13  4
+               /   / \
+             11  13  4
             /  \      \
             7    2      1
         B = 22
@@ -462,7 +466,7 @@ public void connectWithConstantSpace(TreeLinkNode treeNode) {
         Tree:    5
                 / \
                 4   8
-            /   / \
+              /   / \
             -11 -13  4
         B = -1
 
@@ -472,7 +476,6 @@ public void connectWithConstantSpace(TreeLinkNode treeNode) {
             1
         Output 2:
             0
-
 
     Example Explanation
         Explanation 1:
@@ -506,6 +509,7 @@ private void isPathPresent(TreeNode A, int sum) {
 
 ## Longest path across root node of Binary Tree
     Find the longest path of the tree that goes across root node and duplicate edge is not allowed
+    
 ### Solutuon apporoach
 * Height of any node is ```max(height of left node, height of right node) + 1```
 * Similary longest path would be the sum of height of left node and right node + 2\ (+2 because there are two edge to reach till the root node)  ```height of left node + height of right node + 2```

@@ -37,7 +37,8 @@
         The only argument given is integer array A.
 
     Output Format
-        Return the integar array G such that G[i] contains the nearest smaller number than A[i]. If no such element occurs G[i] should be -1.
+        Return the integar array G such that G[i] contains the nearest smaller number than A[i]. 
+        If no such element occurs G[i] should be -1.
 
     Example
         Input 1:
@@ -62,6 +63,7 @@
             index 1: No element less than 3 in left of 3, G[1] = -1
             index 2: No element less than 2 in left of 2, G[2] = -1
             index 3: No element less than 1 in left of 1, G[3] = -1
+
 ### Solution approach
     Approach 1: Brute Force
         Try to find nearest smaller on left of the current index, search from i-1 till 0.
@@ -92,6 +94,7 @@ public int[] prevSmaller(int[] A) {
     return result;
 }
 ```
+
 ## Largest rectangle in histogram
     Problem Description
         Given an array of integers A.
@@ -126,6 +129,7 @@ public int[] prevSmaller(int[] A) {
         Explanation 2:
             Largest rectangle has area 2.
 ![histogram](../../../images/histogratrm.png)
+
 ### Solution approach
     Approach 1L Brute force
         1. Fix any one building as left boundary and keep finiding at least same height building to the right.
@@ -133,7 +137,8 @@ public int[] prevSmaller(int[] A) {
         TC : O(n^2)
         SC : O(n)
     Approach 2: Using stack
-        If we look at problem carefully, we need to find left and right boundary for each index. Left and right boundary would be all the bar height which is equal or bigger than the current height.
+        If we look at problem carefully, we need to find left and right boundary for each index. Left and 
+        right boundary would be all the bar height which is equal or bigger than the current height.
         1. Find nearset smaller in left and nearest smaller in right for each index.
         2. Calculate area of the selected rectangeas A[i] * (right boundary index - left boundary index + 1)
         TC : O(n)

@@ -54,12 +54,14 @@
     Follow up: Can you solve it using O(1) (i.e. constant) memory?
 ### Solution approach:
     Approach 1 : Using Hashset
-        We will start traversing from head and keep storing traversed node into HashSet, while traversal we will check if respective node is already present in HashSet it mean List has cycle otherwise not.
+        We will start traversing from head and keep storing traversed node into HashSet, while traversal we 
+        will check if respective node is already present in HashSet it mean List has cycle otherwise not.
         TC : O(n)
         SC : O(n)
     Approach 2:
         Using fast and slow pointer
-            Will start slow and fast from head and jump slow pointer by 1 node and fast pointer by 2 node. If both the pointer matches then list has cycle otherwise not.
+            Will start slow and fast from head and jump slow pointer by 1 node and fast pointer by 2 node. 
+            If both the pointer matches then list has cycle otherwise not.
         TC : O(n)
         SC : O(1)
 ### Solution
@@ -90,11 +92,15 @@ public boolean hasCycleApproach2(ListNode head) {
     return false;
 }
 ```
+
 ## Find starting point of loop
     Problem Description
         Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
 
-        There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to (0-indexed). It is -1 if there is no cycle. Note that pos is not passed as a parameter.
+        There is a cycle in a linked list if there is some node in the list that can be reached again by 
+        continuously following the next pointer. Internally, pos is used to denote the index of the node 
+        that tail's next pointer is connected to (0-indexed). It is -1 if there is no cycle. Note that pos 
+        is not passed as a parameter.
 
         Do not modify the linked list.
     Constraints:
@@ -110,7 +116,8 @@ public boolean hasCycleApproach2(ListNode head) {
         Step 1:
             Using slow and fast pointer to find cycle, if no cycle then return null.
         Step 2:
-            If it has cycle, reset slow point to head and start moving slow and fast by 1 jump. There would be a time where fast and slow will match with each other and that will be starting point of the loop.
+            If it has cycle, reset slow point to head and start moving slow and fast by 1 jump. There would be 
+            a time where fast and slow will match with each other and that will be starting point of the loop.
         TC : O(n)
         SC : O(1)
 ### Solution
@@ -186,7 +193,8 @@ Used by various applications to maintain undo and redo functionalities.
 ![At the end](../../../images/Insertion_end_Doubly-Linked-List.webp)
 
 ### Problem Description
-    A doubly linked list is given.A node is to be inserted with data x at the position k. The range of k is between 0 to n. Where n is the length of the linked list
+    A doubly linked list is given. A node is to be inserted with data x at the position k. 
+    The range of k is between 0 to n. Where n is the length of the linked list
 ### Solution approach
     Jump till the desired location to insert the node
     Step 1: Create node with new value
@@ -221,7 +229,8 @@ public DoublyLinkedList insertNode(DoublyLinkedList head, int k, int newVal) {
 }
 ```
 ### Problem Description
-    Given a doubly linked list of length N, we have to delete first occurance of data x from given list. If x is not present, do nothing.
+    Given a doubly linked list of length N, we have to delete first occurance of data x from given list. 
+    If x is not present, do nothing.
 ### Solution approach
     Step 1 : Find the desired value, if not present return as it is.
     Step 2 : If desired node is first node, then return the next element but dont forget to break prev link to the current node.
@@ -257,6 +266,7 @@ public DoublyLinkedList deleteNode(DoublyLinkedList head, int x) {
 }
 ```
 ## LRU(Least recent Used) Cache
+
 ## Clone a LL (Separate Recording will be available) 
     Problem Description
         You are given a linked list A
@@ -264,8 +274,10 @@ public DoublyLinkedList deleteNode(DoublyLinkedList head, int x) {
         The next pointer points to the next node in the list
         The random pointer can point to any node in the list, or it can be NULL
         Your task is to create a deep copy of the linked list A
-        The copied list should be a completely separate linked list from the original list, but with the same node values and random pointer connections as the original list
-        You should create a new linked list B, where each node in B has the same value as the corresponding node in A
+        The copied list should be a completely separate linked list from the original list, but with the 
+        same node values and random pointer connections as the original list
+        You should create a new linked list B, where each node in B has the same value as the corresponding 
+        node in A
         The next and random pointers of each node in B should point to the corresponding nodes in B (rather than A)
 
     Problem Constraints
@@ -294,4 +306,6 @@ public DoublyLinkedList deleteNode(DoublyLinkedList head, int x) {
         3 -> 1
 
     Example Explanation
-        You should return a deep copy of the list. The returned answer should not contain the same node as the original list, but a copy of them. The pointers in the returned list should not link to any node in the original input list.     
+        You should return a deep copy of the list. The returned answer should not contain the same node 
+        as the original list, but a copy of them. The pointers in the returned list should not link to 
+        any node in the original input list.     
