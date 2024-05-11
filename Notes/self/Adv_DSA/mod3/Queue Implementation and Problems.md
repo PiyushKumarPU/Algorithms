@@ -19,6 +19,8 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/29%20Queues%20Implementation%20and%20Problems.pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=5merIcBvI0Q)
+3. [New Batch Notes](../../../new_batch_notes/Queue.pdf)
+4. [New Batch Video](https://youtu.be/8YuCnJ8fgsk)
 
 ## Queue
 > A Queue Data Structure is a fundamental concept in computer science used for storing and managing data in a specific order. It follows the principle of “First in, First out” (FIFO), where the first element added to the queue is the first one to be removed.

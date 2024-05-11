@@ -72,6 +72,7 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
 ```
 
 ## Find min/smallest node in BST
+
 ### Input
 ![Input](../../../images/BST_search_input.png?raw=true)
 
@@ -177,6 +178,8 @@ Binary Search Tree is a node-based binary tree data structure which has the foll
     > We will replace node to be deleted with either max of the left subtree or the min of the right subtree.
 * Case 3.1, If max of left subtree or min of right subtree is leaf node then nothing to worry about.
 * Case 3.1, If either of left or right subtree has child node, max of left subtree may have left child and min of right subtree will right child. In this case we will replace max/min of left/right subtree with the root node.
+
+![Flow chart](../../../images/Delete_node_BST.jpg)
 ### Solution
 ```java
 public TreeNode solve(TreeNode A, int B) {
