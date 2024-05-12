@@ -1,15 +1,20 @@
 package com.learning.scaler.advance.module4.graph2.assignment;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.learning.scaler.advance.module4.graph3.Pair;
+
+import java.util.*;
 
 /*
 Problem Description
     Given a matrix of integers A of size N x M describing a maze. The maze consists of empty locations and walls.
     1 represents a wall in a matrix and 0 represents an empty location in a wall.
-    There is a ball trapped in a maze. The ball can go through empty spaces by rolling up, down, left or right, but it won't stop rolling until hitting a wall (maze boundary is also considered as a wall). When the ball stops, it could choose the next direction.
+    There is a ball trapped in a maze. The ball can go through empty spaces by rolling up, down, left or right,
+    but it won't stop rolling until hitting a wall (maze boundary is also considered as a wall).
+    When the ball stops, it could choose the next direction.
     Given two array of integers of size B and C of size 2 denoting the starting and destination position of the ball.
-    Find the shortest distance for the ball to stop at the destination. The distance is defined by the number of empty spaces traveled by the ball from the starting position (excluded) to the destination (included). If the ball cannot stop at the destination, return -1.
+    Find the shortest distance for the ball to stop at the destination. The distance is defined by the number
+    of empty spaces traveled by the ball from the starting position (excluded) to the destination (included).
+    If the ball cannot stop at the destination, return -1.
 
 Problem Constraints
     2 <= N, M <= 100
@@ -52,40 +57,60 @@ Example Explanation
 * */
 public class ShortestDistanceInAMaze {
 
+
+
     public static void main(String[] args) {
-        ArrayList<ArrayList<Integer>> A = new ArrayList<>(List.of(new ArrayList<>(List.of(0, 0)), new ArrayList<>(List.of(0, 0))));
-        ArrayList<Integer> B = new ArrayList<>(List.of(0, 0));
-        ArrayList<Integer> C = new ArrayList<>(List.of(0, 1));
-
-        System.out.println(solve(A, B, C));
+        int[][] A = {{1, 1, 0, 1}, {0, 0, 0, 1}, {1, 0, 0, 1}, {0, 0, 1, 0}};
+        int[] B = {1, 1};
+        int[] C = {2, 1};
+        System.out.println(new ShortestDistanceInAMaze().solve(A, B, C));
     }
 
-    static int destX, destY;
-    static ArrayList<ArrayList<Integer>> maze;
+    private static final int[][] DIRECTIONS = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    public int solve(int[][] A, int[] B, int[] C) {
+        int n = A.length;
+        int m = A[0].length;
+        int[][] distance = new int[n][m];
+        for (int[] row : distance)
+            Arrays.fill(row, Integer.MAX_VALUE);
+        distance[B[0]][B[1]] = 0;
 
-    public static int solve(ArrayList<ArrayList<Integer>> A, ArrayList<Integer> B, ArrayList<Integer> C) {
-        destX = C.get(0);
-        destY = C.get(1);
-        maze = A;
-
-        return findShortestDistance(B.get(0), B.get(1));
+        Queue<Cell> queue = new LinkedList<>();
+        queue.offer(new Cell(B[0], B[1]));
+        while (!queue.isEmpty()) {
+            Cell current = queue.poll();
+            for (int[] dir : DIRECTIONS) {
+                int x = current.xAxis + dir[0];
+                int y = current.yAxis + dir[1];
+                int rollCount = 0;
+                while (isValidIndex(x, y, n, m) && A[x][y] == 0) {
+                    x += dir[0];
+                    y += dir[1];
+                    rollCount++;
+                }
+                int distanceFromCurrent = distance[current.xAxis][current.yAxis] + rollCount;
+                int lastValidIndexDistance = distance[x - dir[0]][y - dir[1]];
+                if (distanceFromCurrent < lastValidIndexDistance) {
+                    distance[x - dir[0]][y - dir[1]] = distanceFromCurrent;
+                    queue.offer(new Cell(x - dir[0], y - dir[1]));
+                }
+            }
+        }
+        distance[C[0]][C[1]] = (distance[C[0]][C[1]] == Integer.MAX_VALUE ? -1 : distance[C[0]][C[1]]);
+        return distance[C[0]][C[1]];
     }
 
-    private static int findShortestDistance(int i, int j) {
-        if (i == destX && j == destY) return 0;
-        if (maze.get(i).get(j) == 1) return Integer.MAX_VALUE;
-
-        int left = (isValidIndex(i, j - 1)) ? findShortestDistance(i, j - 1) : Integer.MAX_VALUE;
-        int top = (isValidIndex(i - 1, j)) ? findShortestDistance(i - 1, j) : Integer.MAX_VALUE;
-        int bottom = (isValidIndex(i + 1, j)) ? findShortestDistance(i + 1, j) : Integer.MAX_VALUE;
-        int right = (isValidIndex(i, j + 1)) ? findShortestDistance(i, j + 1) : Integer.MAX_VALUE;
-        /*if (left == Integer.MAX_VALUE && right == Integer.MAX_VALUE && bottom == Integer.MAX_VALUE
-                && top == Integer.MAX_VALUE) return -1;
-        return Math.min(Math.min(left, right), Math.min(top, bottom)) + 1;*/
-        return 1;
+    private boolean isValidIndex(int x, int y, int n, int m) {
+        return x >= 0 && x < n && y >= 0 && y < m;
     }
+}
 
-    private static boolean isValidIndex(int x, int y) {
-        return x >= 0 && y >= 0 && x < maze.size() && y < maze.get(x).size();
+class Cell {
+    public Integer xAxis;
+    public Integer yAxis;
+
+    public Cell(Integer xAxis, Integer yAxis) {
+        this.xAxis = xAxis;
+        this.yAxis = yAxis;
     }
 }
