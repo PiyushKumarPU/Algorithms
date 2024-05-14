@@ -1,6 +1,10 @@
 package com.learning.scaler.advance.module3.queue.assignment;
 
 
+import com.learning.scaler.advance.module3.queue.lecture.QueueUsingStack;
+
+import java.util.Stack;
+
 /*
 Problem Description
     Implement a First In First Out (FIFO) queue using stacks only.
@@ -69,35 +73,62 @@ public class QueueUsingStacks {
     /**
      * Initialize your data structure here.
      */
-    QueueUsingStacks() {
+    static Stack<Integer> container, auxSpace;
 
+    QueueUsingStacks() {
+        container = new Stack<>();
+        auxSpace = new Stack<>();
     }
 
     /**
      * Push element X to the back of queue.
      */
     static void push(int X) {
-
+        container.push(X);
     }
 
     /**
      * Removes the element from in front of queue and returns that element.
      */
     static int pop() {
-        return 0;
+        if (empty()) return -1;
+        if (auxSpace.isEmpty()) {
+            // push everything from container to aux space and return last item
+            while (!container.isEmpty()) auxSpace.push(container.pop());
+        }
+        return auxSpace.pop();
     }
 
     /**
      * Get the front element of the queue.
      */
     static int peek() {
-        return 0;
+        if (empty()) return -1;
+        if (auxSpace.isEmpty()) {
+            // push everything from container to aux space and return last item
+            while (!container.isEmpty()) auxSpace.push(container.pop());
+        }
+        return auxSpace.peek();
     }
 
     /**
      * Returns whether the queue is empty.
      */
     static boolean empty() {
-        return false;
+        return container.isEmpty() && auxSpace.isEmpty();
+    }
+
+    public static void main(String[] args) {
+
+        QueueUsingStacks queueUsingStack = new QueueUsingStacks();
+        push(20);
+        System.out.println(empty());
+        System.out.println(peek());
+        System.out.println(pop());
+        System.out.println(empty());
+        push(30);
+        System.out.println(peek());
+        push(40);
+        System.out.println(peek());
     }
 }

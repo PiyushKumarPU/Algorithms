@@ -1,6 +1,8 @@
 package com.learning.scaler.advance.module3.queue.additional;
 
 
+import java.util.*;
+
 /*
 Problem Description
     Given an array of integers A and an integer B, we need to reverse the order of the first B elements of the array,
@@ -39,7 +41,30 @@ Example
 * */
 public class ReversingElementsOfQueue {
 
+    public ArrayList<Integer> solve(ArrayList<Integer> A, int B) {
+        Queue<Integer> queue = new LinkedList<>(A);
+        ArrayList<Integer> result = new ArrayList<>();
+        int count = 0;
+        while (count < B) {
+            result.add(0, queue.poll());
+            count++;
+        }
+        while (!queue.isEmpty()) result.add(queue.poll());
+        return result;
+    }
+
     public int[] solve(int[] A, int B) {
+        Deque<Integer> q = new ArrayDeque<>(A.length);
+        int i = 0;
+        // Insert first B elements in queue
+        for (i = 0; i < B; i++)
+            q.addLast(A[i]);
+        // Reverse the first B elements in the array A
+        while (!q.isEmpty()) {
+            i--;
+            A[i] = q.getFirst();
+            q.removeFirst();
+        }
         return A;
     }
 }

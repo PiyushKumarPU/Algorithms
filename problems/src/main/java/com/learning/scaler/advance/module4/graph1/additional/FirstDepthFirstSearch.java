@@ -11,7 +11,8 @@ Problem Description
     Given 2 towns find whether you can reach the first town from the second without repeating any edge.
     B C : query to find whether B is reachable from C.
     Input contains an integer array A of size N and 2 integers B and C ( 1 <= B, C <= N ).
-    There exist a directed edge from A[i] to i+1 for every 1 <= i < N. Also, it's guaranteed that A[i] <= i for every 1 <= i < N.
+    There exist a directed edge from A[i] to i+1 for every 1 <= i < N. Also, it's guaranteed
+    that A[i] <= i for every 1 <= i < N.
     NOTE: Array A is 0-indexed. A[0] = 1 which you can ignore as it doesn't represent any edge.
 
 Problem Constraints
@@ -53,11 +54,38 @@ public class FirstDepthFirstSearch {
     public static void main(String[] args) {
         FirstDepthFirstSearch search = new FirstDepthFirstSearch();
 
-        System.out.println(search.solve(new ArrayList<>(List.of(1, 1, 2)), 1, 2));
-        System.out.println(search.solve(new ArrayList<>(List.of(1, 1, 2)), 2, 1));
+        System.out.println(search.solve(new ArrayList<>(List.of(1, 1, 1, 3, 3, 2, 2, 7, 6)), 9, 1));
     }
 
-    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int solve(ArrayList<Integer> A, final int B, final int C) {
+        List<List<Integer>> adjList = constructAdjList(A);
+        if (adjList.size() < C + 1 || adjList.get(C).isEmpty()) return 0;
+        boolean[] visited = new boolean[adjList.size() + 1];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(C);
+        while (!queue.isEmpty()) {
+            Integer current = queue.poll();
+            if (visited[current]) continue;
+            visited[current] = true;
+            for (Integer nbr : adjList.get(current)) {
+                if (!visited[nbr]) queue.add(nbr);
+            }
+        }
+        return visited[B] ? 1 : 0;
+    }
+
+    private List<List<Integer>> constructAdjList(ArrayList<Integer> A) {
+        if (A.isEmpty()) return new ArrayList<>();
+        int N = A.size();
+        List<List<Integer>> result = new ArrayList<>(N + 1);
+        for (int i = 0; i < N + 1; i++) result.add(new ArrayList<>());
+        for (int i = 1; i < N; i++) {
+            result.get(i + 1).add(A.get(i));
+        }
+        return result;
+    }
+
+    /*// DO NOT MODIFY THE LIST. IT IS READ ONLY
     public int solve(ArrayList<Integer> A, final int B, final int C) {
         if (A.isEmpty() || A.size() < 2) return 0;
         List<List<Integer>> adjList = constructAdjList(A);
@@ -90,7 +118,7 @@ public class FirstDepthFirstSearch {
             result.get(A.get(i)).add(i + 1);
         }
         return result;
-    }
+    }*/
 
 
 }

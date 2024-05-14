@@ -3,6 +3,8 @@ package com.learning.scaler.advance.module3.tree1.additional;
 import com.learning.scaler.advance.module3.TreeNode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
 Problem Description
@@ -48,8 +50,37 @@ Example Explanation
 * */
 public class BinaryTreeFromInorderAndPreOrder {
 
+    // in order 1, 6, 2, 3
+    // pre order 6, 1, 3, 2
+
     public TreeNode buildTree(ArrayList<Integer> A, ArrayList<Integer> B) {
+
+        // construct map from in order
+        Map<Integer, Integer> valueIndexMap = new HashMap<>(A.size());
+        for (int i = 0; i < A.size(); i++) {
+            valueIndexMap.put(A.get(i), i);
+        }
+
+        int root = B.get(0);
+        int leftTreeStart = 0, leftTreeEnd = 0, rightTreeStart = 0, rightTreeEnd = 0;
+
 
         return null;
     }
+
+    public TreeNode buildTree(ArrayList<Integer> inOrder, ArrayList<Integer> preOrder,
+                              Map<Integer, Integer> valueIndexMap, int inStart, int inEnd, int preStart, int preEnd) {
+
+        int root = preOrder.get(preStart);
+        int inOrderRootIndex = valueIndexMap.get(root);
+        TreeNode rootNode = new TreeNode(root);
+        // construct lefttree
+        rootNode.left = buildTree(inOrder, preOrder, valueIndexMap,
+                inStart, inOrderRootIndex - 1, preStart + 1, preEnd);
+
+        buildTree(inOrder, preOrder, valueIndexMap, inOrderRootIndex + 1, inEnd, 0, 0);
+        return rootNode;
+
+    }
+
 }

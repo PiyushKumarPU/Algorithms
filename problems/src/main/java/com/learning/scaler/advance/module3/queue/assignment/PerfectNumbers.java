@@ -1,6 +1,11 @@
 package com.learning.scaler.advance.module3.queue.assignment;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /*
 Problem Description
     Given an integer A, you have to find the Ath Perfect Number.
@@ -38,18 +43,47 @@ Example
         2. 22
         3. 1111
         4. 1221
-        Return the 2nd Perfect number.
+         Returns the 2nd Perfect number.
 Explanation 2:
     First four perfect numbers are:
     1. 11
     2. 22
     3. 1111
     4. 1221
-    Return the 3rd Perfect number.
+     Returns the 3rd Perfect number.
 * */
 public class PerfectNumbers {
+    private static List<Integer> result = new ArrayList<>();
+    private static int count;
 
-    public String solve(int A) {
-        return "";
+    private static void generatePerfectNumbers(long current) {
+        if (count <= 0) return;
+        if (isEvenDigitPalindrome(current)) {
+            result.add((int) current);
+            count--;
+        }
+        generatePerfectNumbers(current * 10 + 1);
+        generatePerfectNumbers(current * 10 + 2);
+    }
+
+    private static boolean isEvenDigitPalindrome(long number) {
+        String numStr = String.valueOf(number);
+        return numStr.length() % 2 == 0 && numStr.equals(new StringBuilder(numStr).reverse().toString());
+    }
+
+    private static List<Integer> firstAPerfectNumbers(int A) {
+        result.clear();
+        count = A;
+        generatePerfectNumbers(1);
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int A = 81;
+        List<Integer> perfectNumbers = firstAPerfectNumbers(A);
+        System.out.println("First " + A + " perfect numbers with even digits that are palindromes:");
+        for (int num : perfectNumbers) {
+            System.out.println(num);
+        }
     }
 }

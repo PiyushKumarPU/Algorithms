@@ -1,6 +1,11 @@
 package com.learning.scaler.advance.module3.queue.additional;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /*
 Problem Description
     Given an integer, A. Find and Return first positive A integers in ascending order containing only digits 1, 2, and 3.
@@ -35,7 +40,28 @@ Example
 * */
 public class NIntegersContainingOnly123 {
 
-    public int[] solve(int A) {
-        return null;
+    public static void main(String[] args) {
+        System.out.println(solve(7));
+    }
+
+    public static ArrayList<Integer> solve(int A) {
+        int count = 0;
+        ArrayList<Integer> result = new ArrayList<>();
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+        while (count < A && !queue.isEmpty()) {
+            Integer current = queue.poll();
+            result.add(current);
+            Integer first = current * 10 + 1;
+            Integer second = current * 10 + 2;
+            Integer third = current * 10 + 3;
+            queue.add(first);
+            queue.add(second);
+            queue.add(third);
+            count += 1;
+        }
+        return result;
     }
 }
