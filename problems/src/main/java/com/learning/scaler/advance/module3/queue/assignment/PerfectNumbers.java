@@ -53,37 +53,26 @@ Explanation 2:
      Returns the 3rd Perfect number.
 * */
 public class PerfectNumbers {
-    private static List<Integer> result = new ArrayList<>();
-    private static int count;
-
-    private static void generatePerfectNumbers(long current) {
-        if (count <= 0) return;
-        if (isEvenDigitPalindrome(current)) {
-            result.add((int) current);
-            count--;
-        }
-        generatePerfectNumbers(current * 10 + 1);
-        generatePerfectNumbers(current * 10 + 2);
-    }
-
-    private static boolean isEvenDigitPalindrome(long number) {
-        String numStr = String.valueOf(number);
-        return numStr.length() % 2 == 0 && numStr.equals(new StringBuilder(numStr).reverse().toString());
-    }
-
-    private static List<Integer> firstAPerfectNumbers(int A) {
-        result.clear();
-        count = A;
-        generatePerfectNumbers(1);
-        return result;
-    }
 
     public static void main(String[] args) {
-        int A = 81;
-        List<Integer> perfectNumbers = firstAPerfectNumbers(A);
-        System.out.println("First " + A + " perfect numbers with even digits that are palindromes:");
-        for (int num : perfectNumbers) {
-            System.out.println(num);
+        System.out.println(new PerfectNumbers().solve(100000));
+    }
+
+    public String solve(int A) {
+        List<Long> result = new ArrayList<>();
+        Queue<Long> queue = new LinkedList<>();
+        queue.add(1L);
+        queue.add(2L);
+        int count = 0;
+        while (!queue.isEmpty() && count < A) {
+            long current = queue.poll();
+            result.add(current);
+            queue.add(current * 10 + 1);
+            queue.add(current * 10 + 2);
+            count++;
         }
+        String finalNumber = String.valueOf(result.get(result.size() - 1));
+        StringBuilder str = new StringBuilder(finalNumber);
+        return finalNumber + str.reverse();
     }
 }

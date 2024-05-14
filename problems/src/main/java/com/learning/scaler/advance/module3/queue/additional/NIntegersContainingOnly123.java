@@ -3,7 +3,6 @@ package com.learning.scaler.advance.module3.queue.additional;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /*

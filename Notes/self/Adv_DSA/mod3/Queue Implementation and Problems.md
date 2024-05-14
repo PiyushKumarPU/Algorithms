@@ -4,6 +4,7 @@
 - [Queue](#queue)
 - [Implementation of queue using array](#implementation-of-queue-using-array)
 - [Implementation of queue using stack](#implementation-of-queue-using-stack)
+- [N integers containing only 1, 2 & 3](#n-integers-containing-only-1-2--3)
 - [Queues Perfect No](#queues-perfect-no)
 - [Doubly Ended Queue](#doubly-ended-queue)
 - [Sliding Window Maximum](#sliding-window-maximum)
@@ -25,6 +26,7 @@
 ## Queue
 > A Queue Data Structure is a fundamental concept in computer science used for storing and managing data in a specific order. It follows the principle of “First in, First out” (FIFO), where the first element added to the queue is the first one to be removed.
 ![Queue](../../../images/Queue-Data-structure1.png)
+
 ### Functions of Queue
 * **Enqueue (Insert):** Adds an element to the rear of the queue.
 * **Dequeue (Delete):** Removes and returns the element from the front of the queue.
@@ -33,6 +35,7 @@
 * **isFull:** Checks if the queue is full.
 ## Implementation of queue using array
 ![Queue using array](../../../images/Queue_using_array.png)
+
 ## Implementation of queue using stack
     Problem Description
         Implement a First In First Out (FIFO) queue using stacks only.
@@ -43,8 +46,10 @@
         int peek() : Returns the element at the front of the queue.
         boolean empty() : Returns true if the queue is empty, false otherwise.
     NOTES:
-        You must use only standard operations of a stack, which means only push to top, peek/pop from top, size, and is empty operations are valid.
-        Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.
+        You must use only standard operations of a stack, which means only push to top, peek/pop from top, size, 
+        and is empty operations are valid.
+        Depending on your language, the stack may not be supported natively. You may simulate a stack using a 
+        list or deque (double-ended queue) as long as you use only a stack's standard operations.
 
     Problem Constraints
         1 <= X <= 10^9
@@ -156,11 +161,161 @@
         return container.isEmpty() && auxSpace.isEmpty();
     }
 ``` 
+
+## N integers containing only 1, 2 & 3
+    Problem Description
+        Given an integer, A. Find and Return first positive A integers in ascending order containing only 
+        digits 1, 2, and 3.
+        NOTE: All the A integers will fit in 32-bit integers.
+
+    Problem Constraints
+        1 <= A <= 29500
+
+    Input Format
+        The only argument given is integer A.
+
+    Output Format
+        Return an integer array denoting the first positive A integers in ascending order containing only 
+        digits 1, 2 and 3.
+
+    Example
+        Input 1:
+            A = 3
+        Input 2:
+            A = 7
+
+    Example
+        Output 1:
+            [1, 2, 3]
+        Output 2:
+            [1, 2, 3, 11, 12, 13, 21]
+
+    Example
+        Explanation 1:
+            Output denotes the first 3 integers that contains only digits 1, 2 and 3.
+        Explanation 2:
+            Output denotes the first 7 integers that contains only digits 1, 2 and 3.
+
+### Solution approach
+    We need to generate all the numbers that can contains only 1, 2 and 3. 
+    So lets take some example:
+        1 2 3 11 12 13 21 22 23 
+    lets start with 1 and the next number that can be formed using 1 and 1,2 and 3 is
+        1 * 10 + 1
+        1 * 10 + 2
+        1 * 10 + 3
+    in the same way we can create numbers till A
+    TC : O(n)
+    SC : O(n)
+
+### Solution
+```java
+public static ArrayList<Integer> solve(int A) {
+    int count = 0;
+    ArrayList<Integer> result = new ArrayList<>();
+    Queue<Integer> queue = new LinkedList<>();
+    queue.add(1);
+    queue.add(2);
+    queue.add(3);
+    while (count < A && !queue.isEmpty()) {
+        Integer current = queue.poll();
+        result.add(current);
+        Integer first = current * 10 + 1;
+        Integer second = current * 10 + 2;
+        Integer third = current * 10 + 3;
+        queue.add(first);
+        queue.add(second);
+        queue.add(third);
+        count += 1;
+    }
+    return result;
+}
+```
 ## Queues Perfect No
-    
+    Problem Description
+        Given an integer A, you have to find the Ath Perfect Number.
+        A Perfect Number has the following properties:
+        It comprises only 1 and 2.
+        The number of digits in a Perfect number is even.
+        It is a palindrome number.
+        For example, 11, 22, 112211 are Perfect numbers, where 123, 121, 782, 1 are not.
+
+    Problem Constraints
+        1 <= A <= 100000
+
+    Input Format
+        The only argument given is an integer A.
+
+    Output Format
+        Return a string that denotes the Ath Perfect Number.
+
+    Example
+        Input 1:
+            A = 2
+        Input 2:
+            A = 3
+
+    Example
+        Output 1:
+            22
+        Output 2:
+            1111
+
+    Example
+        Explanation 1:
+            First four perfect numbers are:
+            1. 11
+            2. 22
+            3. 1111
+            4. 1221
+            Returns the 2nd Perfect number.
+    Explanation 2:
+        First four perfect numbers are:
+        1. 11
+        2. 22
+        3. 1111
+        4. 1221
+        Returns the 3rd Perfect number.
+
+### Solution Approach
+    We will be using similar approach as previous problem with a small twist
+    As we can see problem statement, we need to choose only number with even digit count and it should be palindrome.
+    So we will be generating half part of the number and then we will append it with reverse of first part.
+
+    lets take below example
+    Generate first 4 number
+    1 2 11 12 and append its reverse to the same number
+    11 22 1111 1221
+
+    TC : O(n)
+    SC : O(n)
+
+### Solution
+```java
+public String solve(int A) {
+    List<Long> result = new ArrayList<>();
+    Queue<Long> queue = new LinkedList<>();
+    queue.add(1L);
+    queue.add(2L);
+    int count = 0;
+    while (!queue.isEmpty() && count < A) {
+        long current = queue.poll();
+        result.add(current);
+        queue.add(current * 10 + 1);
+        queue.add(current * 10 + 2);
+        count++;
+    }
+    String finalNumber = String.valueOf(result.get(result.size() - 1));
+    StringBuilder str = new StringBuilder(finalNumber);
+    return finalNumber + str.reverse();
+}
+```
+
 ## Doubly Ended Queue
 > Deque or Double Ended Queue is a generalized version of Queue data structure that allows insert and delete at both ends.
 
+* [GFG](https://www.geeksforgeeks.org/deque-set-1-introduction-applications/)
+* [InterviewBit]()
 
 | Operation   | Description                          | Time Complexity |
 |-------------|--------------------------------------|-----------------|
@@ -175,3 +330,67 @@
 
 
 ## Sliding Window Maximum
+    You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+
+    Return the max sliding window.
+
+    Example 1:
+
+    Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+    Output: [3,3,5,5,6,7]
+    Explanation: 
+    Window position                Max
+    ---------------               -----
+    [1  3  -1] -3  5  3  6  7       3
+    1 [3  -1  -3] 5  3  6  7       3
+    1  3 [-1  -3  5] 3  6  7       5
+    1  3  -1 [-3  5  3] 6  7       5
+    1  3  -1  -3 [5  3  6] 7       6
+    1  3  -1  -3  5 [3  6  7]      7
+    Example 2:
+
+    Input: nums = [1], k = 1
+    Output: [1]
+
+### Solution Approach
+    Approach 1: Brute Force
+        Go to each window of size k and find max out of it.
+        TC : O(n * K)
+        SC : O(k) --> to find max out of a window
+    Approach 2: Using Double ended queue
+
+    lets take example of 
+    nums = [1,3,-1,-3,5,3,6,7], k = 3.in this case following would be the output
+    [3,3,5,5,6,7]
+
+> Please take a look at below flow chart to understand the steps to follow.
+
+![max sliding window](../../../images/max_sliding_window.jpg)
+
+
+### Solution
+```java
+public int[] maxSlidingWindow(int[] nums, int k) {
+    int[] result = new int[nums.length - k + 1];
+    int index = 0;
+    Deque<Integer> deque = new LinkedList<>();
+    for (int i = 0; i < k; i++) {
+        while (!deque.isEmpty() && nums[i] > nums[deque.peekFirst()]) deque.removeFirst();
+        deque.addLast(i);
+    }
+    if (!deque.isEmpty())
+        result[index++] = nums[deque.peekFirst()];
+
+    for (int i = k; i < nums.length; i++) {
+        if (!deque.isEmpty() && deque.peekFirst() == i - k) deque.removeFirst();
+
+        while (!deque.isEmpty() && nums[i] > nums[deque.peekLast()])
+            deque.removeLast();
+        deque.addLast(i);
+
+        if (!deque.isEmpty())
+            result[index++] = nums[deque.peekFirst()];
+    }
+    return result;
+}
+```
