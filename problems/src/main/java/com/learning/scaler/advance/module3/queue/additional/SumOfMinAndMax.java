@@ -3,6 +3,8 @@ package com.learning.scaler.advance.module3.queue.additional;
 
 import java.math.BigInteger;
 import java.util.Comparator;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 /*
@@ -59,26 +61,101 @@ public class SumOfMinAndMax {
     }
 
     public static int solve(int[] A, int B) {
-        if (A == null || B == 0) return 0;
-        BigInteger sum = BigInteger.ZERO, MOD = BigInteger.valueOf(1000000007);
-
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
-
-        for (int i = 0; i < B; i++) {
-            minHeap.add(A[i]);
-            maxHeap.add(A[i]);
+        int[][] maxAndMinOfEachWindow = minAndMaxSlidingWindow(A, B);
+        int total = 0;
+        for (int[] arr : maxAndMinOfEachWindow) {
+            total += (arr[0] + arr[1]);
+            total %= 1000000000 + 7;
         }
-        sum = sum.add(BigInteger.valueOf(minHeap.peek() + maxHeap.peek()));
-        sum = sum.mod(MOD);
-        for (int i = 1; i < A.length - B + 1; i++) {
-            minHeap.remove(A[i - 1]);
-            maxHeap.remove(A[i - 1]);
-            minHeap.add(A[i + B - 1]);
-            maxHeap.add(A[i + B - 1]);
-            sum = sum.add(BigInteger.valueOf(minHeap.peek() + maxHeap.peek()));
-            sum = sum.mod(MOD);
+        return total;
+    }
+
+    public static int[] maxSlidingWindow(int[] nums, int k) {
+        int[] result = new int[nums.length - k + 1];
+        int index = 0;
+        Deque<Integer> deque = new LinkedList<>();
+        for (int i = 0; i < k; i++) {
+            while (!deque.isEmpty() && nums[i] > nums[deque.peekFirst()]) deque.removeFirst();
+            deque.addLast(i);
         }
-        return sum.intValue();
+        if (!deque.isEmpty())
+            result[index++] = nums[deque.peekFirst()];
+
+        for (int i = k; i < nums.length; i++) {
+            if (!deque.isEmpty() && deque.peekFirst() == i - k) deque.removeFirst();
+
+            while (!deque.isEmpty() && nums[i] > nums[deque.peekLast()])
+                deque.removeLast();
+            deque.addLast(i);
+
+            if (!deque.isEmpty())
+                result[index++] = nums[deque.peekFirst()];
+        }
+        return result;
+    }
+
+    public static int[] minSlidingWindow(int[] nums, int k) {
+        int[] result = new int[nums.length - k + 1];
+        int index = 0;
+        Deque<Integer> deque = new LinkedList<>();
+        for (int i = 0; i < k; i++) {
+            while (!deque.isEmpty() && nums[i] < nums[deque.peekFirst()]) deque.removeFirst();
+            deque.addLast(i);
+        }
+        if (!deque.isEmpty())
+            result[index++] = nums[deque.peekFirst()];
+
+        for (int i = k; i < nums.length; i++) {
+            if (!deque.isEmpty() && deque.peekFirst() == i - k) deque.removeFirst();
+
+            while (!deque.isEmpty() && nums[i] < nums[deque.peekLast()])
+                deque.removeLast();
+            deque.addLast(i);
+
+            if (!deque.isEmpty())
+                result[index++] = nums[deque.peekFirst()];
+        }
+        return result;
+    }
+
+    public static int[][] minAndMaxSlidingWindow(int[] nums, int k) {
+        int[][] result = new int[nums.length - k + 1][2];
+
+        Deque<Integer> maxDeque = new LinkedList<>();
+        Deque<Integer> minDeque = new LinkedList<>();
+
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            // Remove elements outside of the window
+            while (!maxDeque.isEmpty() && maxDeque.peekFirst() < i - k + 1) {
+                maxDeque.removeFirst();
+            }
+            while (!minDeque.isEmpty() && minDeque.peekFirst() < i - k + 1) {
+                minDeque.removeFirst();
+            }
+
+            // Remove elements from the deque that are smaller than current element for maxDeque
+            while (!maxDeque.isEmpty() && nums[i] >= nums[maxDeque.peekLast()]) {
+                maxDeque.removeLast();
+            }
+            // Remove elements from the deque that are greater than current element for minDeque
+            while (!minDeque.isEmpty() && nums[i] <= nums[minDeque.peekLast()]) {
+                minDeque.removeLast();
+            }
+
+            maxDeque.addLast(i);
+            minDeque.addLast(i);
+
+            if (i >= k - 1) {
+                // First element in the window is the maximum, last element is the minimum
+                if (!maxDeque.isEmpty())
+                    result[index][0] = nums[maxDeque.peekFirst()];
+                if (!minDeque.isEmpty())
+                    result[index][1] = nums[minDeque.peekFirst()];
+                index++;
+            }
+        }
+
+        return result;
     }
 }

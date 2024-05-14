@@ -1,6 +1,9 @@
 package com.learning.scaler.advance.module3.queue.assignment;
 
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /*
 Problem Description
     Imagine you're an ice cream truck driver in a beach side town. The beach is divided into several sections,
@@ -62,7 +65,26 @@ Example
 public class ParkingIceCreamTruck {
 
     public int[] slidingMaximum(final int[] A, int B) {
+        int[] result = new int[A.length - B + 1];
+        int index = 0;
+        Deque<Integer> deque = new LinkedList<>();
+        for (int i = 0; i < B; i++) {
+            while (!deque.isEmpty() && A[i] > A[deque.peekFirst()]) deque.removeFirst();
+            deque.addLast(i);
+        }
+        if (!deque.isEmpty())
+            result[index++] = A[deque.peekFirst()];
 
-        return A;
+        for (int i = B; i < A.length; i++) {
+            if (!deque.isEmpty() && deque.peekFirst() == i - B) deque.removeFirst();
+
+            while (!deque.isEmpty() && A[i] > A[deque.peekLast()])
+                deque.removeLast();
+            deque.addLast(i);
+
+            if (!deque.isEmpty())
+                result[index++] = A[deque.peekFirst()];
+        }
+        return result;
     }
 }
