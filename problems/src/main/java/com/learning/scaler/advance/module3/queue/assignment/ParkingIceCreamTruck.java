@@ -1,8 +1,7 @@
 package com.learning.scaler.advance.module3.queue.assignment;
 
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 /*
 Problem Description
@@ -63,13 +62,22 @@ Example
          1 2 3 [4 2 7 1 3 6] | 7
 * */
 public class ParkingIceCreamTruck {
+    public static void main(String[] args) {
+        int[] A = {718, 622, 531, 279, 442, 893, 282, 875, 252, 70, 402, 663, 22, 69, 611, 412, 302, 840, 589, 668, 346, 983, 227, 23, 703, 818, 100, 943, 728, 305, 72, 772, 35, 721, 550, 12, 405, 454, 902, 978, 579};
+        int B = 9;
+        System.out.println(Arrays.toString(new int[]{893, 893, 893, 893, 893, 893, 875, 875, 663, 840, 840, 840, 840, 983, 983,
+                983, 983, 983, 983, 983, 983, 983, 943, 943, 943, 943, 943, 943, 772, 772, 902, 978, 978}));
 
-    public int[] slidingMaximum(final int[] A, int B) {
+        System.out.println(Arrays.toString(slidingMaximum(A, B)));
+    }
+
+    public static int[] slidingMaximum(final int[] A, int B) {
         int[] result = new int[A.length - B + 1];
         int index = 0;
         Deque<Integer> deque = new LinkedList<>();
         for (int i = 0; i < B; i++) {
             while (!deque.isEmpty() && A[i] > A[deque.peekFirst()]) deque.removeFirst();
+            while (!deque.isEmpty() && A[i] > A[deque.peekLast()]) deque.removeLast();
             deque.addLast(i);
         }
         if (!deque.isEmpty())
@@ -86,5 +94,47 @@ public class ParkingIceCreamTruck {
                 result[index++] = A[deque.peekFirst()];
         }
         return result;
+    }
+
+    public ArrayList<Integer> slidingMaximum(final List<Integer> A, int B) {
+        int n = A.size();
+        int i;
+        ArrayList<Integer> res = new ArrayList<>();
+        int window = Math.min(A.size(), B);
+        Deque<Node> deque = new LinkedList<>();
+        int val;
+        Node ans;
+        for (i = 0; i < window - 1; i++) {
+            val = A.get(i);
+            while (!deque.isEmpty() && deque.peekFirst().val <= val) {
+                deque.pollFirst();
+            }
+            deque.addFirst(new Node(i, val));
+        }
+        for (; i < n; i++) {
+            val = A.get(i);
+            // removes the elements not in range
+            while (!deque.isEmpty() && (i - deque.peekLast().index >= window)) {
+                deque.pollLast();
+            }
+            // removes the elements lesser than A[i]
+            while (!deque.isEmpty() && deque.peekFirst().val <= val) {
+                deque.pollFirst();
+            }
+            deque.addFirst(new Node(i, val));
+            ans = deque.peekLast();
+            res.add(ans.val);
+        }
+        return res;
+    }
+
+    class Node {
+        int val;
+        int index;
+
+        public Node(int index, int val) {
+            this.index = index;
+            this.val = val;
+        }
     }
 }

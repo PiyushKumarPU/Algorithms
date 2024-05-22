@@ -62,8 +62,10 @@ public class MedianOfTwoSortedArray {
 
     public static void main(String[] args) {
         System.out.println(findMedianSortedArrays(List.of(-37, -9, 10, 19), List.of(-29, 18, 46)));
-
     }
+
+
+
 
 
     public static double findMedianSortedArrays(final List<Integer> a, final List<Integer> b) {

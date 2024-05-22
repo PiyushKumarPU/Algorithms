@@ -1,9 +1,6 @@
 package com.learning.scaler.advance.module4.graph3.additional;
 
 
-import com.learning.scaler.advance.module4.graph3.Pair;
-
-import java.lang.reflect.Array;
 import java.util.*;
 
 /*
@@ -71,35 +68,10 @@ public class EdgeInMST {
         List<List<Triplet>> adjList = constructAdjList(B, A);
         boolean[] visited = new boolean[A + 1];
         HashSet<String> usedEdges = new HashSet<>();
-        for (int i = 1; i < visited.length; i++) {
-            if (!visited[i]) {
-                solve1(1, adjList, visited, usedEdges);
-            }
-        }
-        ArrayList<Integer> result = new ArrayList<>();
-        for (ArrayList<Integer> edge : B) {
-            String key1 = edge.get(0) + "_" + edge.get(1) + "_" + edge.get(2);
-            String key2 = edge.get(1) + "_" + edge.get(0) + "_" + edge.get(2);
-            result.add(usedEdges.contains(key1) || usedEdges.contains(key2) ? 1 : 0);
-        }
-        return result;
+
+        return null;
     }
 
-    private void solve1(int A, List<List<Triplet>> adjList, boolean[] visited,
-                       HashSet<String> usedEdges) {
-        PriorityQueue<Triplet> minHeap = new PriorityQueue<>(Comparator.comparing(t -> t.weight));
-        minHeap.add(new Triplet(0, 1, 0));
-        while (!minHeap.isEmpty()) {
-            Triplet current = minHeap.poll();
-            if (visited[current.dest]) continue;
-            visited[current.dest] = true;
-            usedEdges.add(current.source + "_" + current.dest + "_" + current.weight);
-            for (Triplet nbr : adjList.get(current.dest)) {
-                if (visited[nbr.dest]) continue;
-                minHeap.add(nbr);
-            }
-        }
-    }
 
     private List<List<Triplet>> constructAdjList(ArrayList<ArrayList<Integer>> B, int nodeCount) {
         List<List<Triplet>> result = new ArrayList<>(nodeCount + 1);

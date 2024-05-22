@@ -20,6 +20,8 @@
 
 1. [Class Notes](https://github.com/rajpiyush220/Algorithms/blob/master/Notes/class_Notes/Advance%20DSA%20Notes/26.%20LinkedList%20Problems%20and%20Doubly%20LinkedList.pdf)
 2. [Class/Lecture Video](https://youtu.be/EBDPOWORteI)
+3. [New Batch Notes](../../../new_batch_notes/Linked%20List%203.pdf)
+4. [New Batch Video](https://youtu.be/_8umtisJwvk)
 
 ## Check for cycle in Linked List
     Problem Description

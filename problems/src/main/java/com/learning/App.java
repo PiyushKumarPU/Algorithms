@@ -12,6 +12,27 @@ import java.util.Queue;
  */
 public class App {
 
+    public static int minCostToReachTop(int[] A, int B) {
+        int N = A.length;
+        int[] dp = new int[N + 1];
+        dp[0] = A[0];
+        dp[1] = Math.min(A[0], A[1]);
+        for (int i = 2; i < N + 1; i++) {
+            if (i == B + 1) {
+                dp[i] = dp[i - 1] + A[i - 1];
+            } else {
+                dp[i] = Math.min(dp[i - 1], dp[i - 2]) + (i != N ? A[i - 1] : 0);
+            }
+        }
+        return dp[N];
+    }
+
+    public static void main(String[] args) {
+        int[] A = {13, 15, 12, 4, 10, 14, 8, 14, 12, 9};
+        int B = 9;
+        System.out.println(minCostToReachTop(A, B)); // Output: 46
+    }
+
     public static int numWaysToSendSignal(int A) {
         if (A == 0) return 1;
         if (A == 1) return 2;
