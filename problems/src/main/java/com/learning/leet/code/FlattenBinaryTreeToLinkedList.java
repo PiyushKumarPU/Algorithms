@@ -1,20 +1,40 @@
 package com.learning.leet.code;
 
+import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
+import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
-import com.sun.source.tree.Tree;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FlattenBinaryTreeToLinkedList {
 
-    public void flatten(TreeNode root) {
-        TreeNode leftPart = flattenTree(root.left);
+    ArrayList<Integer> result;
 
-        TreeNode rightPart = flattenTree(root.right);
+    public static void main(String[] args) {
+        TreeNode node = LevelOrderTreeConstruction.constructTree(List.of(1, 2, 5, 3, 4, 6));
+        new FlattenBinaryTreeToLinkedList().flatten(node);
+        System.out.println(PrintTreeNode.traversePreOrder(node));
     }
 
-    private TreeNode flattenTree(TreeNode root) {
-        if (root == null) return null;
+    public void flatten(TreeNode root) {
+        if (root == null) return;
+        result = new ArrayList<>();
+        preOrderWorker(root);
+        root = new TreeNode(result.get(0));
+        TreeNode temp = root;
+        for (int i = 1; i < result.size(); i++) {
+            temp.right = new TreeNode(result.get(i));
+            temp.left = null;
+            temp = temp.right;
+        }
+    }
 
-        return null;
+    void preOrderWorker(TreeNode treeNode) {
+        if (treeNode == null) return;
+        result.add(treeNode.val);
+        preOrderWorker(treeNode.left);
+        preOrderWorker(treeNode.right);
 
     }
 

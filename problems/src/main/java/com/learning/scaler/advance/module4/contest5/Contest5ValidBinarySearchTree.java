@@ -50,6 +50,10 @@ Example Explanation
 * */
 public class Contest5ValidBinarySearchTree {
 
+    public static void main(String[] args) {
+
+    }
+
     public int isValidBSTUsingInOrder(TreeNode A) {
         if (A == null || (A.left == null && A.right == null)) return 1;
         ArrayList<Integer> inOrder = InOrderTraversal.inorderTraversal(A);

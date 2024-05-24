@@ -1,4 +1,4 @@
-package com.learning.leet.code.top150;
+package com.learning.leet.code;
 
 public class FindIndexOfFirstOccurrenceInAString {
 

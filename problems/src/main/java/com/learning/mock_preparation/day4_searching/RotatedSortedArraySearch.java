@@ -46,10 +46,10 @@ Example Explanation
 public class RotatedSortedArraySearch {
 
     public static void main(String[] args) {
-        int[] A = new int[]{101, 103, 106, 109, 158, 164, 182, 187, 202, 205, 2, 3, 32, 57, 69, 74, 81, 99, 100};
-        int B = 202;
+        int[] A = new int[]{1,3};
+        int B = 3;
         int result = search(A, B);
-        assert result == 8;
+        System.out.println(result);
     }
 
 

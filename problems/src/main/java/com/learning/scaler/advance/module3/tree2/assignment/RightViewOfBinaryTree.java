@@ -3,9 +3,7 @@ package com.learning.scaler.advance.module3.tree2.assignment;
 
 import com.learning.scaler.advance.module3.TreeNode;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Queue;
+import java.util.*;
 
 /*
 Problem Description
@@ -79,6 +77,25 @@ public class RightViewOfBinaryTree {
             }
         }
         return result;
+    }
+
+    int currLevel = 0;
+
+    public List<Integer> rightSideView(TreeNode root) {
+        LinkedList<Integer> answer = new LinkedList<>();
+        helper(root, 0, answer);
+        return answer;
+
+    }
+
+    public void helper(TreeNode node, int level, LinkedList<Integer> answer) {
+        if (node == null)
+            return;
+        if (level == answer.size()) {
+            answer.add(node.val);
+        }
+        helper(node.right, level + 1, answer);
+        helper(node.left, level + 1, answer);
     }
 
     public ArrayList<Integer> leftView(TreeNode A) {

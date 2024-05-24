@@ -1,6 +1,5 @@
-package com.learning.leet.code.top150;
+package com.learning.leet.code;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 // https://leetcode.com/problems/merge-sorted-array/?envType=study-plan-v2&envId=top-interview-150
@@ -17,12 +16,11 @@ public class MergeSortedArray {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if (m == 0) nums1[0] = nums2[0];
         else if (n == 0) return;
-        //if (m > n) merge(nums2, n, nums1, m);
         int[] result = new int[m + n];
         int index = 0, firstIndex = 0, secondIndex = 0;
-        while (firstIndex < m && secondIndex < n) {
-            int first = nums1[firstIndex];
-            int second = nums2[secondIndex];
+        while (firstIndex < m || secondIndex < n) {
+            int first = firstIndex < m ? nums1[firstIndex] : Integer.MAX_VALUE;
+            int second = secondIndex < n ? nums2[secondIndex] : Integer.MAX_VALUE;
             if (first > second) {
                 result[index++] = second;
                 secondIndex++;
@@ -34,16 +32,6 @@ public class MergeSortedArray {
                 result[index++] = second;
                 firstIndex++;
                 secondIndex++;
-            }
-        }
-        if (firstIndex < m) {
-            while (firstIndex < m) {
-                result[index++] = nums1[firstIndex++];
-            }
-        }
-        if (secondIndex < n) {
-            while (secondIndex < n) {
-                result[index++] = nums2[secondIndex++];
             }
         }
         System.arraycopy(result, 0, nums1, 0, result.length);

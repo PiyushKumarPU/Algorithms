@@ -1,4 +1,4 @@
-package com.learning.leet.code.top150;
+package com.learning.leet.code;
 
 import com.learning.scaler.advance.module3.ListNode;
 import com.learning.scaler.advance.module3.ListNodeConstructor;

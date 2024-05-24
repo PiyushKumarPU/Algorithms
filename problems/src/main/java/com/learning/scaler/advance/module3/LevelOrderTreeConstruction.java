@@ -18,7 +18,7 @@ public class LevelOrderTreeConstruction {
         for (int i = 1; i < A.size(); i += 2) {
             TreeNode current = queue.poll();
 
-            if (A.get(i) != null/* && A.get(i) > -1*/) {
+            if (A.get(i) != null) {
                 current.left = new TreeNode(A.get(i));
                 queue.offer(current.left);
             }

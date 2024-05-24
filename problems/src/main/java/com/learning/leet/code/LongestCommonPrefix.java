@@ -1,6 +1,4 @@
-package com.learning.leet.code.top150;
-
-import java.util.Objects;
+package com.learning.leet.code;
 
 public class LongestCommonPrefix {
 

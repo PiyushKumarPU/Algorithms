@@ -83,7 +83,6 @@ public class LevelOrder {
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(A);
-        //queue.enqueue(A);
         while (!queue.isEmpty()) {
             ArrayList<Integer> list = new ArrayList<>();
             int size = queue.size();

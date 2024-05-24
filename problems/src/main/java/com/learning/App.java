@@ -28,9 +28,8 @@ public class App {
     }
 
     public static void main(String[] args) {
-        int[] A = {13, 15, 12, 4, 10, 14, 8, 14, 12, 9};
-        int B = 9;
-        System.out.println(minCostToReachTop(A, B)); // Output: 46
+        System.out.println(Integer.MIN_VALUE - 1);
+        System.out.println(Integer.MAX_VALUE);
     }
 
     public static int numWaysToSendSignal(int A) {
@@ -105,6 +104,7 @@ public class App {
             return Math.min(healthPoints[i][j + 1], healthPoints[i + 1][j]) - damage; // Normal case
         }
     }
+
 
 }
 
