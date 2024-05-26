@@ -23,7 +23,7 @@ public class LevelOrderTreeConstruction {
                 queue.offer(current.left);
             }
 
-            if (i + 1 < A.size() && A.get(i + 1) != null /*&& A.get(i + 1) > -1*/) {
+            if (i + 1 < A.size() && A.get(i + 1) != null) {
                 current.right = new TreeNode(A.get(i + 1));
                 queue.offer(current.right);
             }

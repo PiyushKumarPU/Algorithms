@@ -1,6 +1,8 @@
 package com.learning.leet.code;
 
 
+import com.learning.scaler.advance.module3.ListNode;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -24,22 +26,4 @@ public class MergeKSortedList {
         return result.next;
     }
 
-}
-
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
 }

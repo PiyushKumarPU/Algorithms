@@ -5,7 +5,6 @@ import com.learning.scaler.advance.module3.TreeNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /*
@@ -84,19 +83,19 @@ public class BinaryTreeFromInorderAndPostOrder {
         for (int i = 0; i < A.length; i++) {
             valIndexMap.put(A[i], i);
         }
-        return buildTree(A, B, valIndexMap, 0, A.length - 1, 0, A.length - 1);
+        return buildTree(B, valIndexMap, 0, A.length - 1, 0, A.length - 1);
     }
 
-    private TreeNode buildTree(int[] A, int[] B, Map<Integer, Integer> valIndexMap, int inStart, int inEnd, int postStart, int postEnd) {
+    private TreeNode buildTree(int[] B, Map<Integer, Integer> valIndexMap, int inStart, int inEnd, int postStart, int postEnd) {
         if(inStart > inEnd) return null;
         int rootNode = B[postEnd];
         int rootIndex = valIndexMap.get(rootNode);
         int count = rootIndex - inStart;
         TreeNode root = new TreeNode(rootNode);
         // build left tree
-        root.left = buildTree(A, B, valIndexMap, inStart, inStart + count - 1, postStart, postStart + count - 1);
+        root.left = buildTree(B, valIndexMap, inStart, inStart + count - 1, postStart, postStart + count - 1);
         // build right tree
-        root.right = buildTree(A, B, valIndexMap, rootIndex + 1, inEnd, postStart + count, postEnd - 1);
+        root.right = buildTree(B, valIndexMap, rootIndex + 1, inEnd, postStart + count, postEnd - 1);
         return root;
     }
 

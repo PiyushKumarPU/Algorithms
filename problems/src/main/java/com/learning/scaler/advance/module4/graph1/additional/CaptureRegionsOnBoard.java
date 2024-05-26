@@ -69,38 +69,58 @@ public class CaptureRegionsOnBoard {
     }
 
 
+    public void solve(ArrayList<ArrayList<Character>> board) {
+        if (board == null || board.isEmpty()) {
+            return;
+        }
 
-    public void solve(ArrayList<ArrayList<Character>> a) {
-        int n = a.size();
-        for (int i = 0; i < n; i++) {
+        int m = board.size();
+        int n = board.get(0).size();
+
+        for (int i = 0; i < m; i++) {
+            ArrayList<Character> row = board.get(i);
+            if (row.get(0) == 'O') {
+                dfs(board, i, 0);
+            }
+            if (row.get(n - 1) == 'O') {
+                dfs(board, i, n - 1);
+            }
+        }
+
+        for (int j = 0; j < n; j++) {
+            if (board.get(0).get(j) == 'O') {
+                dfs(board, 0, j);
+            }
+            if (board.get(m - 1).get(j) == 'O') {
+                dfs(board, m - 1, j);
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (a.get(i).get(j) == 'O') {
-                    isValidIndex(a, i, j, "");
+                if (board.get(i).get(j) == 'O') {
+                    board.get(i).set(j, 'X');
+                } else if (board.get(i).get(j) == 'S') {
+                    board.get(i).set(j, 'O');
                 }
             }
         }
     }
 
-    private boolean isValidIndex(ArrayList<ArrayList<Character>> A, int i, int j, String caller) {
-        if (i < 0 || j < 0 || i >= A.size() || j > A.get(0).size() || A.get(i).get(j) == 'B'
-                || (i == 0 && j == 0 && A.get(i).get(j) != 'X')
-                || (i == A.size() - 1 && j == A.get(0).size() - 1 && A.get(i).get(j) != 'X')
-        ) return false;
-        if (A.get(i).get(j) == 'X') return true;
-        if (!Objects.equals(caller, ""))
-            System.out.println("Called by " + caller + " with i " + i + " and j " + j);
 
+    private void dfs(ArrayList<ArrayList<Character>> board, int i, int j) {
+        int m = board.size();
+        int n = board.get(0).size();
 
-
-
-        if (isValidIndex(A, i, j - 1, "Left") && isValidIndex(A, i, j + 1, "Right")
-                && isValidIndex(A, i - 1, j, "Up") && isValidIndex(A, i + 1, j, "Bottom")) {
-            A.get(i).set(j, 'X');
-            return true;
-        } else {
-            A.get(i).set(j, 'B');
-            return false;
+        if (i < 0 || i >= m || j < 0 || j >= n || board.get(i).get(j) != 'O') {
+            return;
         }
+        board.get(i).set(j, 'S');
+
+        dfs(board, i - 1, j);
+        dfs(board, i + 1, j);
+        dfs(board, i, j - 1);
+        dfs(board, i, j + 1);
     }
 }
 

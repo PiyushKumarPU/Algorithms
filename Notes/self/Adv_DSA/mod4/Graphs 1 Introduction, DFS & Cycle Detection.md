@@ -10,6 +10,7 @@
 - [DFS](#dfs)
 - [Find cycle in directed graph](#find-cycle-in-directed-graph)
 - [No of Islands](#no-of-islands)
+- [Capture Regions on Board](#capture-regions-on-board)
 
 
 ## Problems and solutions
@@ -36,6 +37,7 @@
 * [InterviewBit](https://www.interviewbit.com/courses/programming/graph-data-structure-algorithms/)
 
 ---
+
 ## Components of Graph
 * **Vertices**: Vertices are the fundamental units of the graph. Sometimes, vertices are also known as vertex or nodes. Every node/vertex can be labeled or unlabelled.
 * **Edges**: Edges are drawn or used to connect two nodes of the graph. It can be ordered pair of nodes in a directed graph. Edges can connect any two nodes in any possible way. There are no rules. Sometimes, edges are also known as arcs. Every edge can be labeled/unlabelled.
@@ -64,6 +66,7 @@
 ![Exm4](../../../images/und_cyclic_acyclic.png?raw=true)
 
 ---
+
 ## Indegree and outdegree of a graph
 #### **Indegree** of a vertex is defined as the number of incoming edges incident on a vertex in a directed graph.
     
@@ -467,3 +470,114 @@ Follwing is the adjacency list for above input.
 
 
 
+
+## Capture Regions on Board
+    Problem Description
+        Given a 2-D board A of size N x M containing 'X' and 'O', capture all regions surrounded by 'X'.
+        A region is captured by flipping all 'O's into 'X's in that surrounded region.
+
+    Problem Constraints
+    1 <= N, M <= 1000
+
+    Input Format
+        First and only argument is an N x M character matrix A.
+
+    Output Format
+        Returns nothing. Make changes to the input only as matrix is passed by reference.
+
+    Example
+        Input 1:
+        A = [
+            [X, X, X, X],
+            [X, O, O, X],
+            [X, X, O, X],
+            [X, O, X, X]
+            ]
+        Input 2:
+        A = [
+            [X, O, O],
+            [X, O, X],
+            [O, O, O]
+            ]
+
+    Example
+        Output 1:
+        After running your function, the board should be:
+        A = [
+            [X, X, X, X],
+            [X, X, X, X],
+            [X, X, X, X],
+            [X, O, X, X]
+            ]
+        Output 2:
+        After running your function, the board should be:
+        A = [
+            [X, O, O],
+            [X, O, X],
+            [O, O, O]
+            ]
+
+    Example
+        Explanation 1:
+        O in (4,2) is not surrounded by X from below.
+        Explanation 2:
+        No O's are surrounded.
+
+### Solution Approach
+
+### Solution
+```java
+    public void solve(ArrayList<ArrayList<Character>> board) {
+        if (board == null || board.isEmpty()) {
+            return;
+        }
+
+        int m = board.size();
+        int n = board.get(0).size();
+
+        for (int i = 0; i < m; i++) {
+            ArrayList<Character> row = board.get(i);
+            if (row.get(0) == 'O') {
+                dfs(board, i, 0);
+            }
+            if (row.get(n - 1) == 'O') {
+                dfs(board, i, n - 1);
+            }
+        }
+
+        for (int j = 0; j < n; j++) {
+            if (board.get(0).get(j) == 'O') {
+                dfs(board, 0, j);
+            }
+            if (board.get(m - 1).get(j) == 'O') {
+                dfs(board, m - 1, j);
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board.get(i).get(j) == 'O') {
+                    board.get(i).set(j, 'X');
+                } else if (board.get(i).get(j) == 'S') {
+                    board.get(i).set(j, 'O');
+                }
+            }
+        }
+    }
+
+
+    private void dfs(ArrayList<ArrayList<Character>> board, int i, int j) {
+        int m = board.size();
+        int n = board.get(0).size();
+
+        if (i < 0 || i >= m || j < 0 || j >= n || board.get(i).get(j) != 'O') {
+            return;
+        }
+        board.get(i).set(j, 'S');
+
+        dfs(board, i - 1, j);
+        dfs(board, i + 1, j);
+        dfs(board, i, j - 1);
+        dfs(board, i, j + 1);
+    }
+```
