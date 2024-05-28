@@ -21,7 +21,9 @@
 ## Space Complexity
 > Space complexity is the total space taken by the code for execution, excluding input space and outputspace.
 
-    Space complexity is a parallel concept to time complexity. If we need to create an array of size n, this will require O(n) space. If we create a two-dimensional array of size n*n, this will require O(n2) space.
+    Space complexity is a parallel concept to time complexity. If we need to create an array of size n, 
+    this will require O(n) space. If we create a two-dimensional array of size n*n, 
+    this will require O(n^2) space.
 ### Examples
     Example 1
         int add (int n){
@@ -79,6 +81,11 @@
 ### GoodPair
     Given an array A and an integer B. A pair(i, j) in the array is a good pair if i != j and (A[i] + A[j] == B).
     Check if any good pair exist or not.
+### Solution Approach
+    Check for each pair where i != j and check if its sum is equal to target.
+    TC : O(n^2)
+    SC : O(1)
+### Solution
 ```java
     public int solve(int[] A, int B) {
         for (int i = 0; i < A.length; i++) {
