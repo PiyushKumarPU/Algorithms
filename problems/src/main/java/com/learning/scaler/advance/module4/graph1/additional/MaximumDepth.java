@@ -22,9 +22,11 @@ Problem Constraints
 
 Input Format
     The first argument is an integer A denoting the number of nodes.
-    The second and third arguments are the integer arrays B and C where for each i (0 <= i < A-1), B[i] and C[i] are the nodes connected by an edge.
-    The fourth argument is an integer array D, where D[i] denotes the value of the (i+1)th node
-    The fifth and sixth arguments are the integer arrays E and F where for each i (0 <= i < Q), E[i] denotes L and F[i] denotes X for ith query.
+    The second and third arguments are the integer arrays B and C where for each i (0 <= i < A-1), B[i] and C[i] are the
+    nodes connected by an edge.
+    The fourth argument is an integer array D, where D[i] denotes the value of the (i+1)th node,
+    The fifth and sixth arguments are the integer arrays E and F where for each i (0 <= i < Q), E[i] denotes L and F[i]
+    denotes X for ith query.
 
 Output Format
     Return an array of integers where the ith element denotes the answer to ith query.
@@ -91,24 +93,11 @@ public class MaximumDepth {
         ArrayList<Integer> E = new ArrayList<>(List.of(1, 1, 2));
         ArrayList<Integer> F = new ArrayList<>(List.of(32, 18, 26));
 
-        System.out.println(maximumDepth.solve(A, B, C, D, E, F));
+        System.out.println(List.of(37, 37, 27));
+        ArrayList<Integer> result = maximumDepth.solve(A, B, C, D, E, F);
+        System.out.println(result);
     }
 
-    // A denotes number of nodes
-    //  B and C denoted start and end node of edges
-    // D denotes the node value of i + 1 node
-    // E denotes L value of query
-    // F denotes X value of query
-
-    // criteria to find min value node of level L mode (maxDepth of tree + 1) and value should be greater or
-    // equal and return -1 if all value is less
-
-
-    // trying brute force
-    /*
-     *  Step 1 : Construct directed and weighted graph adj list for given input
-     *
-     * */
     public ArrayList<Integer> solve(int A, ArrayList<Integer> B, ArrayList<Integer> C, ArrayList<Integer> D,
                                     ArrayList<Integer> E, ArrayList<Integer> F) {
         Map<Integer, List<Integer>> nbrMap = new HashMap<>(A + 1);
@@ -142,7 +131,7 @@ public class MaximumDepth {
             }
         }
 
-        int maxDepth = levelValuesMap.keySet().size();
+        int maxDepth = levelValuesMap.keySet().size() - 1;
         ArrayList<Integer> result = new ArrayList<>(E.size());
         for (int i = 0; i < E.size(); i++) {
             int L = E.get(i);
@@ -152,6 +141,7 @@ public class MaximumDepth {
             if (nodeValueAtL.isEmpty()) {
                 result.add(-1);
             } else {
+
                 result.add(nodeValueAtL.stream().filter(val -> val >= X).min(Comparator.naturalOrder()).orElse(-1));
             }
         }

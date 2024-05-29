@@ -7,11 +7,11 @@ import java.util.Queue;
 
 /*
 Problem Description
-    You are given N towns (1 to N). All towns are connected via unique directed path as mentioned in the input.
+    You are given N towns (1 to N). All towns are connected via a unique directed path as mentioned in the input.
     Given 2 towns find whether you can reach the first town from the second without repeating any edge.
-    B C : query to find whether B is reachable from C.
-    Input contains an integer array A of size N and 2 integers B and C ( 1 <= B, C <= N ).
-    There exist a directed edge from A[i] to i+1 for every 1 <= i < N. Also, it's guaranteed
+    B C: query to find whether B is reachable from C.
+    Input contains an integer array A of size N and 2 integers B and C (1 <= B, C <= N).
+    There exists a directed edge from A[i] to i+1 for every 1 <= i < N. Also, it's guaranteed
     that A[i] <= i for every 1 <= i < N.
     NOTE: Array A is 0-indexed. A[0] = 1 which you can ignore as it doesn't represent any edge.
 
@@ -58,6 +58,8 @@ public class FirstDepthFirstSearch {
     }
 
     public int solve(ArrayList<Integer> A, final int B, final int C) {
+        if (A == null || A.isEmpty()) return 0;
+        else if (B == C) return 1;
         List<List<Integer>> adjList = constructAdjList(A);
         if (adjList.size() < C + 1 || adjList.get(C).isEmpty()) return 0;
         boolean[] visited = new boolean[adjList.size() + 1];
@@ -80,45 +82,9 @@ public class FirstDepthFirstSearch {
         List<List<Integer>> result = new ArrayList<>(N + 1);
         for (int i = 0; i < N + 1; i++) result.add(new ArrayList<>());
         for (int i = 1; i < N; i++) {
-            result.get(i + 1).add(A.get(i));
-        }
-        return result;
-    }
-
-    /*// DO NOT MODIFY THE LIST. IT IS READ ONLY
-    public int solve(ArrayList<Integer> A, final int B, final int C) {
-        if (A.isEmpty() || A.size() < 2) return 0;
-        List<List<Integer>> adjList = constructAdjList(A);
-        boolean[] visited = new boolean[A.size() + 1];
-        Queue<Integer> paths = new LinkedList<>();
-        paths.add(C);
-        while (!paths.isEmpty()) {
-            int current = paths.poll();
-            visited[current] = true;
-            if (current < adjList.size()) {
-                for (int nbr : adjList.get(current)) {
-                    if (!visited[nbr]) paths.add(nbr);
-                }
-            }
-        }
-        return visited[B] ? 1 : 0;
-    }
-
-
-    private List<List<Integer>> constructAdjList(ArrayList<Integer> A) {
-        if (A.isEmpty()) return new ArrayList<>();
-        int N = A.size();
-        List<List<Integer>> result = new ArrayList<>(N);
-        result.add(new ArrayList<>());
-        result.add(new ArrayList<>());
-        for (int i = 1; i < N; i++) {
-            if (result.size() < i + 1) {
-                result.add(new ArrayList<>());
-            }
             result.get(A.get(i)).add(i + 1);
         }
         return result;
-    }*/
-
+    }
 
 }
