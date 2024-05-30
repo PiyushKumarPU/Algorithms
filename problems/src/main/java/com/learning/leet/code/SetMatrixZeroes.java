@@ -1,43 +1,20 @@
-package com.learning.scaler.advance.module1.array2d.assignment;
-
+package com.learning.leet.code;
 
 import java.util.Arrays;
 
-/*
-Problem Description
-    You are given a 2D integer matrix A, make all the elements in a row or column zero if the A[i][j] = 0.
-    Specifically, make entire ith row and jth column zero.
+public class SetMatrixZeroes {
 
-Problem Constraints
-    1 <= A.size() <= 10^3
-    1 <= A[i].size() <= 10^3
-    0 <= A[i][j] <= 10^3
 
-Input Format
-    First argument is a 2D integer matrix A.
+    public static void main(String[] args) {
+        int[][] matrix = {{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}};
+        SetMatrixZeroes zeroes = new SetMatrixZeroes();
+        for (int[] arr : matrix) System.out.println(Arrays.toString(arr));
+        System.out.println("\n");
+        zeroes.setZeroes(matrix);
+        for (int[] arr : matrix) System.out.println(Arrays.toString(arr));
+    }
 
-Output Format
-    Return a 2D matrix after doing required operations.
-
-Example Input
-    Input 1:
-        [1,2,3,4]
-        [5,6,7,0]
-        [9,2,0,4]
-
-    Example Output
-    Output 1:
-        [1,2,0,0]
-        [0,0,0,0]
-        [0,0,0,0]
-
-Example Explanation
-    Explanation 1:
-        A[2][4] = A[3][3] = 0, so make 2nd row, 3rd row, 3rd column and 4th column zero.
-* */
-public class RowToColumnZero {
-
-    public int[][] solve(int[][] matrix) {
+    public void setZeroes(int[][] matrix) {
         boolean firstRowZero = false, firstColZero = false;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -64,6 +41,7 @@ public class RowToColumnZero {
                 matrix[i][0] = 0;
             }
         }
-        return matrix;
+
     }
+
 }

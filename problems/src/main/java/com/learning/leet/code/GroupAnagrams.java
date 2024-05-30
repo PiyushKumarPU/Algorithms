@@ -1,7 +1,12 @@
 package com.learning.leet.code;
 
-import java.lang.reflect.Array;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class GroupAnagrams {
 
@@ -31,7 +36,7 @@ public class GroupAnagrams {
         List<List<String>> result = new ArrayList<>();
         if (strs == null || strs.length == 0) return result;
         for (int i = 0; i < strs.length; i++) {
-            if (strs[i] == "-1") continue;
+            if (Objects.equals(strs[i], "-1")) continue;
             List<String> row = new ArrayList<>();
             row.add(strs[i]);
             int start = i + 1;
