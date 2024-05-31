@@ -37,7 +37,34 @@ Example Explanation
         We can see that longest palindromic substring is of length 4 and the string is "abba".
 * */
 public class LongestPalindromicSubstring {
+    String result = "";
+    int maxLength = 0;
+
+    public static void main(String[] args) {
+     System.out.println(new LongestPalindromicSubstring().longestPalindrome("aab"));
+    }
+
     public String longestPalindrome(String A) {
-        return "";
+        for (int i = 0; i < A.length(); i++) {
+            // check for odd length
+            findMaxLengthPalindrome(i, i, A);
+            findMaxLengthPalindrome(i, i + 1, A);
+        }
+        return result;
+    }
+
+    private void findMaxLengthPalindrome(int left, int right, String A) {
+        while (left >= 0 && right < A.length()) {
+            if (A.charAt(left) != A.charAt(right)) break;
+            else {
+                left--;
+                right++;
+            }
+        }
+        int currentLength = right - left + 1;
+        if (currentLength > maxLength) {
+            maxLength = currentLength;
+            result = A.substring(left + 1, right);
+        }
     }
 }

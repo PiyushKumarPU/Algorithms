@@ -66,10 +66,10 @@ public class ReverseKLinkedList {
             temp = temp.next;
             size++;
         }
-        int iterationCount = size / B + (size % B > 0 ? 1 : 0);
         A = reverseListWithNodeCount(A, B);
+
         ListNode prevEnd = A;
-        for (int index = 1; index < iterationCount; index++) {
+        for (int index = 1; index < (size / B); index++) {
             int jumpCount = B - 1;
             while (jumpCount > 0 && prevEnd != null) {
                 prevEnd = prevEnd.next;

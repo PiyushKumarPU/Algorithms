@@ -57,8 +57,7 @@ public class ReverseLinkedListII {
 
     public ListNode reverseBetween(ListNode A, int m, int n) {
         int i;
-        ListNode node = A;
-        ListNode prev = null;
+        ListNode node = A, prev = null;
         m--;
         n--;
         for (i = 0; i < m; i++) {
@@ -75,12 +74,12 @@ public class ReverseLinkedListII {
     private ListNode reverseList(ListNode A, int count) {
         if (A == null)
             return null;
-        ListNode node = A, prev = null, temp;
+        ListNode node = A, prev = null, next;
         while (node != null && count > 0) {
-            temp = node.next;
+            next = node.next;
             node.next = prev;
             prev = node;
-            node = temp;
+            node = next;
             count--;
         }
         A.next = node;
