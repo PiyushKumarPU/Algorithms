@@ -1,4 +1,4 @@
-package com.learning.practise.gfg.bitmanipulation;
+package com.learning.gfg.bitmanipulation;
 
 
 /*

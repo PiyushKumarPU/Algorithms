@@ -1,4 +1,4 @@
-package com.learning.practise.gfg.practise;
+package com.learning.gfg.practise;
 
 public class MissingNumber {
 

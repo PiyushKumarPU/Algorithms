@@ -1,4 +1,4 @@
-package com.learning.practise.gfg.prefix.sum;
+package com.learning.gfg.prefix.sum;
 
 import java.util.Arrays;
 

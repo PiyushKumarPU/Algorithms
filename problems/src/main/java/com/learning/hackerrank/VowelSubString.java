@@ -1,4 +1,4 @@
-package com.learning.practise.hackerrank;
+package com.learning.hackerrank;
 
 public class VowelSubString {
 

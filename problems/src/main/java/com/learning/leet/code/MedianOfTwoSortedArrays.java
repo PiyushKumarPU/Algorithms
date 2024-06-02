@@ -1,4 +1,4 @@
-package com.learning.practise.leetcode.linkedlist;
+package com.learning.leet.code;
 
 
 public class MedianOfTwoSortedArrays {

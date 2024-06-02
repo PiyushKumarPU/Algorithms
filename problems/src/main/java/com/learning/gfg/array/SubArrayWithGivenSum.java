@@ -1,4 +1,4 @@
-package com.learning.practise.gfg.array;
+package com.learning.gfg.array;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
