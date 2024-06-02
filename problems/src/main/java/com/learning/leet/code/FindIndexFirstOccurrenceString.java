@@ -3,12 +3,10 @@ package com.learning.leet.code;
 public class FindIndexFirstOccurrenceString {
 
     public static void main(String[] args) {
-        /*System.out.println(strStr("hello", "ll"));
-        System.out.println(strStr("sadbutsad", "sad"));*/
         System.out.println(strStr("a", "a"));
     }
 
-
+    // Using BF
     public static int strStr(String haystack, String needle) {
         if(haystack == null || haystack.isEmpty()) return -1;
         if(haystack.length() == needle.length() && haystack.equals(needle) ) return 0;

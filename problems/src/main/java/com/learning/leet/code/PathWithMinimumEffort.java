@@ -24,11 +24,11 @@ public class PathWithMinimumEffort {
         for (int[] arr : minEffort) Arrays.fill(arr, Integer.MAX_VALUE);
         minEffort[0][0] = 0;
 
-        PriorityQueue<Triplet> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a.effort));
-        pq.offer(new Triplet(0, 0, 0));
+        PriorityQueue<Triplet> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> a.effort));
+        minHeap.offer(new Triplet(0, 0, 0));
 
-        while (!pq.isEmpty()) {
-            Triplet current = pq.poll();
+        while (!minHeap.isEmpty()) {
+            Triplet current = minHeap.poll();
             int x = current.x, y = current.y, effort = current.effort;
             if (x == m - 1 && y == n - 1) return effort;
 
@@ -41,7 +41,7 @@ public class PathWithMinimumEffort {
 
                     if (newEffort < minEffort[ni][nj]) {
                         minEffort[ni][nj] = newEffort;
-                        pq.offer(new Triplet(ni, nj, newEffort));
+                        minHeap.offer(new Triplet(ni, nj, newEffort));
                     }
                 }
             }
