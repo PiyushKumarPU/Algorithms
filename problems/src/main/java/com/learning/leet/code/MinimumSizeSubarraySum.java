@@ -1,5 +1,7 @@
 package com.learning.leet.code;
 
+import java.util.Arrays;
+
 public class MinimumSizeSubarraySum {
 
     public static void main(String[] args) {
@@ -9,20 +11,46 @@ public class MinimumSizeSubarraySum {
         System.out.println(sum.minSubArrayLen(target, nums));
     }
 
+    // O(n)
     public int minSubArrayLen(int target, int[] nums) {
-        if (nums == null || nums.length == 0 || target <= 0) return 0;
-        int[] prefixSum = new int[nums.length];
-        prefixSum[0] = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            prefixSum[i] = nums[i] + prefixSum[i - 1];
-        }
-        int minLength = Integer.MAX_VALUE;
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
-                int currentSum = prefixSum[j] - (i > 0 ? prefixSum[i - 1] : 0);
-                if (currentSum >= target) minLength = Math.min(minLength, (j - i + 1));
+        if (nums == null || nums.length == 0)
+            return 0;
+        int i = 0, j = 0, sum = 0, min = Integer.MAX_VALUE;
+
+        while (j < nums.length) {
+            sum += nums[j++];
+
+            while (sum >= target) {
+                min = Math.min(min, j - i);
+                sum -= nums[i++];
             }
         }
-        return minLength == Integer.MAX_VALUE ? 0 : minLength;
+        return min == Integer.MAX_VALUE ? 0 : min;
     }
+
+    private int solveNLogN(int s, int[] nums) {
+        int[] sums = new int[nums.length + 1];
+        for (int i = 1; i < sums.length; i++) sums[i] = sums[i - 1] + nums[i - 1];
+        int minLen = Integer.MAX_VALUE;
+        for (int i = 0; i < sums.length; i++) {
+            int end = binarySearch(i + 1, sums.length - 1, sums[i] + s, sums);
+            if (end == sums.length) break;
+            if (end - i < minLen) minLen = end - i;
+        }
+        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+    }
+
+    private int binarySearch(int lo, int hi, int key, int[] sums) {
+        while (lo <= hi) {
+            int mid = (lo + hi) / 2;
+            if (sums[mid] >= key) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return lo;
+    }
+
+
 }

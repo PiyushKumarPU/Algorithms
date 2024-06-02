@@ -33,6 +33,8 @@ Trying to make an easy and readable DSA notes for quick understanding of related
    4. [5 Steps for Approaching HLD problems in Interviews](/Notes/Cheat%20Sheet/5%20Steps%20for%20Approaching%20HLD%20problems%20in%20Interviews.pdf)
    5. [Design Patterns Cheat Sheet](/Notes/Cheat%20Sheet/Design%20Patterns%20Cheat%20Sheet.pdf)
    
+### Other Algortihms
+   1. [KMP](/KMP%20Algorithm.md)
 
 ### Introduction to OOPS
 

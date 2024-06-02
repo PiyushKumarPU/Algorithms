@@ -21,9 +21,7 @@ public class LongestPalindromicSubstring {
 
     private String getLongestPalindrome(String s, int start, int end) {
         while (start >= 0 && end < s.length()) {
-            if (s.charAt(start) != s.charAt(end)) {
-                return s.substring(start + 1, end);
-            }
+            if (s.charAt(start) != s.charAt(end)) break;
             start--;
             end++;
         }

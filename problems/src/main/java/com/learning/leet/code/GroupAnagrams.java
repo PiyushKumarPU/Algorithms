@@ -41,7 +41,7 @@ public class GroupAnagrams {
             row.add(strs[i]);
             int start = i + 1;
             while (start < strs.length) {
-                if (strs[i].length() == strs[start].length() && strs[start] != "-1") {
+                if (strs[i].length() == strs[start].length() && !Objects.equals(strs[start], "-1")) {
                     if (isAnagram(strs[i], strs[start])) {
                         row.add(strs[start]);
                         strs[start] = "-1";
