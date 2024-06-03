@@ -1,12 +1,9 @@
 package com.learning.scaler.advance.module3.linkedlist3.assignment;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringJoiner;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.function.*;
-import java.util.stream.IntStream;
+import com.learning.scaler.advance.module3.DoublyLinkedList;
+
+import java.util.HashMap;
 
 /*
 Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations:
@@ -44,22 +41,90 @@ Expected Output
 Note that the function calls are made in order.
 * */
 public class LRUCache {
-    public static void main(String[] args) {
 
-        String[] test = {"abc"};
+    public static void main(String[] args) {
+        /*
+        capacity = 2
+         set(1, 10)
+         set(5, 12)
+         get(5)        returns 12
+         get(1)        returns 10
+         get(10)       returns -1
+         set(6, 14)    this pushes out key = 5 as LRU is full.
+         get(5)        returns -1
+        * */
+        LRUCache lruCache = new LRUCache(2);
+        lruCache.set(1, 10);
+        lruCache.set(5, 12);
+        System.out.println(lruCache.get(5));
+        System.out.println(lruCache.get(1));
+        System.out.println(lruCache.get(10));
+        lruCache.set(6, 14);
+        System.out.println(lruCache.get(5));
     }
 
+    private final int capacity;
+    private final HashMap<Integer, Node> cache;
+    private final Node head, tail;
 
-    // @Override
     public LRUCache(int capacity) {
+        this.capacity = capacity;
+        this.cache = new HashMap<>();
 
+        // Initialize the dummy head and tail nodes
+        this.head = new Node(0, 0);
+        this.tail = new Node(0, 0);
+        head.next = tail;
+        tail.prev = head;
     }
 
     public int get(int key) {
-        return 0;
+        if (cache.containsKey(key)) {
+            Node node = cache.get(key);
+            remove(node);
+            insertToHead(node);
+            return node.value;
+        } else {
+            return -1;
+        }
     }
 
     public void set(int key, int value) {
+        if (cache.containsKey(key)) {
+            Node node = cache.get(key);
+            node.value = value;
+            remove(node);
+            insertToHead(node);
+        } else {
+            if (cache.size() == capacity) {
+                cache.remove(tail.prev.key);
+                remove(tail.prev);
+            }
+            Node newNode = new Node(key, value);
+            cache.put(key, newNode);
+            insertToHead(newNode);
+        }
+    }
 
+    private void remove(Node node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    private void insertToHead(Node node) {
+        node.next = head.next;
+        node.next.prev = node;
+        node.prev = head;
+        head.next = node;
+    }
+
+    private static class Node {
+        int key, value;
+        Node prev, next;
+
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 }

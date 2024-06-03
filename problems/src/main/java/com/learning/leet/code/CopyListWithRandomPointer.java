@@ -51,7 +51,7 @@ public class CopyListWithRandomPointer {
         current = dummy.next;
         while (temp != null) {
             if (temp.random != null) {
-                current.random = indexNodeMap.get(temp.random.val);
+                current.random = new Node(temp.random.val); // indexNodeMap.get(temp.random.val);
             }
             temp = temp.next;
             current = current.next;

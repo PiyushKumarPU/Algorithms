@@ -5,85 +5,39 @@ import java.util.List;
 
 public class MedianOfTwoSortedArrays {
 
-    // https://leetcode.com/problems/median-of-two-sorted-arrays/description/
-
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int m = nums1.length, n = nums2.length;
-        int[] merged = new int[m + n];
-        int firstIndex = 0, secondIndex = 0, index = 0;
-        while (firstIndex < m && secondIndex < n) {
-            int first = nums1[firstIndex];
-            int second = nums2[secondIndex];
-            if (first <= second) {
-                merged[index++] = first;
-                firstIndex++;
-                if (first == second) {
-                    merged[index++] = second;
-                    secondIndex++;
-                }
+        if (m > n)
+            return findMedianSortedArrays(nums2, nums1);
+        int total = m + n, maxSelection = (total + 1) / 2, start = 0, end = m;
+        double result = 0.0;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            int remaining = maxSelection - mid;
+
+            // get the four points around possible median
+            int left1 = (mid > 0) ? nums1[mid - 1] : Integer.MIN_VALUE;
+            int right1 = (mid < m) ? nums1[mid] : Integer.MAX_VALUE;
+            int left2 = (remaining > 0) ? nums2[remaining - 1] : Integer.MIN_VALUE;
+            int right2 = (remaining < n) ? nums2[remaining] : Integer.MAX_VALUE;
+
+            // partition is correct
+            if (Math.max(left1, left2) <= Math.min(right1, right2)) {
+                result = (total % 2 == 0) ? (Math.max(left1, left2) + Math.min(right1, right2)) /
+                        2.0 : Math.max(left1, left2);
+                break;
+            }
+            // partition is wrong (update left/right pointers)
+            else if (left1 > right2) {
+                end = mid - 1;
             } else {
-                merged[index++] = second;
-                secondIndex++;
+                start = mid + 1;
             }
         }
-
-        if (firstIndex < m) {
-            while (firstIndex < m) {
-                merged[index++] = nums1[firstIndex++];
-            }
-        }
-
-        if (secondIndex < n) {
-            while (secondIndex < n) {
-                merged[index++] = nums2[secondIndex++];
-            }
-        }
-        int length = merged.length;
-        if (length % 2 != 0) {
-            return merged[length / 2];
-        } else {
-            return (double) (merged[length / 2] + merged[length / 2 - 1]) / 2;
-        }
+        return result;
     }
 
-    public double findMedianSortedArrays(final List<Integer> a, final List<Integer> b) {
-        int m = a.size(), n = b.size();
-        int[] merged = new int[m + n];
-        int firstIndex = 0, secondIndex = 0, index = 0;
-        while (firstIndex < m && secondIndex < n) {
-            int first = a.get(firstIndex);
-            int second = b.get(secondIndex);
-            if (first <= second) {
-                merged[index++] = first;
-                firstIndex++;
-                if (first == second) {
-                    merged[index++] = second;
-                    secondIndex++;
-                }
-            } else {
-                merged[index++] = second;
-                secondIndex++;
-            }
-        }
 
-        if (firstIndex < m) {
-            while (firstIndex < m) {
-                merged[index++] = a.get(firstIndex++);
-            }
-        }
-
-        if (secondIndex < n) {
-            while (secondIndex < n) {
-                merged[index++] = b.get(secondIndex++);
-            }
-        }
-        int length = merged.length;
-        if (length % 2 != 0) {
-            return merged[length / 2];
-        } else {
-            return (double) (merged[length / 2] + merged[length / 2 - 1]) / 2;
-        }
-    }
 
 
 }
