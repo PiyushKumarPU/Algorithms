@@ -15,6 +15,8 @@
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/16.%20Searching%20Binary%20Search%20Problems.pdf)
 2. [Class/Lecture Video](https://youtu.be/Z1yhISxtoSg)
+3. [New Batch Notes](../../../new_batch_notes/Binary%20Search%20Problems.pdf)
+4. [New Batch Lecture](https://youtu.be/djeHvSkYTlQ)
 
 ## Searching in rotated sorted Array
     Problem Statement:
@@ -146,6 +148,8 @@ public int sqrt(int A) {
         Will divide both the array in partition and then calculate median.
             TC : log(min(M,N))
             SC : O(1)
+
+
 
 ## Ath magical number
     Problem Statement

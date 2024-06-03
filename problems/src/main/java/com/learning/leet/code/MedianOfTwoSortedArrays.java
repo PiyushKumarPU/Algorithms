@@ -1,6 +1,8 @@
 package com.learning.leet.code;
 
 
+import java.util.List;
+
 public class MedianOfTwoSortedArrays {
 
     // https://leetcode.com/problems/median-of-two-sorted-arrays/description/
@@ -43,4 +45,45 @@ public class MedianOfTwoSortedArrays {
             return (double) (merged[length / 2] + merged[length / 2 - 1]) / 2;
         }
     }
+
+    public double findMedianSortedArrays(final List<Integer> a, final List<Integer> b) {
+        int m = a.size(), n = b.size();
+        int[] merged = new int[m + n];
+        int firstIndex = 0, secondIndex = 0, index = 0;
+        while (firstIndex < m && secondIndex < n) {
+            int first = a.get(firstIndex);
+            int second = b.get(secondIndex);
+            if (first <= second) {
+                merged[index++] = first;
+                firstIndex++;
+                if (first == second) {
+                    merged[index++] = second;
+                    secondIndex++;
+                }
+            } else {
+                merged[index++] = second;
+                secondIndex++;
+            }
+        }
+
+        if (firstIndex < m) {
+            while (firstIndex < m) {
+                merged[index++] = a.get(firstIndex++);
+            }
+        }
+
+        if (secondIndex < n) {
+            while (secondIndex < n) {
+                merged[index++] = b.get(secondIndex++);
+            }
+        }
+        int length = merged.length;
+        if (length % 2 != 0) {
+            return merged[length / 2];
+        } else {
+            return (double) (merged[length / 2] + merged[length / 2 - 1]) / 2;
+        }
+    }
+
+
 }
