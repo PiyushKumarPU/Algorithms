@@ -1,5 +1,8 @@
 package com.learning.scaler.advance.module3;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class PrintTreeNode {
     public static String traversePreOrder(TreeNode root) {
 
@@ -20,11 +23,8 @@ public class PrintTreeNode {
     }
 
 
-
-
-
     private static void traverseNodes(StringBuilder sb, String padding, String pointer, TreeNode node,
-                              boolean hasRightSibling) {
+                                      boolean hasRightSibling) {
         if (node != null) {
             sb.append("\n");
             sb.append(padding);
@@ -44,6 +44,27 @@ public class PrintTreeNode {
 
             traverseNodes(sb, paddingForBoth, pointerLeft, node.getLeft(), node.getRight() != null);
             traverseNodes(sb, paddingForBoth, pointerRight, node.getRight(), false);
+        }
+    }
+
+    public static void printLevelOrder(TreeNode root) {
+        if (root == null) {
+            System.out.print("# ");
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+
+            if (current == null) {
+                System.out.print("# ");
+            } else {
+                System.out.print(current.val + " ");
+                queue.add(current.left);
+                queue.add(current.right);
+            }
         }
     }
 

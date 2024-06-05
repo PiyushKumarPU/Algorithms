@@ -1,64 +1,59 @@
 package com.learning.algo;
 
 public class Manacher {
-    public String longestPalindrome(String s) {
+
+    public static String longestPalindromicSubstring(String s) {
         // Preprocess the string
-        String t = preprocess(s);
-        int n = t.length();
-        int[] p = new int[n];
-        int center = 0, right = 0;
+        StringBuilder processedStr = new StringBuilder("$#");
+        for (char c : s.toCharArray()) {
+            processedStr.append(c).append("#");
+        }
+        processedStr.append("@");
+        int n = processedStr.length();
+        int[] P = new int[n];
+        int C = 0, R = 0;
 
-        // Main loop to expand around the center
         for (int i = 1; i < n - 1; i++) {
-            int mirror = 2 * center - i; // mirror of i around center
+            int mirror = 2 * C - i;
 
-            if (right > i) {
-                p[i] = Math.min(right - i, p[mirror]);
-            } else {
-                p[i] = 0;
+            if (i < R) {
+                P[i] = Math.min(R - i, P[mirror]);
             }
 
-            // Attempt to expand the palindrome centered at i
-            while (t.charAt(i + 1 + p[i]) == t.charAt(i - 1 + p[i])) {
-                p[i]++;
+            // Attempt to expand palindrome centered at i
+            while (processedStr.charAt(i + (1 + P[i])) == processedStr.charAt(i - (1 + P[i]))) {
+                P[i]++;
             }
 
-            // Update center and right boundary
-            if (i + p[i] > right) {
-                center = i;
-                right = i + p[i];
+            // If palindrome centered at i expands past R,
+            // adjust center and right boundary
+            if (i + P[i] > R) {
+                C = i;
+                R = i + P[i];
             }
         }
 
-        // Find the maximum element in p
+        // Find the maximum element in P.
         int maxLen = 0;
         int centerIndex = 0;
-        for (int i = 1; i < n - 1; i++) {
-            if (p[i] > maxLen) {
-                maxLen = p[i];
+        for (int i = 0; i < n; i++) {
+            if (P[i] > maxLen) {
+                maxLen = P[i];
                 centerIndex = i;
             }
         }
+        // Calculate start and end indices of the longest palindrome.
+        int startIndex = (centerIndex - maxLen) / 2;
+        int endIndex = startIndex + maxLen - 1;
 
-        // Extract the longest palindrome from the original string
-        int start = (centerIndex - maxLen) / 2;
-        return s.substring(start, start + maxLen);
-    }
-
-    // Transform the input string s into t with '#' characters
-    private String preprocess(String s) {
-        StringBuilder sb = new StringBuilder();
-        sb.append('#');
-        for (int i = 0; i < s.length(); i++) {
-            sb.append(s.charAt(i)).append('#');
-        }
-        return sb.toString();
+        // Remove delimiters from the result
+        return s.substring(startIndex, endIndex).replaceAll("#", "");
     }
 
     public static void main(String[] args) {
-        Manacher manacher = new Manacher();
-        String s = "babad";
-        System.out.println("Longest Palindromic Substring: " + manacher.longestPalindrome(s));
+        String s = "baba#d";
+        System.out.println(longestPalindromicSubstring(s)); // Output: "bab" or "aba"
     }
 }
+
 

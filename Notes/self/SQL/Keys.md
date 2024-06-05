@@ -17,6 +17,11 @@
 2. [Class/Lecture Video](https://youtu.be/PyK45EmsBYg)
 
 
+## Reference
+1. [GFG](https://www.geeksforgeeks.org/types-of-keys-in-relational-model-candidate-super-primary-alternate-and-foreign/)
+2. [Interview Bit](https://www.interviewbit.com/sql-cheat-sheet/)
+
+
 ## Super Keys
 
 ## Candidate Keys

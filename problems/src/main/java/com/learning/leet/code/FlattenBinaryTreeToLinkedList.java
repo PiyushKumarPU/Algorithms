@@ -12,9 +12,21 @@ public class FlattenBinaryTreeToLinkedList {
     ArrayList<Integer> result;
 
     public static void main(String[] args) {
-        TreeNode node = LevelOrderTreeConstruction.constructTree(List.of(1, 2, 5, 3, 4, 6));
-        new FlattenBinaryTreeToLinkedList().flatten(node);
-        System.out.println(PrintTreeNode.traversePreOrder(node));
+        TreeNode root = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
+
+        root.left = node2;
+        root.right = node5;
+        node2.left = node3;
+        node2.right = node4;
+        node5.right = node6;
+        node5.left = null;
+
+        new FlattenBinaryTreeToLinkedList().flatten(root);
     }
 
     public void flatten(TreeNode root) {
@@ -28,6 +40,8 @@ public class FlattenBinaryTreeToLinkedList {
             temp.left = null;
             temp = temp.right;
         }
+
+        PrintTreeNode.printLevelOrder(root);
     }
 
     void preOrderWorker(TreeNode treeNode) {
@@ -35,7 +49,6 @@ public class FlattenBinaryTreeToLinkedList {
         result.add(treeNode.val);
         preOrderWorker(treeNode.left);
         preOrderWorker(treeNode.right);
-
     }
 
 }
