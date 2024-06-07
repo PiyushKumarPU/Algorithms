@@ -44,6 +44,41 @@ public class PopulatingNextRightPointersII {
 
     }
 
+    public Node connectFast(Node root) {
+        if (root == null) return root;
+
+        Node levelStart = root;
+
+        while (levelStart != null) {
+            Node current = levelStart;
+            Node prev = null;
+            levelStart = null;
+
+            while (current != null) {
+                if (current.left != null) {
+                    if (prev != null) {
+                        prev.next = current.left;
+                    } else {
+                        levelStart = current.left;
+                    }
+                    prev = current.left;
+                }
+
+                if (current.right != null) {
+                    if (prev != null) {
+                        prev.next = current.right;
+                    } else {
+                        levelStart = current.right;
+                    }
+                    prev = current.right;
+                }
+
+                current = current.next;
+            }
+        }
+        return levelStart;
+    }
+
     static class Node {
         int val;
         Node left, right, next;

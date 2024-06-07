@@ -1,11 +1,9 @@
 package com.learning.leet.code;
 
-import com.learning.scaler.advance.module3.LevelOrderTreeConstruction;
 import com.learning.scaler.advance.module3.PrintTreeNode;
 import com.learning.scaler.advance.module3.TreeNode;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FlattenBinaryTreeToLinkedList {
 
@@ -42,6 +40,30 @@ public class FlattenBinaryTreeToLinkedList {
         }
 
         PrintTreeNode.printLevelOrder(root);
+    }
+
+    public void flattenNoSpace(TreeNode root) {
+        if (root == null) return;
+
+        TreeNode current = root;
+        while (current != null) {
+            if (current.left != null) {
+                // Find the rightmost node of the left subtree
+                TreeNode rightmost = current.left;
+                while (rightmost.right != null) {
+                    rightmost = rightmost.right;
+                }
+
+                // Connect the right subtree of the current node to the rightmost node of the left subtree
+                rightmost.right = current.right;
+
+                // Move the left subtree to the right and set the left child to null
+                current.right = current.left;
+                current.left = null;
+            }
+            // Move on to the right subtree
+            current = current.right;
+        }
     }
 
     void preOrderWorker(TreeNode treeNode) {

@@ -93,4 +93,39 @@ public class MergeNewIntervals {
         }
         return new ArrayList<>(intervals.subList(0, currentIndex + 1));
     }
+
+    public int[][] insertFast(int[][] intervals, int[] newInterval) {
+        List<int[]> ans = new ArrayList<>();
+        int n = intervals.length;
+
+        int start = 0;
+        int end = 1;
+
+        int i = 0;
+        //for left non overlaping
+        while (i < n && intervals[i][end] < newInterval[start]) {
+            ans.add(intervals[i]);
+            i++;
+        }
+
+        //for middle overlaping
+        while (i < n && intervals[i][start] <= newInterval[end]) {
+            newInterval[start] = Math.min(newInterval[start], intervals[i][start]);
+            newInterval[end] = Math.max(newInterval[end], intervals[i][end]);
+            i++;
+        }
+        ans.add(newInterval);
+
+        //for right non overlaping
+        while (i < n) {
+            ans.add(intervals[i]);
+            i++;
+        }
+
+        int[][] orgiAns = new int[ans.size()][];
+        for (int j = 0; j < ans.size(); j++) {
+            orgiAns[j] = ans.get(j);
+        }
+        return orgiAns;
+    }
 }
