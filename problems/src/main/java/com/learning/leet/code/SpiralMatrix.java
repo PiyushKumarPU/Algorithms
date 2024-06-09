@@ -7,44 +7,58 @@ public class SpiralMatrix {
 
     public static void main(String[] args) {
         int[][] matrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        System.out.println(List.of(1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10));
         System.out.println(spiralOrder(matrix));
     }
 
     public static List<Integer> spiralOrder(int[][] matrix) {
-        int i = 0, j = 0, m = matrix.length, n = matrix[0].length, count = matrix.length * matrix[0].length;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int count = m * n;
         List<Integer> result = new ArrayList<>();
-        if (m * n == 1) {
-            result.add(matrix[0][0]);
+
+        if (n == 0) {
             return result;
         }
+
+        int i = 0, j = 0;
+
         while (count > 0) {
-            // L to R
-            for (int index = 1; index < n && count > 0; index++) {
+            // Traverse from Left to Right
+            for (int index = 0; index < n && count > 0; index++) {
                 result.add(matrix[i][j++]);
                 count--;
             }
+            i++;
+            j--;
+            m--;
 
-            // T to B
-            for (int index = 1; index < m && count > 0; index++) {
+            // Traverse from Top to Bottom
+            for (int index = 0; index < m && count > 0; index++) {
                 result.add(matrix[i++][j]);
                 count--;
             }
+            i--;
+            j--;
+            n--;
 
-            // R to L
-            for (int index = 1; index < n && count > 0; index++) {
+            // Traverse from Right to Left
+            for (int index = 0; index < n && count > 0; index++) {
                 result.add(matrix[i][j--]);
                 count--;
             }
+            i--;
+            j++;
+            m--;
 
-            // B to T
-            for (int index = 1; index < m && count > 0; index++) {
+            // Traverse from Bottom to Top
+            for (int index = 0; index < m && count > 0; index++) {
                 result.add(matrix[i--][j]);
                 count--;
             }
-            i += 1;
-            j += 1;
-            n -= 1;
-            m -= 1;
+            i++;
+            j++;
+            n--;
         }
         return result;
     }

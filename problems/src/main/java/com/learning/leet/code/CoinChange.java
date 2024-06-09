@@ -1,39 +1,55 @@
 package com.learning.leet.code;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
 
 public class CoinChange {
 
     public static void main(String[] args) {
         CoinChange coinChange = new CoinChange();
-        System.out.println(coinChange.coinChange(new int[]{186, 419, 83, 408}, 6249));
+        System.out.println(coinChange.coinChange(new int[]{1, 2, 5}, 11));
+        System.out.println(coinChange.coinChange(new int[]{2}, 3));
     }
 
-
-    int[] minCoins;
+    int[] coinCounts;
 
     public int coinChange(int[] coins, int amount) {
-        if (amount <= 0 || coins == null || coins.length == 0) return 0;
-        minCoins = new int[amount + 1];
-        Arrays.fill(minCoins, Integer.MAX_VALUE);
-        minCoins[0] = 0;
-        int minCoins = coinCount(coins, amount);
-        return minCoins < Integer.MAX_VALUE ? minCoins : -1;
+        if (amount == 0 || coins == null || coins.length == 0) return 0;
+        coinCounts = new int[amount + 1];
+        Arrays.fill(coinCounts, -2);
+        coinCounts[0] = 0;
+        return calculateCoinCounts(coins, amount);
     }
 
-    private int coinCount(int[] coins, int amount) {
+    private int calculateCoinCounts(int[] coins, int amount) {
         if (amount <= 0) return 0;
-        else if (minCoins[amount] != Integer.MAX_VALUE) return minCoins[amount];
-        int totalCount = Integer.MAX_VALUE;
+        if (coinCounts[amount] != -2) return coinCounts[amount];
+
+        Integer count = null;
         for (int coin : coins) {
             if (coin > amount) continue;
-            totalCount = Math.min(totalCount, coinCount(coins, amount - coin));
+            int coinCount = calculateCoinCounts(coins, amount - coin);
+            if (coinCount < 0) continue;
+            coinCount++;
+            count = count == null ? coinCount : Math.min(count, coinCount);
         }
-        if (totalCount < Integer.MAX_VALUE) totalCount++;
-        minCoins[amount] = Math.min(minCoins[amount], totalCount);
-        return minCoins[amount];
+        coinCounts[amount] = count == null ? -1 : count;
+        return coinCounts[amount];
     }
+
+    public int coinChangeIterative(int[] coins, int amount) {
+        int[] minCoinsCount = new int[amount + 1];
+        minCoinsCount[0] = 0;
+
+        for (int currentAmount = 1; currentAmount <= amount; currentAmount++) {
+            // setting higher limit
+            int minCount = amount + 1;
+            for (int coin : coins) {
+                if (coin > currentAmount) continue;
+                minCount = Math.min(minCount, 1 + minCoinsCount[currentAmount - coin]);
+            }
+            minCoinsCount[currentAmount] = minCount;
+        }
+        return minCoinsCount[amount] == amount + 1 ? -1 : minCoinsCount[amount];
+    }
+
 }
