@@ -18,6 +18,8 @@
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/6.%20Adv%20Recursion%201.pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=41_7-AT80n8)
+3. [New Batch Notes](../../../new_batch_notes/Recursion1.pdf)
+4. [new Batch lecture video](https://youtu.be/GflKmIODyF8)
 
 
 ## Recursion Introduction

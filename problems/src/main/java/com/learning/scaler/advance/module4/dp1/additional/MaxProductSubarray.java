@@ -39,8 +39,36 @@ Example Explanation
 * */
 public class MaxProductSubarray {
 
-    public int maxProduct(final List<Integer> A) {
-        return 0;
+
+    public static void main(String[] args) {
+        System.out.println(maxProduct(new int[]{-2}));
+    }
+
+    public static int maxProduct(final int[] A) {
+        if (A == null || A.length == 0) {
+            return 0;
+        }
+
+        int max_product = A[0];
+        int current_max = A[0];
+        int current_min = A[0];
+
+        for (int i = 1; i < A.length; i++) {
+            if (A[i] < 0) {
+                // Swap current_max and current_min
+                int temp = current_max;
+                current_max = current_min;
+                current_min = temp;
+            }
+
+            // Calculate current_max and current_min
+            current_max = Math.max(A[i], current_max * A[i]);
+            current_min = Math.min(A[i], current_min * A[i]);
+
+            // Update max_product
+            max_product = Math.max(max_product, current_max);
+        }
+        return max_product;
     }
 
 }

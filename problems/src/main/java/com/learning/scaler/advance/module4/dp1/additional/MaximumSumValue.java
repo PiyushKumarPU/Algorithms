@@ -51,48 +51,31 @@ Example Explanation
 public class MaximumSumValue {
 
     public static void main(String[] args) {
-        ArrayList<Integer> A = new ArrayList<>(List.of(1, 5, -3, 4, -2));
-        int B = 2, C = 1, D = -1;
+        ArrayList<Integer> A = new ArrayList<>(List.of(-5, 10, -6, -37, -5, -2));
+        int B = -17, C = -29, D = 5;
         System.out.println(solve(A, B, C, D));
     }
 
     public static int solve(ArrayList<Integer> A, int B, int C, int D) {
         if (A.isEmpty()) return 0;
-        int size = A.size();
-        int[] maxI = new int[size];
-        int[] maxJ = new int[size];
-        int[] preMaxJ = new int[size];
-        int[] maxK = new int[size];
-        int[] preMaxK = new int[size];
-
-        maxI[0] = A.get(0) * B;
-        maxJ[0] = A.get(0) * C;
-        maxK[0] = A.get(0) * D;
-
-        for (int i = 1; i < size; i++) {
-            int current = A.get(i);
-            maxI[i] = Math.max(current * B, maxI[i - 1]);
-            maxJ[i] = Math.max(current * C, maxJ[i - 1]);
-            maxK[i] = Math.max(current * D, maxK[i - 1]);
+        int[] maxVal = new int[A.size()];
+        maxVal[0] = A.get(0) * B;
+        // calculate value for i
+        for (int i = 1; i < A.size(); i++) {
+            maxVal[i] = Math.max(maxVal[i - 1], A.get(i) * B);
         }
 
-        preMaxJ[0] = maxJ[0] + maxI[0];
-        preMaxK[0] = maxK[0] + preMaxJ[0];
-
-
-        // calculate preMaxJ including premaxI
-        for (int i = 1; i < size; i++) {
-            preMaxJ[i] = maxJ[i] + maxI[i];
+        // calculate value for j
+        maxVal[0] += A.get(0) * C;
+        for (int i = 1; i < A.size(); i++) {
+            maxVal[i] = Math.max(maxVal[i - 1], maxVal[i] + A.get(i) * C);
         }
 
-        // calculate preMaxK including premaxJ
-        for (int i = 1; i < size; i++) {
-            preMaxK[i] = maxK[i] + preMaxJ[i];
+        int result = Integer.MIN_VALUE;
+        for (int i = 0; i < A.size(); i++) {
+            int val = maxVal[i] + A.get(i) * D;
+            result = Math.max(result, val);
         }
-
-        // find max of k
-        int result = preMaxK[0];
-        for (int i = 1; i < size; i++) result = Math.max(result, preMaxK[i]);
         return result;
     }
 }

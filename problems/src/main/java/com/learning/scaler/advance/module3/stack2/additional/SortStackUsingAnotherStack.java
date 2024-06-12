@@ -1,6 +1,11 @@
 package com.learning.scaler.advance.module3.stack2.additional;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
+
 /*
 Problem Description
     Given a stack of integers A, sort it using another stack.
@@ -35,8 +40,24 @@ Example
          Just sort the given numbers.
 * */
 public class SortStackUsingAnotherStack {
-    public int[] solve(int[] A) {
 
-        return A;
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(solve(new int[]{5, 4, 3, 2, 1})));
+    }
+    public static int[] solve(int[] A) {
+        Stack<Integer> sorted = new Stack<>();
+        for (int ele : A) {
+            if (sorted.isEmpty()) sorted.push(ele);
+            else {
+                List<Integer> popped = new ArrayList<>();
+                while (!sorted.isEmpty() && sorted.peek() < ele) popped.add(sorted.pop());
+                sorted.push(ele);
+                for (int i = popped.size() - 1; i >= 0; i--) sorted.push(popped.get(i));
+            }
+        }
+        int[] result = new int[A.length];
+        int index = 0;
+        while (!sorted.isEmpty()) result[index++] = sorted.pop();
+        return result;
     }
 }

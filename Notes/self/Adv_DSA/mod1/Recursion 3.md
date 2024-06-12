@@ -18,6 +18,8 @@
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/9.%20Adv%20Recursion%203.pdf)
 2. [Class/Lecture Video](https://youtu.be/3NnMsD0tIEk)
+3. [New Batch Notes](../../../new_batch_notes/Backtracking.pdf)
+4. [New Batch Lecture Video](https://youtu.be/zkQoGjyK7hk)
 
 
 ## Recursion Output Questions

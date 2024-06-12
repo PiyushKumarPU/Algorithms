@@ -19,6 +19,8 @@
 
 1. [Class Notes](../../../class_Notes/Advance%20DSA%20Notes/7.%20Adv%20Recursion%202.pdf)
 2. [Class/Lecture Video](https://www.youtube.com/watch?v=oRn0Eq_04Qc)
+3. [New Batch Notes](../../../new_batch_notes/Recursion2.pdf)
+4. [New Batch Lecture Video](https://youtu.be/7jUD7esuCwg)
 
 ## Time Complexity(Using Recurrance relation)
     We will use recurrance relation/recursive call stack to calculate time complexity of factorial function

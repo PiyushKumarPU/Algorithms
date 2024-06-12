@@ -35,28 +35,27 @@ public class CopyListWithRandomPointer {
     }
 
     public static Node copyRandomList(Node head) {
-        Map<Integer, Node> indexNodeMap = new HashMap<>();
-        Node dummy = new Node(-1);
-        Node current = dummy;
-        int index = 0;
-        Node temp = head;
-        while (temp != null) {
-            current.next = new Node(temp.val);
-            indexNodeMap.put(index++, current.next);
-            current = current.next;
-            temp = temp.next;
-        }
-        // construct random pointer
-        temp = head;
-        current = dummy.next;
-        while (temp != null) {
-            if (temp.random != null) {
-                current.random = new Node(temp.random.val); // indexNodeMap.get(temp.random.val);
-            }
-            temp = temp.next;
+        if (head == null) return null;
+
+        Map<Node, Node> nodeMap = new HashMap<>();
+        Node current = head;
+
+        // First pass: create all nodes and populate the map
+        while (current != null) {
+            nodeMap.put(current, new Node(current.val));
             current = current.next;
         }
-        return dummy.next;
+
+        current = head;
+
+        // Second pass: assign next and random pointers
+        while (current != null) {
+            nodeMap.get(current).next = nodeMap.get(current.next);
+            nodeMap.get(current).random = nodeMap.get(current.random);
+            current = current.next;
+        }
+
+        return nodeMap.get(head);
     }
 
     static class Node {
@@ -67,11 +66,6 @@ public class CopyListWithRandomPointer {
             this.val = val;
             this.next = null;
             this.random = null;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(this.val);
         }
     }
 }

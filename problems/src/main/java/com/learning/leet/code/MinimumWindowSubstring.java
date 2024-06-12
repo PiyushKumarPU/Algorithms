@@ -1,74 +1,89 @@
 package com.learning.leet.code;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MinimumWindowSubstring {
 
     public String minWindow(String s, String t) {
-        if (s.isEmpty() || t.isEmpty()) {
+        if (s.isEmpty() || t.isEmpty())
             return "";
+
+        // Initialize pointers and variables
+        int left = 0, right = 0, minLen = Integer.MAX_VALUE;
+        String minWindow = "";
+        Map<Character, Integer> charCount = new HashMap<>();
+        int requiredChars = 0, formedChars = 0;
+
+        // Count characters in t
+        for (char c : t.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+            requiredChars++;
         }
 
-        // Dictionary to keep a count of all the unique characters in t.
-        HashMap<Character, Integer> dictT = new HashMap<>();
-        for (int i = 0; i < t.length(); i++) {
-            char current = t.charAt(i);
-            dictT.put(current, dictT.getOrDefault(current, 0) + 1);
-        }
-
-        // Number of unique characters in t that need to be present in the desired window.
-        int required = dictT.size();
-
-        // Left and Right pointer
-        int l = 0, r = 0;
-
-        // Formed is used to keep track of how many unique characters in t
-        // are present in the current window in its desired frequency.
-        int formed = 0;
-
-        // Dictionary to keep a count of all the unique characters in the current window.
-        HashMap<Character, Integer> windowCounts = new HashMap<>();
-
-        // ans list of the form (window length, left, right)
-        int[] ans = {-1, 0, 0};
-
-        while (r < s.length()) {
-            // Add one character from the right to the window
-            char c = s.charAt(r);
-            windowCounts.put(c, windowCounts.getOrDefault(c, 0) + 1);
-
-            // If the frequency of the current character added equals to the
-            // desired count in t then increment the formed count by 1.
-            if (dictT.containsKey(c) && windowCounts.get(c).intValue() == dictT.get(c).intValue()) {
-                formed++;
+        // Sliding window
+        while (right < s.length()) {
+            // Expand the window by moving the right pointer
+            char ch = s.charAt(right);
+            if (charCount.containsKey(ch)) {
+                charCount.put(ch, charCount.get(ch) - 1);
+                if (charCount.get(ch) >= 0)
+                    formedChars++;
             }
 
-            // Try and contract the window till the point where it ceases to be 'desirable'.
-            while (l <= r && formed == required) {
-                c = s.charAt(l);
-
-                // Save the smallest window until now.
-                if (ans[0] == -1 || r - l + 1 < ans[0]) {
-                    ans[0] = r - l + 1;
-                    ans[1] = l;
-                    ans[2] = r;
+            // Contract the window by moving the left pointer
+            while (formedChars == requiredChars && left <= right) {
+                int tempLen = right - left + 1;
+                if (tempLen < minLen) {
+                    minLen = tempLen;
+                    minWindow = s.substring(left, right + 1);
                 }
 
-                // The character at the position pointed by the `left` pointer is no longer a part of the window.
-                windowCounts.put(c, windowCounts.get(c) - 1);
-                if (dictT.containsKey(c) && windowCounts.get(c) < dictT.get(c)) {
-                    formed--;
+                char leftChar = s.charAt(left);
+                if (charCount.containsKey(leftChar)) {
+                    charCount.put(leftChar, charCount.get(leftChar) + 1);
+                    if (charCount.get(leftChar) > 0)
+                        formedChars--;
                 }
 
-                // Move the left pointer ahead, this would help to look for a new window.
-                l++;
+                left++;
             }
 
-            // Keep expanding the window once we are done contracting.
-            r++;
+            right++;
         }
 
-        return ans[0] == -1 ? "" : s.substring(ans[1], ans[2] + 1);
+        return minWindow;
+    }
+
+    public String minWindow1(String s, String t) {
+        int[] tElements = new int[123]; //to track a-z & A-Z
+        for (char c : t.toCharArray()) {
+            tElements[c]++; //count frequency of letters
+        }
+
+        char[] S = s.toCharArray();
+        int minLength = Integer.MAX_VALUE, start = 0;
+        int find = t.length();//Letters to be found
+
+        int left = 0, right = 0;    //sliding window
+        while (right < S.length) {    //to slide right limit
+
+            if (tElements[S[right]] > 0) find--;
+            tElements[S[right]]--;
+            right++;
+
+            while (find == 0) {   //to slide left limit when all required characters are found
+                if (right - left < minLength) {
+                    start = left;
+                    minLength = right - left;
+                }
+                if (tElements[S[left]] == 0) find++;
+                tElements[S[left]]++;
+                left++;
+            }
+        }
+        if (minLength == Integer.MAX_VALUE) return "";
+        return s.substring(start, start + minLength);
     }
 
 }
