@@ -15,4 +15,4 @@
 ## Class Notes and Videos
 
 1. [Class Notes](../../self/DSA%204.2/Strings%20Pattern%20Matching.md)
-2. [Class/Lecture Video]()
+2. [Class/Lecture Video](https://youtu.be/zmVCXTIgFJE)
