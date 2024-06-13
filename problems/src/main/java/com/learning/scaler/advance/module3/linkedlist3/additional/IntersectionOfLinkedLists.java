@@ -52,66 +52,72 @@ Example Explanation
 public class IntersectionOfLinkedLists {
 
     public ListNode getIntersectionNode(ListNode A, ListNode B) {
-        ListNode lastA, lastB;
-        int countA, countB;
-
         if (A == null || B == null)
             return null;
 
-        countA = countB = 1;
+        // Find the lengths of both lists and their last nodes
+        ListNode lastA = getLastNode(A);
+        ListNode lastB = getLastNode(B);
 
-        lastA = A;
-        lastB = B;
-
-        while (lastA.next != null) {
-            lastA = lastA.next;
-            countA++;
-        }
-
-        while (lastB.next != null) {
-            lastB = lastB.next;
-            countB++;
-        }
-
+        // If the last nodes are different, there's no intersection
         if (!lastA.equals(lastB))
             return null;
 
+        // Calculate the length difference between the lists
+        int countA = getCount(A);
+        int countB = getCount(B);
         int diff = Math.abs(countA - countB);
 
-        lastA = A;
-        lastB = B;
-
+        // Move the pointer of the longer list ahead by the difference
+        ListNode ptrA = A;
+        ListNode ptrB = B;
         if (countA > countB) {
-            while (diff-- > 0) {
-                lastA = lastA.next;
-            }
+            while (diff-- > 0)
+                ptrA = ptrA.next;
         } else {
             while (diff-- > 0)
-                lastB = lastB.next;
+                ptrB = ptrB.next;
         }
 
-        while (!lastA.equals(lastB)) {
-            lastA = lastA.next;
-            lastB = lastB.next;
+        // Traverse both lists until they intersect
+        while (!ptrA.equals(ptrB)) {
+            ptrA = ptrA.next;
+            ptrB = ptrB.next;
         }
 
-        return lastA;
-
+        return ptrA;
     }
 
-    public ListNode getIntersectionNodeHelp(ListNode A, ListNode B) {
+    // Helper method to get the last node of the list
+    private ListNode getLastNode(ListNode head) {
+        ListNode last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        return last;
+    }
+
+    // Helper method to get the count of nodes in the list
+    private int getCount(ListNode head) {
+        int count = 1;
+        ListNode current = head;
+        while (current.next != null) {
+            current = current.next;
+            count++;
+        }
+        return count;
+    }
+
+    public static ListNode getIntersectionNodeHelp(ListNode A, ListNode B) {
         if (A == null || B == null) {
             return null;
         }
-
         ListNode p1 = A;
         ListNode p2 = B;
-
         while (p1 != p2) {
             p1 = (p1 == null) ? B : p1.next;
             p2 = (p2 == null) ? A : p2.next;
         }
-
         return p1;
     }
 }
