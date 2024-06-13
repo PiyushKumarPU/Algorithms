@@ -9,5 +9,5 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../self/DSA%204.2/Backtracking%20Famous%20Problems.md)
+1. [Class Notes](../../class_Notes/DSA%204.2/BackTracking_DSA_4.2.pdf)
 2. [Class/Lecture Video](https://youtu.be/XE2lbYib14U)

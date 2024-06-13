@@ -14,5 +14,5 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../self/DSA%204.2/DP%202%20Famous%20Problems.md)
+1. [Class Notes](../../class_Notes/DSA%204.2/DP%202%20Famous%20Problems.pdf)
 2. [Class/Lecture Video](https://youtu.be/jvSl80RxOUU)

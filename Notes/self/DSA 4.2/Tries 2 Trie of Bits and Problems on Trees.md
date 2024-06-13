@@ -8,5 +8,5 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../self/DSA%204.2/Tries%202%20Trie%20of%20Bits%20and%20Problems%20on%20Trees.md)
+1. [Class Notes](../../class_Notes/DSA%204.2/Tries_2_DSA_4.2.pdf)
 2. [Class/Lecture Video](https://youtu.be/8ZwalqLKGPs)

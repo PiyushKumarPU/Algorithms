@@ -14,5 +14,5 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../self/DSA%204.2/Tries%201%20Trie%20of%20Character.md)
+1. [Class Notes](../../class_Notes/DSA%204.2/Tries_1_DSA_4.2.pdf)
 2. [Class/Lecture Video](https://youtu.be/HBetaWv1gbs)

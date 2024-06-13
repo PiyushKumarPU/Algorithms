@@ -14,5 +14,5 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../self/DSA%204.2/DP%201%20DP%20on%20Strings.md)
+1. [Class Notes](../../class_Notes/DSA%204.2/DP%201%20DP%20on%20Strings.pdf)
 2. [Class/Lecture Video](https://youtu.be/0ezsvU_fn9I)

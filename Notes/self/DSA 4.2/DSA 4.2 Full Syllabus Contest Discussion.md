@@ -14,5 +14,5 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../self/DSA%204.2/DSA%204.2%20Full%20Syllabus%20Contest%20Discussion.md)
+1. [Class Notes](../../class_Notes/DSA%204.2/DSA%204.2%20Full%20Syllabus%20Contest%20Discussion.pdf)
 2. [Class/Lecture Video](https://youtu.be/h3wSV4kqZY0)

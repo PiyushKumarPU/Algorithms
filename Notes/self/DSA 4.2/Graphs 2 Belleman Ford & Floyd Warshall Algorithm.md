@@ -14,5 +14,5 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes](../../self/DSA%204.2/Graphs%202%20Belleman%20Ford%20&%20Floyd%20Warshall%20Algorithm.md)
+1. [Class Notes](../../class_Notes/DSA%204.2/Graphs%202%20Belleman%20Ford%20Floyd%20Warshall%20Algorithm.pdf)
 2. [Class/Lecture Video](https://youtu.be/kvdmXO0m-b4)

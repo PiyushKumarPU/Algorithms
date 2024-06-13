@@ -8,5 +8,5 @@
   
 ## Class Notes and Videos
 
-1. [Class Notes](../../self/DSA%204.2/Revision_of_DSA_Topics.md)
+1. [Class Notes](../../class_Notes/DSA%204.2/Revision%20of%20DSA%20Topics.pdf)
 2. [Class/Lecture Video](https://youtu.be/nF8kBlfldTI)
