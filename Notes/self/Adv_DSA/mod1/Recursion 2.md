@@ -1,4 +1,4 @@
-## Advance DSA Day 7 Recursion 1
+## Advance DSA Day 7 Recursion 2
 
 ## ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Document is Under constructions
 

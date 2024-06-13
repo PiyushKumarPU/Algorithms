@@ -9,4 +9,5 @@ DSA and system design notes and problems
 ## Table of Contents
 * [DSA](DSA.md)
 * [SQL](/SQL.md)
+* [DSA 4.2](/DSA%204.2.md)
 
