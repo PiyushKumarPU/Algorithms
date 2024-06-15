@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module4.dp4.lecture;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /*
 Problem Description
@@ -48,7 +49,21 @@ Example Explanation
 * */
 public class CoinSumInfinite {
 
-    public int coinchange2(ArrayList<Integer> A, int B) {
-        return 0;
+    public static void main(String[] args) {
+        CoinSumInfinite infinite = new CoinSumInfinite();
+        System.out.println(infinite.coinchange2(new int[]{1, 2, 3}, 4));
+    }
+
+    int MOD = 1000007;
+
+    public int coinchange2(int[] A, int B) {
+        int[] dp = new int[B + 1];
+        dp[0] = 1;
+        for (int coin : A) {
+            for (int i = coin; i <= B; i++) {
+                dp[i] = (dp[i] + dp[i - coin]) % MOD;
+            }
+        }
+        return dp[B];
     }
 }

@@ -2,30 +2,24 @@ package com.learning.revision.binary.search;
 
 public class RotatedSortedArraySearch {
 
-    public int search(final int[] A, int B) {
-        int start = 0, end = A.length - 1;
+    public int search(int[] A, int B) {
+        int length = A.length;
+        if (length == 1) return (A[0] == B) ? 0 : -1;
+        int start = 0, end = length - 1;
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (A[mid] == B) return mid;
-            // check if target is in part 1
-            if (B >= A[0]) {
-                if (A[mid] >= A[0]) {
-                    if (A[mid] > B) end = mid - 1;
-                    else start = mid + 1;
-                } else {
+            if (A[start] <= A[mid]) {
+                if (A[start] <= B && B < A[mid]) {
                     end = mid - 1;
-                }
+                } else start = mid + 1;
             } else {
-                if (A[mid] >= A[0]) {
+                if (A[end] >= B && B > A[mid]) {
                     start = mid + 1;
-                } else {
-                    if (A[mid] > B) end = mid - 1;
-                    else start = mid + 1;
-                }
+                } else end = mid - 1;
             }
         }
         return -1;
     }
-
 
 }

@@ -49,49 +49,78 @@ Explanation 1:
 * */
 public class EdgeInMST {
 
-    public static void main(String[] args) {
-        int A = 3;
-        ArrayList<ArrayList<Integer>> B =
-                new ArrayList<>(
-                        List.of(
-                                new ArrayList<>(List.of(1, 2, 2)),
-                                new ArrayList<>(List.of(1, 3, 2)),
-                                new ArrayList<>(List.of(2, 3, 3))
-                        )
-                );
+    static int maxn = 300009;
+    static int[] arr = new int[maxn];
+    static int[] sz = new int[maxn];
+    static ArrayList<pair> edges;
 
-        EdgeInMST edgeInMST = new EdgeInMST();
-        System.out.println(edgeInMST.solve(A, B));
+    public int[] solve(int A, int[][] B) {
+        ini();
+        for (int i = 0; i < B.length; i++)
+            edges.add(new pair(B[i][2], i, B[i][0], B[i][1]));
+        int[] ans = new int[B.length];
+        Collections.sort(edges);
+        int i = 0;
+        int m = B.length;
+        while (i < m) {
+            int j = i;
+            while (j < m && edges.get(j).a == edges.get(i).a) {
+                if (root(edges.get(j).c) != root(edges.get(j).d))
+                    ans[edges.get(j).b] = 1;
+                j++;
+            }
+            j = i;
+            while (j < m && edges.get(j).a == edges.get(i).a) {
+                if (root(edges.get(j).c) != root(edges.get(j).d))
+                    un(edges.get(j).c, edges.get(j).d);
+                j++;
+            }
+            i = j;
+        }
+        return ans;
     }
 
-    public ArrayList<Integer> solve(int A, ArrayList<ArrayList<Integer>> B) {
-        List<List<Triplet>> adjList = constructAdjList(B, A);
-        boolean[] visited = new boolean[A + 1];
-        HashSet<String> usedEdges = new HashSet<>();
-
-        return null;
+    public static void ini() {
+        edges = new ArrayList<pair>();
+        for (int i = 0; i < maxn; i++) {
+            arr[i] = i;
+            sz[i] = 1;
+        }
     }
 
+    public static int root(int a) {
+        while (arr[a] != a) {
+            arr[a] = arr[arr[a]];
+            a = arr[a];
+        }
+        return a;
+    }
 
-    private List<List<Triplet>> constructAdjList(ArrayList<ArrayList<Integer>> B, int nodeCount) {
-        List<List<Triplet>> result = new ArrayList<>(nodeCount + 1);
-        for (int i = 0; i <= nodeCount; i++) {
-            result.add(new ArrayList<>());
+    public static void un(int a, int b) {
+        int ra = root(a);
+        int rb = root(b);
+        if (sz[ra] <= sz[rb]) {
+            arr[ra] = rb;
+            sz[rb] += sz[ra];
+        } else {
+            arr[rb] = ra;
+            sz[ra] += sz[rb];
         }
-        for (ArrayList<Integer> row : B) {
-            result.get(row.get(0)).add(new Triplet(row.get(0), row.get(1), row.get(2)));
-            result.get(row.get(1)).add(new Triplet(row.get(1), row.get(0), row.get(2)));
-        }
-        return result;
     }
 }
 
-class Triplet {
-    int source, dest, weight;
+class pair implements Comparable<pair> {
+    int a, b, c, d;
 
-    public Triplet(int source, int dest, int weight) {
-        this.source = source;
-        this.dest = dest;
-        this.weight = weight;
+    pair(int e, int f, int g, int h) {
+        this.a = e;
+        this.b = f;
+        this.c = g;
+        this.d = h;
+    }
+
+    @Override
+    public int compareTo(pair aa) {
+        return this.a - aa.a;
     }
 }
