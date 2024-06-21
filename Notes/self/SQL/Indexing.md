@@ -14,5 +14,5 @@
 
 ## Class Notes and Videos
 
-1. [Class Notes]()
-2. [Class/Lecture Video]()
+1. [Class Notes](../../class_Notes/SQL/Indexing.pdf)
+2. [Class/Lecture Video](https://youtu.be/Bqbp8ZzrSgA)

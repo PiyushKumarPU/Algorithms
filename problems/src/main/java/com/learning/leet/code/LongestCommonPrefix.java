@@ -80,10 +80,3 @@ public class LongestCommonPrefix {
     }
 }
 
-class TrieBucket {
-    Map<Character, TrieBucket> cache;
-
-    public TrieBucket() {
-        cache = new HashMap<>();
-    }
-}

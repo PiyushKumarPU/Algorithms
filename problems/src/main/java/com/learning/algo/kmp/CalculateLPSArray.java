@@ -14,8 +14,26 @@ public class CalculateLPSArray {
         }
     }
 
-    // Function to compute the LPS array
     public static int[] computeLPSArray(String pattern) {
+        if (pattern.isEmpty()) return new int[0];
+        int[] lps = new int[pattern.length()];
+        lps[0] = 0;
+        for (int i = 1; i < pattern.length(); i++) {
+            int prevIndex = lps[i - 1];
+            while (pattern.charAt(i) != pattern.charAt(prevIndex)) {
+                prevIndex = lps[prevIndex - 1];
+                if (prevIndex == 0) {
+                    prevIndex = -1;
+                    break;
+                }
+            }
+            lps[i] = prevIndex + 1;
+        }
+        return lps;
+    }
+
+    // Function to compute the LPS array
+    public static int[] computeLPSArray1(String pattern) {
         int length = pattern.length(); // Length of the pattern
         int[] lps = new int[length]; // LPS array to hold the longest prefix suffix values
         int longestPrefixSuffixLength = 0; // Length of the previous longest prefix suffix
