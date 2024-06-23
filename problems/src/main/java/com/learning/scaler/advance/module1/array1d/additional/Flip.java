@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module1.array1d.additional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /*
 Problem Description
@@ -8,7 +9,8 @@ Problem Description
     In a single operation, you can choose two indices, L and R, such that 1 ≤ L ≤ R ≤ N and flip the characters AL, AL+1, ..., AR.
     By flipping, we mean changing character 0 to 1 and vice-versa.
     Your aim is to perform ATMOST one operation such that in the final string number of 1s is maximized.
-    If you don't want to perform the operation, return an empty array. Else, return an array consisting of two elements denoting L and R.
+    If you don't want to perform the operation, return an empty array. Else, return an array consisting of two elements
+    denoting L and R.
     If there are multiple solutions, return the lexicographically smallest pair of L and R.
     NOTE: Pair (a, b) is lexicographically smaller than pair (c, d) if a < c or, if a == c and b < d.
 
@@ -52,55 +54,29 @@ Example Explanation
 * */
 public class Flip {
 
-    public int[] flip(String A) {
-        int l = 0, r = 0, currentSum = 0, maxSum = 0;
+
+    public static void main(String[] args) {
+    }
+
+    public static int[] flip(String A) {
+        int left = 0, right = 0, currentSum = 0, maxSum = 0;
         int[] result = new int[2];
         for (int i = 0; i < A.length(); i++) {
             int val = A.charAt(i) - '0';
             currentSum += val > 0 ? -1 : 1;
             if (currentSum > maxSum) {
                 maxSum = currentSum;
-                result[0] = l + 1;
-                result[1] = r + 1;
+                result[0] = left + 1;
+                result[1] = right + 1;
             }
             if (currentSum < 0) {
                 currentSum = 0;
-                l = i + 1;
-                r = i + 1;
+                left = i + 1;
+                right = i + 1;
             } else {
-                r++;
+                right++;
             }
         }
-        if (maxSum == 0) return new int[]{};
-        else return result;
-    }
-
-    public ArrayList<Integer> flipScaler(String A) {
-        int cur = 0;
-        int maxx = 0, l = 0, r = 0;
-        ArrayList<Integer> ans = new ArrayList<Integer>();
-        ans.add(-1);
-        ans.add(-1);
-        //basic kadane's algorithm implementation
-        for (int i = 0; i < A.length(); i++) {
-            if (A.charAt(i) == '1')
-                cur--;
-            else
-                cur++;
-            if (cur > maxx) {
-                ans.set(0, l + 1);
-                ans.set(1, r + 1);
-                maxx = cur;
-            }
-            if (cur < 0) {
-                cur = 0;
-                l = i + 1;
-                r = i + 1;
-            } else
-                r++;
-        }
-        if (maxx == 0) {
-            return new ArrayList<Integer>();
-        } else return ans;
+        return maxSum == 0 ? new int[]{} : result;
     }
 }
