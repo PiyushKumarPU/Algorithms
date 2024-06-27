@@ -46,7 +46,7 @@ Example
 public class ReversingElementsOfQueue {
 
     public static void main(String[] args) {
-        
+
     }
 
     public ArrayList<Integer> solve(ArrayList<Integer> A, int B) {
