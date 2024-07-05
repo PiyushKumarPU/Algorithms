@@ -39,7 +39,8 @@
 * Overlapping subproblems: If same subproblems is getting repeated or it is getting called multiple time for the same input.
 > Note : For the above scenario we can use DP to solve the problems
 ## Why DP? Fibonacci series
-    If we look at DP, it is avoiding the repeatative call for the same input basically it is storing the result of respective 
+    If we look at DP, it is avoiding the repeatative call for the same input basically it 
+    is storing the result of respective 
     input on the very first call and same in being used in further call. Suppose if same function is getting 
     called n times, in that case and each execution take n time then
         * without dp the total execution time would be n ^ 2
@@ -223,7 +224,8 @@ public int climbStairsApproach3(int A) {
         TC : O(2^n)
         SC : O(n) --> Stack space
     Approach 2: Using dynamic programming Top down approach
-        We will just remove duplicate calculation from prev approach and will calculate once and reuse it multiple times.
+        We will just remove duplicate calculation from prev approach and will calculate once 
+        and reuse it multiple times.
         TC : O(n*sqrt(n))
         SC : O(n)
 ### Solution

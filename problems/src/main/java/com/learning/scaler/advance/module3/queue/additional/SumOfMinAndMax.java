@@ -60,9 +60,9 @@ public class SumOfMinAndMax {
     public static int solve(int[] A, int B) {
         int mod = 1000 * 1000 * 1000 + 7;
         // maintain increasing order of values from front to rear
-        Deque<Integer> minQueue = new ArrayDeque<Integer>();
+        Deque<Integer> minQueue = new ArrayDeque<>();
         // maintain decreasing order of values from front to rear
-        Deque<Integer> maxQueue = new ArrayDeque<Integer>();
+        Deque<Integer> maxQueue = new ArrayDeque<>();
         int i = 0;
 
         // Process first window of size B

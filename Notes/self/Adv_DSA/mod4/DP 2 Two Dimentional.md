@@ -25,7 +25,8 @@
 
 ## Max Subsequence Sum
     Problem statement:
-    Given an array arr[] of positive numbers, The task is to find the maximum sum of a subsequence such that no 2 numbers 
+    Given an array arr[] of positive numbers, The task is to find the maximum sum of a subsequence 
+    such that no 2 numbers 
     in the sequence should be adjacent in the array.
     Examples :
         Input: arr[] = {5, 5, 10, 100, 10, 5}
@@ -49,7 +50,8 @@
     Approach 2: Using dynamic programming
         Take below array as example
             arr = [2,-1,-4,5,6,-1,4,7]
-        As pe the problem statement, we can choose consecutive element, selected element should be at least 1 distance apart.
+        As pe the problem statement, we can choose consecutive element, selected element should be 
+        at least 1 distance apart.
         Lets think of choosing element at index 0
             in this case we can choose any other element from index (2-n-1)
         Lets think of not choosing element at index 0
@@ -126,7 +128,8 @@ public int adjacentDp2(int[] A) {
         TC : O(2^n)
         SC : O(n)
     Approach 2: Using dynamic programming
-        We will just remove duplicate calculation from previous approach using top down approach of dynamic programming
+        We will just remove duplicate calculation from previous approach using top down approach 
+        of dynamic programming
         TC : O(n)
         SC : O(n)
     Approach 3 : Using dynamic programming bottom up approach
@@ -234,7 +237,8 @@ private int uniquePathsDP2Rec(int start, int end) {
     Example Explanation
     Explanation 1:
 
-        Possible paths to reach (n, m): {(1, 1), (1, 2), (1, 3), (2, 3), (3, 3)} and {(1 ,1), (2, 1), (3, 1), (3, 2), (3, 3)}  
+        Possible paths to reach (n, m): {(1, 1), (1, 2), (1, 3), (2, 3), (3, 3)} and 
+        {(1 ,1), (2, 1), (3, 1), (3, 2), (3, 3)}  
         So, the total number of unique paths is 2. 
     Explanation 2:
         It is not possible to reach (n, m) from (1, 1). So, ans is 0.
@@ -251,7 +255,8 @@ private int uniquePathsDP2Rec(int start, int end) {
         TC : O(2^n)
         SC : O(n)
     Approach 2: Using dynamic programming
-        We will just remove duplicate calculation from previous approach using top down approach of dynamic programming
+        We will just remove duplicate calculation from previous approach using 
+        top down approach of dynamic programming
         TC : O(n)
         SC : O(n)
     Approach 3 : Using dynamic programming bottom up approach
@@ -289,19 +294,23 @@ public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
 
 ## Dungeons and princess
     Problem Description
-        The demons had captured the princess and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of 
-        M x N rooms laid out in a 2D grid. Our valiant knight was initially positioned in the top-left room and must fight his 
-        way through the dungeon to rescue the princess.
+        The demons had captured the princess and imprisoned her in the bottom-right corner of a dungeon. 
+        The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant knight was initially 
+        positioned in the top-left room and must fight his way through the dungeon to rescue the princess.
 
-        The knight has an initial health point represented by a positive integer. If at any point his health point drops to 
-        0 or below, he dies immediately.
+        The knight has an initial health point represented by a positive integer. If at any point 
+        his health point drops to 0 or below, he dies immediately.
 
-        Some of the rooms are guarded by demons, so the knight loses health (negative integers) upon entering these rooms; 
-        other rooms are either empty (0's) or contain magic orbs that increase the knight's health (positive integers).
+        Some of the rooms are guarded by demons, so the knight loses health (negative integers) upon 
+        entering these rooms; 
+        other rooms are either empty (0's) or contain magic orbs that increase the knight's 
+        health (positive integers).
 
-        In order to reach the princess as quickly as possible, the knight decides to move only rightward or downward in each step.
+        In order to reach the princess as quickly as possible, the knight decides to move only 
+        rightward or downward in each step.
 
-        Given a 2D array of integers A of size M x N. Find and return the knight's minimum initial health so that he is 
+        Given a 2D array of integers A of size M x N. Find and return the knight's minimum initial 
+        health so that he is 
         able to rescue the princess.
 
     Problem Constraints
@@ -343,7 +352,8 @@ public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
             At (0,2) he gains 3 health, so health becomes 5.
             At (1,2) he gains 1 health, so health becomes 6.
             At (2,2) he looses 5 health, so health becomes 1.
-            At any point, the health point doesn't drop to 0 or below. So he can rescue the princess with minimum health 7.
+            At any point, the health point doesn't drop to 0 or below. So he can rescue the princess
+            with minimum health 7.
         
         Explanation 2:
             Take the path DOWN -> DOWN ->RIGHT -> RIGHT, the minimum health required will be 1.
@@ -405,7 +415,8 @@ public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
 ## N Digit Number
     Problem Description
         Find out the number of A digit positive numbers, whose digits on being added equals to a given number B.
-        Note that a valid number starts from digits 1-9 except the number 0 itself. i.e. leading zeroes are not allowed.
+        Note that a valid number starts from digits 1-9 except the number 0 itself. i.e. leading zeroes are 
+        not allowed.
         Since the answer can be large, output answer modulo 1000000007
 
     Problem Constraints
@@ -482,7 +493,8 @@ public int uniquePathsWithObstaclesDp1Rec(int[][] A, int start, int end) {
 
 ## Unique Binary Search Trees II
     Problem Description
-        Given an integer A, how many structurally unique BST's (binary search trees) exist that can store values 1...A?
+        Given an integer A, how many structurally unique BST's (binary search trees) exist 
+        that can store values 1...A?
 
     Problem Constraints
         1 <= A <=18

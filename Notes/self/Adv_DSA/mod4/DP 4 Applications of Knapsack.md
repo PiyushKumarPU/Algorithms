@@ -4,7 +4,8 @@
 - [Cutting the Rod](#cutting-the-rod)
 - [Coin sum infinite with duplicate](#coin-sum-infinite-with-duplicate)
 - [Coin Sum Infinite](#coin-sum-infinite)
-- [Extended 0-1 Knapsack](#extended-0-1-knapsack)
+- [Extended 0-1 Knapsack](#extended-0-1-knapsack-)
+- [Length of Longest Fibonacci Subsequence](#length-of-longest-fibonacci-subsequence)
 
 ## Problems and solutions
 
@@ -50,7 +51,8 @@
 
     Example Explanation
         Explanation 1:
-            Cut the rod of length 5 into 5 rods of length (1, 1, 1, 1, 1) and sell them for (3 + 3 + 3 + 3 + 3) = 15.
+            Cut the rod of length 5 into 5 rods of length (1, 1, 1, 1, 1) 
+            and sell them for (3 + 3 + 3 + 3 + 3) = 15.
         Explanation 2:
             Cut the rod of length 5 into 3 rods of length (2, 2, 1) and sell them for (5 + 5 + 1) = 11.
 
@@ -61,8 +63,8 @@
         TC : O(2^N) Same as time complexity of recursion 
         SC : O(h) --> height of recursion stack
     Idea 2:
-        If we look at problem description, it is as same as unbounded knapsack because for each step we can cut rod in all
-        available options.
+        If we look at problem description, it is as same as unbounded knapsack because for
+        each step we can cut rod in all available options.
 
         Step 1: Cut rods in all possible length
         Step 2: Calculate profit and then again cut it into all available length
@@ -329,9 +331,11 @@ public int coinSumInfinite(int[] A, int B) {
 
 ## Extended 0-1 Knapsack 
     Problem Description
-        Given two integer arrays A and B of size N each which represent values and weights associated with N items respectively.
+        Given two integer arrays A and B of size N each which represent values and weights associated 
+        with N items respectively.
         Also given an integer C which represents knapsack capacity.
-        Find out the maximum value subset of A such that sum of the weights of this subset is smaller than or equal to C.
+        Find out the maximum value subset of A such that sum of the weights of this subset is smaller 
+        than or equal to C.
         NOTE: You cannot break an item, either pick the complete item, or don’t pick it (0-1 property).
 
     Problem Constraints
@@ -368,8 +372,8 @@ public int coinSumInfinite(int[] A, int B) {
         Explanation 1:
             Taking items with weight 20 and 30 will give us the maximum value i.e 10 + 12 = 22
         Explanation 2:
-            Knapsack capacity is 10 but each item has weight greater than 10 so no items can be considered in the knapsack 
-            therefore answer is 0.
+            Knapsack capacity is 10 but each item has weight greater than 10 so no items can be 
+            considered in the knapsack therefore answer is 0.
 ### Solution approach
     If we look at problem statement it looks like 0-1 knapsack and its space coomplexity would be
         O(N*C)  --> N is length of weight/value array and C is the capacity.
@@ -410,6 +414,123 @@ public int solve(ArrayList<Integer> A, ArrayList<Integer> B, int C) {
         }
     }
     return 0;
+}
+```
+
+
+## Length of Longest Fibonacci Subsequence
+    Problem Description
+        Given a strictly increasing array A of positive integers forming a sequence.
+        A sequence X1, X2, X3, ..., XN is fibonacci like if
+        N > =3
+            Xi + Xi+1 = Xi+2 for all i+2 <= N
+            Find and return the length of the longest Fibonacci-like subsequence of A.
+        If one does not exist, return 0.
+        NOTE: A subsequence is derived from another sequence A by deleting any number of elements (including none) from A,
+        without changing the order of the remaining elements.
+    
+    Problem Constraints
+        3 <= length of the array <= 1000
+        1 <= A[i] <= 10^9
+    
+    Input Format
+        The only argument given is the integer array A.
+    
+    Output Format
+        Return the length of the longest Fibonacci-like subsequence of A.
+        If one does not exist, return 0.
+    
+    Example Input
+        Input 1:
+            A = [1, 2, 3, 4, 5, 6, 7, 8]
+        Input 2:
+            A = [1, 3, 7, 11, 12, 14, 18]
+    
+    Example Output
+        Output 1:
+            5
+        Output 2:
+            3
+    
+    Example Explanation
+        Explanation 1:
+            The longest subsequence that is fibonacci-like: [1, 2, 3, 5, 8].
+        Explanation 2:
+            The longest subsequence that is fibonacci-like: [1, 11, 12], [3, 11, 14] or [7, 11, 18].
+            The length will be 3.
+### Solution approach
+    Brute Force
+        Try all possible subsequence and check if it follows fibonacci sequence
+        if yes, then calculate the length and assign to maxLength if is bigger than current maxLength
+        TC : O(n^3)
+        SC : O(1)
+    Using Dynamic Programming and two pointer
+        Start iterating from third index and check if there is any pair whose
+        sum is equal to current val if yes then get prev index length from 
+        dp and add 1 to it and that will give us max length of fibonacci for curren index
+        TC : O(n^2)
+        SC : O(n^2)
+### Solution
+* Brute Force
+```java
+public int lenLongestFibSubseqBF(int[] A) {
+    int n = A.length;
+    int longestLength = 0;
+
+    // Iterate over all possible starting indices of the subsequence
+    for (int i = 0; i < n - 2; i++) {
+        // Iterate over all possible middle indices of the subsequence
+        for (int j = i + 1; j < n - 1; j++) {
+            int currentLength = 2; // Initialize with two elements A[i] and A[j]
+            int prev1 = A[i];
+            int prev2 = A[j];
+
+            // Check subsequent elements to see if they form a Fibonacci-like sequence
+            for (int k = j + 1; k < n; k++) {
+                int next = prev1 + prev2;
+                if (next == A[k]) {
+                    currentLength++;
+                    prev1 = prev2;
+                    prev2 = next;
+                }
+            }
+
+            // Update the longest length found
+            longestLength = Math.max(longestLength, currentLength);
+        }
+    }
+
+    // Return the length of the longest Fibonacci-like subsequence found
+    return longestLength >= 3 ? longestLength : 0;
+}
+```
+* Using dynamic programming and Two pointers
+```java
+public int solve(int[] A) {
+    int n = A.length, maxLength = 0;
+    // for index 0 and 1 there would not be any fibonacci so wil keep it as 0
+    // creating a dp array to hold longest fibonacci crated using index i and j
+    int[][] dp = new int[n][n];
+
+    for (int i = 2; i < n; i++) {
+        // check if there is any pair before i whose sum would be equal to A[i]
+        int start = 0, end = i - 1;
+        while (start < end) {
+            int currentTotal = A[start] + A[end];
+            if (currentTotal > A[i])
+                end--;
+            else if (currentTotal < A[i]) start++;
+            else {
+                dp[end][i] = dp[start][end] + 1;
+                maxLength = Math.max(maxLength, dp[end][i]);
+                start++;
+                end--;
+            }
+        }
+    }
+    // if maxLength is greater than 0 it means there was a fibonacci so we will add 2 to accommodate 2 index which
+    // we didn't add
+    return maxLength > 0 ? maxLength + 2 : 0;
 }
 ```
 
