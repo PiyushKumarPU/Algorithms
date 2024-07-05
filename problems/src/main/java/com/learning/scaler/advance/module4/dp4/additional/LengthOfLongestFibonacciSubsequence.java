@@ -1,6 +1,7 @@
 package com.learning.scaler.advance.module4.dp4.additional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /*
 Problem Description
@@ -45,7 +46,68 @@ Example Explanation
 * */
 public class LengthOfLongestFibonacciSubsequence {
 
-    public int solve(ArrayList<Integer> A) {
-        return 0;
+    public static void main(String[] args) {
+        System.out.println(solve(new int[]{1, 2, 3, 5, 8}));
     }
+
+    public int lenLongestFibSubseqBF(int[] A) {
+        int n = A.length;
+        int longestLength = 0;
+
+        // Iterate over all possible starting indices of the subsequence
+        for (int i = 0; i < n - 2; i++) {
+            // Iterate over all possible middle indices of the subsequence
+            for (int j = i + 1; j < n - 1; j++) {
+                int currentLength = 2; // Initialize with two elements A[i] and A[j]
+                int prev1 = A[i];
+                int prev2 = A[j];
+
+                // Check subsequent elements to see if they form a Fibonacci-like sequence
+                for (int k = j + 1; k < n; k++) {
+                    int next = prev1 + prev2;
+                    if (next == A[k]) {
+                        currentLength++;
+                        prev1 = prev2;
+                        prev2 = next;
+                    }
+                }
+
+                // Update the longest length found
+                longestLength = Math.max(longestLength, currentLength);
+            }
+        }
+
+        // Return the length of the longest Fibonacci-like subsequence found
+        return longestLength >= 3 ? longestLength : 0;
+    }
+
+    public static int solve(int[] A) {
+        int n = A.length, maxLength = 0;
+        // for index 0 and 1 there would not be any fibonacci so wil keep it as 0
+        // creating a dp array to hold longest fibonacci crated using index i and j
+        int[][] dp = new int[n][n];
+
+        for (int i = 2; i < n; i++) {
+            // check if there is any pair before i whose sum would be equal to A[i]
+            int start = 0, end = i - 1;
+            while (start < end) {
+                int currentTotal = A[start] + A[end];
+                if (currentTotal > A[i])
+                    end--;
+                else if (currentTotal < A[i]) start++;
+                else {
+                    dp[end][i] = dp[start][end] + 1;
+                    maxLength = Math.max(maxLength, dp[end][i]);
+                    /*start++;
+                    end--;*/
+                    break;
+                }
+            }
+        }
+        // if maxLength is greater than 0 it means there was a fibonacci so we will add 2 to accommodate 2 index which
+        // we didn't add
+        return maxLength > 0 ? maxLength + 2 : 0;
+    }
+
+
 }

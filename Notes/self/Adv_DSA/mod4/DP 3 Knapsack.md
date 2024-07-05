@@ -71,12 +71,14 @@
     Idea 2: Greedy Approach
         Start taking item with max profit and min weight and keep adding in sack.
         Steps:
-            1. Sort given item in ascending order with max unit price i.e. item which add   more profit with less weight
+            1. Sort given item in ascending order with max unit price i.e. item which add
+                more profit with less weight
             2. Iterate throught sorted item array
-            3. if current item weight is greater than sack weight then add unit price * sack weight in max profit and 
+            3. if current item weight is greater than sack weight then add unit price * sack weight 
+                in max profit and 
             break the loop.
-            4. If current item weight is less that sack weight then add complete profit of that item in max weight 
-            and reduce sack weight with item weight.
+            4. If current item weight is less that sack weight then add complete profit of that item 
+                in max weight and reduce sack weight with item weight.
 
 ### Solution
 ```java
@@ -115,9 +117,10 @@
     
 ## 0-1 Knapsack
     Problem Description
-        Given two integer arrays A and B of size N each which represent values and weights associated with N items respectively.
-        Also given an integer C which represents knapsack capacity.
-        Find out the maximum value subset of A such that sum of the weights of this subset is smaller than or equal to C.
+        Given two integer arrays A and B of size N each which represent values and weights associated 
+        with N items respectively. Also given an integer C which represents knapsack capacity.
+        Find out the maximum value subset of A such that sum of the weights of this subset is smaller 
+        than or equal to C.
         NOTE:
             You cannot break an item, either pick the complete item, or don’t pick it (0-1 property).
 
@@ -154,15 +157,16 @@
         Explanation 1:
             Taking items with weight 20 and 30 will give us the maximum value i.e 100 + 120 = 220
         Explanation 2:
-            Knapsack capacity is 10 but each item has weight greater than 10 so no items can be considered in the
-            knapsack therefore answer is 0.
+            Knapsack capacity is 10 but each item has weight greater than 10 so no items can be 
+            considered in the knapsack therefore answer is 0.
 
 ### Solution Approach
     Approach 1: brute force
         Generate all possible subset and check which one gives max profit.
         Total no of subset : 2^n
     Approach 2: Choose or dont choose
-        As we can not break the item while choosing so we can use another approach, something like contribution technique.
+        As we can not break the item while choosing so we can use another approach, something 
+        like contribution technique.
         We will choose max values between element is contributing or not contributing.
             Step 1: Calculate total profit if element is contributing
             step 2: Calculate total profit if element is not contributing
@@ -295,6 +299,7 @@ private int solveRec(int A, ArrayList<Integer> B, ArrayList<Integer> C) {
             Here, we will flip the sign of 15 and the resultant sum will be 1.
         Explanation 2:
             Here, we will flip the sign of 14 and the resultant sum will be 0.
-        Note that flipping the sign of 10 and 4 also gives the resultant sum 0, but flipping their sign are not minimum.
+        Note that flipping the sign of 10 and 4 also gives the resultant sum 0, but flipping their 
+            sign are not minimum.
 ### Solution Approach
     in progress
