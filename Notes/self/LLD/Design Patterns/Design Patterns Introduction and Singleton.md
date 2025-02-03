@@ -19,7 +19,8 @@
 
 ## Intro to design pattern
 ### What is design patterns?
-    Design patterns are typical solutions to commonly occurring problems in software design. They are like pre-made blueprints that you can customize to solve a recurring design problem in your code.
+    Design patterns are typical solutions to commonly occurring problems in software design. They are like pre-made blueprints 
+    that you can customize to solve a recurring design problem in your code.
 
     In simple word, it is the solution of common problem across project in software industry.
 
@@ -34,7 +35,8 @@
 
 * **Behavioral patterns** take care of effective communication and the assignment of responsibilities between objects.
 ## Singleton
-    Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
+    Singleton is a creational design pattern that lets you ensure that a class has only one instance, 
+    while providing a global access point to this instance.
 ### Problem, which should be solved by singleton design pattern
 > The Singleton pattern solves two problems at the same time, **violating the Single Responsibility Principle**
 * Ensure that a class has just a single instance : Why would anyone want to control how many instances a class has? **The most common reason for this is to control access to some shared resource** for example, a database or a file.
@@ -107,7 +109,8 @@ public final class Singleton {
     }
 
     public static Singleton getInstance() {
-        // A local variable result is used to minimize the need to access the volatile field directly, improving performance by reducing synchronization overhead.
+        // A local variable result is used to minimize the need to access the volatile field directly, 
+        // improving performance by reducing synchronization overhead.
         Singleton result = instance;
         if (result != null) {
             return result;
