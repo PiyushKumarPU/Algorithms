@@ -4,13 +4,6 @@
 * Intro to design pattern
 * Singleton
   
-
-## Problems and solutions
-
-1. [Assignments]()
-2. [Additional Problems]()
-3. [Self Practise Problems]()
-
 ## Class Notes and Videos
 
 1. [Class Notes](/Notes/class_Notes/LLD/Design%20Patterns/Introduction%20and%20Singleton.pdf)
