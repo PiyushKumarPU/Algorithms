@@ -28,8 +28,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(Integer.MIN_VALUE - 1);
-        System.out.println(Integer.MAX_VALUE);
+        System.out.println(new App().generate(5));
     }
 
     public static int numWaysToSendSignal(int A) {
@@ -103,6 +102,27 @@ public class App {
         } else {
             return Math.min(healthPoints[i][j + 1], healthPoints[i + 1][j]) - damage; // Normal case
         }
+    }
+
+    List<List<Integer>> result;
+    public List<List<Integer>> generate(int numRows) {
+        result = new ArrayList<>();
+        for(int i = 0; i < numRows;i++){
+            List<Integer> row = new ArrayList<>(i+1);
+            result.add(row);
+        }
+        result.get(0).set(0,1);
+        for(int i = 0; i < numRows;i++)
+            fillTriangle(numRows-1,i);
+        return result;
+    }
+
+    private int fillTriangle(int start, int end){
+        if(start == 0 && end == 0) return 1;
+        else if(start < 0 || end < 0) return 0;
+        int val = fillTriangle(start-1,end-1)+fillTriangle(start,end-1) ;
+        result.get(start).set(end, val);
+        return val;
     }
 
 

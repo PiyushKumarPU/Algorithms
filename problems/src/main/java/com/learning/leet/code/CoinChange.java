@@ -52,4 +52,18 @@ public class CoinChange {
         return minCoinsCount[amount] == amount + 1 ? -1 : minCoinsCount[amount];
     }
 
+    public int coinChangeFastSolution(int[] coins, int amount) {
+        int[] sums = new int[amount + 1];
+        Arrays.fill(sums, amount + 1);
+        sums[0] = 0;
+
+        for (int coin : coins) {
+            for (int i = coin; i <= amount; ++i) {
+                sums[i] = Math.min(sums[i], sums[i - coin] + 1);
+            }
+        }
+
+        return sums[amount] > amount ? -1 : sums[amount];
+    }
+
 }

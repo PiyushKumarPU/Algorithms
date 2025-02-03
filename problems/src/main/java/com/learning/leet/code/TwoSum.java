@@ -20,10 +20,10 @@ public class TwoSum {
     }
 
 
-    public int[] twoSum(int[] nums, int target) {
+    public int[] twoSum(int[] numbers, int target) {
         Map<Integer, Integer> valueIndexMap = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int current = nums[i];
+        for (int i = 0; i < numbers.length; i++) {
+            int current = numbers[i];
             if (valueIndexMap.containsKey(current)) {
                 return new int[]{valueIndexMap.get(current), i};
             }

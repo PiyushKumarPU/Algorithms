@@ -22,7 +22,7 @@ public class AddTwoNumbers {
         ListNode temp = new ListNode(0);
         ListNode current = temp;
         int carry = 0;
-        while (l1 != null || l2 != null) {
+        while (l1 != null || l2 != null || carry != 0) {
             int sum = carry;
             if (l1 != null) {
                 sum += l1.val;
@@ -36,10 +36,6 @@ public class AddTwoNumbers {
             carry = sum / 10;
             current.next = new ListNode(sum % 10);
             current = current.next;
-        }
-
-        if (carry > 0) {
-            current.next = new ListNode(carry);
         }
         return temp.next;
     }

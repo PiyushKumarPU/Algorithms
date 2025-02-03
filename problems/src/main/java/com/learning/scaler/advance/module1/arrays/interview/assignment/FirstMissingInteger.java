@@ -1,4 +1,5 @@
 package com.learning.scaler.advance.module1.arrays.interview.assignment;
+
 /*
 Problem Description
     Given an unsorted integer array, A of size N. Find the first missing positive integer.
@@ -43,19 +44,44 @@ Example Explanation
 * */
 public class FirstMissingInteger {
 
-    public int firstMissingPositive(int[] A) {
-        int size = A.length;
-        for (int i = 0; i < size; i++) {
-            while (A[i] >= 1 && A[i] <= size
-                    && A[i] != A[A[i] - 1]) {
-                int temp = A[A[i] - 1];
-                A[A[i] - 1] = A[i];
-                A[i] = temp;
+    public int firstMissingPositive(int[] nums) {
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            while (nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {
+                int temp = nums[nums[i] - 1];
+                nums[nums[i] - 1] = nums[i];
+                nums[i] = temp;
             }
         }
-        for (int i = 0; i < size; i++)
-            if (A[i] != i + 1)
-                return (i + 1);
-        return (size + 1);
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != i + 1) {
+                return i + 1;
+            }
+        }
+        return n + 1;
     }
+
+    public int firstMissingPositive2(int[] nums) {
+        int temp, i = 0;
+        //place each val in range [1,nums.length) at nums[val-1]
+        while (i < nums.length) {
+            if (nums[i] > 0 && nums[i] < nums.length && nums[i] != nums[nums[i] - 1]) {
+                temp = nums[nums[i] - 1];
+                nums[nums[i] - 1] = nums[i];
+                nums[i] = temp;
+                if (nums[i] == i + 1) {
+                    i++;
+                }
+            } else {
+                i++;
+            }
+        }
+        for (i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1) {
+                return i + 1;
+            }
+        }
+        return nums.length + 1;
+    }
+
 }

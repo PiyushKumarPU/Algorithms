@@ -1,6 +1,6 @@
 package com.learning.leet.code;
 
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
 
 public class LongestCommonPrefix {
@@ -10,29 +10,39 @@ public class LongestCommonPrefix {
         System.out.println(prefix.longestCommonPrefixUsingTrie(new String[]{"flower", "flow", "flight"}));
     }
 
-    public String longestCommonPrefix(String[] strs) {
+    public String longestCommonPrefixUsingArray(String[] strs) {
         if (strs == null) return null;
         else if (strs.length == 1 && strs[0].isEmpty()) return "";
-        String minCommon = longestCommon(strs[0], strs[1]);
-        if (minCommon.isEmpty()) return minCommon;
-        for (int i = 2; i < strs.length; i++) {
-            minCommon = longestCommon(minCommon, strs[i]);
-            if (minCommon.isEmpty()) return minCommon;
-        }
-        return minCommon;
-    }
-
-    public String longestCommonPrefixSmallest(String[] strs) {
-        if (strs.length == 0) {
-            return "";
-        }
-        String commonPrefix = strs[0];
-        for (String str : strs) {
-            while (str.indexOf(commonPrefix) != 0) {
-                commonPrefix = commonPrefix.substring(0, commonPrefix.length() - 1);
+        StringBuilder minCommon = new StringBuilder();
+        // find min length String
+        String minLengthStr = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            if (strs[i].length() < minLengthStr.length()) {
+                minLengthStr = strs[i];
             }
         }
-        return commonPrefix;
+        // iterate through each character and check if it there at the same index for all the strings
+        for (int i = 0; i < minLengthStr.length(); i++) {
+            char c = minLengthStr.charAt(i);
+            for (String str : strs) {
+                if (str.charAt(i) != c) {
+                    return minCommon.toString();
+                }
+            }
+            minCommon.append(c);
+        }
+        return minCommon.toString();
+    }
+
+    public String longestCommonPrefix(String[] strs) {
+        int count = 0;
+        Arrays.sort(strs);
+        String smallest = strs[0], largest = strs[strs.length - 1];
+        while (smallest.length() > count && largest.length() > count) {
+            if (smallest.charAt(count) != largest.charAt(count)) break;
+            count++;
+        }
+        return smallest.substring(0, count);
     }
 
     public String longestCommonPrefixUsingTrie(String[] strs) {

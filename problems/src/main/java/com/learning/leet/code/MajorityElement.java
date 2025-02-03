@@ -1,36 +1,31 @@
 package com.learning.leet.code;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MajorityElement {
+
     public static int majorityElement(int[] nums) {
-        int candidate = findCandidate(nums);
-        return verifyCandidate(nums, candidate) ? candidate : -1;
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        for (int num : nums) {
+            int currentCount = freqMap.getOrDefault(num, 0) + 1;
+            if (currentCount > (nums.length / 2)) return num;
+            freqMap.put(num, currentCount);
+        }
+        return -1;
     }
 
-    private static int findCandidate(int[] nums) {
-        int candidate = 0;
-        int count = 0;
+    // Boyer-Moore Voting Algorithm
+    public static int majorityElementVoting(int[] nums) {
+        int candidate = nums[0], count = 0;
 
         for (int num : nums) {
             if (count == 0) {
                 candidate = num;
-                count = 1;
-            } else if (num == candidate) {
-                count++;
-            } else {
-                count--;
             }
+            count += (num == candidate) ? 1 : -1;
         }
         return candidate;
-    }
-
-    private static boolean verifyCandidate(int[] nums, int candidate) {
-        int count = 0;
-        for (int num : nums) {
-            if (num == candidate) {
-                count++;
-            }
-        }
-        return count > nums.length / 2;
     }
 
     public static void main(String[] args) {
