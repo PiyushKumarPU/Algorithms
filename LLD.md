@@ -2,17 +2,38 @@
 
 ## Table of Contents
 
-### Design Patterns
-   1. [SOLID 1 SRP and OCP](/Notes/self/LLD/Design%20Patterns/SOLID%201%20SRP%20and%20OCP.md)
-   2. [SOLID 2  Liskov's, Interface Segregation, Dependency Inversion](/Notes/self/LLD/Design%20Patterns/SOLID%202%20%20Liskov's,%20Interface%20Segregation,%20Dependency%20Inversion.md)
-   3. [Design Patterns Introduction and Singleton](/Notes/self/LLD/Design%20Patterns/Design%20Patterns%20Introduction%20and%20Singleton.md)
-   4. [Builder](/Notes/self/LLD/Design%20Patterns/Builder.md)
-   5. [Prototype and Registry](/Notes/self/LLD/Design%20Patterns/Prototype%20and%20Registry.md)
-   6. [Factory](/Notes/self/LLD/Design%20Patterns/Factory.md)
-   7. [Adapter and Facade](/Notes/self/LLD/Design%20Patterns/Adapter%20and%20Facade.md)
-   8. [Decorator and Flyweight](/Notes/self/LLD/Design%20Patterns/Decorator%20and%20Flyweight.md)
-   9. [UML Diagrams](/Notes/self/LLD/Design%20Patterns/UML%20Diagrams.md)
-   10. [Behavioral Design Pattern](/Notes/self/LLD/Design%20Patterns/Behavioral%20.md)
+## Design Patterns
+
+### 1. **SOLID Principles**
+
+   - [SOLID 1: SRP and OCP](/Notes/self/LLD/Design%20Patterns/SOLID%201%20SRP%20and%20OCP.md)
+   - [SOLID 2: Liskov's Substitution, Interface Segregation, Dependency Inversion](/Notes/self/LLD/Design%20Patterns/SOLID%202%20%20Liskov's,%20Interface%20Segregation,%20Dependency%20Inversion.md)
+
+---
+
+### 2. **Creational Design Patterns**
+
+   - [Design Patterns Introduction and Singleton](/Notes/self/LLD/Design%20Patterns/Design%20Patterns%20Introduction%20and%20Singleton.md)
+   - [Factory and Abstract Factory](/Notes/self/LLD/Design%20Patterns/Factory.md)
+   - [Builder](/Notes/self/LLD/Design%20Patterns/Builder.md)
+   - [Prototype and Registry](/Notes/self/LLD/Design%20Patterns/Prototype%20and%20Registry.md)
+
+---
+
+### 3. **Structural Design Patterns**
+
+   - [Adapter and Facade](/Notes/self/LLD/Design%20Patterns/Adapter%20and%20Facade.md)
+   - [Decorator and Flyweight](/Notes/self/LLD/Design%20Patterns/Decorator%20and%20Flyweight.md)
+
+---
+
+### 4. **Behavioral Design Patterns**
+
+   - [Command Design Pattern](/Notes/self/LLD/Design%20Patterns/Command%20design%20pattern.md)
+   - [Observer Design Pattern](/Notes/self/LLD/Design%20Patterns/Observer%20design%20pattern.md)
+   - [Strategy Design Pattern](/Notes/self/LLD/Design%20Patterns/Strategy%20design%20pattern.md)
+
+   
 
 ### Machine Coding
    1. [How to Approach Design Problems](/Notes/self/LLD/Machine%20Coding/How%20to%20Approach%20Design%20Problems.md)
