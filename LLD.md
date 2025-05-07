@@ -1,5 +1,3 @@
-# SQL
-
 ## Table of Contents
 
 ## Design Patterns
