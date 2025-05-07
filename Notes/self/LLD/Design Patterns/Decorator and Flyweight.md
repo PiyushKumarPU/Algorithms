@@ -43,15 +43,8 @@ Think of a **coffee**: You have a basic coffee (like a black coffee), and you ca
 
 ### 📦 Structure
 
-```
+![Structure](../../../images/design_patterns/decorator.png)
 
-Client --> Component (interface)
-↑
-Decorator
-↓
-ConcreteComponent (concrete implementation)
-
-````
 
 ---
 
@@ -189,11 +182,7 @@ Think of a **character in a video game**. Multiple characters may have the same 
 
 ### 📦 Structure
 
-```
-Client --> FlyweightFactory --> Flyweight (shared objects)
-                   ↑              ↓
-               Extrinsic State  Intrinsic State
-```
+![Structure](../../../images/design_patterns/flyweight.png)
 
 ---
 

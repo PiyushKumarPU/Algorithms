@@ -41,11 +41,8 @@ Think of a **news agency** that broadcasts news. The news agency (subject) produ
 
 ### 📦 Structure
 
-```
+![Structure](../../../images/design_patterns/observer.png)
 
-Subject --> Observer --> ConcreteObserver
-
-````
 
 - **Subject**: Maintains a list of observers and provides methods to add, remove, and notify observers.
 - **Observer**: Defines the interface that the concrete observers will implement.

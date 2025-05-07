@@ -46,15 +46,7 @@ Consider building a complex sandwich at a deli counter. The customer chooses var
 
 ### 📦 Structure
 
-```
-
-Client --> Builder (interface) --> ConcreteBuilder
-|
-Director (optional)
-↓
-Product (Complex Object)
-
-````
+![Structure](../../../images/design_patterns/builder.png)
 
 ---
 

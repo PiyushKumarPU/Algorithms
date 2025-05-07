@@ -43,15 +43,7 @@ Consider a **plug adapter**. If you travel to a country with a different electri
 
 ### 📦 Structure
 
-```
-
-Client --> Target (desired interface)
-↑
-Adapter
-↓
-Adaptee (existing class)
-
-````
+![Structure](../../../images/design_patterns/adaptor.png)
 
 ---
 
@@ -185,11 +177,8 @@ Imagine a **home theater system**. The system involves a TV, a DVD player, a sou
 
 ### 📦 Structure
 
-```
-Client --> Facade (simplified interface)
-                ↑
-        Subsystem classes (complex operations)
-```
+![Structure](../../../images/design_patterns/facade.png)
+
 
 ---
 

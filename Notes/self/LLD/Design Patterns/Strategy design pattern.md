@@ -43,11 +43,8 @@ Consider a **navigation system** where the system can calculate routes using dif
 
 ### 📦 Structure
 
-```
+![Structure](../../../images/design_patterns/strategy.png)
 
-Context --> Strategy --> ConcreteStrategy
-
-````
 
 - **Context**: The class that uses a strategy to perform an operation.
 - **Strategy**: Defines a family of algorithms and declares a method for performing an operation.

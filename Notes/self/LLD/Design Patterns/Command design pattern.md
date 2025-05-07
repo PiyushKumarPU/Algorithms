@@ -41,14 +41,8 @@ Consider a **TV Remote Control**. The remote has buttons for different functions
 
 ### 📦 Structure
 
-```
+![Structure](../../../images/design_patterns/command.png)
 
-Client --> Command --> Invoker
-^
-|
-Receiver
-
-````
 
 - **Command**: Declares an interface for executing a request.
 - **ConcreteCommand**: Defines a binding between a receiver object and an action.

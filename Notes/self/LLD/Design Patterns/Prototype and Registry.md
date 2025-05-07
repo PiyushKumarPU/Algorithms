@@ -43,15 +43,7 @@ Consider the process of photocopying a document. The photocopier doesn't need to
 
 ### 📦 Structure
 
-```
-
-Client --> Prototype (abstract class or interface) --> ConcretePrototype
-↓
-Clone()
-↓
-Product (Cloned Object)
-
-````
+![Structure](../../../images/design_patterns/prototype.png)
 
 ---
 
@@ -166,6 +158,8 @@ Think of a **Library Registry** where books are stored under certain genres. A r
 ---
 
 ### 📦 Structure
+
+
 
 ```
 Client --> Registry (stores objects)
